@@ -1,0 +1,449 @@
+[
+  {
+    "id": "CQ03",
+    "question": "Shall the permissions 'Aggregation' and 'Disaggregation' be of the type Transfer Rights?",
+    "classes": [
+      "Permission",
+      "Aggregation",
+      "Disaggregation",
+      "TransferRights"
+    ],
+    "properties": [
+      "isOfType"
+    ],
+    "data_properties": [],
+    "object_properties": [
+      "isOfType"
+    ],
+    "axioms": [
+      "Aggregation and Disaggregation are subclasses of Permission",
+      "TransferRights is a type/class"
+    ],
+    "individuals": [],
+    "tests": [
+      "Permission type Class",
+      "TransferRights type Class",
+      "Aggregation SubClassOf Permission",
+      "Disaggregation SubClassOf Permission",
+      "Aggregation isOfType TransferRights"
+    ]
+  },
+  {
+    "id": "CQ06",
+    "question": "Expressing the various roles of contract parties within the Permission/Duty element.",
+    "classes": [
+      "ContractParty",
+      "Permission",
+      "Duty",
+      "Role"
+    ],
+    "properties": [
+      "hasRole"
+    ],
+    "data_properties": [],
+    "object_properties": [
+      "hasRole"
+    ],
+    "axioms": [
+      "Contract parties have roles within Permission/Duty elements"
+    ],
+    "individuals": [],
+    "tests": [
+      "ContractParty type Class",
+      "Role type Class",
+      "Permission type Class",
+      "Duty type Class",
+      "ContractParty hasRole Role"
+    ]
+  },
+  {
+    "id": "CQ08",
+    "question": "How to provide a 'NOT' expression?",
+    "classes": [
+      "Expression",
+      "Constraint"
+    ],
+    "properties": [
+      "hasOperator"
+    ],
+    "data_properties": [],
+    "object_properties": [
+      "hasOperator"
+    ],
+    "axioms": [
+      "NOT is an operator used in expressions/constraints"
+    ],
+    "individuals": [
+      "NOT"
+    ],
+    "tests": [
+      "Expression type Class",
+      "Constraint type Class",
+      "NOT type Expression",
+      "Expression hasOperator NOT"
+    ]
+  },
+  {
+    "id": "CQ10",
+    "question": "How are rights and duties supported for all contract parties?",
+    "classes": [
+      "ContractParty",
+      "Right",
+      "Duty"
+    ],
+    "properties": [
+      "hasRight",
+      "hasDuty"
+    ],
+    "data_properties": [],
+    "object_properties": [
+      "hasRight",
+      "hasDuty"
+    ],
+    "axioms": [
+      "All contract parties can have rights and duties"
+    ],
+    "individuals": [],
+    "tests": [
+      "ContractParty type Class",
+      "Right type Class",
+      "Duty type Class",
+      "ContractParty hasRight Right",
+      "ContractParty hasDuty Duty"
+    ]
+  },
+  {
+    "id": "CQ13",
+    "question": "Shall ODRLv2 allow for nested constraints?",
+    "classes": [
+      "Constraint"
+    ],
+    "properties": [
+      "hasConstraint"
+    ],
+    "data_properties": [],
+    "object_properties": [
+      "hasConstraint"
+    ],
+    "axioms": [
+      "Constraints can be nested"
+    ],
+    "individuals": [],
+    "tests": [
+      "Constraint type Class",
+      "Constraint hasConstraint Constraint"
+    ]
+  },
+  {
+    "id": "CQ14",
+    "question": "How do we express 'and', 'or', 'xor' constraints?",
+    "classes": [
+      "Constraint",
+      "Operator"
+    ],
+    "properties": [
+      "hasOperator"
+    ],
+    "data_properties": [],
+    "object_properties": [
+      "hasOperator"
+    ],
+    "axioms": [
+      "AND, OR, XOR are operators for constraints"
+    ],
+    "individuals": [
+      "AND",
+      "OR",
+      "XOR"
+    ],
+    "tests": [
+      "Constraint type Class",
+      "Operator type Class",
+      "AND type Operator",
+      "Constraint hasOperator AND",
+      "Constraint hasOperator OR"
+    ]
+  },
+  {
+    "id": "CQ21",
+    "question": "How to express constraints on requirements?",
+    "classes": [
+      "Requirement",
+      "Constraint"
+    ],
+    "properties": [
+      "hasConstraint"
+    ],
+    "data_properties": [],
+    "object_properties": [
+      "hasConstraint"
+    ],
+    "axioms": [
+      "Requirements can have constraints"
+    ],
+    "individuals": [],
+    "tests": [
+      "Requirement type Class",
+      "Constraint type Class",
+      "Requirement hasConstraint Constraint"
+    ]
+  },
+  {
+    "id": "CQ24",
+    "question": "How to express exclusive permissions?",
+    "classes": [
+      "Permission"
+    ],
+    "properties": [
+      "isExclusive"
+    ],
+    "data_properties": [
+      "isExclusive"
+    ],
+    "object_properties": [],
+    "axioms": [
+      "Permissions can be exclusive"
+    ],
+    "individuals": [],
+    "tests": [
+      "Permission type Class",
+      "Permission isExclusive boolean"
+    ]
+  },
+  {
+    "id": "CQ26",
+    "question": "How to express Condition via Constraints?",
+    "classes": [
+      "Condition",
+      "Constraint"
+    ],
+    "properties": [
+      "expressedVia"
+    ],
+    "data_properties": [],
+    "object_properties": [
+      "expressedVia"
+    ],
+    "axioms": [
+      "Conditions can be expressed via Constraints"
+    ],
+    "individuals": [],
+    "tests": [
+      "Condition type Class",
+      "Constraint type Class",
+      "Condition expressedVia Constraint"
+    ]
+  },
+  {
+    "id": "CQ30",
+    "question": "What do we lose if containers are no longer part of ODRL?",
+    "classes": [
+      "Container"
+    ],
+    "properties": [],
+    "data_properties": [],
+    "object_properties": [],
+    "axioms": [
+      "Containers are a concept that might be removed"
+    ],
+    "individuals": [],
+    "tests": [
+      "Container type Class"
+    ]
+  },
+  {
+    "id": "CQ31",
+    "question": "Do we need 'Sequencing' as part of the REL?",
+    "classes": [
+      "REL",
+      "Sequencing"
+    ],
+    "properties": [
+      "hasPart"
+    ],
+    "data_properties": [],
+    "object_properties": [
+      "hasPart"
+    ],
+    "axioms": [
+      "Sequencing might be a part of REL"
+    ],
+    "individuals": [],
+    "tests": [
+      "REL type Class",
+      "Sequencing type Class",
+      "REL hasPart Sequencing"
+    ]
+  },
+  {
+    "id": "CQ33",
+    "question": "Can the new data model express inheritance?",
+    "classes": [
+      "DataModel"
+    ],
+    "properties": [
+      "canExpress"
+    ],
+    "data_properties": [],
+    "object_properties": [
+      "canExpress"
+    ],
+    "axioms": [
+      "Data model should express inheritance"
+    ],
+    "individuals": [
+      "Inheritance"
+    ],
+    "tests": [
+      "DataModel type Class",
+      "Inheritance type Class",
+      "DataModel canExpress Inheritance"
+    ]
+  },
+  {
+    "id": "New CQ1",
+    "question": "Which policy is directly linked to a given asset?",
+    "classes": [
+      "Policy",
+      "Asset"
+    ],
+    "properties": [
+      "linkedTo"
+    ],
+    "data_properties": [],
+    "object_properties": [
+      "linkedTo"
+    ],
+    "axioms": [
+      "Policies can be linked to assets"
+    ],
+    "individuals": [],
+    "tests": [
+      "Policy type Class",
+      "Asset type Class",
+      "Policy linkedTo Asset"
+    ]
+  },
+  {
+    "id": "New CQ2",
+    "question": "What conflict resolution strategy is specified by a policy?",
+    "classes": [
+      "Policy"
+    ],
+    "properties": [
+      "specifies"
+    ],
+    "data_properties": [],
+    "object_properties": [
+      "specifies"
+    ],
+    "axioms": [
+      "Policies specify conflict resolution strategies"
+    ],
+    "individuals": [
+      "ConflictResolutionStrategy"
+    ],
+    "tests": [
+      "Policy type Class",
+      "ConflictResolutionStrategy type Class",
+      "Policy specifies ConflictResolutionStrategy"
+    ]
+  },
+  {
+    "id": "New CQ3",
+    "question": "What duty is specified as a remedy for the violation of a prohibition?",
+    "classes": [
+      "Prohibition",
+      "Duty"
+    ],
+    "properties": [
+      "hasRemedyForViolation"
+    ],
+    "data_properties": [],
+    "object_properties": [
+      "hasRemedyForViolation"
+    ],
+    "axioms": [
+      "Duties can be remedies for prohibition violations"
+    ],
+    "individuals": [],
+    "tests": [
+      "Prohibition type Class",
+      "Duty type Class",
+      "Prohibition hasRemedyForViolation Duty"
+    ]
+  },
+  {
+    "id": "New CQ4",
+    "question": "Which rule is activated upon the failure of another rule?",
+    "classes": [
+      "Rule"
+    ],
+    "properties": [
+      "activatedUponFailureOf"
+    ],
+    "data_properties": [],
+    "object_properties": [
+      "activatedUponFailureOf"
+    ],
+    "axioms": [
+      "Rules can be activated upon failure of other rules"
+    ],
+    "individuals": [],
+    "tests": [
+      "Rule type Class",
+      "Rule activatedUponFailureOf Rule"
+    ]
+  },
+  {
+    "id": "New CQ5",
+    "question": "What duty is specified as a consequence of another duty?",
+    "classes": [
+      "Duty"
+    ],
+    "properties": [
+      "hasConsequence"
+    ],
+    "data_properties": [],
+    "object_properties": [
+      "hasConsequence"
+    ],
+    "axioms": [
+      "Duties can have consequences that are other duties"
+    ],
+    "individuals": [],
+    "tests": [
+      "Duty type Class",
+      "Duty hasConsequence Duty"
+    ]
+  },
+  {
+    "id": "New CQ6",
+    "question": "What operator is used in the constraints of a prohibition?",
+    "classes": [
+      "Prohibition",
+      "Constraint",
+      "Operator"
+    ],
+    "properties": [
+      "hasConstraint",
+      "hasOperator"
+    ],
+    "data_properties": [],
+    "object_properties": [
+      "hasConstraint",
+      "hasOperator"
+    ],
+    "axioms": [
+      "Prohibitions have constraints with operators"
+    ],
+    "individuals": [],
+    "tests": [
+      "Prohibition type Class",
+      "Constraint type Class",
+      "Operator type Class",
+      "Prohibition hasConstraint Constraint",
+      "Constraint hasOperator Operator"
+    ]
+  }
+]

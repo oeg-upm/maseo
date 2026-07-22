@@ -1,0 +1,3246 @@
+{
+  "domain": "odrl",
+  "base_uri": "http://www.semanticweb.org/odrl#",
+  "cq_file": "/home/jovyan/LLMOnto/Benchmark/OntologyConceptMatching/MASEO_MCP/dataset/odrl_cq2onto_cqs.json",
+  "cqs": [
+    "CQ03",
+    "CQ06",
+    "CQ08",
+    "CQ10",
+    "CQ13",
+    "CQ14",
+    "CQ21",
+    "CQ24",
+    "CQ26",
+    "CQ30",
+    "CQ31",
+    "CQ33",
+    "New CQ1",
+    "New CQ2",
+    "New CQ3",
+    "New CQ4",
+    "New CQ5",
+    "New CQ6"
+  ],
+  "rounds": 3,
+  "final_status": {
+    "syntax_check": {
+      "passed": true,
+      "errors": []
+    },
+    "oops": {
+      "passed": true,
+      "major_count": 0,
+      "pitfalls": []
+    },
+    "hermit": {
+      "passed": true,
+      "consistent": true,
+      "unsatisfiable_classes": []
+    },
+    "cq_coverage": {
+      "passed": true,
+      "covered": [
+        "CQ03",
+        "CQ06",
+        "CQ08",
+        "CQ10",
+        "CQ13",
+        "CQ14",
+        "CQ21",
+        "CQ24",
+        "CQ26",
+        "CQ30",
+        "CQ31",
+        "CQ33",
+        "New CQ1",
+        "New CQ2",
+        "New CQ3",
+        "New CQ4",
+        "New CQ5",
+        "New CQ6"
+      ],
+      "uncovered": [],
+      "missing": {}
+    },
+    "themis_test": {
+      "passed": false,
+      "covered": [
+        "CQ03",
+        "CQ06",
+        "CQ10",
+        "CQ13",
+        "CQ24",
+        "CQ26",
+        "CQ30",
+        "CQ31",
+        "CQ33",
+        "New CQ1",
+        "New CQ2",
+        "New CQ3",
+        "New CQ4",
+        "New CQ5",
+        "New CQ6"
+      ],
+      "uncovered": [
+        "CQ08",
+        "CQ14",
+        "CQ21"
+      ],
+      "missing": {
+        "CQ08": [
+          "Expression hasOperator NOT -> Incorrect (undefined/wrong terms: ['NOT'])"
+        ],
+        "CQ14": [
+          "Constraint hasOperator AND -> Incorrect (undefined/wrong terms: ['AND'])",
+          "Constraint hasOperator OR -> Incorrect (undefined/wrong terms: ['OR'])"
+        ],
+        "CQ21": [
+          "Requirement type Class -> Incorrect (undefined/wrong terms: ['Requirement'])"
+        ]
+      }
+    }
+  },
+  "all_passed": false,
+  "records": [
+    {
+      "round": 0,
+      "index": 1,
+      "phase": "extract",
+      "tool_calling": "extraction_agent",
+      "input_information": {
+        "cqs": [
+          "CQ03",
+          "CQ06",
+          "CQ08",
+          "CQ10",
+          "CQ13",
+          "CQ14",
+          "CQ21",
+          "CQ24",
+          "CQ26",
+          "CQ30",
+          "CQ31",
+          "CQ33",
+          "New CQ1",
+          "New CQ2",
+          "New CQ3",
+          "New CQ4",
+          "New CQ5",
+          "New CQ6"
+        ]
+      },
+      "output": {
+        "terms_file": "/home/jovyan/LLMOnto/Benchmark/OntologyConceptMatching/MASEO_MCP/ollama/odrl/odrl_terms.json",
+        "terms_per_cq": {
+          "CQ03": 12,
+          "CQ06": 11,
+          "CQ08": 9,
+          "CQ10": 11,
+          "CQ13": 5,
+          "CQ14": 12,
+          "CQ21": 7,
+          "CQ24": 5,
+          "CQ26": 7,
+          "CQ30": 3,
+          "CQ31": 7,
+          "CQ33": 7,
+          "New CQ1": 7,
+          "New CQ2": 7,
+          "New CQ3": 7,
+          "New CQ4": 5,
+          "New CQ5": 5,
+          "New CQ6": 11
+        }
+      },
+      "seconds": 37.99
+    },
+    {
+      "round": 0,
+      "index": 2,
+      "phase": "generate",
+      "tool_calling": "generation_agent",
+      "input_information": {
+        "cqs": [
+          "CQ03",
+          "CQ06",
+          "CQ08",
+          "CQ10",
+          "CQ13",
+          "CQ14",
+          "CQ21",
+          "CQ24",
+          "CQ26",
+          "CQ30",
+          "CQ31",
+          "CQ33",
+          "New CQ1",
+          "New CQ2",
+          "New CQ3",
+          "New CQ4",
+          "New CQ5",
+          "New CQ6"
+        ],
+        "with_terms": true
+      },
+      "output": {
+        "ontology_file": "/home/jovyan/LLMOnto/Benchmark/OntologyConceptMatching/MASEO_MCP/ollama/odrl/odrl_ontology.owl",
+        "ontology_chars": 20071
+      },
+      "seconds": 104.11
+    },
+    {
+      "round": 1,
+      "index": 3,
+      "phase": "syntax",
+      "attempt": 1,
+      "tool_calling": "syntax_check",
+      "input_information": {
+        "ontology_file": "/home/jovyan/LLMOnto/Benchmark/OntologyConceptMatching/MASEO_MCP/ollama/odrl/odrl_ontology.owl"
+      },
+      "output": {
+        "passed": true,
+        "errors": []
+      },
+      "next_action": "pass",
+      "seconds": 0.24
+    },
+    {
+      "round": 1,
+      "index": 4,
+      "phase": "cover",
+      "attempt": 1,
+      "tool_calling": "cq_coverage",
+      "input_information": {
+        "ontology_file": "/home/jovyan/LLMOnto/Benchmark/OntologyConceptMatching/MASEO_MCP/ollama/odrl/odrl_ontology.owl",
+        "cqs": [
+          "CQ03",
+          "CQ06",
+          "CQ08",
+          "CQ10",
+          "CQ13",
+          "CQ14",
+          "CQ21",
+          "CQ24",
+          "CQ26",
+          "CQ30",
+          "CQ31",
+          "CQ33",
+          "New CQ1",
+          "New CQ2",
+          "New CQ3",
+          "New CQ4",
+          "New CQ5",
+          "New CQ6"
+        ]
+      },
+      "output": {
+        "passed": true,
+        "covered": [
+          "CQ03",
+          "CQ06",
+          "CQ08",
+          "CQ10",
+          "CQ13",
+          "CQ14",
+          "CQ21",
+          "CQ24",
+          "CQ26",
+          "CQ30",
+          "CQ31",
+          "CQ33",
+          "New CQ1",
+          "New CQ2",
+          "New CQ3",
+          "New CQ4",
+          "New CQ5",
+          "New CQ6"
+        ],
+        "uncovered": [],
+        "missing": {}
+      },
+      "next_action": "pass",
+      "seconds": 0.01
+    },
+    {
+      "round": 1,
+      "index": 5,
+      "phase": "oops",
+      "attempt": 1,
+      "tool_calling": "oops_scan",
+      "input_information": {
+        "ontology_file": "/home/jovyan/LLMOnto/Benchmark/OntologyConceptMatching/MASEO_MCP/ollama/odrl/odrl_ontology.owl"
+      },
+      "output": {
+        "passed": true,
+        "major_count": 0,
+        "pitfalls": []
+      },
+      "next_action": "pass",
+      "seconds": 0.17
+    },
+    {
+      "round": 1,
+      "index": 6,
+      "phase": "hermit",
+      "attempt": 1,
+      "tool_calling": "hermit_consistency",
+      "input_information": {
+        "ontology_file": "/home/jovyan/LLMOnto/Benchmark/OntologyConceptMatching/MASEO_MCP/ollama/odrl/odrl_ontology.owl"
+      },
+      "output": {
+        "passed": true,
+        "consistent": true,
+        "unsatisfiable_classes": []
+      },
+      "next_action": "pass",
+      "seconds": 0.46
+    },
+    {
+      "round": 1,
+      "index": 7,
+      "phase": "themis",
+      "attempt": 1,
+      "tool_calling": "themis_test",
+      "input_information": {
+        "ontology_file": "/home/jovyan/LLMOnto/Benchmark/OntologyConceptMatching/MASEO_MCP/ollama/odrl/odrl_ontology.owl",
+        "cqs": [
+          "CQ03",
+          "CQ06",
+          "CQ08",
+          "CQ10",
+          "CQ13",
+          "CQ14",
+          "CQ21",
+          "CQ24",
+          "CQ26",
+          "CQ30",
+          "CQ31",
+          "CQ33",
+          "New CQ1",
+          "New CQ2",
+          "New CQ3",
+          "New CQ4",
+          "New CQ5",
+          "New CQ6"
+        ]
+      },
+      "output": {
+        "passed": false,
+        "covered": [
+          "CQ03",
+          "CQ06",
+          "CQ10",
+          "CQ13",
+          "CQ24",
+          "CQ26",
+          "CQ30",
+          "CQ31",
+          "CQ33",
+          "New CQ1",
+          "New CQ2",
+          "New CQ3",
+          "New CQ4",
+          "New CQ5",
+          "New CQ6"
+        ],
+        "uncovered": [
+          "CQ08",
+          "CQ14",
+          "CQ21"
+        ],
+        "missing": {
+          "CQ08": [
+            "Expression hasOperator NOT -> Incorrect (undefined/wrong terms: ['NOT'])"
+          ],
+          "CQ14": [
+            "Constraint hasOperator AND -> Incorrect (undefined/wrong terms: ['AND'])",
+            "Constraint hasOperator OR -> Incorrect (undefined/wrong terms: ['OR'])"
+          ],
+          "CQ21": [
+            "Requirement type Class -> Incorrect (undefined/wrong terms: ['Requirement'])"
+          ]
+        }
+      },
+      "next_action": "correct",
+      "seconds": 0.81
+    },
+    {
+      "round": 1,
+      "index": 8,
+      "phase": "themis",
+      "attempt": 1,
+      "tool_calling": "correction_agent",
+      "input_information": {
+        "kind": "failing Themis competency-question tests",
+        "report": "Themis tests: 15/18 CQs pass all their tests. FAILING TESTS:\nCQ08:\n  Expression hasOperator NOT -> Incorrect (undefined/wrong terms: ['NOT'])\nCQ14:\n  Constraint hasOperator AND -> Incorrect (undefined/wrong terms: ['AND'])\n  Constraint hasOperator OR -> Incorrect (undefined/wrong terms: ['OR'])\nCQ21:\n  Requirement type Class -> Incorrect (undefined/wrong terms: ['Requirement'])\nFix each failing test in the ontology: Undefined = add the term under exactly that name; Incorrect = declare it with the right type (class/property/individual); Absent = add the tested axiom (subclass, domain/range, restriction) so the knowledge is modelled; Conflict = the ontology contradicts the test, correct the axioms. Record each CQ id in dc:source as '(competency_question) <id>'.",
+        "uncovered_cqs": [
+          {
+            "id": "CQ08",
+            "missing": [
+              "Expression hasOperator NOT -> Incorrect (undefined/wrong terms: ['NOT'])"
+            ]
+          },
+          {
+            "id": "CQ14",
+            "missing": [
+              "Constraint hasOperator AND -> Incorrect (undefined/wrong terms: ['AND'])",
+              "Constraint hasOperator OR -> Incorrect (undefined/wrong terms: ['OR'])"
+            ]
+          },
+          {
+            "id": "CQ21",
+            "missing": [
+              "Requirement type Class -> Incorrect (undefined/wrong terms: ['Requirement'])"
+            ]
+          }
+        ]
+      },
+      "output": {
+        "ontology_file": "/home/jovyan/LLMOnto/Benchmark/OntologyConceptMatching/MASEO_MCP/ollama/odrl/odrl_ontology.owl",
+        "ontology_chars": 20069
+      },
+      "seconds": 414.5,
+      "effect": {
+        "covered_before": [
+          "CQ03",
+          "CQ06",
+          "CQ10",
+          "CQ13",
+          "CQ24",
+          "CQ26",
+          "CQ30",
+          "CQ31",
+          "CQ33",
+          "New CQ1",
+          "New CQ2",
+          "New CQ3",
+          "New CQ4",
+          "New CQ5",
+          "New CQ6"
+        ],
+        "covered_after": [
+          "CQ03",
+          "CQ06",
+          "CQ10",
+          "CQ13",
+          "CQ24",
+          "CQ26",
+          "CQ30",
+          "CQ31",
+          "CQ33",
+          "New CQ1",
+          "New CQ2",
+          "New CQ3",
+          "New CQ4",
+          "New CQ5",
+          "New CQ6"
+        ],
+        "added_cqs": [],
+        "removed_cqs": []
+      }
+    },
+    {
+      "round": 1,
+      "index": 9,
+      "phase": "themis",
+      "attempt": 2,
+      "tool_calling": "themis_test",
+      "input_information": {
+        "ontology_file": "/home/jovyan/LLMOnto/Benchmark/OntologyConceptMatching/MASEO_MCP/ollama/odrl/odrl_ontology.owl",
+        "cqs": [
+          "CQ03",
+          "CQ06",
+          "CQ08",
+          "CQ10",
+          "CQ13",
+          "CQ14",
+          "CQ21",
+          "CQ24",
+          "CQ26",
+          "CQ30",
+          "CQ31",
+          "CQ33",
+          "New CQ1",
+          "New CQ2",
+          "New CQ3",
+          "New CQ4",
+          "New CQ5",
+          "New CQ6"
+        ]
+      },
+      "output": {
+        "passed": false,
+        "covered": [
+          "CQ03",
+          "CQ06",
+          "CQ10",
+          "CQ13",
+          "CQ24",
+          "CQ26",
+          "CQ30",
+          "CQ31",
+          "CQ33",
+          "New CQ1",
+          "New CQ2",
+          "New CQ3",
+          "New CQ4",
+          "New CQ5",
+          "New CQ6"
+        ],
+        "uncovered": [
+          "CQ08",
+          "CQ14",
+          "CQ21"
+        ],
+        "missing": {
+          "CQ08": [
+            "NOT type Expression -> Absent",
+            "Expression hasOperator NOT -> Incorrect (undefined/wrong terms: ['NOT'])"
+          ],
+          "CQ14": [
+            "Constraint hasOperator AND -> Incorrect (undefined/wrong terms: ['AND'])",
+            "Constraint hasOperator OR -> Incorrect (undefined/wrong terms: ['OR'])"
+          ],
+          "CQ21": [
+            "Requirement type Class -> Incorrect (undefined/wrong terms: ['Requirement'])"
+          ]
+        }
+      },
+      "next_action": "correct",
+      "seconds": 0.82
+    },
+    {
+      "round": 1,
+      "index": 10,
+      "phase": "themis",
+      "attempt": 2,
+      "tool_calling": "correction_agent",
+      "input_information": {
+        "kind": "failing Themis competency-question tests",
+        "report": "Themis tests: 15/18 CQs pass all their tests. FAILING TESTS:\nCQ08:\n  NOT type Expression -> Absent\n  Expression hasOperator NOT -> Incorrect (undefined/wrong terms: ['NOT'])\nCQ14:\n  Constraint hasOperator AND -> Incorrect (undefined/wrong terms: ['AND'])\n  Constraint hasOperator OR -> Incorrect (undefined/wrong terms: ['OR'])\nCQ21:\n  Requirement type Class -> Incorrect (undefined/wrong terms: ['Requirement'])\nFix each failing test in the ontology: Undefined = add the term under exactly that name; Incorrect = declare it with the right type (class/property/individual); Absent = add the tested axiom (subclass, domain/range, restriction) so the knowledge is modelled; Conflict = the ontology contradicts the test, correct the axioms. Record each CQ id in dc:source as '(competency_question) <id>'.",
+        "uncovered_cqs": [
+          {
+            "id": "CQ08",
+            "missing": [
+              "NOT type Expression -> Absent",
+              "Expression hasOperator NOT -> Incorrect (undefined/wrong terms: ['NOT'])"
+            ]
+          },
+          {
+            "id": "CQ14",
+            "missing": [
+              "Constraint hasOperator AND -> Incorrect (undefined/wrong terms: ['AND'])",
+              "Constraint hasOperator OR -> Incorrect (undefined/wrong terms: ['OR'])"
+            ]
+          },
+          {
+            "id": "CQ21",
+            "missing": [
+              "Requirement type Class -> Incorrect (undefined/wrong terms: ['Requirement'])"
+            ]
+          }
+        ]
+      },
+      "output": {
+        "ontology_file": "/home/jovyan/LLMOnto/Benchmark/OntologyConceptMatching/MASEO_MCP/ollama/odrl/odrl_ontology.owl",
+        "ontology_chars": 20351
+      },
+      "seconds": 439.63,
+      "effect": {
+        "covered_before": [
+          "CQ03",
+          "CQ06",
+          "CQ10",
+          "CQ13",
+          "CQ24",
+          "CQ26",
+          "CQ30",
+          "CQ31",
+          "CQ33",
+          "New CQ1",
+          "New CQ2",
+          "New CQ3",
+          "New CQ4",
+          "New CQ5",
+          "New CQ6"
+        ],
+        "covered_after": [
+          "CQ03",
+          "CQ06",
+          "CQ10",
+          "CQ13",
+          "CQ24",
+          "CQ26",
+          "CQ30",
+          "CQ31",
+          "CQ33",
+          "New CQ1",
+          "New CQ2",
+          "New CQ3",
+          "New CQ4",
+          "New CQ5",
+          "New CQ6"
+        ],
+        "added_cqs": [],
+        "removed_cqs": []
+      }
+    },
+    {
+      "round": 1,
+      "index": 11,
+      "phase": "themis",
+      "attempt": 3,
+      "tool_calling": "themis_test",
+      "input_information": {
+        "ontology_file": "/home/jovyan/LLMOnto/Benchmark/OntologyConceptMatching/MASEO_MCP/ollama/odrl/odrl_ontology.owl",
+        "cqs": [
+          "CQ03",
+          "CQ06",
+          "CQ08",
+          "CQ10",
+          "CQ13",
+          "CQ14",
+          "CQ21",
+          "CQ24",
+          "CQ26",
+          "CQ30",
+          "CQ31",
+          "CQ33",
+          "New CQ1",
+          "New CQ2",
+          "New CQ3",
+          "New CQ4",
+          "New CQ5",
+          "New CQ6"
+        ]
+      },
+      "output": {
+        "passed": false,
+        "covered": [
+          "CQ03",
+          "CQ06",
+          "CQ10",
+          "CQ13",
+          "CQ24",
+          "CQ26",
+          "CQ30",
+          "CQ31",
+          "CQ33",
+          "New CQ1",
+          "New CQ2",
+          "New CQ3",
+          "New CQ4",
+          "New CQ5",
+          "New CQ6"
+        ],
+        "uncovered": [
+          "CQ08",
+          "CQ14",
+          "CQ21"
+        ],
+        "missing": {
+          "CQ08": [
+            "Expression hasOperator NOT -> Incorrect (undefined/wrong terms: ['NOT'])"
+          ],
+          "CQ14": [
+            "Constraint hasOperator AND -> Incorrect (undefined/wrong terms: ['AND'])",
+            "Constraint hasOperator OR -> Incorrect (undefined/wrong terms: ['OR'])"
+          ],
+          "CQ21": [
+            "Requirement type Class -> Incorrect (undefined/wrong terms: ['Requirement'])"
+          ]
+        }
+      },
+      "next_action": "correct",
+      "seconds": 0.97
+    },
+    {
+      "round": 1,
+      "index": 12,
+      "phase": "themis",
+      "attempt": 3,
+      "tool_calling": "correction_agent",
+      "input_information": {
+        "kind": "failing Themis competency-question tests",
+        "report": "Themis tests: 15/18 CQs pass all their tests. FAILING TESTS:\nCQ08:\n  Expression hasOperator NOT -> Incorrect (undefined/wrong terms: ['NOT'])\nCQ14:\n  Constraint hasOperator AND -> Incorrect (undefined/wrong terms: ['AND'])\n  Constraint hasOperator OR -> Incorrect (undefined/wrong terms: ['OR'])\nCQ21:\n  Requirement type Class -> Incorrect (undefined/wrong terms: ['Requirement'])\nFix each failing test in the ontology: Undefined = add the term under exactly that name; Incorrect = declare it with the right type (class/property/individual); Absent = add the tested axiom (subclass, domain/range, restriction) so the knowledge is modelled; Conflict = the ontology contradicts the test, correct the axioms. Record each CQ id in dc:source as '(competency_question) <id>'.",
+        "uncovered_cqs": [
+          {
+            "id": "CQ08",
+            "missing": [
+              "Expression hasOperator NOT -> Incorrect (undefined/wrong terms: ['NOT'])"
+            ]
+          },
+          {
+            "id": "CQ14",
+            "missing": [
+              "Constraint hasOperator AND -> Incorrect (undefined/wrong terms: ['AND'])",
+              "Constraint hasOperator OR -> Incorrect (undefined/wrong terms: ['OR'])"
+            ]
+          },
+          {
+            "id": "CQ21",
+            "missing": [
+              "Requirement type Class -> Incorrect (undefined/wrong terms: ['Requirement'])"
+            ]
+          }
+        ]
+      },
+      "output": {
+        "ontology_file": "/home/jovyan/LLMOnto/Benchmark/OntologyConceptMatching/MASEO_MCP/ollama/odrl/odrl_ontology.owl",
+        "ontology_chars": 21134
+      },
+      "seconds": 585.71,
+      "effect": {
+        "covered_before": [
+          "CQ03",
+          "CQ06",
+          "CQ10",
+          "CQ13",
+          "CQ24",
+          "CQ26",
+          "CQ30",
+          "CQ31",
+          "CQ33",
+          "New CQ1",
+          "New CQ2",
+          "New CQ3",
+          "New CQ4",
+          "New CQ5",
+          "New CQ6"
+        ],
+        "covered_after": [],
+        "added_cqs": [],
+        "removed_cqs": [
+          "CQ03",
+          "CQ06",
+          "CQ10",
+          "CQ13",
+          "CQ24",
+          "CQ26",
+          "CQ30",
+          "CQ31",
+          "CQ33",
+          "New CQ1",
+          "New CQ2",
+          "New CQ3",
+          "New CQ4",
+          "New CQ5",
+          "New CQ6"
+        ]
+      }
+    },
+    {
+      "round": 1,
+      "index": 13,
+      "phase": "themis",
+      "attempt": 4,
+      "tool_calling": "themis_test",
+      "input_information": {
+        "ontology_file": "/home/jovyan/LLMOnto/Benchmark/OntologyConceptMatching/MASEO_MCP/ollama/odrl/odrl_ontology.owl",
+        "cqs": [
+          "CQ03",
+          "CQ06",
+          "CQ08",
+          "CQ10",
+          "CQ13",
+          "CQ14",
+          "CQ21",
+          "CQ24",
+          "CQ26",
+          "CQ30",
+          "CQ31",
+          "CQ33",
+          "New CQ1",
+          "New CQ2",
+          "New CQ3",
+          "New CQ4",
+          "New CQ5",
+          "New CQ6"
+        ]
+      },
+      "output": {
+        "passed": false,
+        "covered": [],
+        "uncovered": [
+          "CQ03",
+          "CQ06",
+          "CQ08",
+          "CQ10",
+          "CQ13",
+          "CQ14",
+          "CQ21",
+          "CQ24",
+          "CQ26",
+          "CQ30",
+          "CQ31",
+          "CQ33",
+          "New CQ1",
+          "New CQ2",
+          "New CQ3",
+          "New CQ4",
+          "New CQ5",
+          "New CQ6"
+        ],
+        "missing": {
+          "CQ03": [
+            "Permission type Class -> Undefined (undefined/wrong terms: ['Permission'])",
+            "TransferRights type Class -> Undefined (undefined/wrong terms: ['TransferRights'])",
+            "Aggregation SubClassOf Permission -> Undefined (undefined/wrong terms: ['Aggregation', 'Permission'])",
+            "Disaggregation SubClassOf Permission -> Undefined (undefined/wrong terms: ['Disaggregation', 'Permission'])",
+            "Aggregation isOfType TransferRights -> Undefined (undefined/wrong terms: ['Aggregation', 'isOfType', 'TransferRights'])"
+          ],
+          "CQ06": [
+            "ContractParty type Class -> Undefined (undefined/wrong terms: ['ContractParty'])",
+            "Role type Class -> Undefined (undefined/wrong terms: ['Role'])",
+            "Permission type Class -> Undefined (undefined/wrong terms: ['Permission'])",
+            "Duty type Class -> Undefined (undefined/wrong terms: ['Duty'])",
+            "ContractParty hasRole Role -> Undefined (undefined/wrong terms: ['ContractParty', 'hasRole', 'Role'])"
+          ],
+          "CQ08": [
+            "Expression type Class -> Undefined (undefined/wrong terms: ['Expression'])",
+            "Constraint type Class -> Undefined (undefined/wrong terms: ['Constraint'])",
+            "NOT type Expression -> Undefined (undefined/wrong terms: ['NOT', 'Expression'])",
+            "Expression hasOperator NOT -> Undefined (undefined/wrong terms: ['Expression', 'hasOperator', 'NOT'])"
+          ],
+          "CQ10": [
+            "ContractParty type Class -> Undefined (undefined/wrong terms: ['ContractParty'])",
+            "Right type Class -> Undefined (undefined/wrong terms: ['Right'])",
+            "Duty type Class -> Undefined (undefined/wrong terms: ['Duty'])",
+            "ContractParty hasRight Right -> Undefined (undefined/wrong terms: ['ContractParty', 'hasRight', 'Right'])",
+            "ContractParty hasDuty Duty -> Undefined (undefined/wrong terms: ['ContractParty', 'hasDuty', 'Duty'])"
+          ],
+          "CQ13": [
+            "Constraint type Class -> Undefined (undefined/wrong terms: ['Constraint'])",
+            "Constraint hasConstraint Constraint -> Undefined (undefined/wrong terms: ['Constraint', 'hasConstraint', 'Constraint'])"
+          ],
+          "CQ14": [
+            "Constraint type Class -> Undefined (undefined/wrong terms: ['Constraint'])",
+            "Operator type Class -> Undefined (undefined/wrong terms: ['Operator'])",
+            "AND type Operator -> Undefined (undefined/wrong terms: ['AND', 'Operator'])",
+            "Constraint hasOperator AND -> Undefined (undefined/wrong terms: ['Constraint', 'hasOperator', 'AND'])",
+            "Constraint hasOperator OR -> Undefined (undefined/wrong terms: ['Constraint', 'hasOperator', 'OR'])"
+          ],
+          "CQ21": [
+            "Requirement type Class -> Undefined (undefined/wrong terms: ['Requirement'])",
+            "Constraint type Class -> Undefined (undefined/wrong terms: ['Constraint'])",
+            "Requirement hasConstraint Constraint -> Undefined (undefined/wrong terms: ['Requirement', 'hasConstraint', 'Constraint'])"
+          ],
+          "CQ24": [
+            "Permission type Class -> Undefined (undefined/wrong terms: ['Permission'])",
+            "Permission isExclusive boolean -> Undefined (undefined/wrong terms: ['Permission', 'isExclusive'])"
+          ],
+          "CQ26": [
+            "Condition type Class -> Undefined (undefined/wrong terms: ['Condition'])",
+            "Constraint type Class -> Undefined (undefined/wrong terms: ['Constraint'])",
+            "Condition expressedVia Constraint -> Undefined (undefined/wrong terms: ['Condition', 'expressedVia', 'Constraint'])"
+          ],
+          "CQ30": [
+            "Container type Class -> Undefined (undefined/wrong terms: ['Container'])"
+          ],
+          "CQ31": [
+            "REL type Class -> Undefined (undefined/wrong terms: ['REL'])",
+            "Sequencing type Class -> Undefined (undefined/wrong terms: ['Sequencing'])",
+            "REL hasPart Sequencing -> Undefined (undefined/wrong terms: ['REL', 'hasPart', 'Sequencing'])"
+          ],
+          "CQ33": [
+            "DataModel type Class -> Undefined (undefined/wrong terms: ['DataModel'])",
+            "Inheritance type Class -> Undefined (undefined/wrong terms: ['Inheritance'])",
+            "DataModel canExpress Inheritance -> Undefined (undefined/wrong terms: ['DataModel', 'canExpress', 'Inheritance'])"
+          ],
+          "New CQ1": [
+            "Policy type Class -> Undefined (undefined/wrong terms: ['Policy'])",
+            "Asset type Class -> Undefined (undefined/wrong terms: ['Asset'])",
+            "Policy linkedTo Asset -> Undefined (undefined/wrong terms: ['Policy', 'linkedTo', 'Asset'])"
+          ],
+          "New CQ2": [
+            "Policy type Class -> Undefined (undefined/wrong terms: ['Policy'])",
+            "ConflictResolutionStrategy type Class -> Undefined (undefined/wrong terms: ['ConflictResolutionStrategy'])",
+            "Policy specifies ConflictResolutionStrategy -> Undefined (undefined/wrong terms: ['Policy', 'specifies', 'ConflictResolutionStrategy'])"
+          ],
+          "New CQ3": [
+            "Prohibition type Class -> Undefined (undefined/wrong terms: ['Prohibition'])",
+            "Duty type Class -> Undefined (undefined/wrong terms: ['Duty'])",
+            "Prohibition hasRemedyForViolation Duty -> Undefined (undefined/wrong terms: ['Prohibition', 'hasRemedyForViolation', 'Duty'])"
+          ],
+          "New CQ4": [
+            "Rule type Class -> Undefined (undefined/wrong terms: ['Rule'])",
+            "Rule activatedUponFailureOf Rule -> Undefined (undefined/wrong terms: ['Rule', 'activatedUponFailureOf', 'Rule'])"
+          ],
+          "New CQ5": [
+            "Duty type Class -> Undefined (undefined/wrong terms: ['Duty'])",
+            "Duty hasConsequence Duty -> Undefined (undefined/wrong terms: ['Duty', 'hasConsequence', 'Duty'])"
+          ],
+          "New CQ6": [
+            "Prohibition type Class -> Undefined (undefined/wrong terms: ['Prohibition'])",
+            "Constraint type Class -> Undefined (undefined/wrong terms: ['Constraint'])",
+            "Operator type Class -> Undefined (undefined/wrong terms: ['Operator'])",
+            "Prohibition hasConstraint Constraint -> Undefined (undefined/wrong terms: ['Prohibition', 'hasConstraint', 'Constraint'])",
+            "Constraint hasOperator Operator -> Undefined (undefined/wrong terms: ['Constraint', 'hasOperator', 'Operator'])"
+          ]
+        }
+      },
+      "next_action": "give_up",
+      "seconds": 0.64
+    },
+    {
+      "round": 1,
+      "index": 14,
+      "phase": "verify",
+      "tool_calling": "syntax_check",
+      "input_information": {
+        "ontology_file": "/home/jovyan/LLMOnto/Benchmark/OntologyConceptMatching/MASEO_MCP/ollama/odrl/odrl_ontology.owl"
+      },
+      "output": {
+        "passed": false,
+        "errors": [
+          "XML is not well-formed: unbound prefix: line 298, column 8"
+        ]
+      },
+      "seconds": 0.01
+    },
+    {
+      "round": 1,
+      "index": 15,
+      "phase": "verify",
+      "tool_calling": "hermit_consistency",
+      "input_information": {
+        "ontology_file": "/home/jovyan/LLMOnto/Benchmark/OntologyConceptMatching/MASEO_MCP/ollama/odrl/odrl_ontology.owl"
+      },
+      "output": {
+        "passed": false,
+        "consistent": false,
+        "unsatisfiable_classes": [
+          "ERROR",
+          " \"\" at line 1, column 1.\nWas expecting:\n    \"Ontology\" ...\n     (Line 0)\n\n--------------------------------------------------------------------------------\nParser: TurtleOntologyParser\nuk.ac.manchester.cs.owl.owlapi.turtle.parser.ParseException: Encountered \"\" at line 1, column 1.\nWas expecting one of:\n    \n\n--------------------------------------------------------------------------------\nParser: OWLOBOParser\norg.coode.owlapi.obo.parser.TokenMgrError: Lexical error at line 1, column 22.  Encountered: \"\\n\" (10), after : \"\"\n\n--------------------------------------------------------------------------------\nParser: KRSS2OWLParser\nde.uulm.ecs.ai.owlapi.krssparser.ParseException: Encountered \" \"",
+          "?xml version=\\\"1.0\\\"?",
+          "EOF",
+          "?xml version=\"1.0\"?"
+        ],
+        "error": "Consistent: unknown"
+      },
+      "seconds": 0.34
+    },
+    {
+      "round": 1,
+      "index": 16,
+      "phase": "verify",
+      "tool_calling": "oops_scan",
+      "input_information": {
+        "ontology_file": "/home/jovyan/LLMOnto/Benchmark/OntologyConceptMatching/MASEO_MCP/ollama/odrl/odrl_ontology.owl"
+      },
+      "output": {
+        "passed": true,
+        "major_count": 0,
+        "pitfalls": []
+      },
+      "seconds": 0.19
+    },
+    {
+      "round": 1,
+      "index": 17,
+      "phase": "verify",
+      "tool_calling": "cq_coverage",
+      "input_information": {
+        "ontology_file": "/home/jovyan/LLMOnto/Benchmark/OntologyConceptMatching/MASEO_MCP/ollama/odrl/odrl_ontology.owl",
+        "cqs": [
+          "CQ03",
+          "CQ06",
+          "CQ08",
+          "CQ10",
+          "CQ13",
+          "CQ14",
+          "CQ21",
+          "CQ24",
+          "CQ26",
+          "CQ30",
+          "CQ31",
+          "CQ33",
+          "New CQ1",
+          "New CQ2",
+          "New CQ3",
+          "New CQ4",
+          "New CQ5",
+          "New CQ6"
+        ]
+      },
+      "output": {
+        "passed": true,
+        "covered": [
+          "CQ03",
+          "CQ06",
+          "CQ08",
+          "CQ10",
+          "CQ13",
+          "CQ14",
+          "CQ21",
+          "CQ24",
+          "CQ26",
+          "CQ30",
+          "CQ31",
+          "CQ33",
+          "New CQ1",
+          "New CQ2",
+          "New CQ3",
+          "New CQ4",
+          "New CQ5",
+          "New CQ6"
+        ],
+        "uncovered": [],
+        "missing": {}
+      },
+      "seconds": 0.01
+    },
+    {
+      "round": 1,
+      "index": 18,
+      "phase": "verify",
+      "tool_calling": "themis_test",
+      "input_information": {
+        "ontology_file": "/home/jovyan/LLMOnto/Benchmark/OntologyConceptMatching/MASEO_MCP/ollama/odrl/odrl_ontology.owl",
+        "cqs": [
+          "CQ03",
+          "CQ06",
+          "CQ08",
+          "CQ10",
+          "CQ13",
+          "CQ14",
+          "CQ21",
+          "CQ24",
+          "CQ26",
+          "CQ30",
+          "CQ31",
+          "CQ33",
+          "New CQ1",
+          "New CQ2",
+          "New CQ3",
+          "New CQ4",
+          "New CQ5",
+          "New CQ6"
+        ]
+      },
+      "output": {
+        "passed": false,
+        "covered": [],
+        "uncovered": [
+          "CQ03",
+          "CQ06",
+          "CQ08",
+          "CQ10",
+          "CQ13",
+          "CQ14",
+          "CQ21",
+          "CQ24",
+          "CQ26",
+          "CQ30",
+          "CQ31",
+          "CQ33",
+          "New CQ1",
+          "New CQ2",
+          "New CQ3",
+          "New CQ4",
+          "New CQ5",
+          "New CQ6"
+        ],
+        "missing": {
+          "CQ03": [
+            "Permission type Class -> Undefined (undefined/wrong terms: ['Permission'])",
+            "TransferRights type Class -> Undefined (undefined/wrong terms: ['TransferRights'])",
+            "Aggregation SubClassOf Permission -> Undefined (undefined/wrong terms: ['Aggregation', 'Permission'])",
+            "Disaggregation SubClassOf Permission -> Undefined (undefined/wrong terms: ['Disaggregation', 'Permission'])",
+            "Aggregation isOfType TransferRights -> Undefined (undefined/wrong terms: ['Aggregation', 'isOfType', 'TransferRights'])"
+          ],
+          "CQ06": [
+            "ContractParty type Class -> Undefined (undefined/wrong terms: ['ContractParty'])",
+            "Role type Class -> Undefined (undefined/wrong terms: ['Role'])",
+            "Permission type Class -> Undefined (undefined/wrong terms: ['Permission'])",
+            "Duty type Class -> Undefined (undefined/wrong terms: ['Duty'])",
+            "ContractParty hasRole Role -> Undefined (undefined/wrong terms: ['ContractParty', 'hasRole', 'Role'])"
+          ],
+          "CQ08": [
+            "Expression type Class -> Undefined (undefined/wrong terms: ['Expression'])",
+            "Constraint type Class -> Undefined (undefined/wrong terms: ['Constraint'])",
+            "NOT type Expression -> Undefined (undefined/wrong terms: ['NOT', 'Expression'])",
+            "Expression hasOperator NOT -> Undefined (undefined/wrong terms: ['Expression', 'hasOperator', 'NOT'])"
+          ],
+          "CQ10": [
+            "ContractParty type Class -> Undefined (undefined/wrong terms: ['ContractParty'])",
+            "Right type Class -> Undefined (undefined/wrong terms: ['Right'])",
+            "Duty type Class -> Undefined (undefined/wrong terms: ['Duty'])",
+            "ContractParty hasRight Right -> Undefined (undefined/wrong terms: ['ContractParty', 'hasRight', 'Right'])",
+            "ContractParty hasDuty Duty -> Undefined (undefined/wrong terms: ['ContractParty', 'hasDuty', 'Duty'])"
+          ],
+          "CQ13": [
+            "Constraint type Class -> Undefined (undefined/wrong terms: ['Constraint'])",
+            "Constraint hasConstraint Constraint -> Undefined (undefined/wrong terms: ['Constraint', 'hasConstraint', 'Constraint'])"
+          ],
+          "CQ14": [
+            "Constraint type Class -> Undefined (undefined/wrong terms: ['Constraint'])",
+            "Operator type Class -> Undefined (undefined/wrong terms: ['Operator'])",
+            "AND type Operator -> Undefined (undefined/wrong terms: ['AND', 'Operator'])",
+            "Constraint hasOperator AND -> Undefined (undefined/wrong terms: ['Constraint', 'hasOperator', 'AND'])",
+            "Constraint hasOperator OR -> Undefined (undefined/wrong terms: ['Constraint', 'hasOperator', 'OR'])"
+          ],
+          "CQ21": [
+            "Requirement type Class -> Undefined (undefined/wrong terms: ['Requirement'])",
+            "Constraint type Class -> Undefined (undefined/wrong terms: ['Constraint'])",
+            "Requirement hasConstraint Constraint -> Undefined (undefined/wrong terms: ['Requirement', 'hasConstraint', 'Constraint'])"
+          ],
+          "CQ24": [
+            "Permission type Class -> Undefined (undefined/wrong terms: ['Permission'])",
+            "Permission isExclusive boolean -> Undefined (undefined/wrong terms: ['Permission', 'isExclusive'])"
+          ],
+          "CQ26": [
+            "Condition type Class -> Undefined (undefined/wrong terms: ['Condition'])",
+            "Constraint type Class -> Undefined (undefined/wrong terms: ['Constraint'])",
+            "Condition expressedVia Constraint -> Undefined (undefined/wrong terms: ['Condition', 'expressedVia', 'Constraint'])"
+          ],
+          "CQ30": [
+            "Container type Class -> Undefined (undefined/wrong terms: ['Container'])"
+          ],
+          "CQ31": [
+            "REL type Class -> Undefined (undefined/wrong terms: ['REL'])",
+            "Sequencing type Class -> Undefined (undefined/wrong terms: ['Sequencing'])",
+            "REL hasPart Sequencing -> Undefined (undefined/wrong terms: ['REL', 'hasPart', 'Sequencing'])"
+          ],
+          "CQ33": [
+            "DataModel type Class -> Undefined (undefined/wrong terms: ['DataModel'])",
+            "Inheritance type Class -> Undefined (undefined/wrong terms: ['Inheritance'])",
+            "DataModel canExpress Inheritance -> Undefined (undefined/wrong terms: ['DataModel', 'canExpress', 'Inheritance'])"
+          ],
+          "New CQ1": [
+            "Policy type Class -> Undefined (undefined/wrong terms: ['Policy'])",
+            "Asset type Class -> Undefined (undefined/wrong terms: ['Asset'])",
+            "Policy linkedTo Asset -> Undefined (undefined/wrong terms: ['Policy', 'linkedTo', 'Asset'])"
+          ],
+          "New CQ2": [
+            "Policy type Class -> Undefined (undefined/wrong terms: ['Policy'])",
+            "ConflictResolutionStrategy type Class -> Undefined (undefined/wrong terms: ['ConflictResolutionStrategy'])",
+            "Policy specifies ConflictResolutionStrategy -> Undefined (undefined/wrong terms: ['Policy', 'specifies', 'ConflictResolutionStrategy'])"
+          ],
+          "New CQ3": [
+            "Prohibition type Class -> Undefined (undefined/wrong terms: ['Prohibition'])",
+            "Duty type Class -> Undefined (undefined/wrong terms: ['Duty'])",
+            "Prohibition hasRemedyForViolation Duty -> Undefined (undefined/wrong terms: ['Prohibition', 'hasRemedyForViolation', 'Duty'])"
+          ],
+          "New CQ4": [
+            "Rule type Class -> Undefined (undefined/wrong terms: ['Rule'])",
+            "Rule activatedUponFailureOf Rule -> Undefined (undefined/wrong terms: ['Rule', 'activatedUponFailureOf', 'Rule'])"
+          ],
+          "New CQ5": [
+            "Duty type Class -> Undefined (undefined/wrong terms: ['Duty'])",
+            "Duty hasConsequence Duty -> Undefined (undefined/wrong terms: ['Duty', 'hasConsequence', 'Duty'])"
+          ],
+          "New CQ6": [
+            "Prohibition type Class -> Undefined (undefined/wrong terms: ['Prohibition'])",
+            "Constraint type Class -> Undefined (undefined/wrong terms: ['Constraint'])",
+            "Operator type Class -> Undefined (undefined/wrong terms: ['Operator'])",
+            "Prohibition hasConstraint Constraint -> Undefined (undefined/wrong terms: ['Prohibition', 'hasConstraint', 'Constraint'])",
+            "Constraint hasOperator Operator -> Undefined (undefined/wrong terms: ['Constraint', 'hasOperator', 'Operator'])"
+          ]
+        }
+      },
+      "seconds": 0.55
+    },
+    {
+      "round": 1,
+      "index": 19,
+      "phase": "verify",
+      "tool_calling": "round_summary",
+      "input_information": {
+        "checks": [
+          "syntax_check",
+          "hermit_consistency",
+          "oops_scan",
+          "cq_coverage",
+          "themis_test"
+        ]
+      },
+      "output": {
+        "all_passed": false,
+        "syntax_check": {
+          "passed": false,
+          "errors": [
+            "XML is not well-formed: unbound prefix: line 298, column 8"
+          ]
+        },
+        "cq_coverage": {
+          "passed": true,
+          "covered": [
+            "CQ03",
+            "CQ06",
+            "CQ08",
+            "CQ10",
+            "CQ13",
+            "CQ14",
+            "CQ21",
+            "CQ24",
+            "CQ26",
+            "CQ30",
+            "CQ31",
+            "CQ33",
+            "New CQ1",
+            "New CQ2",
+            "New CQ3",
+            "New CQ4",
+            "New CQ5",
+            "New CQ6"
+          ],
+          "uncovered": [],
+          "missing": {}
+        },
+        "themis_test": {
+          "passed": false,
+          "covered": [],
+          "uncovered": [
+            "CQ03",
+            "CQ06",
+            "CQ08",
+            "CQ10",
+            "CQ13",
+            "CQ14",
+            "CQ21",
+            "CQ24",
+            "CQ26",
+            "CQ30",
+            "CQ31",
+            "CQ33",
+            "New CQ1",
+            "New CQ2",
+            "New CQ3",
+            "New CQ4",
+            "New CQ5",
+            "New CQ6"
+          ],
+          "missing": {
+            "CQ03": [
+              "Permission type Class -> Undefined (undefined/wrong terms: ['Permission'])",
+              "TransferRights type Class -> Undefined (undefined/wrong terms: ['TransferRights'])",
+              "Aggregation SubClassOf Permission -> Undefined (undefined/wrong terms: ['Aggregation', 'Permission'])",
+              "Disaggregation SubClassOf Permission -> Undefined (undefined/wrong terms: ['Disaggregation', 'Permission'])",
+              "Aggregation isOfType TransferRights -> Undefined (undefined/wrong terms: ['Aggregation', 'isOfType', 'TransferRights'])"
+            ],
+            "CQ06": [
+              "ContractParty type Class -> Undefined (undefined/wrong terms: ['ContractParty'])",
+              "Role type Class -> Undefined (undefined/wrong terms: ['Role'])",
+              "Permission type Class -> Undefined (undefined/wrong terms: ['Permission'])",
+              "Duty type Class -> Undefined (undefined/wrong terms: ['Duty'])",
+              "ContractParty hasRole Role -> Undefined (undefined/wrong terms: ['ContractParty', 'hasRole', 'Role'])"
+            ],
+            "CQ08": [
+              "Expression type Class -> Undefined (undefined/wrong terms: ['Expression'])",
+              "Constraint type Class -> Undefined (undefined/wrong terms: ['Constraint'])",
+              "NOT type Expression -> Undefined (undefined/wrong terms: ['NOT', 'Expression'])",
+              "Expression hasOperator NOT -> Undefined (undefined/wrong terms: ['Expression', 'hasOperator', 'NOT'])"
+            ],
+            "CQ10": [
+              "ContractParty type Class -> Undefined (undefined/wrong terms: ['ContractParty'])",
+              "Right type Class -> Undefined (undefined/wrong terms: ['Right'])",
+              "Duty type Class -> Undefined (undefined/wrong terms: ['Duty'])",
+              "ContractParty hasRight Right -> Undefined (undefined/wrong terms: ['ContractParty', 'hasRight', 'Right'])",
+              "ContractParty hasDuty Duty -> Undefined (undefined/wrong terms: ['ContractParty', 'hasDuty', 'Duty'])"
+            ],
+            "CQ13": [
+              "Constraint type Class -> Undefined (undefined/wrong terms: ['Constraint'])",
+              "Constraint hasConstraint Constraint -> Undefined (undefined/wrong terms: ['Constraint', 'hasConstraint', 'Constraint'])"
+            ],
+            "CQ14": [
+              "Constraint type Class -> Undefined (undefined/wrong terms: ['Constraint'])",
+              "Operator type Class -> Undefined (undefined/wrong terms: ['Operator'])",
+              "AND type Operator -> Undefined (undefined/wrong terms: ['AND', 'Operator'])",
+              "Constraint hasOperator AND -> Undefined (undefined/wrong terms: ['Constraint', 'hasOperator', 'AND'])",
+              "Constraint hasOperator OR -> Undefined (undefined/wrong terms: ['Constraint', 'hasOperator', 'OR'])"
+            ],
+            "CQ21": [
+              "Requirement type Class -> Undefined (undefined/wrong terms: ['Requirement'])",
+              "Constraint type Class -> Undefined (undefined/wrong terms: ['Constraint'])",
+              "Requirement hasConstraint Constraint -> Undefined (undefined/wrong terms: ['Requirement', 'hasConstraint', 'Constraint'])"
+            ],
+            "CQ24": [
+              "Permission type Class -> Undefined (undefined/wrong terms: ['Permission'])",
+              "Permission isExclusive boolean -> Undefined (undefined/wrong terms: ['Permission', 'isExclusive'])"
+            ],
+            "CQ26": [
+              "Condition type Class -> Undefined (undefined/wrong terms: ['Condition'])",
+              "Constraint type Class -> Undefined (undefined/wrong terms: ['Constraint'])",
+              "Condition expressedVia Constraint -> Undefined (undefined/wrong terms: ['Condition', 'expressedVia', 'Constraint'])"
+            ],
+            "CQ30": [
+              "Container type Class -> Undefined (undefined/wrong terms: ['Container'])"
+            ],
+            "CQ31": [
+              "REL type Class -> Undefined (undefined/wrong terms: ['REL'])",
+              "Sequencing type Class -> Undefined (undefined/wrong terms: ['Sequencing'])",
+              "REL hasPart Sequencing -> Undefined (undefined/wrong terms: ['REL', 'hasPart', 'Sequencing'])"
+            ],
+            "CQ33": [
+              "DataModel type Class -> Undefined (undefined/wrong terms: ['DataModel'])",
+              "Inheritance type Class -> Undefined (undefined/wrong terms: ['Inheritance'])",
+              "DataModel canExpress Inheritance -> Undefined (undefined/wrong terms: ['DataModel', 'canExpress', 'Inheritance'])"
+            ],
+            "New CQ1": [
+              "Policy type Class -> Undefined (undefined/wrong terms: ['Policy'])",
+              "Asset type Class -> Undefined (undefined/wrong terms: ['Asset'])",
+              "Policy linkedTo Asset -> Undefined (undefined/wrong terms: ['Policy', 'linkedTo', 'Asset'])"
+            ],
+            "New CQ2": [
+              "Policy type Class -> Undefined (undefined/wrong terms: ['Policy'])",
+              "ConflictResolutionStrategy type Class -> Undefined (undefined/wrong terms: ['ConflictResolutionStrategy'])",
+              "Policy specifies ConflictResolutionStrategy -> Undefined (undefined/wrong terms: ['Policy', 'specifies', 'ConflictResolutionStrategy'])"
+            ],
+            "New CQ3": [
+              "Prohibition type Class -> Undefined (undefined/wrong terms: ['Prohibition'])",
+              "Duty type Class -> Undefined (undefined/wrong terms: ['Duty'])",
+              "Prohibition hasRemedyForViolation Duty -> Undefined (undefined/wrong terms: ['Prohibition', 'hasRemedyForViolation', 'Duty'])"
+            ],
+            "New CQ4": [
+              "Rule type Class -> Undefined (undefined/wrong terms: ['Rule'])",
+              "Rule activatedUponFailureOf Rule -> Undefined (undefined/wrong terms: ['Rule', 'activatedUponFailureOf', 'Rule'])"
+            ],
+            "New CQ5": [
+              "Duty type Class -> Undefined (undefined/wrong terms: ['Duty'])",
+              "Duty hasConsequence Duty -> Undefined (undefined/wrong terms: ['Duty', 'hasConsequence', 'Duty'])"
+            ],
+            "New CQ6": [
+              "Prohibition type Class -> Undefined (undefined/wrong terms: ['Prohibition'])",
+              "Constraint type Class -> Undefined (undefined/wrong terms: ['Constraint'])",
+              "Operator type Class -> Undefined (undefined/wrong terms: ['Operator'])",
+              "Prohibition hasConstraint Constraint -> Undefined (undefined/wrong terms: ['Prohibition', 'hasConstraint', 'Constraint'])",
+              "Constraint hasOperator Operator -> Undefined (undefined/wrong terms: ['Constraint', 'hasOperator', 'Operator'])"
+            ]
+          }
+        },
+        "oops": {
+          "passed": true,
+          "major_count": 0,
+          "pitfalls": []
+        },
+        "hermit": {
+          "passed": false,
+          "consistent": false,
+          "unsatisfiable_classes": [
+            "ERROR",
+            " \"\" at line 1, column 1.\nWas expecting:\n    \"Ontology\" ...\n     (Line 0)\n\n--------------------------------------------------------------------------------\nParser: TurtleOntologyParser\nuk.ac.manchester.cs.owl.owlapi.turtle.parser.ParseException: Encountered \"\" at line 1, column 1.\nWas expecting one of:\n    \n\n--------------------------------------------------------------------------------\nParser: OWLOBOParser\norg.coode.owlapi.obo.parser.TokenMgrError: Lexical error at line 1, column 22.  Encountered: \"\\n\" (10), after : \"\"\n\n--------------------------------------------------------------------------------\nParser: KRSS2OWLParser\nde.uulm.ecs.ai.owlapi.krssparser.ParseException: Encountered \" \"",
+            "?xml version=\\\"1.0\\\"?",
+            "EOF",
+            "?xml version=\"1.0\"?"
+          ],
+          "error": "Consistent: unknown"
+        }
+      },
+      "next_action": "repeat"
+    },
+    {
+      "round": 2,
+      "index": 20,
+      "phase": "syntax",
+      "attempt": 1,
+      "tool_calling": "syntax_check",
+      "input_information": {
+        "ontology_file": "/home/jovyan/LLMOnto/Benchmark/OntologyConceptMatching/MASEO_MCP/ollama/odrl/odrl_ontology.owl"
+      },
+      "output": {
+        "passed": false,
+        "errors": [
+          "XML is not well-formed: unbound prefix: line 298, column 8"
+        ]
+      },
+      "next_action": "correct",
+      "seconds": 0.01
+    },
+    {
+      "round": 2,
+      "index": 21,
+      "phase": "syntax",
+      "attempt": 1,
+      "tool_calling": "correction_agent",
+      "input_information": {
+        "kind": "RDF/XML syntax and writing-style errors",
+        "report": "SYNTAX / STYLE ERRORS:\n- XML is not well-formed: unbound prefix: line 298, column 8\nReturn ONE complete well-formed RDF/XML document: nothing before '<?xml', an rdf:RDF root element, valid XML, and nothing after '</rdf:RDF>'."
+      },
+      "output": {
+        "ontology_file": "/home/jovyan/LLMOnto/Benchmark/OntologyConceptMatching/MASEO_MCP/ollama/odrl/odrl_ontology.owl",
+        "ontology_chars": 21192
+      },
+      "seconds": 726.09,
+      "effect": {
+        "errors_before": [
+          "XML is not well-formed: unbound prefix: line 298, column 8"
+        ],
+        "errors_after": [],
+        "fixed_errors": [
+          "XML is not well-formed: unbound prefix: line 298, column 8"
+        ],
+        "introduced_errors": []
+      }
+    },
+    {
+      "round": 2,
+      "index": 22,
+      "phase": "syntax",
+      "attempt": 2,
+      "tool_calling": "syntax_check",
+      "input_information": {
+        "ontology_file": "/home/jovyan/LLMOnto/Benchmark/OntologyConceptMatching/MASEO_MCP/ollama/odrl/odrl_ontology.owl"
+      },
+      "output": {
+        "passed": true,
+        "errors": []
+      },
+      "next_action": "pass",
+      "seconds": 0.04
+    },
+    {
+      "round": 2,
+      "index": 23,
+      "phase": "cover",
+      "attempt": 1,
+      "tool_calling": "cq_coverage",
+      "input_information": {
+        "ontology_file": "/home/jovyan/LLMOnto/Benchmark/OntologyConceptMatching/MASEO_MCP/ollama/odrl/odrl_ontology.owl",
+        "cqs": [
+          "CQ03",
+          "CQ06",
+          "CQ08",
+          "CQ10",
+          "CQ13",
+          "CQ14",
+          "CQ21",
+          "CQ24",
+          "CQ26",
+          "CQ30",
+          "CQ31",
+          "CQ33",
+          "New CQ1",
+          "New CQ2",
+          "New CQ3",
+          "New CQ4",
+          "New CQ5",
+          "New CQ6"
+        ]
+      },
+      "output": {
+        "passed": true,
+        "covered": [
+          "CQ03",
+          "CQ06",
+          "CQ08",
+          "CQ10",
+          "CQ13",
+          "CQ14",
+          "CQ21",
+          "CQ24",
+          "CQ26",
+          "CQ30",
+          "CQ31",
+          "CQ33",
+          "New CQ1",
+          "New CQ2",
+          "New CQ3",
+          "New CQ4",
+          "New CQ5",
+          "New CQ6"
+        ],
+        "uncovered": [],
+        "missing": {}
+      },
+      "next_action": "pass",
+      "seconds": 0.01
+    },
+    {
+      "round": 2,
+      "index": 24,
+      "phase": "oops",
+      "attempt": 1,
+      "tool_calling": "oops_scan",
+      "input_information": {
+        "ontology_file": "/home/jovyan/LLMOnto/Benchmark/OntologyConceptMatching/MASEO_MCP/ollama/odrl/odrl_ontology.owl"
+      },
+      "output": {
+        "passed": true,
+        "major_count": 0,
+        "pitfalls": []
+      },
+      "next_action": "pass",
+      "seconds": 0.13
+    },
+    {
+      "round": 2,
+      "index": 25,
+      "phase": "hermit",
+      "attempt": 1,
+      "tool_calling": "hermit_consistency",
+      "input_information": {
+        "ontology_file": "/home/jovyan/LLMOnto/Benchmark/OntologyConceptMatching/MASEO_MCP/ollama/odrl/odrl_ontology.owl"
+      },
+      "output": {
+        "passed": true,
+        "consistent": true,
+        "unsatisfiable_classes": []
+      },
+      "next_action": "pass",
+      "seconds": 0.46
+    },
+    {
+      "round": 2,
+      "index": 26,
+      "phase": "themis",
+      "attempt": 1,
+      "tool_calling": "themis_test",
+      "input_information": {
+        "ontology_file": "/home/jovyan/LLMOnto/Benchmark/OntologyConceptMatching/MASEO_MCP/ollama/odrl/odrl_ontology.owl",
+        "cqs": [
+          "CQ03",
+          "CQ06",
+          "CQ08",
+          "CQ10",
+          "CQ13",
+          "CQ14",
+          "CQ21",
+          "CQ24",
+          "CQ26",
+          "CQ30",
+          "CQ31",
+          "CQ33",
+          "New CQ1",
+          "New CQ2",
+          "New CQ3",
+          "New CQ4",
+          "New CQ5",
+          "New CQ6"
+        ]
+      },
+      "output": {
+        "passed": false,
+        "covered": [
+          "CQ03",
+          "CQ06",
+          "CQ10",
+          "CQ13",
+          "CQ24",
+          "CQ26",
+          "CQ30",
+          "CQ31",
+          "CQ33",
+          "New CQ1",
+          "New CQ2",
+          "New CQ3",
+          "New CQ4",
+          "New CQ5",
+          "New CQ6"
+        ],
+        "uncovered": [
+          "CQ08",
+          "CQ14",
+          "CQ21"
+        ],
+        "missing": {
+          "CQ08": [
+            "NOT type Expression -> Absent",
+            "Expression hasOperator NOT -> Incorrect (undefined/wrong terms: ['NOT'])"
+          ],
+          "CQ14": [
+            "Constraint hasOperator AND -> Incorrect (undefined/wrong terms: ['AND'])",
+            "Constraint hasOperator OR -> Incorrect (undefined/wrong terms: ['OR'])"
+          ],
+          "CQ21": [
+            "Requirement type Class -> Incorrect (undefined/wrong terms: ['Requirement'])"
+          ]
+        }
+      },
+      "next_action": "correct",
+      "seconds": 0.89
+    },
+    {
+      "round": 2,
+      "index": 27,
+      "phase": "themis",
+      "attempt": 1,
+      "tool_calling": "correction_agent",
+      "input_information": {
+        "kind": "failing Themis competency-question tests",
+        "report": "Themis tests: 15/18 CQs pass all their tests. FAILING TESTS:\nCQ08:\n  NOT type Expression -> Absent\n  Expression hasOperator NOT -> Incorrect (undefined/wrong terms: ['NOT'])\nCQ14:\n  Constraint hasOperator AND -> Incorrect (undefined/wrong terms: ['AND'])\n  Constraint hasOperator OR -> Incorrect (undefined/wrong terms: ['OR'])\nCQ21:\n  Requirement type Class -> Incorrect (undefined/wrong terms: ['Requirement'])\nFix each failing test in the ontology: Undefined = add the term under exactly that name; Incorrect = declare it with the right type (class/property/individual); Absent = add the tested axiom (subclass, domain/range, restriction) so the knowledge is modelled; Conflict = the ontology contradicts the test, correct the axioms. Record each CQ id in dc:source as '(competency_question) <id>'.",
+        "uncovered_cqs": [
+          {
+            "id": "CQ08",
+            "missing": [
+              "NOT type Expression -> Absent",
+              "Expression hasOperator NOT -> Incorrect (undefined/wrong terms: ['NOT'])"
+            ]
+          },
+          {
+            "id": "CQ14",
+            "missing": [
+              "Constraint hasOperator AND -> Incorrect (undefined/wrong terms: ['AND'])",
+              "Constraint hasOperator OR -> Incorrect (undefined/wrong terms: ['OR'])"
+            ]
+          },
+          {
+            "id": "CQ21",
+            "missing": [
+              "Requirement type Class -> Incorrect (undefined/wrong terms: ['Requirement'])"
+            ]
+          }
+        ]
+      },
+      "output": {
+        "ontology_file": "/home/jovyan/LLMOnto/Benchmark/OntologyConceptMatching/MASEO_MCP/ollama/odrl/odrl_ontology.owl",
+        "ontology_chars": 21325
+      },
+      "seconds": 109.45,
+      "effect": {
+        "covered_before": [
+          "CQ03",
+          "CQ06",
+          "CQ10",
+          "CQ13",
+          "CQ24",
+          "CQ26",
+          "CQ30",
+          "CQ31",
+          "CQ33",
+          "New CQ1",
+          "New CQ2",
+          "New CQ3",
+          "New CQ4",
+          "New CQ5",
+          "New CQ6"
+        ],
+        "covered_after": [
+          "CQ03",
+          "CQ06",
+          "CQ10",
+          "CQ13",
+          "CQ24",
+          "CQ26",
+          "CQ30",
+          "CQ31",
+          "CQ33",
+          "New CQ1",
+          "New CQ2",
+          "New CQ3",
+          "New CQ4",
+          "New CQ5",
+          "New CQ6"
+        ],
+        "added_cqs": [],
+        "removed_cqs": []
+      }
+    },
+    {
+      "round": 2,
+      "index": 28,
+      "phase": "themis",
+      "attempt": 2,
+      "tool_calling": "themis_test",
+      "input_information": {
+        "ontology_file": "/home/jovyan/LLMOnto/Benchmark/OntologyConceptMatching/MASEO_MCP/ollama/odrl/odrl_ontology.owl",
+        "cqs": [
+          "CQ03",
+          "CQ06",
+          "CQ08",
+          "CQ10",
+          "CQ13",
+          "CQ14",
+          "CQ21",
+          "CQ24",
+          "CQ26",
+          "CQ30",
+          "CQ31",
+          "CQ33",
+          "New CQ1",
+          "New CQ2",
+          "New CQ3",
+          "New CQ4",
+          "New CQ5",
+          "New CQ6"
+        ]
+      },
+      "output": {
+        "passed": false,
+        "covered": [
+          "CQ03",
+          "CQ06",
+          "CQ10",
+          "CQ13",
+          "CQ24",
+          "CQ26",
+          "CQ30",
+          "CQ31",
+          "CQ33",
+          "New CQ1",
+          "New CQ2",
+          "New CQ3",
+          "New CQ4",
+          "New CQ5",
+          "New CQ6"
+        ],
+        "uncovered": [
+          "CQ08",
+          "CQ14",
+          "CQ21"
+        ],
+        "missing": {
+          "CQ08": [
+            "Expression hasOperator NOT -> Incorrect (undefined/wrong terms: ['NOT'])"
+          ],
+          "CQ14": [
+            "Constraint hasOperator AND -> Incorrect (undefined/wrong terms: ['AND'])",
+            "Constraint hasOperator OR -> Incorrect (undefined/wrong terms: ['OR'])"
+          ],
+          "CQ21": [
+            "Requirement type Class -> Incorrect (undefined/wrong terms: ['Requirement'])"
+          ]
+        }
+      },
+      "next_action": "correct",
+      "seconds": 0.82
+    },
+    {
+      "round": 2,
+      "index": 29,
+      "phase": "themis",
+      "attempt": 2,
+      "tool_calling": "correction_agent",
+      "input_information": {
+        "kind": "failing Themis competency-question tests",
+        "report": "Themis tests: 15/18 CQs pass all their tests. FAILING TESTS:\nCQ08:\n  Expression hasOperator NOT -> Incorrect (undefined/wrong terms: ['NOT'])\nCQ14:\n  Constraint hasOperator AND -> Incorrect (undefined/wrong terms: ['AND'])\n  Constraint hasOperator OR -> Incorrect (undefined/wrong terms: ['OR'])\nCQ21:\n  Requirement type Class -> Incorrect (undefined/wrong terms: ['Requirement'])\nFix each failing test in the ontology: Undefined = add the term under exactly that name; Incorrect = declare it with the right type (class/property/individual); Absent = add the tested axiom (subclass, domain/range, restriction) so the knowledge is modelled; Conflict = the ontology contradicts the test, correct the axioms. Record each CQ id in dc:source as '(competency_question) <id>'.",
+        "uncovered_cqs": [
+          {
+            "id": "CQ08",
+            "missing": [
+              "Expression hasOperator NOT -> Incorrect (undefined/wrong terms: ['NOT'])"
+            ]
+          },
+          {
+            "id": "CQ14",
+            "missing": [
+              "Constraint hasOperator AND -> Incorrect (undefined/wrong terms: ['AND'])",
+              "Constraint hasOperator OR -> Incorrect (undefined/wrong terms: ['OR'])"
+            ]
+          },
+          {
+            "id": "CQ21",
+            "missing": [
+              "Requirement type Class -> Incorrect (undefined/wrong terms: ['Requirement'])"
+            ]
+          }
+        ]
+      },
+      "output": {
+        "ontology_file": "/home/jovyan/LLMOnto/Benchmark/OntologyConceptMatching/MASEO_MCP/ollama/odrl/odrl_ontology.owl",
+        "ontology_chars": 21681
+      },
+      "seconds": 109.2,
+      "effect": {
+        "covered_before": [
+          "CQ03",
+          "CQ06",
+          "CQ10",
+          "CQ13",
+          "CQ24",
+          "CQ26",
+          "CQ30",
+          "CQ31",
+          "CQ33",
+          "New CQ1",
+          "New CQ2",
+          "New CQ3",
+          "New CQ4",
+          "New CQ5",
+          "New CQ6"
+        ],
+        "covered_after": [
+          "CQ03",
+          "CQ06",
+          "CQ10",
+          "CQ13",
+          "CQ24",
+          "CQ26",
+          "CQ30",
+          "CQ31",
+          "CQ33",
+          "New CQ1",
+          "New CQ2",
+          "New CQ3",
+          "New CQ4",
+          "New CQ5",
+          "New CQ6"
+        ],
+        "added_cqs": [],
+        "removed_cqs": []
+      }
+    },
+    {
+      "round": 2,
+      "index": 30,
+      "phase": "themis",
+      "attempt": 3,
+      "tool_calling": "themis_test",
+      "input_information": {
+        "ontology_file": "/home/jovyan/LLMOnto/Benchmark/OntologyConceptMatching/MASEO_MCP/ollama/odrl/odrl_ontology.owl",
+        "cqs": [
+          "CQ03",
+          "CQ06",
+          "CQ08",
+          "CQ10",
+          "CQ13",
+          "CQ14",
+          "CQ21",
+          "CQ24",
+          "CQ26",
+          "CQ30",
+          "CQ31",
+          "CQ33",
+          "New CQ1",
+          "New CQ2",
+          "New CQ3",
+          "New CQ4",
+          "New CQ5",
+          "New CQ6"
+        ]
+      },
+      "output": {
+        "passed": false,
+        "covered": [
+          "CQ03",
+          "CQ06",
+          "CQ10",
+          "CQ13",
+          "CQ24",
+          "CQ26",
+          "CQ30",
+          "CQ31",
+          "CQ33",
+          "New CQ1",
+          "New CQ2",
+          "New CQ3",
+          "New CQ4",
+          "New CQ5",
+          "New CQ6"
+        ],
+        "uncovered": [
+          "CQ08",
+          "CQ14",
+          "CQ21"
+        ],
+        "missing": {
+          "CQ08": [
+            "Expression hasOperator NOT -> Incorrect (undefined/wrong terms: ['NOT'])"
+          ],
+          "CQ14": [
+            "Constraint hasOperator AND -> Incorrect (undefined/wrong terms: ['AND'])",
+            "Constraint hasOperator OR -> Incorrect (undefined/wrong terms: ['OR'])"
+          ],
+          "CQ21": [
+            "Requirement type Class -> Incorrect (undefined/wrong terms: ['Requirement'])"
+          ]
+        }
+      },
+      "next_action": "correct",
+      "seconds": 0.81
+    },
+    {
+      "round": 2,
+      "index": 31,
+      "phase": "themis",
+      "attempt": 3,
+      "tool_calling": "correction_agent",
+      "input_information": {
+        "kind": "failing Themis competency-question tests",
+        "report": "Themis tests: 15/18 CQs pass all their tests. FAILING TESTS:\nCQ08:\n  Expression hasOperator NOT -> Incorrect (undefined/wrong terms: ['NOT'])\nCQ14:\n  Constraint hasOperator AND -> Incorrect (undefined/wrong terms: ['AND'])\n  Constraint hasOperator OR -> Incorrect (undefined/wrong terms: ['OR'])\nCQ21:\n  Requirement type Class -> Incorrect (undefined/wrong terms: ['Requirement'])\nFix each failing test in the ontology: Undefined = add the term under exactly that name; Incorrect = declare it with the right type (class/property/individual); Absent = add the tested axiom (subclass, domain/range, restriction) so the knowledge is modelled; Conflict = the ontology contradicts the test, correct the axioms. Record each CQ id in dc:source as '(competency_question) <id>'.",
+        "uncovered_cqs": [
+          {
+            "id": "CQ08",
+            "missing": [
+              "Expression hasOperator NOT -> Incorrect (undefined/wrong terms: ['NOT'])"
+            ]
+          },
+          {
+            "id": "CQ14",
+            "missing": [
+              "Constraint hasOperator AND -> Incorrect (undefined/wrong terms: ['AND'])",
+              "Constraint hasOperator OR -> Incorrect (undefined/wrong terms: ['OR'])"
+            ]
+          },
+          {
+            "id": "CQ21",
+            "missing": [
+              "Requirement type Class -> Incorrect (undefined/wrong terms: ['Requirement'])"
+            ]
+          }
+        ]
+      },
+      "output": {
+        "ontology_file": "/home/jovyan/LLMOnto/Benchmark/OntologyConceptMatching/MASEO_MCP/ollama/odrl/odrl_ontology.owl",
+        "ontology_chars": 21681
+      },
+      "seconds": 109.36,
+      "effect": {
+        "covered_before": [
+          "CQ03",
+          "CQ06",
+          "CQ10",
+          "CQ13",
+          "CQ24",
+          "CQ26",
+          "CQ30",
+          "CQ31",
+          "CQ33",
+          "New CQ1",
+          "New CQ2",
+          "New CQ3",
+          "New CQ4",
+          "New CQ5",
+          "New CQ6"
+        ],
+        "covered_after": [
+          "CQ03",
+          "CQ06",
+          "CQ10",
+          "CQ13",
+          "CQ24",
+          "CQ26",
+          "CQ30",
+          "CQ31",
+          "CQ33",
+          "New CQ1",
+          "New CQ2",
+          "New CQ3",
+          "New CQ4",
+          "New CQ5",
+          "New CQ6"
+        ],
+        "added_cqs": [],
+        "removed_cqs": []
+      }
+    },
+    {
+      "round": 2,
+      "index": 32,
+      "phase": "themis",
+      "attempt": 4,
+      "tool_calling": "themis_test",
+      "input_information": {
+        "ontology_file": "/home/jovyan/LLMOnto/Benchmark/OntologyConceptMatching/MASEO_MCP/ollama/odrl/odrl_ontology.owl",
+        "cqs": [
+          "CQ03",
+          "CQ06",
+          "CQ08",
+          "CQ10",
+          "CQ13",
+          "CQ14",
+          "CQ21",
+          "CQ24",
+          "CQ26",
+          "CQ30",
+          "CQ31",
+          "CQ33",
+          "New CQ1",
+          "New CQ2",
+          "New CQ3",
+          "New CQ4",
+          "New CQ5",
+          "New CQ6"
+        ]
+      },
+      "output": {
+        "passed": false,
+        "covered": [
+          "CQ03",
+          "CQ06",
+          "CQ10",
+          "CQ13",
+          "CQ24",
+          "CQ26",
+          "CQ30",
+          "CQ31",
+          "CQ33",
+          "New CQ1",
+          "New CQ2",
+          "New CQ3",
+          "New CQ4",
+          "New CQ5",
+          "New CQ6"
+        ],
+        "uncovered": [
+          "CQ08",
+          "CQ14",
+          "CQ21"
+        ],
+        "missing": {
+          "CQ08": [
+            "Expression hasOperator NOT -> Incorrect (undefined/wrong terms: ['NOT'])"
+          ],
+          "CQ14": [
+            "Constraint hasOperator AND -> Incorrect (undefined/wrong terms: ['AND'])",
+            "Constraint hasOperator OR -> Incorrect (undefined/wrong terms: ['OR'])"
+          ],
+          "CQ21": [
+            "Requirement type Class -> Incorrect (undefined/wrong terms: ['Requirement'])"
+          ]
+        }
+      },
+      "next_action": "give_up",
+      "seconds": 0.75
+    },
+    {
+      "round": 2,
+      "index": 33,
+      "phase": "verify",
+      "tool_calling": "syntax_check",
+      "input_information": {
+        "ontology_file": "/home/jovyan/LLMOnto/Benchmark/OntologyConceptMatching/MASEO_MCP/ollama/odrl/odrl_ontology.owl"
+      },
+      "output": {
+        "passed": true,
+        "errors": []
+      },
+      "seconds": 0.03
+    },
+    {
+      "round": 2,
+      "index": 34,
+      "phase": "verify",
+      "tool_calling": "hermit_consistency",
+      "input_information": {
+        "ontology_file": "/home/jovyan/LLMOnto/Benchmark/OntologyConceptMatching/MASEO_MCP/ollama/odrl/odrl_ontology.owl"
+      },
+      "output": {
+        "passed": true,
+        "consistent": true,
+        "unsatisfiable_classes": []
+      },
+      "seconds": 0.45
+    },
+    {
+      "round": 2,
+      "index": 35,
+      "phase": "verify",
+      "tool_calling": "oops_scan",
+      "input_information": {
+        "ontology_file": "/home/jovyan/LLMOnto/Benchmark/OntologyConceptMatching/MASEO_MCP/ollama/odrl/odrl_ontology.owl"
+      },
+      "output": {
+        "passed": true,
+        "major_count": 0,
+        "pitfalls": []
+      },
+      "seconds": 0.16
+    },
+    {
+      "round": 2,
+      "index": 36,
+      "phase": "verify",
+      "tool_calling": "cq_coverage",
+      "input_information": {
+        "ontology_file": "/home/jovyan/LLMOnto/Benchmark/OntologyConceptMatching/MASEO_MCP/ollama/odrl/odrl_ontology.owl",
+        "cqs": [
+          "CQ03",
+          "CQ06",
+          "CQ08",
+          "CQ10",
+          "CQ13",
+          "CQ14",
+          "CQ21",
+          "CQ24",
+          "CQ26",
+          "CQ30",
+          "CQ31",
+          "CQ33",
+          "New CQ1",
+          "New CQ2",
+          "New CQ3",
+          "New CQ4",
+          "New CQ5",
+          "New CQ6"
+        ]
+      },
+      "output": {
+        "passed": true,
+        "covered": [
+          "CQ03",
+          "CQ06",
+          "CQ08",
+          "CQ10",
+          "CQ13",
+          "CQ14",
+          "CQ21",
+          "CQ24",
+          "CQ26",
+          "CQ30",
+          "CQ31",
+          "CQ33",
+          "New CQ1",
+          "New CQ2",
+          "New CQ3",
+          "New CQ4",
+          "New CQ5",
+          "New CQ6"
+        ],
+        "uncovered": [],
+        "missing": {}
+      },
+      "seconds": 0.01
+    },
+    {
+      "round": 2,
+      "index": 37,
+      "phase": "verify",
+      "tool_calling": "themis_test",
+      "input_information": {
+        "ontology_file": "/home/jovyan/LLMOnto/Benchmark/OntologyConceptMatching/MASEO_MCP/ollama/odrl/odrl_ontology.owl",
+        "cqs": [
+          "CQ03",
+          "CQ06",
+          "CQ08",
+          "CQ10",
+          "CQ13",
+          "CQ14",
+          "CQ21",
+          "CQ24",
+          "CQ26",
+          "CQ30",
+          "CQ31",
+          "CQ33",
+          "New CQ1",
+          "New CQ2",
+          "New CQ3",
+          "New CQ4",
+          "New CQ5",
+          "New CQ6"
+        ]
+      },
+      "output": {
+        "passed": false,
+        "covered": [
+          "CQ03",
+          "CQ06",
+          "CQ10",
+          "CQ13",
+          "CQ24",
+          "CQ26",
+          "CQ30",
+          "CQ31",
+          "CQ33",
+          "New CQ1",
+          "New CQ2",
+          "New CQ3",
+          "New CQ4",
+          "New CQ5",
+          "New CQ6"
+        ],
+        "uncovered": [
+          "CQ08",
+          "CQ14",
+          "CQ21"
+        ],
+        "missing": {
+          "CQ08": [
+            "Expression hasOperator NOT -> Incorrect (undefined/wrong terms: ['NOT'])"
+          ],
+          "CQ14": [
+            "Constraint hasOperator AND -> Incorrect (undefined/wrong terms: ['AND'])",
+            "Constraint hasOperator OR -> Incorrect (undefined/wrong terms: ['OR'])"
+          ],
+          "CQ21": [
+            "Requirement type Class -> Incorrect (undefined/wrong terms: ['Requirement'])"
+          ]
+        }
+      },
+      "seconds": 0.79
+    },
+    {
+      "round": 2,
+      "index": 38,
+      "phase": "verify",
+      "tool_calling": "round_summary",
+      "input_information": {
+        "checks": [
+          "syntax_check",
+          "hermit_consistency",
+          "oops_scan",
+          "cq_coverage",
+          "themis_test"
+        ]
+      },
+      "output": {
+        "all_passed": false,
+        "syntax_check": {
+          "passed": true,
+          "errors": []
+        },
+        "cq_coverage": {
+          "passed": true,
+          "covered": [
+            "CQ03",
+            "CQ06",
+            "CQ08",
+            "CQ10",
+            "CQ13",
+            "CQ14",
+            "CQ21",
+            "CQ24",
+            "CQ26",
+            "CQ30",
+            "CQ31",
+            "CQ33",
+            "New CQ1",
+            "New CQ2",
+            "New CQ3",
+            "New CQ4",
+            "New CQ5",
+            "New CQ6"
+          ],
+          "uncovered": [],
+          "missing": {}
+        },
+        "themis_test": {
+          "passed": false,
+          "covered": [
+            "CQ03",
+            "CQ06",
+            "CQ10",
+            "CQ13",
+            "CQ24",
+            "CQ26",
+            "CQ30",
+            "CQ31",
+            "CQ33",
+            "New CQ1",
+            "New CQ2",
+            "New CQ3",
+            "New CQ4",
+            "New CQ5",
+            "New CQ6"
+          ],
+          "uncovered": [
+            "CQ08",
+            "CQ14",
+            "CQ21"
+          ],
+          "missing": {
+            "CQ08": [
+              "Expression hasOperator NOT -> Incorrect (undefined/wrong terms: ['NOT'])"
+            ],
+            "CQ14": [
+              "Constraint hasOperator AND -> Incorrect (undefined/wrong terms: ['AND'])",
+              "Constraint hasOperator OR -> Incorrect (undefined/wrong terms: ['OR'])"
+            ],
+            "CQ21": [
+              "Requirement type Class -> Incorrect (undefined/wrong terms: ['Requirement'])"
+            ]
+          }
+        },
+        "oops": {
+          "passed": true,
+          "major_count": 0,
+          "pitfalls": []
+        },
+        "hermit": {
+          "passed": true,
+          "consistent": true,
+          "unsatisfiable_classes": []
+        },
+        "change_from_previous_round": {
+          "syntax_check": {
+            "errors_before": [
+              "XML is not well-formed: unbound prefix: line 298, column 8"
+            ],
+            "errors_after": [],
+            "fixed_errors": [
+              "XML is not well-formed: unbound prefix: line 298, column 8"
+            ],
+            "introduced_errors": []
+          },
+          "cq_coverage": {
+            "covered_before": [
+              "CQ03",
+              "CQ06",
+              "CQ08",
+              "CQ10",
+              "CQ13",
+              "CQ14",
+              "CQ21",
+              "CQ24",
+              "CQ26",
+              "CQ30",
+              "CQ31",
+              "CQ33",
+              "New CQ1",
+              "New CQ2",
+              "New CQ3",
+              "New CQ4",
+              "New CQ5",
+              "New CQ6"
+            ],
+            "covered_after": [
+              "CQ03",
+              "CQ06",
+              "CQ08",
+              "CQ10",
+              "CQ13",
+              "CQ14",
+              "CQ21",
+              "CQ24",
+              "CQ26",
+              "CQ30",
+              "CQ31",
+              "CQ33",
+              "New CQ1",
+              "New CQ2",
+              "New CQ3",
+              "New CQ4",
+              "New CQ5",
+              "New CQ6"
+            ],
+            "added_cqs": [],
+            "removed_cqs": []
+          },
+          "themis_test": {
+            "covered_before": [],
+            "covered_after": [
+              "CQ03",
+              "CQ06",
+              "CQ10",
+              "CQ13",
+              "CQ24",
+              "CQ26",
+              "CQ30",
+              "CQ31",
+              "CQ33",
+              "New CQ1",
+              "New CQ2",
+              "New CQ3",
+              "New CQ4",
+              "New CQ5",
+              "New CQ6"
+            ],
+            "added_cqs": [
+              "CQ03",
+              "CQ06",
+              "CQ10",
+              "CQ13",
+              "CQ24",
+              "CQ26",
+              "CQ30",
+              "CQ31",
+              "CQ33",
+              "New CQ1",
+              "New CQ2",
+              "New CQ3",
+              "New CQ4",
+              "New CQ5",
+              "New CQ6"
+            ],
+            "removed_cqs": []
+          },
+          "oops": {
+            "pitfalls_before": 0,
+            "pitfalls_after": 0,
+            "pitfall_codes_before": [],
+            "pitfall_codes_after": [],
+            "fixed_pitfalls": [],
+            "introduced_pitfalls": []
+          },
+          "hermit": {
+            "consistent_before": false,
+            "consistent_after": true,
+            "unsatisfiable_before": [
+              "ERROR",
+              " \"\" at line 1, column 1.\nWas expecting:\n    \"Ontology\" ...\n     (Line 0)\n\n--------------------------------------------------------------------------------\nParser: TurtleOntologyParser\nuk.ac.manchester.cs.owl.owlapi.turtle.parser.ParseException: Encountered \"\" at line 1, column 1.\nWas expecting one of:\n    \n\n--------------------------------------------------------------------------------\nParser: OWLOBOParser\norg.coode.owlapi.obo.parser.TokenMgrError: Lexical error at line 1, column 22.  Encountered: \"\\n\" (10), after : \"\"\n\n--------------------------------------------------------------------------------\nParser: KRSS2OWLParser\nde.uulm.ecs.ai.owlapi.krssparser.ParseException: Encountered \" \"",
+              "?xml version=\\\"1.0\\\"?",
+              "EOF",
+              "?xml version=\"1.0\"?"
+            ],
+            "unsatisfiable_after": [],
+            "fixed_classes": [
+              "ERROR",
+              " \"\" at line 1, column 1.\nWas expecting:\n    \"Ontology\" ...\n     (Line 0)\n\n--------------------------------------------------------------------------------\nParser: TurtleOntologyParser\nuk.ac.manchester.cs.owl.owlapi.turtle.parser.ParseException: Encountered \"\" at line 1, column 1.\nWas expecting one of:\n    \n\n--------------------------------------------------------------------------------\nParser: OWLOBOParser\norg.coode.owlapi.obo.parser.TokenMgrError: Lexical error at line 1, column 22.  Encountered: \"\\n\" (10), after : \"\"\n\n--------------------------------------------------------------------------------\nParser: KRSS2OWLParser\nde.uulm.ecs.ai.owlapi.krssparser.ParseException: Encountered \" \"",
+              "?xml version=\\\"1.0\\\"?",
+              "EOF",
+              "?xml version=\"1.0\"?"
+            ],
+            "introduced_classes": []
+          }
+        }
+      },
+      "next_action": "repeat"
+    },
+    {
+      "round": 3,
+      "index": 39,
+      "phase": "themis",
+      "attempt": 1,
+      "tool_calling": "themis_test",
+      "input_information": {
+        "ontology_file": "/home/jovyan/LLMOnto/Benchmark/OntologyConceptMatching/MASEO_MCP/ollama/odrl/odrl_ontology.owl",
+        "cqs": [
+          "CQ03",
+          "CQ06",
+          "CQ08",
+          "CQ10",
+          "CQ13",
+          "CQ14",
+          "CQ21",
+          "CQ24",
+          "CQ26",
+          "CQ30",
+          "CQ31",
+          "CQ33",
+          "New CQ1",
+          "New CQ2",
+          "New CQ3",
+          "New CQ4",
+          "New CQ5",
+          "New CQ6"
+        ]
+      },
+      "output": {
+        "passed": false,
+        "covered": [
+          "CQ03",
+          "CQ06",
+          "CQ10",
+          "CQ13",
+          "CQ24",
+          "CQ26",
+          "CQ30",
+          "CQ31",
+          "CQ33",
+          "New CQ1",
+          "New CQ2",
+          "New CQ3",
+          "New CQ4",
+          "New CQ5",
+          "New CQ6"
+        ],
+        "uncovered": [
+          "CQ08",
+          "CQ14",
+          "CQ21"
+        ],
+        "missing": {
+          "CQ08": [
+            "Expression hasOperator NOT -> Incorrect (undefined/wrong terms: ['NOT'])"
+          ],
+          "CQ14": [
+            "Constraint hasOperator AND -> Incorrect (undefined/wrong terms: ['AND'])",
+            "Constraint hasOperator OR -> Incorrect (undefined/wrong terms: ['OR'])"
+          ],
+          "CQ21": [
+            "Requirement type Class -> Incorrect (undefined/wrong terms: ['Requirement'])"
+          ]
+        }
+      },
+      "next_action": "correct",
+      "seconds": 0.71
+    },
+    {
+      "round": 3,
+      "index": 40,
+      "phase": "themis",
+      "attempt": 1,
+      "tool_calling": "correction_agent",
+      "input_information": {
+        "kind": "failing Themis competency-question tests",
+        "report": "Themis tests: 15/18 CQs pass all their tests. FAILING TESTS:\nCQ08:\n  Expression hasOperator NOT -> Incorrect (undefined/wrong terms: ['NOT'])\nCQ14:\n  Constraint hasOperator AND -> Incorrect (undefined/wrong terms: ['AND'])\n  Constraint hasOperator OR -> Incorrect (undefined/wrong terms: ['OR'])\nCQ21:\n  Requirement type Class -> Incorrect (undefined/wrong terms: ['Requirement'])\nFix each failing test in the ontology: Undefined = add the term under exactly that name; Incorrect = declare it with the right type (class/property/individual); Absent = add the tested axiom (subclass, domain/range, restriction) so the knowledge is modelled; Conflict = the ontology contradicts the test, correct the axioms. Record each CQ id in dc:source as '(competency_question) <id>'.",
+        "uncovered_cqs": [
+          {
+            "id": "CQ08",
+            "missing": [
+              "Expression hasOperator NOT -> Incorrect (undefined/wrong terms: ['NOT'])"
+            ]
+          },
+          {
+            "id": "CQ14",
+            "missing": [
+              "Constraint hasOperator AND -> Incorrect (undefined/wrong terms: ['AND'])",
+              "Constraint hasOperator OR -> Incorrect (undefined/wrong terms: ['OR'])"
+            ]
+          },
+          {
+            "id": "CQ21",
+            "missing": [
+              "Requirement type Class -> Incorrect (undefined/wrong terms: ['Requirement'])"
+            ]
+          }
+        ]
+      },
+      "output": {
+        "ontology_file": "/home/jovyan/LLMOnto/Benchmark/OntologyConceptMatching/MASEO_MCP/ollama/odrl/odrl_ontology.owl",
+        "ontology_chars": 21681
+      },
+      "seconds": 111.52,
+      "effect": {
+        "covered_before": [
+          "CQ03",
+          "CQ06",
+          "CQ10",
+          "CQ13",
+          "CQ24",
+          "CQ26",
+          "CQ30",
+          "CQ31",
+          "CQ33",
+          "New CQ1",
+          "New CQ2",
+          "New CQ3",
+          "New CQ4",
+          "New CQ5",
+          "New CQ6"
+        ],
+        "covered_after": [
+          "CQ03",
+          "CQ06",
+          "CQ10",
+          "CQ13",
+          "CQ24",
+          "CQ26",
+          "CQ30",
+          "CQ31",
+          "CQ33",
+          "New CQ1",
+          "New CQ2",
+          "New CQ3",
+          "New CQ4",
+          "New CQ5",
+          "New CQ6"
+        ],
+        "added_cqs": [],
+        "removed_cqs": []
+      }
+    },
+    {
+      "round": 3,
+      "index": 41,
+      "phase": "themis",
+      "attempt": 2,
+      "tool_calling": "themis_test",
+      "input_information": {
+        "ontology_file": "/home/jovyan/LLMOnto/Benchmark/OntologyConceptMatching/MASEO_MCP/ollama/odrl/odrl_ontology.owl",
+        "cqs": [
+          "CQ03",
+          "CQ06",
+          "CQ08",
+          "CQ10",
+          "CQ13",
+          "CQ14",
+          "CQ21",
+          "CQ24",
+          "CQ26",
+          "CQ30",
+          "CQ31",
+          "CQ33",
+          "New CQ1",
+          "New CQ2",
+          "New CQ3",
+          "New CQ4",
+          "New CQ5",
+          "New CQ6"
+        ]
+      },
+      "output": {
+        "passed": false,
+        "covered": [
+          "CQ03",
+          "CQ06",
+          "CQ10",
+          "CQ13",
+          "CQ24",
+          "CQ26",
+          "CQ30",
+          "CQ31",
+          "CQ33",
+          "New CQ1",
+          "New CQ2",
+          "New CQ3",
+          "New CQ4",
+          "New CQ5",
+          "New CQ6"
+        ],
+        "uncovered": [
+          "CQ08",
+          "CQ14",
+          "CQ21"
+        ],
+        "missing": {
+          "CQ08": [
+            "Expression hasOperator NOT -> Incorrect (undefined/wrong terms: ['NOT'])"
+          ],
+          "CQ14": [
+            "Constraint hasOperator AND -> Incorrect (undefined/wrong terms: ['AND'])",
+            "Constraint hasOperator OR -> Incorrect (undefined/wrong terms: ['OR'])"
+          ],
+          "CQ21": [
+            "Requirement type Class -> Incorrect (undefined/wrong terms: ['Requirement'])"
+          ]
+        }
+      },
+      "next_action": "correct",
+      "seconds": 0.73
+    },
+    {
+      "round": 3,
+      "index": 42,
+      "phase": "themis",
+      "attempt": 2,
+      "tool_calling": "correction_agent",
+      "input_information": {
+        "kind": "failing Themis competency-question tests",
+        "report": "Themis tests: 15/18 CQs pass all their tests. FAILING TESTS:\nCQ08:\n  Expression hasOperator NOT -> Incorrect (undefined/wrong terms: ['NOT'])\nCQ14:\n  Constraint hasOperator AND -> Incorrect (undefined/wrong terms: ['AND'])\n  Constraint hasOperator OR -> Incorrect (undefined/wrong terms: ['OR'])\nCQ21:\n  Requirement type Class -> Incorrect (undefined/wrong terms: ['Requirement'])\nFix each failing test in the ontology: Undefined = add the term under exactly that name; Incorrect = declare it with the right type (class/property/individual); Absent = add the tested axiom (subclass, domain/range, restriction) so the knowledge is modelled; Conflict = the ontology contradicts the test, correct the axioms. Record each CQ id in dc:source as '(competency_question) <id>'.",
+        "uncovered_cqs": [
+          {
+            "id": "CQ08",
+            "missing": [
+              "Expression hasOperator NOT -> Incorrect (undefined/wrong terms: ['NOT'])"
+            ]
+          },
+          {
+            "id": "CQ14",
+            "missing": [
+              "Constraint hasOperator AND -> Incorrect (undefined/wrong terms: ['AND'])",
+              "Constraint hasOperator OR -> Incorrect (undefined/wrong terms: ['OR'])"
+            ]
+          },
+          {
+            "id": "CQ21",
+            "missing": [
+              "Requirement type Class -> Incorrect (undefined/wrong terms: ['Requirement'])"
+            ]
+          }
+        ]
+      },
+      "output": {
+        "ontology_file": "/home/jovyan/LLMOnto/Benchmark/OntologyConceptMatching/MASEO_MCP/ollama/odrl/odrl_ontology.owl",
+        "ontology_chars": 21334
+      },
+      "seconds": 109.72,
+      "effect": {
+        "covered_before": [
+          "CQ03",
+          "CQ06",
+          "CQ10",
+          "CQ13",
+          "CQ24",
+          "CQ26",
+          "CQ30",
+          "CQ31",
+          "CQ33",
+          "New CQ1",
+          "New CQ2",
+          "New CQ3",
+          "New CQ4",
+          "New CQ5",
+          "New CQ6"
+        ],
+        "covered_after": [
+          "CQ03",
+          "CQ06",
+          "CQ10",
+          "CQ13",
+          "CQ24",
+          "CQ26",
+          "CQ30",
+          "CQ31",
+          "CQ33",
+          "New CQ1",
+          "New CQ2",
+          "New CQ3",
+          "New CQ4",
+          "New CQ5",
+          "New CQ6"
+        ],
+        "added_cqs": [],
+        "removed_cqs": []
+      }
+    },
+    {
+      "round": 3,
+      "index": 43,
+      "phase": "themis",
+      "attempt": 3,
+      "tool_calling": "themis_test",
+      "input_information": {
+        "ontology_file": "/home/jovyan/LLMOnto/Benchmark/OntologyConceptMatching/MASEO_MCP/ollama/odrl/odrl_ontology.owl",
+        "cqs": [
+          "CQ03",
+          "CQ06",
+          "CQ08",
+          "CQ10",
+          "CQ13",
+          "CQ14",
+          "CQ21",
+          "CQ24",
+          "CQ26",
+          "CQ30",
+          "CQ31",
+          "CQ33",
+          "New CQ1",
+          "New CQ2",
+          "New CQ3",
+          "New CQ4",
+          "New CQ5",
+          "New CQ6"
+        ]
+      },
+      "output": {
+        "passed": false,
+        "covered": [
+          "CQ03",
+          "CQ06",
+          "CQ10",
+          "CQ13",
+          "CQ24",
+          "CQ26",
+          "CQ30",
+          "CQ31",
+          "CQ33",
+          "New CQ1",
+          "New CQ2",
+          "New CQ3",
+          "New CQ4",
+          "New CQ5",
+          "New CQ6"
+        ],
+        "uncovered": [
+          "CQ08",
+          "CQ14",
+          "CQ21"
+        ],
+        "missing": {
+          "CQ08": [
+            "NOT type Expression -> Absent",
+            "Expression hasOperator NOT -> Incorrect (undefined/wrong terms: ['NOT'])"
+          ],
+          "CQ14": [
+            "Constraint hasOperator AND -> Incorrect (undefined/wrong terms: ['AND'])",
+            "Constraint hasOperator OR -> Incorrect (undefined/wrong terms: ['OR'])"
+          ],
+          "CQ21": [
+            "Requirement type Class -> Incorrect (undefined/wrong terms: ['Requirement'])"
+          ]
+        }
+      },
+      "next_action": "correct",
+      "seconds": 0.82
+    },
+    {
+      "round": 3,
+      "index": 44,
+      "phase": "themis",
+      "attempt": 3,
+      "tool_calling": "correction_agent",
+      "input_information": {
+        "kind": "failing Themis competency-question tests",
+        "report": "Themis tests: 15/18 CQs pass all their tests. FAILING TESTS:\nCQ08:\n  NOT type Expression -> Absent\n  Expression hasOperator NOT -> Incorrect (undefined/wrong terms: ['NOT'])\nCQ14:\n  Constraint hasOperator AND -> Incorrect (undefined/wrong terms: ['AND'])\n  Constraint hasOperator OR -> Incorrect (undefined/wrong terms: ['OR'])\nCQ21:\n  Requirement type Class -> Incorrect (undefined/wrong terms: ['Requirement'])\nFix each failing test in the ontology: Undefined = add the term under exactly that name; Incorrect = declare it with the right type (class/property/individual); Absent = add the tested axiom (subclass, domain/range, restriction) so the knowledge is modelled; Conflict = the ontology contradicts the test, correct the axioms. Record each CQ id in dc:source as '(competency_question) <id>'.",
+        "uncovered_cqs": [
+          {
+            "id": "CQ08",
+            "missing": [
+              "NOT type Expression -> Absent",
+              "Expression hasOperator NOT -> Incorrect (undefined/wrong terms: ['NOT'])"
+            ]
+          },
+          {
+            "id": "CQ14",
+            "missing": [
+              "Constraint hasOperator AND -> Incorrect (undefined/wrong terms: ['AND'])",
+              "Constraint hasOperator OR -> Incorrect (undefined/wrong terms: ['OR'])"
+            ]
+          },
+          {
+            "id": "CQ21",
+            "missing": [
+              "Requirement type Class -> Incorrect (undefined/wrong terms: ['Requirement'])"
+            ]
+          }
+        ]
+      },
+      "output": {
+        "ontology_file": "/home/jovyan/LLMOnto/Benchmark/OntologyConceptMatching/MASEO_MCP/ollama/odrl/odrl_ontology.owl",
+        "ontology_chars": 21412
+      },
+      "seconds": 107.81,
+      "effect": {
+        "covered_before": [
+          "CQ03",
+          "CQ06",
+          "CQ10",
+          "CQ13",
+          "CQ24",
+          "CQ26",
+          "CQ30",
+          "CQ31",
+          "CQ33",
+          "New CQ1",
+          "New CQ2",
+          "New CQ3",
+          "New CQ4",
+          "New CQ5",
+          "New CQ6"
+        ],
+        "covered_after": [
+          "CQ03",
+          "CQ06",
+          "CQ10",
+          "CQ13",
+          "CQ24",
+          "CQ26",
+          "CQ30",
+          "CQ31",
+          "CQ33",
+          "New CQ1",
+          "New CQ2",
+          "New CQ3",
+          "New CQ4",
+          "New CQ5",
+          "New CQ6"
+        ],
+        "added_cqs": [],
+        "removed_cqs": []
+      }
+    },
+    {
+      "round": 3,
+      "index": 45,
+      "phase": "themis",
+      "attempt": 4,
+      "tool_calling": "themis_test",
+      "input_information": {
+        "ontology_file": "/home/jovyan/LLMOnto/Benchmark/OntologyConceptMatching/MASEO_MCP/ollama/odrl/odrl_ontology.owl",
+        "cqs": [
+          "CQ03",
+          "CQ06",
+          "CQ08",
+          "CQ10",
+          "CQ13",
+          "CQ14",
+          "CQ21",
+          "CQ24",
+          "CQ26",
+          "CQ30",
+          "CQ31",
+          "CQ33",
+          "New CQ1",
+          "New CQ2",
+          "New CQ3",
+          "New CQ4",
+          "New CQ5",
+          "New CQ6"
+        ]
+      },
+      "output": {
+        "passed": false,
+        "covered": [
+          "CQ03",
+          "CQ06",
+          "CQ10",
+          "CQ13",
+          "CQ24",
+          "CQ26",
+          "CQ30",
+          "CQ31",
+          "CQ33",
+          "New CQ1",
+          "New CQ2",
+          "New CQ3",
+          "New CQ4",
+          "New CQ5",
+          "New CQ6"
+        ],
+        "uncovered": [
+          "CQ08",
+          "CQ14",
+          "CQ21"
+        ],
+        "missing": {
+          "CQ08": [
+            "Expression hasOperator NOT -> Incorrect (undefined/wrong terms: ['NOT'])"
+          ],
+          "CQ14": [
+            "Constraint hasOperator AND -> Incorrect (undefined/wrong terms: ['AND'])",
+            "Constraint hasOperator OR -> Incorrect (undefined/wrong terms: ['OR'])"
+          ],
+          "CQ21": [
+            "Requirement type Class -> Incorrect (undefined/wrong terms: ['Requirement'])"
+          ]
+        }
+      },
+      "next_action": "give_up",
+      "seconds": 0.78
+    },
+    {
+      "round": 3,
+      "index": 46,
+      "phase": "verify",
+      "tool_calling": "syntax_check",
+      "input_information": {
+        "ontology_file": "/home/jovyan/LLMOnto/Benchmark/OntologyConceptMatching/MASEO_MCP/ollama/odrl/odrl_ontology.owl"
+      },
+      "output": {
+        "passed": true,
+        "errors": []
+      },
+      "seconds": 0.03
+    },
+    {
+      "round": 3,
+      "index": 47,
+      "phase": "verify",
+      "tool_calling": "hermit_consistency",
+      "input_information": {
+        "ontology_file": "/home/jovyan/LLMOnto/Benchmark/OntologyConceptMatching/MASEO_MCP/ollama/odrl/odrl_ontology.owl"
+      },
+      "output": {
+        "passed": true,
+        "consistent": true,
+        "unsatisfiable_classes": []
+      },
+      "seconds": 0.45
+    },
+    {
+      "round": 3,
+      "index": 48,
+      "phase": "verify",
+      "tool_calling": "oops_scan",
+      "input_information": {
+        "ontology_file": "/home/jovyan/LLMOnto/Benchmark/OntologyConceptMatching/MASEO_MCP/ollama/odrl/odrl_ontology.owl"
+      },
+      "output": {
+        "passed": true,
+        "major_count": 0,
+        "pitfalls": []
+      },
+      "seconds": 0.15
+    },
+    {
+      "round": 3,
+      "index": 49,
+      "phase": "verify",
+      "tool_calling": "cq_coverage",
+      "input_information": {
+        "ontology_file": "/home/jovyan/LLMOnto/Benchmark/OntologyConceptMatching/MASEO_MCP/ollama/odrl/odrl_ontology.owl",
+        "cqs": [
+          "CQ03",
+          "CQ06",
+          "CQ08",
+          "CQ10",
+          "CQ13",
+          "CQ14",
+          "CQ21",
+          "CQ24",
+          "CQ26",
+          "CQ30",
+          "CQ31",
+          "CQ33",
+          "New CQ1",
+          "New CQ2",
+          "New CQ3",
+          "New CQ4",
+          "New CQ5",
+          "New CQ6"
+        ]
+      },
+      "output": {
+        "passed": true,
+        "covered": [
+          "CQ03",
+          "CQ06",
+          "CQ08",
+          "CQ10",
+          "CQ13",
+          "CQ14",
+          "CQ21",
+          "CQ24",
+          "CQ26",
+          "CQ30",
+          "CQ31",
+          "CQ33",
+          "New CQ1",
+          "New CQ2",
+          "New CQ3",
+          "New CQ4",
+          "New CQ5",
+          "New CQ6"
+        ],
+        "uncovered": [],
+        "missing": {}
+      },
+      "seconds": 0.01
+    },
+    {
+      "round": 3,
+      "index": 50,
+      "phase": "verify",
+      "tool_calling": "themis_test",
+      "input_information": {
+        "ontology_file": "/home/jovyan/LLMOnto/Benchmark/OntologyConceptMatching/MASEO_MCP/ollama/odrl/odrl_ontology.owl",
+        "cqs": [
+          "CQ03",
+          "CQ06",
+          "CQ08",
+          "CQ10",
+          "CQ13",
+          "CQ14",
+          "CQ21",
+          "CQ24",
+          "CQ26",
+          "CQ30",
+          "CQ31",
+          "CQ33",
+          "New CQ1",
+          "New CQ2",
+          "New CQ3",
+          "New CQ4",
+          "New CQ5",
+          "New CQ6"
+        ]
+      },
+      "output": {
+        "passed": false,
+        "covered": [
+          "CQ03",
+          "CQ06",
+          "CQ10",
+          "CQ13",
+          "CQ24",
+          "CQ26",
+          "CQ30",
+          "CQ31",
+          "CQ33",
+          "New CQ1",
+          "New CQ2",
+          "New CQ3",
+          "New CQ4",
+          "New CQ5",
+          "New CQ6"
+        ],
+        "uncovered": [
+          "CQ08",
+          "CQ14",
+          "CQ21"
+        ],
+        "missing": {
+          "CQ08": [
+            "Expression hasOperator NOT -> Incorrect (undefined/wrong terms: ['NOT'])"
+          ],
+          "CQ14": [
+            "Constraint hasOperator AND -> Incorrect (undefined/wrong terms: ['AND'])",
+            "Constraint hasOperator OR -> Incorrect (undefined/wrong terms: ['OR'])"
+          ],
+          "CQ21": [
+            "Requirement type Class -> Incorrect (undefined/wrong terms: ['Requirement'])"
+          ]
+        }
+      },
+      "seconds": 0.77
+    },
+    {
+      "round": 3,
+      "index": 51,
+      "phase": "verify",
+      "tool_calling": "round_summary",
+      "input_information": {
+        "checks": [
+          "syntax_check",
+          "hermit_consistency",
+          "oops_scan",
+          "cq_coverage",
+          "themis_test"
+        ]
+      },
+      "output": {
+        "all_passed": false,
+        "syntax_check": {
+          "passed": true,
+          "errors": []
+        },
+        "cq_coverage": {
+          "passed": true,
+          "covered": [
+            "CQ03",
+            "CQ06",
+            "CQ08",
+            "CQ10",
+            "CQ13",
+            "CQ14",
+            "CQ21",
+            "CQ24",
+            "CQ26",
+            "CQ30",
+            "CQ31",
+            "CQ33",
+            "New CQ1",
+            "New CQ2",
+            "New CQ3",
+            "New CQ4",
+            "New CQ5",
+            "New CQ6"
+          ],
+          "uncovered": [],
+          "missing": {}
+        },
+        "themis_test": {
+          "passed": false,
+          "covered": [
+            "CQ03",
+            "CQ06",
+            "CQ10",
+            "CQ13",
+            "CQ24",
+            "CQ26",
+            "CQ30",
+            "CQ31",
+            "CQ33",
+            "New CQ1",
+            "New CQ2",
+            "New CQ3",
+            "New CQ4",
+            "New CQ5",
+            "New CQ6"
+          ],
+          "uncovered": [
+            "CQ08",
+            "CQ14",
+            "CQ21"
+          ],
+          "missing": {
+            "CQ08": [
+              "Expression hasOperator NOT -> Incorrect (undefined/wrong terms: ['NOT'])"
+            ],
+            "CQ14": [
+              "Constraint hasOperator AND -> Incorrect (undefined/wrong terms: ['AND'])",
+              "Constraint hasOperator OR -> Incorrect (undefined/wrong terms: ['OR'])"
+            ],
+            "CQ21": [
+              "Requirement type Class -> Incorrect (undefined/wrong terms: ['Requirement'])"
+            ]
+          }
+        },
+        "oops": {
+          "passed": true,
+          "major_count": 0,
+          "pitfalls": []
+        },
+        "hermit": {
+          "passed": true,
+          "consistent": true,
+          "unsatisfiable_classes": []
+        },
+        "change_from_previous_round": {
+          "syntax_check": {
+            "errors_before": [],
+            "errors_after": [],
+            "fixed_errors": [],
+            "introduced_errors": []
+          },
+          "cq_coverage": {
+            "covered_before": [
+              "CQ03",
+              "CQ06",
+              "CQ08",
+              "CQ10",
+              "CQ13",
+              "CQ14",
+              "CQ21",
+              "CQ24",
+              "CQ26",
+              "CQ30",
+              "CQ31",
+              "CQ33",
+              "New CQ1",
+              "New CQ2",
+              "New CQ3",
+              "New CQ4",
+              "New CQ5",
+              "New CQ6"
+            ],
+            "covered_after": [
+              "CQ03",
+              "CQ06",
+              "CQ08",
+              "CQ10",
+              "CQ13",
+              "CQ14",
+              "CQ21",
+              "CQ24",
+              "CQ26",
+              "CQ30",
+              "CQ31",
+              "CQ33",
+              "New CQ1",
+              "New CQ2",
+              "New CQ3",
+              "New CQ4",
+              "New CQ5",
+              "New CQ6"
+            ],
+            "added_cqs": [],
+            "removed_cqs": []
+          },
+          "themis_test": {
+            "covered_before": [
+              "CQ03",
+              "CQ06",
+              "CQ10",
+              "CQ13",
+              "CQ24",
+              "CQ26",
+              "CQ30",
+              "CQ31",
+              "CQ33",
+              "New CQ1",
+              "New CQ2",
+              "New CQ3",
+              "New CQ4",
+              "New CQ5",
+              "New CQ6"
+            ],
+            "covered_after": [
+              "CQ03",
+              "CQ06",
+              "CQ10",
+              "CQ13",
+              "CQ24",
+              "CQ26",
+              "CQ30",
+              "CQ31",
+              "CQ33",
+              "New CQ1",
+              "New CQ2",
+              "New CQ3",
+              "New CQ4",
+              "New CQ5",
+              "New CQ6"
+            ],
+            "added_cqs": [],
+            "removed_cqs": []
+          },
+          "oops": {
+            "pitfalls_before": 0,
+            "pitfalls_after": 0,
+            "pitfall_codes_before": [],
+            "pitfall_codes_after": [],
+            "fixed_pitfalls": [],
+            "introduced_pitfalls": []
+          },
+          "hermit": {
+            "consistent_before": true,
+            "consistent_after": true,
+            "unsatisfiable_before": [],
+            "unsatisfiable_after": [],
+            "fixed_classes": [],
+            "introduced_classes": []
+          }
+        }
+      },
+      "next_action": "done"
+    }
+  ],
+  "ontology_file": "/home/jovyan/LLMOnto/Benchmark/OntologyConceptMatching/MASEO_MCP/ollama/odrl/odrl_ontology.owl",
+  "terms_file": "/home/jovyan/LLMOnto/Benchmark/OntologyConceptMatching/MASEO_MCP/ollama/odrl/odrl_terms.json",
+  "tests_file": "/home/jovyan/LLMOnto/Benchmark/OntologyConceptMatching/MASEO_MCP/ollama/odrl/odrl_tests.json",
+  "testsuite_file": "/home/jovyan/LLMOnto/Benchmark/OntologyConceptMatching/MASEO_MCP/ollama/odrl/odrl_testsuite.ttl",
+  "steps_file": "/home/jovyan/LLMOnto/Benchmark/OntologyConceptMatching/MASEO_MCP/ollama/odrl/odrl_steps.json"
+}

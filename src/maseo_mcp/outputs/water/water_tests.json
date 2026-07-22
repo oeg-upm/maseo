@@ -1,0 +1,1378 @@
+{
+  "domain": "water",
+  "generated": {
+    "CQ01": [
+      "WaterDistributionInfrastructure type Class",
+      "Asset type Class",
+      "composes type Property",
+      "WaterDistributionInfrastructure composes Asset"
+    ],
+    "CQ04": [
+      "Sensor type Class",
+      "WaterInfrastructure type Class",
+      "usedIn type Property",
+      "Sensor usedIn WaterInfrastructure"
+    ],
+    "CQ05": [
+      "Actuator type Class",
+      "WaterInfrastructure type Class",
+      "usedIn type Property",
+      "Actuator usedIn WaterInfrastructure"
+    ],
+    "CQ06": [
+      "WaterMeter type Class",
+      "Device type Class",
+      "measures type Property",
+      "WaterMeter SubClassOf Device",
+      "WaterMeter measures Device"
+    ],
+    "CQ08": [
+      "WaterMeter type Class",
+      "fabricationNumber type Property",
+      "WaterMeter fabricationNumber string"
+    ],
+    "CQ09": [
+      "WaterMeter type Class",
+      "manufacturer type Property",
+      "model type Property",
+      "WaterMeter manufacturer string",
+      "WaterMeter model string"
+    ],
+    "CQ10": [
+      "WaterMeter type Class",
+      "version type Property",
+      "WaterMeter version string"
+    ],
+    "CQ11": [
+      "WaterMeter type Class",
+      "hardwareVersion type Property",
+      "WaterMeter hardwareVersion string"
+    ],
+    "CQ12": [
+      "WaterMeter type Class",
+      "firmwareVersion type Property",
+      "WaterMeter firmwareVersion string"
+    ],
+    "CQ18": [
+      "WaterMeter type Class",
+      "power type Property",
+      "WaterMeter power float"
+    ],
+    "CQ19": [
+      "WaterMeter type Class",
+      "radioFrequencyLevel type Property",
+      "WaterMeter radioFrequencyLevel float"
+    ],
+    "CQ20": [
+      "WaterMeter type Class",
+      "geolocation type Property",
+      "WaterMeter geolocation string"
+    ],
+    "CQ25": [
+      "WaterMeter type Class",
+      "Measurement type Class",
+      "provides type Property",
+      "WaterMeter provides Measurement"
+    ],
+    "CQ33": [
+      "Water type Class",
+      "PhysicalProperty type Class",
+      "hasProperty type Property",
+      "Water hasProperty PhysicalProperty"
+    ],
+    "CQ34": [
+      "Water type Class",
+      "ChemicalProperty type Class",
+      "hasProperty type Property",
+      "Water hasProperty ChemicalProperty"
+    ],
+    "CQ37": [
+      "WaterIndicator type Class",
+      "Burgos type Class",
+      "definedFor type Property",
+      "WaterIndicator definedFor Burgos"
+    ],
+    "CQ38": [
+      "WaterMeter type Class",
+      "Tariff type Class",
+      "inUse type Property",
+      "startDateTime type Property",
+      "WaterMeter inUse Tariff",
+      "Tariff startDateTime dateTime"
+    ],
+    "CQ39": [
+      "WaterMeter type Class",
+      "Tariff type Class",
+      "inUse type Property",
+      "duration type Property",
+      "WaterMeter inUse Tariff",
+      "Tariff duration float"
+    ],
+    "CQ40": [
+      "WaterMeter type Class",
+      "TariffPeriod type Class",
+      "hasTariffPeriod type Property",
+      "WaterMeter hasTariffPeriod TariffPeriod"
+    ],
+    "CQ42": [
+      "WaterMeter type Class",
+      "billingDate type Property",
+      "WaterMeter billingDate dateTime"
+    ],
+    "CQ43": [
+      "WaterMeter type Class",
+      "billingDatePeriod type Property",
+      "WaterMeter billingDatePeriod string"
+    ]
+  },
+  "executions": [
+    {
+      "n": 1,
+      "round": 1,
+      "phase": "themis",
+      "attempt": 1,
+      "seconds": 0.97,
+      "passed": true,
+      "covered": [
+        "CQ01",
+        "CQ04",
+        "CQ05",
+        "CQ06",
+        "CQ08",
+        "CQ09",
+        "CQ10",
+        "CQ11",
+        "CQ12",
+        "CQ18",
+        "CQ19",
+        "CQ20",
+        "CQ25",
+        "CQ33",
+        "CQ34",
+        "CQ37",
+        "CQ38",
+        "CQ39",
+        "CQ40",
+        "CQ42",
+        "CQ43"
+      ],
+      "uncovered": [],
+      "results": {
+        "CQ01": [
+          {
+            "test": "WaterDistributionInfrastructure type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Asset type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "composes type Property",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "WaterDistributionInfrastructure composes Asset",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ04": [
+          {
+            "test": "Sensor type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "WaterInfrastructure type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "usedIn type Property",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Sensor usedIn WaterInfrastructure",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ05": [
+          {
+            "test": "Actuator type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "WaterInfrastructure type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "usedIn type Property",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Actuator usedIn WaterInfrastructure",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ06": [
+          {
+            "test": "WaterMeter type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Device type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "measures type Property",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "WaterMeter SubClassOf Device",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "WaterMeter measures Device",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ08": [
+          {
+            "test": "WaterMeter type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "fabricationNumber type Property",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "WaterMeter fabricationNumber string",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ09": [
+          {
+            "test": "WaterMeter type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "manufacturer type Property",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "model type Property",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "WaterMeter manufacturer string",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "WaterMeter model string",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ10": [
+          {
+            "test": "WaterMeter type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "version type Property",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "WaterMeter version string",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ11": [
+          {
+            "test": "WaterMeter type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "hardwareVersion type Property",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "WaterMeter hardwareVersion string",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ12": [
+          {
+            "test": "WaterMeter type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "firmwareVersion type Property",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "WaterMeter firmwareVersion string",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ18": [
+          {
+            "test": "WaterMeter type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "power type Property",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "WaterMeter power float",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ19": [
+          {
+            "test": "WaterMeter type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "radioFrequencyLevel type Property",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "WaterMeter radioFrequencyLevel float",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ20": [
+          {
+            "test": "WaterMeter type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "geolocation type Property",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "WaterMeter geolocation string",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ25": [
+          {
+            "test": "WaterMeter type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Measurement type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "provides type Property",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "WaterMeter provides Measurement",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ33": [
+          {
+            "test": "Water type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "PhysicalProperty type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "hasProperty type Property",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Water hasProperty PhysicalProperty",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ34": [
+          {
+            "test": "Water type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "ChemicalProperty type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "hasProperty type Property",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Water hasProperty ChemicalProperty",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ37": [
+          {
+            "test": "WaterIndicator type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Burgos type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "definedFor type Property",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "WaterIndicator definedFor Burgos",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ38": [
+          {
+            "test": "WaterMeter type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Tariff type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "inUse type Property",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "startDateTime type Property",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "WaterMeter inUse Tariff",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Tariff startDateTime dateTime",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ39": [
+          {
+            "test": "WaterMeter type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Tariff type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "inUse type Property",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "duration type Property",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "WaterMeter inUse Tariff",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Tariff duration float",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ40": [
+          {
+            "test": "WaterMeter type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "TariffPeriod type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "hasTariffPeriod type Property",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "WaterMeter hasTariffPeriod TariffPeriod",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ42": [
+          {
+            "test": "WaterMeter type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "billingDate type Property",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "WaterMeter billingDate dateTime",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ43": [
+          {
+            "test": "WaterMeter type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "billingDatePeriod type Property",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "WaterMeter billingDatePeriod string",
+            "result": "Passed",
+            "detail": ""
+          }
+        ]
+      }
+    },
+    {
+      "n": 2,
+      "round": 1,
+      "phase": "verify",
+      "seconds": 0.87,
+      "passed": true,
+      "covered": [
+        "CQ01",
+        "CQ04",
+        "CQ05",
+        "CQ06",
+        "CQ08",
+        "CQ09",
+        "CQ10",
+        "CQ11",
+        "CQ12",
+        "CQ18",
+        "CQ19",
+        "CQ20",
+        "CQ25",
+        "CQ33",
+        "CQ34",
+        "CQ37",
+        "CQ38",
+        "CQ39",
+        "CQ40",
+        "CQ42",
+        "CQ43"
+      ],
+      "uncovered": [],
+      "results": {
+        "CQ01": [
+          {
+            "test": "WaterDistributionInfrastructure type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Asset type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "composes type Property",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "WaterDistributionInfrastructure composes Asset",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ04": [
+          {
+            "test": "Sensor type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "WaterInfrastructure type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "usedIn type Property",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Sensor usedIn WaterInfrastructure",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ05": [
+          {
+            "test": "Actuator type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "WaterInfrastructure type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "usedIn type Property",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Actuator usedIn WaterInfrastructure",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ06": [
+          {
+            "test": "WaterMeter type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Device type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "measures type Property",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "WaterMeter SubClassOf Device",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "WaterMeter measures Device",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ08": [
+          {
+            "test": "WaterMeter type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "fabricationNumber type Property",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "WaterMeter fabricationNumber string",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ09": [
+          {
+            "test": "WaterMeter type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "manufacturer type Property",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "model type Property",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "WaterMeter manufacturer string",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "WaterMeter model string",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ10": [
+          {
+            "test": "WaterMeter type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "version type Property",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "WaterMeter version string",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ11": [
+          {
+            "test": "WaterMeter type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "hardwareVersion type Property",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "WaterMeter hardwareVersion string",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ12": [
+          {
+            "test": "WaterMeter type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "firmwareVersion type Property",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "WaterMeter firmwareVersion string",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ18": [
+          {
+            "test": "WaterMeter type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "power type Property",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "WaterMeter power float",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ19": [
+          {
+            "test": "WaterMeter type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "radioFrequencyLevel type Property",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "WaterMeter radioFrequencyLevel float",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ20": [
+          {
+            "test": "WaterMeter type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "geolocation type Property",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "WaterMeter geolocation string",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ25": [
+          {
+            "test": "WaterMeter type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Measurement type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "provides type Property",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "WaterMeter provides Measurement",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ33": [
+          {
+            "test": "Water type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "PhysicalProperty type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "hasProperty type Property",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Water hasProperty PhysicalProperty",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ34": [
+          {
+            "test": "Water type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "ChemicalProperty type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "hasProperty type Property",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Water hasProperty ChemicalProperty",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ37": [
+          {
+            "test": "WaterIndicator type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Burgos type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "definedFor type Property",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "WaterIndicator definedFor Burgos",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ38": [
+          {
+            "test": "WaterMeter type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Tariff type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "inUse type Property",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "startDateTime type Property",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "WaterMeter inUse Tariff",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Tariff startDateTime dateTime",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ39": [
+          {
+            "test": "WaterMeter type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Tariff type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "inUse type Property",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "duration type Property",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "WaterMeter inUse Tariff",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Tariff duration float",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ40": [
+          {
+            "test": "WaterMeter type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "TariffPeriod type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "hasTariffPeriod type Property",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "WaterMeter hasTariffPeriod TariffPeriod",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ42": [
+          {
+            "test": "WaterMeter type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "billingDate type Property",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "WaterMeter billingDate dateTime",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ43": [
+          {
+            "test": "WaterMeter type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "billingDatePeriod type Property",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "WaterMeter billingDatePeriod string",
+            "result": "Passed",
+            "detail": ""
+          }
+        ]
+      }
+    }
+  ],
+  "test_history": {
+    "WaterDistributionInfrastructure type Class": [
+      "Passed",
+      "Passed"
+    ],
+    "Asset type Class": [
+      "Passed",
+      "Passed"
+    ],
+    "composes type Property": [
+      "Passed",
+      "Passed"
+    ],
+    "WaterDistributionInfrastructure composes Asset": [
+      "Passed",
+      "Passed"
+    ],
+    "Sensor type Class": [
+      "Passed",
+      "Passed"
+    ],
+    "WaterInfrastructure type Class": [
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed"
+    ],
+    "usedIn type Property": [
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed"
+    ],
+    "Sensor usedIn WaterInfrastructure": [
+      "Passed",
+      "Passed"
+    ],
+    "Actuator type Class": [
+      "Passed",
+      "Passed"
+    ],
+    "Actuator usedIn WaterInfrastructure": [
+      "Passed",
+      "Passed"
+    ],
+    "WaterMeter type Class": [
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed"
+    ],
+    "Device type Class": [
+      "Passed",
+      "Passed"
+    ],
+    "measures type Property": [
+      "Passed",
+      "Passed"
+    ],
+    "WaterMeter SubClassOf Device": [
+      "Passed",
+      "Passed"
+    ],
+    "WaterMeter measures Device": [
+      "Passed",
+      "Passed"
+    ],
+    "fabricationNumber type Property": [
+      "Passed",
+      "Passed"
+    ],
+    "WaterMeter fabricationNumber string": [
+      "Passed",
+      "Passed"
+    ],
+    "manufacturer type Property": [
+      "Passed",
+      "Passed"
+    ],
+    "model type Property": [
+      "Passed",
+      "Passed"
+    ],
+    "WaterMeter manufacturer string": [
+      "Passed",
+      "Passed"
+    ],
+    "WaterMeter model string": [
+      "Passed",
+      "Passed"
+    ],
+    "version type Property": [
+      "Passed",
+      "Passed"
+    ],
+    "WaterMeter version string": [
+      "Passed",
+      "Passed"
+    ],
+    "hardwareVersion type Property": [
+      "Passed",
+      "Passed"
+    ],
+    "WaterMeter hardwareVersion string": [
+      "Passed",
+      "Passed"
+    ],
+    "firmwareVersion type Property": [
+      "Passed",
+      "Passed"
+    ],
+    "WaterMeter firmwareVersion string": [
+      "Passed",
+      "Passed"
+    ],
+    "power type Property": [
+      "Passed",
+      "Passed"
+    ],
+    "WaterMeter power float": [
+      "Passed",
+      "Passed"
+    ],
+    "radioFrequencyLevel type Property": [
+      "Passed",
+      "Passed"
+    ],
+    "WaterMeter radioFrequencyLevel float": [
+      "Passed",
+      "Passed"
+    ],
+    "geolocation type Property": [
+      "Passed",
+      "Passed"
+    ],
+    "WaterMeter geolocation string": [
+      "Passed",
+      "Passed"
+    ],
+    "Measurement type Class": [
+      "Passed",
+      "Passed"
+    ],
+    "provides type Property": [
+      "Passed",
+      "Passed"
+    ],
+    "WaterMeter provides Measurement": [
+      "Passed",
+      "Passed"
+    ],
+    "Water type Class": [
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed"
+    ],
+    "PhysicalProperty type Class": [
+      "Passed",
+      "Passed"
+    ],
+    "hasProperty type Property": [
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed"
+    ],
+    "Water hasProperty PhysicalProperty": [
+      "Passed",
+      "Passed"
+    ],
+    "ChemicalProperty type Class": [
+      "Passed",
+      "Passed"
+    ],
+    "Water hasProperty ChemicalProperty": [
+      "Passed",
+      "Passed"
+    ],
+    "WaterIndicator type Class": [
+      "Passed",
+      "Passed"
+    ],
+    "Burgos type Class": [
+      "Passed",
+      "Passed"
+    ],
+    "definedFor type Property": [
+      "Passed",
+      "Passed"
+    ],
+    "WaterIndicator definedFor Burgos": [
+      "Passed",
+      "Passed"
+    ],
+    "Tariff type Class": [
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed"
+    ],
+    "inUse type Property": [
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed"
+    ],
+    "startDateTime type Property": [
+      "Passed",
+      "Passed"
+    ],
+    "WaterMeter inUse Tariff": [
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed"
+    ],
+    "Tariff startDateTime dateTime": [
+      "Passed",
+      "Passed"
+    ],
+    "duration type Property": [
+      "Passed",
+      "Passed"
+    ],
+    "Tariff duration float": [
+      "Passed",
+      "Passed"
+    ],
+    "TariffPeriod type Class": [
+      "Passed",
+      "Passed"
+    ],
+    "hasTariffPeriod type Property": [
+      "Passed",
+      "Passed"
+    ],
+    "WaterMeter hasTariffPeriod TariffPeriod": [
+      "Passed",
+      "Passed"
+    ],
+    "billingDate type Property": [
+      "Passed",
+      "Passed"
+    ],
+    "WaterMeter billingDate dateTime": [
+      "Passed",
+      "Passed"
+    ],
+    "billingDatePeriod type Property": [
+      "Passed",
+      "Passed"
+    ],
+    "WaterMeter billingDatePeriod string": [
+      "Passed",
+      "Passed"
+    ]
+  },
+  "sanitized": {},
+  "testsuite_file": "/home/jovyan/LLMOnto/Benchmark/OntologyConceptMatching/MASEO_MCP/ollama/water/water_testsuite.ttl",
+  "generated_warnings": {}
+}

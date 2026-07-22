@@ -1,0 +1,86 @@
+[
+    {
+        "id": "CQ01",
+        "value": "Which assets compose a water distribution infrastructure?"
+    },
+    {
+        "id": "CQ04",
+        "value": "Which types of sensors are used in water infrastructures?"
+    },
+    {
+        "id": "CQ05",
+        "value": "Which types of actuators are used in water infrastructures?"
+    },
+    {
+        "id": "CQ06",
+        "value": "A water meter is a device that measures different aspects of a water infrastructure."
+    },
+    {
+        "id": "CQ08",
+        "value": "What is the fabrication number of the water meter?"
+    },
+    {
+        "id": "CQ09",
+        "value": "What are the manufacturer and the model of the water meter?"
+    },
+    {
+        "id": "CQ10",
+        "value": "What is the version of the water meter?"
+    },
+    {
+        "id": "CQ11",
+        "value": "What is the hardware version number of the water meter?"
+    },
+    {
+        "id": "CQ12",
+        "value": "What firmware version is the water meter using?"
+    },
+    {
+        "id": "CQ18",
+        "value": "What is the power of the water meter?"
+    },
+    {
+        "id": "CQ19",
+        "value": "What is the radio frequency level of the water meter?"
+    },
+    {
+        "id": "CQ20",
+        "value": "What is the geolocation of the water meter?"
+    },
+    {
+        "id": "CQ25",
+        "value": "Water meters can provide measurements according to different temporal settings."
+    },
+    {
+        "id": "CQ33",
+        "value": "What are the physical properties of water?"
+    },
+    {
+        "id": "CQ34",
+        "value": "What are the chemical properties of water?"
+    },
+    {
+        "id": "CQ37",
+        "value": "Which water indicators are defined for Burgos?"
+    },
+    {
+        "id": "CQ38",
+        "value": "What is the start date and time of the tariff in use in the water meter?"
+    },
+    {
+        "id": "CQ39",
+        "value": "What is the duration of the current tariff of the water meter?"
+    },
+    {
+        "id": "CQ40",
+        "value": "What is the tariff period of the water meter?"
+    },
+    {
+        "id": "CQ42",
+        "value": "What is the billing date of the water meter?"
+    },
+    {
+        "id": "CQ43",
+        "value": "What is the billing date period of the water meter?"
+    }
+]

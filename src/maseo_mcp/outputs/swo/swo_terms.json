@@ -1,0 +1,846 @@
+[
+  {
+    "id": "CQ04",
+    "question": "Which of the named and published algorithms does this tool use?",
+    "classes": [
+      "Algorithm",
+      "Tool",
+      "Publication"
+    ],
+    "properties": [
+      "usesAlgorithm",
+      "hasPublication"
+    ],
+    "data_properties": [],
+    "object_properties": [
+      "usesAlgorithm",
+      "hasPublication"
+    ],
+    "axioms": [
+      "A Tool uses an Algorithm that is named and published."
+    ],
+    "individuals": [],
+    "tests": [
+      "Tool usesAlgorithm Algorithm",
+      "Algorithm hasPublication Publication"
+    ]
+  },
+  {
+    "id": "CQ05",
+    "question": "Are there any modifications to the algorithm the tool uses?",
+    "classes": [
+      "Algorithm",
+      "Tool",
+      "Modification"
+    ],
+    "properties": [
+      "usesAlgorithm",
+      "hasModification"
+    ],
+    "data_properties": [],
+    "object_properties": [
+      "usesAlgorithm",
+      "hasModification"
+    ],
+    "axioms": [
+      "A Tool may have modifications to the Algorithm it uses."
+    ],
+    "individuals": [],
+    "tests": [
+      "Tool usesAlgorithm Algorithm",
+      "Tool hasModification Modification"
+    ]
+  },
+  {
+    "id": "CQ06",
+    "question": "Does this software provide XML editing?",
+    "classes": [
+      "Software",
+      "XML"
+    ],
+    "properties": [
+      "editsFormat"
+    ],
+    "data_properties": [],
+    "object_properties": [
+      "editsFormat"
+    ],
+    "axioms": [
+      "Software that provides XML editing edits the XML format."
+    ],
+    "individuals": [],
+    "tests": [
+      "Software editsFormat XML"
+    ]
+  },
+  {
+    "id": "CQ07",
+    "question": "What type of software (API, Desktop application etc) is it?",
+    "classes": [
+      "Software",
+      "SoftwareType"
+    ],
+    "properties": [
+      "hasType"
+    ],
+    "data_properties": [],
+    "object_properties": [
+      "hasType"
+    ],
+    "axioms": [
+      "Software has a type such as API or Desktop application."
+    ],
+    "individuals": [
+      "API",
+      "DesktopApplication"
+    ],
+    "tests": [
+      "Software hasType SoftwareType",
+      "API type SoftwareType",
+      "DesktopApplication type SoftwareType"
+    ]
+  },
+  {
+    "id": "CQ08",
+    "question": "What software can perform task x?",
+    "classes": [
+      "Software",
+      "Task"
+    ],
+    "properties": [
+      "performsTask"
+    ],
+    "data_properties": [],
+    "object_properties": [
+      "performsTask"
+    ],
+    "axioms": [
+      "Software can perform a specific task."
+    ],
+    "individuals": [],
+    "tests": [
+      "Software performsTask Task"
+    ]
+  },
+  {
+    "id": "CQ11",
+    "question": "Is this software available as a web service?",
+    "classes": [
+      "Software",
+      "WebService"
+    ],
+    "properties": [
+      "isAvailableAs"
+    ],
+    "data_properties": [],
+    "object_properties": [
+      "isAvailableAs"
+    ],
+    "axioms": [
+      "Software may be available as a web service."
+    ],
+    "individuals": [],
+    "tests": [
+      "Software isAvailableAs WebService"
+    ]
+  },
+  {
+    "id": "CQ14",
+    "question": "Does it do what I want or need it to do e.g. render a gif?",
+    "classes": [
+      "Software",
+      "Functionality",
+      "Task"
+    ],
+    "properties": [
+      "hasFunctionality",
+      "performsTask"
+    ],
+    "data_properties": [],
+    "object_properties": [
+      "hasFunctionality",
+      "performsTask"
+    ],
+    "axioms": [
+      "Software has functionality that matches a user's need or task."
+    ],
+    "individuals": [],
+    "tests": [
+      "Software hasFunctionality Functionality",
+      "Software performsTask Task"
+    ]
+  },
+  {
+    "id": "CQ15",
+    "question": "Which software tool created this data?",
+    "classes": [
+      "Software",
+      "Data"
+    ],
+    "properties": [
+      "createdData"
+    ],
+    "data_properties": [],
+    "object_properties": [
+      "createdData"
+    ],
+    "axioms": [
+      "A software tool created some data."
+    ],
+    "individuals": [],
+    "tests": [
+      "Software createdData Data"
+    ]
+  },
+  {
+    "id": "CQ16",
+    "question": "What software can I use my data with to support my task?",
+    "classes": [
+      "Software",
+      "Data",
+      "Task"
+    ],
+    "properties": [
+      "worksWithData",
+      "performsTask"
+    ],
+    "data_properties": [],
+    "object_properties": [
+      "worksWithData",
+      "performsTask"
+    ],
+    "axioms": [
+      "Software can work with user's data to support a task."
+    ],
+    "individuals": [],
+    "tests": [
+      "Software worksWithData Data",
+      "Software performsTask Task"
+    ]
+  },
+  {
+    "id": "CQ17",
+    "question": "What are the input and output formats for this software?",
+    "classes": [
+      "Software",
+      "Format"
+    ],
+    "properties": [
+      "hasInputFormat",
+      "hasOutputFormat"
+    ],
+    "data_properties": [],
+    "object_properties": [
+      "hasInputFormat",
+      "hasOutputFormat"
+    ],
+    "axioms": [
+      "Software has input and output formats."
+    ],
+    "individuals": [],
+    "tests": [
+      "Software hasInputFormat Format",
+      "Software hasOutputFormat Format"
+    ]
+  },
+  {
+    "id": "CQ19",
+    "question": "What software can read a .cel file?",
+    "classes": [
+      "Software",
+      "FileFormat"
+    ],
+    "properties": [
+      "canRead"
+    ],
+    "data_properties": [],
+    "object_properties": [
+      "canRead"
+    ],
+    "axioms": [
+      "Software can read a .cel file."
+    ],
+    "individuals": [
+      "cel"
+    ],
+    "tests": [
+      "Software canRead FileFormat",
+      "cel type FileFormat"
+    ]
+  },
+  {
+    "id": "CQ21",
+    "question": "What is the valid input for this software?",
+    "classes": [
+      "Software",
+      "Input"
+    ],
+    "properties": [
+      "hasValidInput"
+    ],
+    "data_properties": [],
+    "object_properties": [
+      "hasValidInput"
+    ],
+    "axioms": [
+      "Software has valid input."
+    ],
+    "individuals": [],
+    "tests": [
+      "Software hasValidInput Input"
+    ]
+  },
+  {
+    "id": "CQ22",
+    "question": "Can this software export from its proprietary data format to an open format such as csv, txt?",
+    "classes": [
+      "Software",
+      "ProprietaryFormat",
+      "OpenFormat"
+    ],
+    "properties": [
+      "exportsTo"
+    ],
+    "data_properties": [],
+    "object_properties": [
+      "exportsTo"
+    ],
+    "axioms": [
+      "Software can export from proprietary format to open formats like csv, txt."
+    ],
+    "individuals": [
+      "csv",
+      "txt"
+    ],
+    "tests": [
+      "Software exportsTo OpenFormat",
+      "csv type OpenFormat",
+      "txt type OpenFormat"
+    ]
+  },
+  {
+    "id": "CQ23",
+    "question": "Can software A work with data that are output from software B?",
+    "classes": [
+      "Software",
+      "Data"
+    ],
+    "properties": [
+      "worksWithData",
+      "outputsData"
+    ],
+    "data_properties": [],
+    "object_properties": [
+      "worksWithData",
+      "outputsData"
+    ],
+    "axioms": [
+      "Software A can work with data output from Software B."
+    ],
+    "individuals": [],
+    "tests": [
+      "Software worksWithData Data",
+      "Software outputsData Data"
+    ]
+  },
+  {
+    "id": "CQ26",
+    "question": "What open source, maintained software can I use to process these in this format?",
+    "classes": [
+      "Software",
+      "Format",
+      "License"
+    ],
+    "properties": [
+      "canProcess",
+      "hasLicense"
+    ],
+    "data_properties": [],
+    "object_properties": [
+      "canProcess",
+      "hasLicense"
+    ],
+    "axioms": [
+      "Open source, maintained software can process a given format."
+    ],
+    "individuals": [],
+    "tests": [
+      "Software canProcess Format",
+      "Software hasLicense License"
+    ]
+  },
+  {
+    "id": "CQ29",
+    "question": "Given input x, what are the data exports for this version?",
+    "classes": [
+      "Software",
+      "Version",
+      "Data",
+      "Input",
+      "Export"
+    ],
+    "properties": [
+      "hasVersion",
+      "hasInput",
+      "hasExport"
+    ],
+    "data_properties": [],
+    "object_properties": [
+      "hasVersion",
+      "hasInput",
+      "hasExport"
+    ],
+    "axioms": [
+      "For a given input, a software version has data exports."
+    ],
+    "individuals": [],
+    "tests": [
+      "Software hasVersion Version",
+      "Software hasInput Input",
+      "Software hasExport Export"
+    ]
+  },
+  {
+    "id": "CQ30",
+    "question": "Where can I get the software?",
+    "classes": [
+      "Software",
+      "DownloadLocation"
+    ],
+    "properties": [
+      "hasDownloadLocation"
+    ],
+    "data_properties": [],
+    "object_properties": [
+      "hasDownloadLocation"
+    ],
+    "axioms": [
+      "Software has a download location."
+    ],
+    "individuals": [],
+    "tests": [
+      "Software hasDownloadLocation DownloadLocation"
+    ]
+  },
+  {
+    "id": "CQ32",
+    "question": "How do I get help?",
+    "classes": [
+      "Software",
+      "HelpResource"
+    ],
+    "properties": [
+      "hasHelpResource"
+    ],
+    "data_properties": [],
+    "object_properties": [
+      "hasHelpResource"
+    ],
+    "axioms": [
+      "Software provides a help resource."
+    ],
+    "individuals": [],
+    "tests": [
+      "Software hasHelpResource HelpResource"
+    ]
+  },
+  {
+    "id": "CQ36",
+    "question": "Who developed it?",
+    "classes": [
+      "Software",
+      "Developer"
+    ],
+    "properties": [
+      "developedBy"
+    ],
+    "data_properties": [],
+    "object_properties": [
+      "developedBy"
+    ],
+    "axioms": [
+      "Software was developed by a developer."
+    ],
+    "individuals": [],
+    "tests": [
+      "Software developedBy Developer"
+    ]
+  },
+  {
+    "id": "CQ37",
+    "question": "What is the homepage of the software?",
+    "classes": [
+      "Software",
+      "Homepage"
+    ],
+    "properties": [
+      "hasHomepage"
+    ],
+    "data_properties": [],
+    "object_properties": [
+      "hasHomepage"
+    ],
+    "axioms": [
+      "Software has a homepage."
+    ],
+    "individuals": [],
+    "tests": [
+      "Software hasHomepage Homepage"
+    ]
+  },
+  {
+    "id": "CQ38",
+    "question": "Can we collaborate with developers of software x?",
+    "classes": [
+      "Software",
+      "Developer",
+      "Collaboration"
+    ],
+    "properties": [
+      "developedBy",
+      "offersCollaboration"
+    ],
+    "data_properties": [],
+    "object_properties": [
+      "developedBy",
+      "offersCollaboration"
+    ],
+    "axioms": [
+      "Developers of software may offer collaboration."
+    ],
+    "individuals": [],
+    "tests": [
+      "Software developedBy Developer",
+      "Developer offersCollaboration Collaboration"
+    ]
+  },
+  {
+    "id": "CQ40",
+    "question": "Which URL can I get it from?",
+    "classes": [
+      "Software",
+      "URL"
+    ],
+    "properties": [
+      "hasURL"
+    ],
+    "data_properties": [],
+    "object_properties": [
+      "hasURL"
+    ],
+    "axioms": [
+      "Software can be obtained from a URL."
+    ],
+    "individuals": [],
+    "tests": [
+      "Software hasURL URL"
+    ]
+  },
+  {
+    "id": "CQ45",
+    "question": "How long has this software been around?",
+    "classes": [
+      "Software",
+      "ReleaseDate"
+    ],
+    "properties": [
+      "releaseDate"
+    ],
+    "data_properties": [
+      "releaseDate"
+    ],
+    "object_properties": [],
+    "axioms": [
+      "Software has a release date to determine its age."
+    ],
+    "individuals": [],
+    "tests": [
+      "Software releaseDate dateTime"
+    ]
+  },
+  {
+    "id": "CQ46",
+    "question": "How actively developed is it?",
+    "classes": [
+      "Software",
+      "Version"
+    ],
+    "properties": [
+      "hasVersion",
+      "releaseDate"
+    ],
+    "data_properties": [
+      "releaseDate"
+    ],
+    "object_properties": [
+      "hasVersion"
+    ],
+    "axioms": [
+      "Active development is indicated by recent versions and release dates."
+    ],
+    "individuals": [],
+    "tests": [
+      "Software hasVersion Version",
+      "Version releaseDate dateTime"
+    ]
+  },
+  {
+    "id": "CQ54",
+    "question": "What is the version of this software?",
+    "classes": [
+      "Software",
+      "Version"
+    ],
+    "properties": [
+      "hasVersion"
+    ],
+    "data_properties": [],
+    "object_properties": [
+      "hasVersion"
+    ],
+    "axioms": [
+      "Software has a version."
+    ],
+    "individuals": [],
+    "tests": [
+      "Software hasVersion Version"
+    ]
+  },
+  {
+    "id": "CQ55",
+    "question": "What new features are in this version?",
+    "classes": [
+      "Software",
+      "Version",
+      "Feature"
+    ],
+    "properties": [
+      "hasVersion",
+      "hasFeature"
+    ],
+    "data_properties": [],
+    "object_properties": [
+      "hasVersion",
+      "hasFeature"
+    ],
+    "axioms": [
+      "A version of software has new features."
+    ],
+    "individuals": [],
+    "tests": [
+      "Software hasVersion Version",
+      "Version hasFeature Feature"
+    ]
+  },
+  {
+    "id": "CQ57",
+    "question": "When was the 1.0 version released?",
+    "classes": [
+      "Software",
+      "Version"
+    ],
+    "properties": [
+      "hasVersion",
+      "releaseDate"
+    ],
+    "data_properties": [
+      "releaseDate"
+    ],
+    "object_properties": [
+      "hasVersion"
+    ],
+    "axioms": [
+      "Version 1.0 has a release date."
+    ],
+    "individuals": [],
+    "tests": [
+      "Software hasVersion Version",
+      "Version releaseDate dateTime"
+    ]
+  },
+  {
+    "id": "CQ58",
+    "question": "Is the software open source development? Is there a community development?",
+    "classes": [
+      "Software",
+      "License",
+      "Community"
+    ],
+    "properties": [
+      "hasLicense",
+      "hasCommunityDevelopment"
+    ],
+    "data_properties": [],
+    "object_properties": [
+      "hasLicense",
+      "hasCommunityDevelopment"
+    ],
+    "axioms": [
+      "Software may have open source development and community development."
+    ],
+    "individuals": [],
+    "tests": [
+      "Software hasLicense License",
+      "Software hasCommunityDevelopment Community"
+    ]
+  },
+  {
+    "id": "CQ59",
+    "question": "What license and what is permissiveness?",
+    "classes": [
+      "Software",
+      "License",
+      "Permissiveness"
+    ],
+    "properties": [
+      "hasLicense",
+      "permissiveness"
+    ],
+    "data_properties": [
+      "permissiveness"
+    ],
+    "object_properties": [
+      "hasLicense"
+    ],
+    "axioms": [
+      "Software has a license with a permissiveness level."
+    ],
+    "individuals": [],
+    "tests": [
+      "Software hasLicense License",
+      "License permissiveness string"
+    ]
+  },
+  {
+    "id": "CQ60",
+    "question": "Is it open source or not?",
+    "classes": [
+      "Software",
+      "License"
+    ],
+    "properties": [
+      "hasLicense"
+    ],
+    "data_properties": [],
+    "object_properties": [
+      "hasLicense"
+    ],
+    "axioms": [
+      "Software has a license that indicates if it is open source."
+    ],
+    "individuals": [],
+    "tests": [
+      "Software hasLicense License"
+    ]
+  },
+  {
+    "id": "CQ65",
+    "question": "Is it FOSS?",
+    "classes": [
+      "Software",
+      "License"
+    ],
+    "properties": [
+      "hasLicense"
+    ],
+    "data_properties": [],
+    "object_properties": [
+      "hasLicense"
+    ],
+    "axioms": [
+      "Software has a license that indicates if it is FOSS."
+    ],
+    "individuals": [],
+    "tests": [
+      "Software hasLicense License"
+    ]
+  },
+  {
+    "id": "CQ68",
+    "question": "Is it free or not?",
+    "classes": [
+      "Software",
+      "License"
+    ],
+    "properties": [
+      "hasLicense"
+    ],
+    "data_properties": [],
+    "object_properties": [
+      "hasLicense"
+    ],
+    "axioms": [
+      "Software has a license that indicates if it is free."
+    ],
+    "individuals": [],
+    "tests": [
+      "Software hasLicense License"
+    ]
+  },
+  {
+    "id": "CQ73",
+    "question": "Where is the documentation?",
+    "classes": [
+      "Software",
+      "Documentation"
+    ],
+    "properties": [
+      "hasDocumentation"
+    ],
+    "data_properties": [],
+    "object_properties": [
+      "hasDocumentation"
+    ],
+    "axioms": [
+      "Software has documentation."
+    ],
+    "individuals": [],
+    "tests": [
+      "Software hasDocumentation Documentation"
+    ]
+  },
+  {
+    "id": "CQ84",
+    "question": "In what language was it implemented?",
+    "classes": [
+      "Software",
+      "ProgrammingLanguage"
+    ],
+    "properties": [
+      "implementedIn"
+    ],
+    "data_properties": [],
+    "object_properties": [
+      "implementedIn"
+    ],
+    "axioms": [
+      "Software is implemented in a programming language."
+    ],
+    "individuals": [],
+    "tests": [
+      "Software implementedIn ProgrammingLanguage"
+    ]
+  },
+  {
+    "id": "CQ85",
+    "question": "What platform does the software run on?",
+    "classes": [
+      "Software",
+      "Platform"
+    ],
+    "properties": [
+      "runsOn"
+    ],
+    "data_properties": [],
+    "object_properties": [
+      "runsOn"
+    ],
+    "axioms": [
+      "Software runs on a platform."
+    ],
+    "individuals": [],
+    "tests": [
+      "Software runsOn Platform"
+    ]
+  }
+]

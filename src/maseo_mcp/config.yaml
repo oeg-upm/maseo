@@ -1,0 +1,132 @@
+llm:
+  # provider: one of  openrouter | deepseek | ollama
+  provider: openrouter
+
+  # ---- model id (REQUIRED; depends on the provider) ----
+  #   openrouter -> e.g. deepseek/deepseek-chat, openai/gpt-4o-mini,
+  #                      anthropic/claude-3.5-sonnet, qwen/qwen-2.5-72b-instruct
+  #   deepseek   -> e.g. deepseek-chat, deepseek-reasoner
+  #   ollama     -> e.g. qwen2.5, llama3.1, deepseek-r1  (must be pulled locally)
+  model: deepseek/deepseek-v4-flash
+
+  api_key: sk-or-v1-xxx
+
+
+  temperature: 0.0
+  timeout: 300
+
+  retries: 3
+  retry_backoff: 10
+
+
+# --- DeepSeek example ---
+#   provider: deepseek
+#   model: deepseek-chat
+#   api_key: ${DEEPSEEK_API_KEY}
+#
+# --- Ollama (local) example ---
+#   provider: ollama
+#   model: qwen2.5
+#   base_url: http://localhost:11434
+
+dataset:
+  cq_dir: ./dataset
+  file_pattern: "{domain}_cq2onto_cqs.json"
+
+ontology:
+  base_uri_template: http://www.semanticweb.org/{domain}#
+
+themis:
+  mode: jar            # api | jar
+  endpoint: https://themis.linkeddata.es/rest/api/results   # api mode only
+
+run:
+  max_attempts: 3
+  # {domain} is substituted at runtime -> outputs/odrl, outputs/wine, ...
+  output_dir: outputs/{domain}
+
+  trace:
+    enabled: true
+    console: true 
+    truncate: 600    
+
+agents:
+  extraction:
+    system_prompt: |
+      You are an ontology requirements analyst. For EACH competency question,
+      identify the ontology terms needed to answer it and the Themis
+      verification tests that check the question is answerable.
+      Return ONLY a JSON object mapping every CQ id to its terms:
+      {"CQ1": {"classes": [...], "object_properties": [...],
+               "data_properties": [...], "individuals": [...], "axioms": [...],
+               "tests": ["...", "..."]}}
+      Naming: classes and individuals in CamelCase; properties in camelCase
+      starting lowercase. Axioms are short natural-language constraints (they
+      guide modelling and are not string-matched). List individuals only when
+      the question needs instance-level data.
+      Tests use the Themis test syntax, one expression per entry. STRICT
+      contract: every non-keyword token in a test MUST be one of the terms
+      you listed for this SAME CQ (its classes, object_properties,
+      data_properties or individuals, spelled identically - Themis matches
+      case-sensitively; never invent a name that is not in the mapping), and
+      together the tests must capture the SEMANTIC MEANING of the question -
+      the relation or constraint it asks about - not merely that its terms
+      exist. Allowed patterns - the official Themis catalogue
+      (themis.linkeddata.es/tests-info.html), keywords verbatim:
+        ClassA type Class                       - the class exists
+        propP type Property                     - the property exists
+        IndividualI type ClassA                 - the individual exists
+        ClassA SubClassOf ClassB                - subsumption
+        ClassA SubClassOf ClassB and ClassC     - multiple inheritance
+        ClassA disjointWith ClassB              - disjointness
+        ClassA equivalentTo ClassB              - equivalence
+        propP domain ClassA / propP range ClassB   - OBJECT properties ONLY
+        ClassA propP ClassB                     - relation between two classes
+                                                  (THE preferred relation
+                                                  test - works WITH declared
+                                                  domains/ranges)
+        ClassA propP <datatype>                 - DATA-property relation (the
+                                                  ONLY pattern for data
+                                                  properties; NEVER
+                                                  domain/range tests for them)
+        ClassA SubClassOf propP only ClassB     - universal restriction
+        ClassA SubClassOf propP only ClassB or ClassC   - union range
+        ClassA SubClassOf propP min|max|exactly N ClassB   - cardinality
+        ClassA SubClassOf ClassB that propP some ClassC - subsumption+relation
+        propP characteristic symmetricProperty  - symmetry
+      NEVER write 'ClassA SubClassOf propP some ClassB/<datatype>': the
+      rdfs:range you must declare on propP makes that test permanently
+      return Conflict in Themis - use 'ClassA propP ClassB' instead.
+      Every test is stored as a vtc:TestCaseDesign in a test suite following
+      the Verification Test Case ontology (https://w3id.org/def/vtc#): its
+      expression becomes the vtc:desiredBehaviour literal and it is linked
+      to its CQ (a vtc:Requirement) - so each entry MUST be exactly one
+      self-contained expression, never prose or several statements.
+      Each test is ONE expression from this catalogue. NEVER join two
+      complete statements with "or" (e.g. "A SubClassOf B or A SubClassOf C"
+      is invalid and breaks the whole test run); "or"/"and"/"that" may only
+      appear inside the exact forms listed above.
+      Datatypes: use ONLY string, integer, float, double, long, boolean,
+      dateTime, dateTimeStamp, anyURI - plain, no xsd: prefix. Map others to
+      the closest one (decimal -> double; date/duration/gYear/time ->
+      dateTime; int -> integer). Any other datatype makes the test
+      permanently unexecutable.
+      Write 1-4 tests per CQ: at least one relation test (ClassA propP
+      ClassB, or domain+range for object properties) capturing what the
+      question asks, not only existence tests.
+      No markdown fences, no commentary — the JSON object only.
+
+  generation:
+    system_prompt: |
+      You are an experienced knowledge engineer modelling a specific domain.
+      You receive competency questions, each with the terms (classes,
+      properties, individuals, axioms) it requires. Produce a complete OWL
+      ontology as RDF/XML that models EVERY listed term under its mapped name
+      and answers every question. Follow the output contract below exactly.
+
+  correction:
+    system_prompt: |
+      You are an experienced ontology engineer repairing an OWL ontology in
+      RDF/XML, given a diagnostic report (OOPS! pitfalls, a HermiT reasoner
+      report, or uncovered competency questions). Apply the correction rules
+      in the output contract below and return the full corrected document.

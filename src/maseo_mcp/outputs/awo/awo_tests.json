@@ -1,0 +1,448 @@
+{
+  "domain": "awo",
+  "generated": {
+    "CQ1": [
+      "Animal type Class",
+      "eats type Property",
+      "Animal eats Animal"
+    ],
+    "CQ2": [
+      "Animal type Class",
+      "Herbivore type Class",
+      "Herbivore SubClassOf Animal"
+    ],
+    "CQ3": [
+      "Animal type Class",
+      "PlantPart type Class",
+      "eats type Property",
+      "Animal eats PlantPart"
+    ],
+    "CQ4": [
+      "Lion type Class",
+      "eats type Property",
+      "Lion eats Plant",
+      "Lion eats PlantPart"
+    ],
+    "CQ6": [
+      "Plant type Class",
+      "Animal type Class",
+      "eats type Property",
+      "Plant eats Animal"
+    ],
+    "CQ7": [
+      "Animal type Class",
+      "eats type Property",
+      "Animal eats Animal"
+    ],
+    "CQ14": [
+      "eats type Property",
+      "Carnivore SubClassOf Animal",
+      "Carnivore eats Plant",
+      "Carnivore eats PlantPart"
+    ]
+  },
+  "executions": [
+    {
+      "n": 1,
+      "round": 1,
+      "phase": "themis",
+      "attempt": 1,
+      "seconds": 0.57,
+      "passed": true,
+      "covered": [
+        "CQ1",
+        "CQ2",
+        "CQ3",
+        "CQ4",
+        "CQ6",
+        "CQ7",
+        "CQ14"
+      ],
+      "uncovered": [],
+      "results": {
+        "CQ1": [
+          {
+            "test": "Animal type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "eats type Property",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Animal eats Animal",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ2": [
+          {
+            "test": "Animal type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Herbivore type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Herbivore SubClassOf Animal",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ3": [
+          {
+            "test": "Animal type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "PlantPart type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "eats type Property",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Animal eats PlantPart",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ4": [
+          {
+            "test": "Lion type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "eats type Property",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Lion eats Plant",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Lion eats PlantPart",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ6": [
+          {
+            "test": "Plant type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Animal type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "eats type Property",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Plant eats Animal",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ7": [
+          {
+            "test": "Animal type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "eats type Property",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Animal eats Animal",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ14": [
+          {
+            "test": "eats type Property",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Carnivore SubClassOf Animal",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Carnivore eats Plant",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Carnivore eats PlantPart",
+            "result": "Passed",
+            "detail": ""
+          }
+        ]
+      }
+    },
+    {
+      "n": 2,
+      "round": 1,
+      "phase": "verify",
+      "seconds": 0.42,
+      "passed": true,
+      "covered": [
+        "CQ1",
+        "CQ2",
+        "CQ3",
+        "CQ4",
+        "CQ6",
+        "CQ7",
+        "CQ14"
+      ],
+      "uncovered": [],
+      "results": {
+        "CQ1": [
+          {
+            "test": "Animal type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "eats type Property",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Animal eats Animal",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ2": [
+          {
+            "test": "Animal type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Herbivore type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Herbivore SubClassOf Animal",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ3": [
+          {
+            "test": "Animal type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "PlantPart type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "eats type Property",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Animal eats PlantPart",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ4": [
+          {
+            "test": "Lion type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "eats type Property",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Lion eats Plant",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Lion eats PlantPart",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ6": [
+          {
+            "test": "Plant type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Animal type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "eats type Property",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Plant eats Animal",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ7": [
+          {
+            "test": "Animal type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "eats type Property",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Animal eats Animal",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ14": [
+          {
+            "test": "eats type Property",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Carnivore SubClassOf Animal",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Carnivore eats Plant",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Carnivore eats PlantPart",
+            "result": "Passed",
+            "detail": ""
+          }
+        ]
+      }
+    }
+  ],
+  "test_history": {
+    "Animal type Class": [
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed"
+    ],
+    "eats type Property": [
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed"
+    ],
+    "Animal eats Animal": [
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed"
+    ],
+    "Herbivore type Class": [
+      "Passed",
+      "Passed"
+    ],
+    "Herbivore SubClassOf Animal": [
+      "Passed",
+      "Passed"
+    ],
+    "PlantPart type Class": [
+      "Passed",
+      "Passed"
+    ],
+    "Animal eats PlantPart": [
+      "Passed",
+      "Passed"
+    ],
+    "Lion type Class": [
+      "Passed",
+      "Passed"
+    ],
+    "Lion eats Plant": [
+      "Passed",
+      "Passed"
+    ],
+    "Lion eats PlantPart": [
+      "Passed",
+      "Passed"
+    ],
+    "Plant type Class": [
+      "Passed",
+      "Passed"
+    ],
+    "Plant eats Animal": [
+      "Passed",
+      "Passed"
+    ],
+    "Carnivore SubClassOf Animal": [
+      "Passed",
+      "Passed"
+    ],
+    "Carnivore eats Plant": [
+      "Passed",
+      "Passed"
+    ],
+    "Carnivore eats PlantPart": [
+      "Passed",
+      "Passed"
+    ]
+  },
+  "sanitized": {},
+  "testsuite_file": "/home/jovyan/LLMOnto/Benchmark/OntologyConceptMatching/MASEO_MCP/ollama/awo/awo_testsuite.ttl",
+  "generated_warnings": {}
+}

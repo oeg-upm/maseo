@@ -93,8 +93,53 @@ Additional documentation of the project is available at [readthedocs](https://ma
 - The full document for Output file structure can be found at [Output](https://maseo.readthedocs.io/en/latest/output/)
 
 
+# MASEO-MCP Implementation
 
-## Acknowledgements
+`src/maseo_mcp` implements the framework as an agent-mcp-tool loop: three LLM agents (extraction, generation, correction) are driven by a LangGraph workflow, and every quality check is a tool on an MCP server (`mcp_server.py`) launched over stdio. 
+
+## Workflow
+
+1. **Extract**: maps every CQ to the ontology terms it needs *and* generates Themis verification tests for it (following the official [test catalogue](https://themis.linkeddata.es/tests-info.html)).
+2. **Generate**: drafts the RDF/XML ontology from CQs + terms.
+3. **Agent-MCP-Tool Loop**: Here five detectors are implemented: syntax checker, cq literal coverage, oops pitfall scanner, hermit consistency checker, themis test validator (cq semantic coverage). Each step first pass the ontology source code to the corresponding tool, if passed, then move onto the next detecotr; if failed, the system will invoke the correction agent with the input of `ontology source code`, `parsed error message` and `competency questions`
+4. **Verify**: Finally invoke all five detectors at once, to finally make sure the generated ontology follows all desired standards.
+
+
+| Tool | Check | Backed by |
+|------|-------|-----------|
+| `syntax checker` | well-formed, parseable RDF/XML in the required style | rdflib |
+| `cq literal coverage` | every mapped CQ term exists (literal) | — |
+| `oops pitfall scanner` | no Critical/Important pitfalls | [OOPS!](https://oops.linkeddata.es/) |
+| `hermit consistency checker` | consistent, no unsatisfiable classes | [HermiT](https://github.com/phillord/hermit-reasoner) |
+| `themis test validator` | every CQ's gold tests pass (semantic) | [Themis](https://github.com/oeg-upm/Themis) (REST API or `themis.jar`, `themis.mode` in `config.yaml`) |
+
+## Execution
+
+Requires `java` on PATH and internet access (OOPS! and Themis services). LLM provider, prompts, attempt budget (`max_attempts`) and Themis execution mode (`api | jar`) are configured in `config.yaml`; the agents' output contract lives in `agent.md` as the rule of all agents.
+
+```bash
+sudo apt install default-jre         # optional if java is not installed in the system
+cd src/maseo_mcp
+pip install -r requirements.txt
+export OPENROUTER_API_KEY=sk-or-...
+python mcp_client.py <domain>        # domain: wine | awo | odrl | swo | vgo | water
+```
+
+## Output
+
+Here are the structure of the how the output layout of MASEO_MCP, noted that the layout is for each domain.
+
+| File | Content |
+|------|---------|
+| `<domain>_ontology.owl` | the final RDF/XML ontology |
+| `<domain>_terms.json` | per-CQ mapped terms + gold tests |
+| `<domain>_testsuite.ttl` | the gold test suite in Turtle |
+| `<domain>_tests.json` | every test execution: per-test verdicts, verdict history, sanitizer log |
+| `<domain>_steps.json` | one entry per step: agent call, tool call, prompt information and ontology source code snapshot |
+| `<domain>_run.json` | structured performance records with before/after effects per correction |
+| `<domain>_trace.jsonl` | complete event trace (full prompts, tool calls, results) |
+
+# Acknowledgements
 
 This work was supported by the grant [SOEL: Supporting Ontology Engineering with Large Language Models](https://w3id.org/soel) PID2023-152703NA-I00 funded by MCIN/AEI/10.13039/501100011033 and by ERDF/UE. The authors would also like to thank the EDINT (Espacios de Datos para las Infraestructuras Urbanas Inteligentes) ontology development team for sharing the project resources for evaluation purposes.
 

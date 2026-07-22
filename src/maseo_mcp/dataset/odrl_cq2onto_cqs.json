@@ -1,0 +1,74 @@
+[
+    {
+        "id": "CQ03",
+        "value": "Shall the permissions 'Aggregation' and 'Disaggregation' be of the type Transfer Rights?"
+    },
+    {
+        "id": "CQ06",
+        "value": "Expressing the various roles of contract parties within the Permission/Duty element."
+    },
+    {
+        "id": "CQ08",
+        "value": "How to provide a 'NOT' expression?"
+    },
+    {
+        "id": "CQ10",
+        "value": "How are rights and duties supported for all contract parties?"
+    },
+    {
+        "id": "CQ13",
+        "value": "Shall ODRLv2 allow for nested constraints?"
+    },
+    {
+        "id": "CQ14",
+        "value": "How do we express 'and', 'or', 'xor' constraints?"
+    },
+    {
+        "id": "CQ21",
+        "value": "How to express constraints on requirements?"
+    },
+    {
+        "id": "CQ24",
+        "value": "How to express exclusive permissions?"
+    },
+    {
+        "id": "CQ26",
+        "value": "How to express Condition via Constraints?"
+    },
+    {
+        "id": "CQ30",
+        "value": "What do we lose if containers are no longer part of ODRL?"
+    },
+    {
+        "id": "CQ31",
+        "value": "Do we need 'Sequencing' as part of the REL?"
+    },
+    {
+        "id": "CQ33",
+        "value": "Can the new data model express inheritance?"
+    },
+    {
+        "id": "New CQ1",
+        "value": "Which policy is directly linked to a given asset?"
+    },
+    {
+        "id": "New CQ2",
+        "value": "What conflict resolution strategy is specified by a policy?"
+    },
+    {
+        "id": "New CQ3",
+        "value": "What duty is specified as a remedy for the violation of a prohibition?"
+    },
+    {
+        "id": "New CQ4",
+        "value": "Which rule is activated upon the failure of another rule?"
+    },
+    {
+        "id": "New CQ5",
+        "value": "What duty is specified as a consequence of another duty?"
+    },
+    {
+        "id": "New CQ6",
+        "value": "What operator is used in the constraints of a prohibition?"
+    }
+]

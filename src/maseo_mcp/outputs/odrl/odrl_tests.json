@@ -1,0 +1,6526 @@
+{
+  "domain": "odrl",
+  "generated": {
+    "CQ03": [
+      "Permission type Class",
+      "TransferRights type Class",
+      "Aggregation SubClassOf Permission",
+      "Disaggregation SubClassOf Permission",
+      "Aggregation isOfType TransferRights"
+    ],
+    "CQ06": [
+      "ContractParty type Class",
+      "Role type Class",
+      "Permission type Class",
+      "Duty type Class",
+      "ContractParty hasRole Role"
+    ],
+    "CQ08": [
+      "Expression type Class",
+      "Constraint type Class",
+      "NOT type Expression",
+      "Expression hasOperator NOT"
+    ],
+    "CQ10": [
+      "ContractParty type Class",
+      "Right type Class",
+      "Duty type Class",
+      "ContractParty hasRight Right",
+      "ContractParty hasDuty Duty"
+    ],
+    "CQ13": [
+      "Constraint type Class",
+      "Constraint hasConstraint Constraint"
+    ],
+    "CQ14": [
+      "Constraint type Class",
+      "Operator type Class",
+      "AND type Operator",
+      "Constraint hasOperator AND",
+      "Constraint hasOperator OR"
+    ],
+    "CQ21": [
+      "Requirement type Class",
+      "Constraint type Class",
+      "Requirement hasConstraint Constraint"
+    ],
+    "CQ24": [
+      "Permission type Class",
+      "Permission isExclusive boolean"
+    ],
+    "CQ26": [
+      "Condition type Class",
+      "Constraint type Class",
+      "Condition expressedVia Constraint"
+    ],
+    "CQ30": [
+      "Container type Class"
+    ],
+    "CQ31": [
+      "REL type Class",
+      "Sequencing type Class",
+      "REL hasPart Sequencing"
+    ],
+    "CQ33": [
+      "DataModel type Class",
+      "Inheritance type Class",
+      "DataModel canExpress Inheritance"
+    ],
+    "New CQ1": [
+      "Policy type Class",
+      "Asset type Class",
+      "Policy linkedTo Asset"
+    ],
+    "New CQ2": [
+      "Policy type Class",
+      "ConflictResolutionStrategy type Class",
+      "Policy specifies ConflictResolutionStrategy"
+    ],
+    "New CQ3": [
+      "Prohibition type Class",
+      "Duty type Class",
+      "Prohibition hasRemedyForViolation Duty"
+    ],
+    "New CQ4": [
+      "Rule type Class",
+      "Rule activatedUponFailureOf Rule"
+    ],
+    "New CQ5": [
+      "Duty type Class",
+      "Duty hasConsequence Duty"
+    ],
+    "New CQ6": [
+      "Prohibition type Class",
+      "Constraint type Class",
+      "Operator type Class",
+      "Prohibition hasConstraint Constraint",
+      "Constraint hasOperator Operator"
+    ]
+  },
+  "executions": [
+    {
+      "n": 1,
+      "round": 1,
+      "phase": "themis",
+      "attempt": 1,
+      "seconds": 0.81,
+      "passed": false,
+      "covered": [
+        "CQ03",
+        "CQ06",
+        "CQ10",
+        "CQ13",
+        "CQ24",
+        "CQ26",
+        "CQ30",
+        "CQ31",
+        "CQ33",
+        "New CQ1",
+        "New CQ2",
+        "New CQ3",
+        "New CQ4",
+        "New CQ5",
+        "New CQ6"
+      ],
+      "uncovered": [
+        "CQ08",
+        "CQ14",
+        "CQ21"
+      ],
+      "results": {
+        "CQ03": [
+          {
+            "test": "Permission type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "TransferRights type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Aggregation SubClassOf Permission",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Disaggregation SubClassOf Permission",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Aggregation isOfType TransferRights",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ06": [
+          {
+            "test": "ContractParty type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Role type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Permission type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Duty type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "ContractParty hasRole Role",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ08": [
+          {
+            "test": "Expression type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Constraint type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "NOT type Expression",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Expression hasOperator NOT",
+            "result": "Incorrect",
+            "detail": "(undefined/wrong terms: ['NOT'])"
+          }
+        ],
+        "CQ10": [
+          {
+            "test": "ContractParty type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Right type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Duty type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "ContractParty hasRight Right",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "ContractParty hasDuty Duty",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ13": [
+          {
+            "test": "Constraint type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Constraint hasConstraint Constraint",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ14": [
+          {
+            "test": "Constraint type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Operator type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "AND type Operator",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Constraint hasOperator AND",
+            "result": "Incorrect",
+            "detail": "(undefined/wrong terms: ['AND'])"
+          },
+          {
+            "test": "Constraint hasOperator OR",
+            "result": "Incorrect",
+            "detail": "(undefined/wrong terms: ['OR'])"
+          }
+        ],
+        "CQ21": [
+          {
+            "test": "Requirement type Class",
+            "result": "Incorrect",
+            "detail": "(undefined/wrong terms: ['Requirement'])"
+          },
+          {
+            "test": "Constraint type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Requirement hasConstraint Constraint",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ24": [
+          {
+            "test": "Permission type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Permission isExclusive boolean",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ26": [
+          {
+            "test": "Condition type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Constraint type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Condition expressedVia Constraint",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ30": [
+          {
+            "test": "Container type Class",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ31": [
+          {
+            "test": "REL type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Sequencing type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "REL hasPart Sequencing",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ33": [
+          {
+            "test": "DataModel type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Inheritance type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "DataModel canExpress Inheritance",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "New CQ1": [
+          {
+            "test": "Policy type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Asset type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Policy linkedTo Asset",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "New CQ2": [
+          {
+            "test": "Policy type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "ConflictResolutionStrategy type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Policy specifies ConflictResolutionStrategy",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "New CQ3": [
+          {
+            "test": "Prohibition type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Duty type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Prohibition hasRemedyForViolation Duty",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "New CQ4": [
+          {
+            "test": "Rule type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Rule activatedUponFailureOf Rule",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "New CQ5": [
+          {
+            "test": "Duty type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Duty hasConsequence Duty",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "New CQ6": [
+          {
+            "test": "Prohibition type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Constraint type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Operator type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Prohibition hasConstraint Constraint",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Constraint hasOperator Operator",
+            "result": "Passed",
+            "detail": ""
+          }
+        ]
+      }
+    },
+    {
+      "n": 2,
+      "round": 1,
+      "phase": "themis",
+      "attempt": 2,
+      "seconds": 0.82,
+      "passed": false,
+      "covered": [
+        "CQ03",
+        "CQ06",
+        "CQ10",
+        "CQ13",
+        "CQ24",
+        "CQ26",
+        "CQ30",
+        "CQ31",
+        "CQ33",
+        "New CQ1",
+        "New CQ2",
+        "New CQ3",
+        "New CQ4",
+        "New CQ5",
+        "New CQ6"
+      ],
+      "uncovered": [
+        "CQ08",
+        "CQ14",
+        "CQ21"
+      ],
+      "results": {
+        "CQ03": [
+          {
+            "test": "Permission type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "TransferRights type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Aggregation SubClassOf Permission",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Disaggregation SubClassOf Permission",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Aggregation isOfType TransferRights",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ06": [
+          {
+            "test": "ContractParty type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Role type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Permission type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Duty type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "ContractParty hasRole Role",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ08": [
+          {
+            "test": "Expression type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Constraint type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "NOT type Expression",
+            "result": "Absent",
+            "detail": ""
+          },
+          {
+            "test": "Expression hasOperator NOT",
+            "result": "Incorrect",
+            "detail": "(undefined/wrong terms: ['NOT'])"
+          }
+        ],
+        "CQ10": [
+          {
+            "test": "ContractParty type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Right type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Duty type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "ContractParty hasRight Right",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "ContractParty hasDuty Duty",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ13": [
+          {
+            "test": "Constraint type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Constraint hasConstraint Constraint",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ14": [
+          {
+            "test": "Constraint type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Operator type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "AND type Operator",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Constraint hasOperator AND",
+            "result": "Incorrect",
+            "detail": "(undefined/wrong terms: ['AND'])"
+          },
+          {
+            "test": "Constraint hasOperator OR",
+            "result": "Incorrect",
+            "detail": "(undefined/wrong terms: ['OR'])"
+          }
+        ],
+        "CQ21": [
+          {
+            "test": "Requirement type Class",
+            "result": "Incorrect",
+            "detail": "(undefined/wrong terms: ['Requirement'])"
+          },
+          {
+            "test": "Constraint type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Requirement hasConstraint Constraint",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ24": [
+          {
+            "test": "Permission type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Permission isExclusive boolean",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ26": [
+          {
+            "test": "Condition type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Constraint type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Condition expressedVia Constraint",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ30": [
+          {
+            "test": "Container type Class",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ31": [
+          {
+            "test": "REL type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Sequencing type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "REL hasPart Sequencing",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ33": [
+          {
+            "test": "DataModel type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Inheritance type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "DataModel canExpress Inheritance",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "New CQ1": [
+          {
+            "test": "Policy type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Asset type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Policy linkedTo Asset",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "New CQ2": [
+          {
+            "test": "Policy type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "ConflictResolutionStrategy type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Policy specifies ConflictResolutionStrategy",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "New CQ3": [
+          {
+            "test": "Prohibition type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Duty type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Prohibition hasRemedyForViolation Duty",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "New CQ4": [
+          {
+            "test": "Rule type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Rule activatedUponFailureOf Rule",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "New CQ5": [
+          {
+            "test": "Duty type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Duty hasConsequence Duty",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "New CQ6": [
+          {
+            "test": "Prohibition type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Constraint type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Operator type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Prohibition hasConstraint Constraint",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Constraint hasOperator Operator",
+            "result": "Passed",
+            "detail": ""
+          }
+        ]
+      }
+    },
+    {
+      "n": 3,
+      "round": 1,
+      "phase": "themis",
+      "attempt": 3,
+      "seconds": 0.97,
+      "passed": false,
+      "covered": [
+        "CQ03",
+        "CQ06",
+        "CQ10",
+        "CQ13",
+        "CQ24",
+        "CQ26",
+        "CQ30",
+        "CQ31",
+        "CQ33",
+        "New CQ1",
+        "New CQ2",
+        "New CQ3",
+        "New CQ4",
+        "New CQ5",
+        "New CQ6"
+      ],
+      "uncovered": [
+        "CQ08",
+        "CQ14",
+        "CQ21"
+      ],
+      "results": {
+        "CQ03": [
+          {
+            "test": "Permission type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "TransferRights type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Aggregation SubClassOf Permission",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Disaggregation SubClassOf Permission",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Aggregation isOfType TransferRights",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ06": [
+          {
+            "test": "ContractParty type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Role type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Permission type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Duty type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "ContractParty hasRole Role",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ08": [
+          {
+            "test": "Expression type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Constraint type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "NOT type Expression",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Expression hasOperator NOT",
+            "result": "Incorrect",
+            "detail": "(undefined/wrong terms: ['NOT'])"
+          }
+        ],
+        "CQ10": [
+          {
+            "test": "ContractParty type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Right type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Duty type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "ContractParty hasRight Right",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "ContractParty hasDuty Duty",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ13": [
+          {
+            "test": "Constraint type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Constraint hasConstraint Constraint",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ14": [
+          {
+            "test": "Constraint type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Operator type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "AND type Operator",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Constraint hasOperator AND",
+            "result": "Incorrect",
+            "detail": "(undefined/wrong terms: ['AND'])"
+          },
+          {
+            "test": "Constraint hasOperator OR",
+            "result": "Incorrect",
+            "detail": "(undefined/wrong terms: ['OR'])"
+          }
+        ],
+        "CQ21": [
+          {
+            "test": "Requirement type Class",
+            "result": "Incorrect",
+            "detail": "(undefined/wrong terms: ['Requirement'])"
+          },
+          {
+            "test": "Constraint type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Requirement hasConstraint Constraint",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ24": [
+          {
+            "test": "Permission type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Permission isExclusive boolean",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ26": [
+          {
+            "test": "Condition type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Constraint type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Condition expressedVia Constraint",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ30": [
+          {
+            "test": "Container type Class",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ31": [
+          {
+            "test": "REL type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Sequencing type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "REL hasPart Sequencing",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ33": [
+          {
+            "test": "DataModel type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Inheritance type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "DataModel canExpress Inheritance",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "New CQ1": [
+          {
+            "test": "Policy type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Asset type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Policy linkedTo Asset",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "New CQ2": [
+          {
+            "test": "Policy type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "ConflictResolutionStrategy type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Policy specifies ConflictResolutionStrategy",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "New CQ3": [
+          {
+            "test": "Prohibition type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Duty type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Prohibition hasRemedyForViolation Duty",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "New CQ4": [
+          {
+            "test": "Rule type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Rule activatedUponFailureOf Rule",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "New CQ5": [
+          {
+            "test": "Duty type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Duty hasConsequence Duty",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "New CQ6": [
+          {
+            "test": "Prohibition type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Constraint type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Operator type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Prohibition hasConstraint Constraint",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Constraint hasOperator Operator",
+            "result": "Passed",
+            "detail": ""
+          }
+        ]
+      }
+    },
+    {
+      "n": 4,
+      "round": 1,
+      "phase": "themis",
+      "attempt": 4,
+      "seconds": 0.64,
+      "passed": false,
+      "covered": [],
+      "uncovered": [
+        "CQ03",
+        "CQ06",
+        "CQ08",
+        "CQ10",
+        "CQ13",
+        "CQ14",
+        "CQ21",
+        "CQ24",
+        "CQ26",
+        "CQ30",
+        "CQ31",
+        "CQ33",
+        "New CQ1",
+        "New CQ2",
+        "New CQ3",
+        "New CQ4",
+        "New CQ5",
+        "New CQ6"
+      ],
+      "results": {
+        "CQ03": [
+          {
+            "test": "Permission type Class",
+            "result": "Undefined",
+            "detail": "(undefined/wrong terms: ['Permission'])"
+          },
+          {
+            "test": "TransferRights type Class",
+            "result": "Undefined",
+            "detail": "(undefined/wrong terms: ['TransferRights'])"
+          },
+          {
+            "test": "Aggregation SubClassOf Permission",
+            "result": "Undefined",
+            "detail": "(undefined/wrong terms: ['Aggregation', 'Permission'])"
+          },
+          {
+            "test": "Disaggregation SubClassOf Permission",
+            "result": "Undefined",
+            "detail": "(undefined/wrong terms: ['Disaggregation', 'Permission'])"
+          },
+          {
+            "test": "Aggregation isOfType TransferRights",
+            "result": "Undefined",
+            "detail": "(undefined/wrong terms: ['Aggregation', 'isOfType', 'TransferRights'])"
+          }
+        ],
+        "CQ06": [
+          {
+            "test": "ContractParty type Class",
+            "result": "Undefined",
+            "detail": "(undefined/wrong terms: ['ContractParty'])"
+          },
+          {
+            "test": "Role type Class",
+            "result": "Undefined",
+            "detail": "(undefined/wrong terms: ['Role'])"
+          },
+          {
+            "test": "Permission type Class",
+            "result": "Undefined",
+            "detail": "(undefined/wrong terms: ['Permission'])"
+          },
+          {
+            "test": "Duty type Class",
+            "result": "Undefined",
+            "detail": "(undefined/wrong terms: ['Duty'])"
+          },
+          {
+            "test": "ContractParty hasRole Role",
+            "result": "Undefined",
+            "detail": "(undefined/wrong terms: ['ContractParty', 'hasRole', 'Role'])"
+          }
+        ],
+        "CQ08": [
+          {
+            "test": "Expression type Class",
+            "result": "Undefined",
+            "detail": "(undefined/wrong terms: ['Expression'])"
+          },
+          {
+            "test": "Constraint type Class",
+            "result": "Undefined",
+            "detail": "(undefined/wrong terms: ['Constraint'])"
+          },
+          {
+            "test": "NOT type Expression",
+            "result": "Undefined",
+            "detail": "(undefined/wrong terms: ['NOT', 'Expression'])"
+          },
+          {
+            "test": "Expression hasOperator NOT",
+            "result": "Undefined",
+            "detail": "(undefined/wrong terms: ['Expression', 'hasOperator', 'NOT'])"
+          }
+        ],
+        "CQ10": [
+          {
+            "test": "ContractParty type Class",
+            "result": "Undefined",
+            "detail": "(undefined/wrong terms: ['ContractParty'])"
+          },
+          {
+            "test": "Right type Class",
+            "result": "Undefined",
+            "detail": "(undefined/wrong terms: ['Right'])"
+          },
+          {
+            "test": "Duty type Class",
+            "result": "Undefined",
+            "detail": "(undefined/wrong terms: ['Duty'])"
+          },
+          {
+            "test": "ContractParty hasRight Right",
+            "result": "Undefined",
+            "detail": "(undefined/wrong terms: ['ContractParty', 'hasRight', 'Right'])"
+          },
+          {
+            "test": "ContractParty hasDuty Duty",
+            "result": "Undefined",
+            "detail": "(undefined/wrong terms: ['ContractParty', 'hasDuty', 'Duty'])"
+          }
+        ],
+        "CQ13": [
+          {
+            "test": "Constraint type Class",
+            "result": "Undefined",
+            "detail": "(undefined/wrong terms: ['Constraint'])"
+          },
+          {
+            "test": "Constraint hasConstraint Constraint",
+            "result": "Undefined",
+            "detail": "(undefined/wrong terms: ['Constraint', 'hasConstraint', 'Constraint'])"
+          }
+        ],
+        "CQ14": [
+          {
+            "test": "Constraint type Class",
+            "result": "Undefined",
+            "detail": "(undefined/wrong terms: ['Constraint'])"
+          },
+          {
+            "test": "Operator type Class",
+            "result": "Undefined",
+            "detail": "(undefined/wrong terms: ['Operator'])"
+          },
+          {
+            "test": "AND type Operator",
+            "result": "Undefined",
+            "detail": "(undefined/wrong terms: ['AND', 'Operator'])"
+          },
+          {
+            "test": "Constraint hasOperator AND",
+            "result": "Undefined",
+            "detail": "(undefined/wrong terms: ['Constraint', 'hasOperator', 'AND'])"
+          },
+          {
+            "test": "Constraint hasOperator OR",
+            "result": "Undefined",
+            "detail": "(undefined/wrong terms: ['Constraint', 'hasOperator', 'OR'])"
+          }
+        ],
+        "CQ21": [
+          {
+            "test": "Requirement type Class",
+            "result": "Undefined",
+            "detail": "(undefined/wrong terms: ['Requirement'])"
+          },
+          {
+            "test": "Constraint type Class",
+            "result": "Undefined",
+            "detail": "(undefined/wrong terms: ['Constraint'])"
+          },
+          {
+            "test": "Requirement hasConstraint Constraint",
+            "result": "Undefined",
+            "detail": "(undefined/wrong terms: ['Requirement', 'hasConstraint', 'Constraint'])"
+          }
+        ],
+        "CQ24": [
+          {
+            "test": "Permission type Class",
+            "result": "Undefined",
+            "detail": "(undefined/wrong terms: ['Permission'])"
+          },
+          {
+            "test": "Permission isExclusive boolean",
+            "result": "Undefined",
+            "detail": "(undefined/wrong terms: ['Permission', 'isExclusive'])"
+          }
+        ],
+        "CQ26": [
+          {
+            "test": "Condition type Class",
+            "result": "Undefined",
+            "detail": "(undefined/wrong terms: ['Condition'])"
+          },
+          {
+            "test": "Constraint type Class",
+            "result": "Undefined",
+            "detail": "(undefined/wrong terms: ['Constraint'])"
+          },
+          {
+            "test": "Condition expressedVia Constraint",
+            "result": "Undefined",
+            "detail": "(undefined/wrong terms: ['Condition', 'expressedVia', 'Constraint'])"
+          }
+        ],
+        "CQ30": [
+          {
+            "test": "Container type Class",
+            "result": "Undefined",
+            "detail": "(undefined/wrong terms: ['Container'])"
+          }
+        ],
+        "CQ31": [
+          {
+            "test": "REL type Class",
+            "result": "Undefined",
+            "detail": "(undefined/wrong terms: ['REL'])"
+          },
+          {
+            "test": "Sequencing type Class",
+            "result": "Undefined",
+            "detail": "(undefined/wrong terms: ['Sequencing'])"
+          },
+          {
+            "test": "REL hasPart Sequencing",
+            "result": "Undefined",
+            "detail": "(undefined/wrong terms: ['REL', 'hasPart', 'Sequencing'])"
+          }
+        ],
+        "CQ33": [
+          {
+            "test": "DataModel type Class",
+            "result": "Undefined",
+            "detail": "(undefined/wrong terms: ['DataModel'])"
+          },
+          {
+            "test": "Inheritance type Class",
+            "result": "Undefined",
+            "detail": "(undefined/wrong terms: ['Inheritance'])"
+          },
+          {
+            "test": "DataModel canExpress Inheritance",
+            "result": "Undefined",
+            "detail": "(undefined/wrong terms: ['DataModel', 'canExpress', 'Inheritance'])"
+          }
+        ],
+        "New CQ1": [
+          {
+            "test": "Policy type Class",
+            "result": "Undefined",
+            "detail": "(undefined/wrong terms: ['Policy'])"
+          },
+          {
+            "test": "Asset type Class",
+            "result": "Undefined",
+            "detail": "(undefined/wrong terms: ['Asset'])"
+          },
+          {
+            "test": "Policy linkedTo Asset",
+            "result": "Undefined",
+            "detail": "(undefined/wrong terms: ['Policy', 'linkedTo', 'Asset'])"
+          }
+        ],
+        "New CQ2": [
+          {
+            "test": "Policy type Class",
+            "result": "Undefined",
+            "detail": "(undefined/wrong terms: ['Policy'])"
+          },
+          {
+            "test": "ConflictResolutionStrategy type Class",
+            "result": "Undefined",
+            "detail": "(undefined/wrong terms: ['ConflictResolutionStrategy'])"
+          },
+          {
+            "test": "Policy specifies ConflictResolutionStrategy",
+            "result": "Undefined",
+            "detail": "(undefined/wrong terms: ['Policy', 'specifies', 'ConflictResolutionStrategy'])"
+          }
+        ],
+        "New CQ3": [
+          {
+            "test": "Prohibition type Class",
+            "result": "Undefined",
+            "detail": "(undefined/wrong terms: ['Prohibition'])"
+          },
+          {
+            "test": "Duty type Class",
+            "result": "Undefined",
+            "detail": "(undefined/wrong terms: ['Duty'])"
+          },
+          {
+            "test": "Prohibition hasRemedyForViolation Duty",
+            "result": "Undefined",
+            "detail": "(undefined/wrong terms: ['Prohibition', 'hasRemedyForViolation', 'Duty'])"
+          }
+        ],
+        "New CQ4": [
+          {
+            "test": "Rule type Class",
+            "result": "Undefined",
+            "detail": "(undefined/wrong terms: ['Rule'])"
+          },
+          {
+            "test": "Rule activatedUponFailureOf Rule",
+            "result": "Undefined",
+            "detail": "(undefined/wrong terms: ['Rule', 'activatedUponFailureOf', 'Rule'])"
+          }
+        ],
+        "New CQ5": [
+          {
+            "test": "Duty type Class",
+            "result": "Undefined",
+            "detail": "(undefined/wrong terms: ['Duty'])"
+          },
+          {
+            "test": "Duty hasConsequence Duty",
+            "result": "Undefined",
+            "detail": "(undefined/wrong terms: ['Duty', 'hasConsequence', 'Duty'])"
+          }
+        ],
+        "New CQ6": [
+          {
+            "test": "Prohibition type Class",
+            "result": "Undefined",
+            "detail": "(undefined/wrong terms: ['Prohibition'])"
+          },
+          {
+            "test": "Constraint type Class",
+            "result": "Undefined",
+            "detail": "(undefined/wrong terms: ['Constraint'])"
+          },
+          {
+            "test": "Operator type Class",
+            "result": "Undefined",
+            "detail": "(undefined/wrong terms: ['Operator'])"
+          },
+          {
+            "test": "Prohibition hasConstraint Constraint",
+            "result": "Undefined",
+            "detail": "(undefined/wrong terms: ['Prohibition', 'hasConstraint', 'Constraint'])"
+          },
+          {
+            "test": "Constraint hasOperator Operator",
+            "result": "Undefined",
+            "detail": "(undefined/wrong terms: ['Constraint', 'hasOperator', 'Operator'])"
+          }
+        ]
+      }
+    },
+    {
+      "n": 5,
+      "round": 1,
+      "phase": "verify",
+      "seconds": 0.55,
+      "passed": false,
+      "covered": [],
+      "uncovered": [
+        "CQ03",
+        "CQ06",
+        "CQ08",
+        "CQ10",
+        "CQ13",
+        "CQ14",
+        "CQ21",
+        "CQ24",
+        "CQ26",
+        "CQ30",
+        "CQ31",
+        "CQ33",
+        "New CQ1",
+        "New CQ2",
+        "New CQ3",
+        "New CQ4",
+        "New CQ5",
+        "New CQ6"
+      ],
+      "results": {
+        "CQ03": [
+          {
+            "test": "Permission type Class",
+            "result": "Undefined",
+            "detail": "(undefined/wrong terms: ['Permission'])"
+          },
+          {
+            "test": "TransferRights type Class",
+            "result": "Undefined",
+            "detail": "(undefined/wrong terms: ['TransferRights'])"
+          },
+          {
+            "test": "Aggregation SubClassOf Permission",
+            "result": "Undefined",
+            "detail": "(undefined/wrong terms: ['Aggregation', 'Permission'])"
+          },
+          {
+            "test": "Disaggregation SubClassOf Permission",
+            "result": "Undefined",
+            "detail": "(undefined/wrong terms: ['Disaggregation', 'Permission'])"
+          },
+          {
+            "test": "Aggregation isOfType TransferRights",
+            "result": "Undefined",
+            "detail": "(undefined/wrong terms: ['Aggregation', 'isOfType', 'TransferRights'])"
+          }
+        ],
+        "CQ06": [
+          {
+            "test": "ContractParty type Class",
+            "result": "Undefined",
+            "detail": "(undefined/wrong terms: ['ContractParty'])"
+          },
+          {
+            "test": "Role type Class",
+            "result": "Undefined",
+            "detail": "(undefined/wrong terms: ['Role'])"
+          },
+          {
+            "test": "Permission type Class",
+            "result": "Undefined",
+            "detail": "(undefined/wrong terms: ['Permission'])"
+          },
+          {
+            "test": "Duty type Class",
+            "result": "Undefined",
+            "detail": "(undefined/wrong terms: ['Duty'])"
+          },
+          {
+            "test": "ContractParty hasRole Role",
+            "result": "Undefined",
+            "detail": "(undefined/wrong terms: ['ContractParty', 'hasRole', 'Role'])"
+          }
+        ],
+        "CQ08": [
+          {
+            "test": "Expression type Class",
+            "result": "Undefined",
+            "detail": "(undefined/wrong terms: ['Expression'])"
+          },
+          {
+            "test": "Constraint type Class",
+            "result": "Undefined",
+            "detail": "(undefined/wrong terms: ['Constraint'])"
+          },
+          {
+            "test": "NOT type Expression",
+            "result": "Undefined",
+            "detail": "(undefined/wrong terms: ['NOT', 'Expression'])"
+          },
+          {
+            "test": "Expression hasOperator NOT",
+            "result": "Undefined",
+            "detail": "(undefined/wrong terms: ['Expression', 'hasOperator', 'NOT'])"
+          }
+        ],
+        "CQ10": [
+          {
+            "test": "ContractParty type Class",
+            "result": "Undefined",
+            "detail": "(undefined/wrong terms: ['ContractParty'])"
+          },
+          {
+            "test": "Right type Class",
+            "result": "Undefined",
+            "detail": "(undefined/wrong terms: ['Right'])"
+          },
+          {
+            "test": "Duty type Class",
+            "result": "Undefined",
+            "detail": "(undefined/wrong terms: ['Duty'])"
+          },
+          {
+            "test": "ContractParty hasRight Right",
+            "result": "Undefined",
+            "detail": "(undefined/wrong terms: ['ContractParty', 'hasRight', 'Right'])"
+          },
+          {
+            "test": "ContractParty hasDuty Duty",
+            "result": "Undefined",
+            "detail": "(undefined/wrong terms: ['ContractParty', 'hasDuty', 'Duty'])"
+          }
+        ],
+        "CQ13": [
+          {
+            "test": "Constraint type Class",
+            "result": "Undefined",
+            "detail": "(undefined/wrong terms: ['Constraint'])"
+          },
+          {
+            "test": "Constraint hasConstraint Constraint",
+            "result": "Undefined",
+            "detail": "(undefined/wrong terms: ['Constraint', 'hasConstraint', 'Constraint'])"
+          }
+        ],
+        "CQ14": [
+          {
+            "test": "Constraint type Class",
+            "result": "Undefined",
+            "detail": "(undefined/wrong terms: ['Constraint'])"
+          },
+          {
+            "test": "Operator type Class",
+            "result": "Undefined",
+            "detail": "(undefined/wrong terms: ['Operator'])"
+          },
+          {
+            "test": "AND type Operator",
+            "result": "Undefined",
+            "detail": "(undefined/wrong terms: ['AND', 'Operator'])"
+          },
+          {
+            "test": "Constraint hasOperator AND",
+            "result": "Undefined",
+            "detail": "(undefined/wrong terms: ['Constraint', 'hasOperator', 'AND'])"
+          },
+          {
+            "test": "Constraint hasOperator OR",
+            "result": "Undefined",
+            "detail": "(undefined/wrong terms: ['Constraint', 'hasOperator', 'OR'])"
+          }
+        ],
+        "CQ21": [
+          {
+            "test": "Requirement type Class",
+            "result": "Undefined",
+            "detail": "(undefined/wrong terms: ['Requirement'])"
+          },
+          {
+            "test": "Constraint type Class",
+            "result": "Undefined",
+            "detail": "(undefined/wrong terms: ['Constraint'])"
+          },
+          {
+            "test": "Requirement hasConstraint Constraint",
+            "result": "Undefined",
+            "detail": "(undefined/wrong terms: ['Requirement', 'hasConstraint', 'Constraint'])"
+          }
+        ],
+        "CQ24": [
+          {
+            "test": "Permission type Class",
+            "result": "Undefined",
+            "detail": "(undefined/wrong terms: ['Permission'])"
+          },
+          {
+            "test": "Permission isExclusive boolean",
+            "result": "Undefined",
+            "detail": "(undefined/wrong terms: ['Permission', 'isExclusive'])"
+          }
+        ],
+        "CQ26": [
+          {
+            "test": "Condition type Class",
+            "result": "Undefined",
+            "detail": "(undefined/wrong terms: ['Condition'])"
+          },
+          {
+            "test": "Constraint type Class",
+            "result": "Undefined",
+            "detail": "(undefined/wrong terms: ['Constraint'])"
+          },
+          {
+            "test": "Condition expressedVia Constraint",
+            "result": "Undefined",
+            "detail": "(undefined/wrong terms: ['Condition', 'expressedVia', 'Constraint'])"
+          }
+        ],
+        "CQ30": [
+          {
+            "test": "Container type Class",
+            "result": "Undefined",
+            "detail": "(undefined/wrong terms: ['Container'])"
+          }
+        ],
+        "CQ31": [
+          {
+            "test": "REL type Class",
+            "result": "Undefined",
+            "detail": "(undefined/wrong terms: ['REL'])"
+          },
+          {
+            "test": "Sequencing type Class",
+            "result": "Undefined",
+            "detail": "(undefined/wrong terms: ['Sequencing'])"
+          },
+          {
+            "test": "REL hasPart Sequencing",
+            "result": "Undefined",
+            "detail": "(undefined/wrong terms: ['REL', 'hasPart', 'Sequencing'])"
+          }
+        ],
+        "CQ33": [
+          {
+            "test": "DataModel type Class",
+            "result": "Undefined",
+            "detail": "(undefined/wrong terms: ['DataModel'])"
+          },
+          {
+            "test": "Inheritance type Class",
+            "result": "Undefined",
+            "detail": "(undefined/wrong terms: ['Inheritance'])"
+          },
+          {
+            "test": "DataModel canExpress Inheritance",
+            "result": "Undefined",
+            "detail": "(undefined/wrong terms: ['DataModel', 'canExpress', 'Inheritance'])"
+          }
+        ],
+        "New CQ1": [
+          {
+            "test": "Policy type Class",
+            "result": "Undefined",
+            "detail": "(undefined/wrong terms: ['Policy'])"
+          },
+          {
+            "test": "Asset type Class",
+            "result": "Undefined",
+            "detail": "(undefined/wrong terms: ['Asset'])"
+          },
+          {
+            "test": "Policy linkedTo Asset",
+            "result": "Undefined",
+            "detail": "(undefined/wrong terms: ['Policy', 'linkedTo', 'Asset'])"
+          }
+        ],
+        "New CQ2": [
+          {
+            "test": "Policy type Class",
+            "result": "Undefined",
+            "detail": "(undefined/wrong terms: ['Policy'])"
+          },
+          {
+            "test": "ConflictResolutionStrategy type Class",
+            "result": "Undefined",
+            "detail": "(undefined/wrong terms: ['ConflictResolutionStrategy'])"
+          },
+          {
+            "test": "Policy specifies ConflictResolutionStrategy",
+            "result": "Undefined",
+            "detail": "(undefined/wrong terms: ['Policy', 'specifies', 'ConflictResolutionStrategy'])"
+          }
+        ],
+        "New CQ3": [
+          {
+            "test": "Prohibition type Class",
+            "result": "Undefined",
+            "detail": "(undefined/wrong terms: ['Prohibition'])"
+          },
+          {
+            "test": "Duty type Class",
+            "result": "Undefined",
+            "detail": "(undefined/wrong terms: ['Duty'])"
+          },
+          {
+            "test": "Prohibition hasRemedyForViolation Duty",
+            "result": "Undefined",
+            "detail": "(undefined/wrong terms: ['Prohibition', 'hasRemedyForViolation', 'Duty'])"
+          }
+        ],
+        "New CQ4": [
+          {
+            "test": "Rule type Class",
+            "result": "Undefined",
+            "detail": "(undefined/wrong terms: ['Rule'])"
+          },
+          {
+            "test": "Rule activatedUponFailureOf Rule",
+            "result": "Undefined",
+            "detail": "(undefined/wrong terms: ['Rule', 'activatedUponFailureOf', 'Rule'])"
+          }
+        ],
+        "New CQ5": [
+          {
+            "test": "Duty type Class",
+            "result": "Undefined",
+            "detail": "(undefined/wrong terms: ['Duty'])"
+          },
+          {
+            "test": "Duty hasConsequence Duty",
+            "result": "Undefined",
+            "detail": "(undefined/wrong terms: ['Duty', 'hasConsequence', 'Duty'])"
+          }
+        ],
+        "New CQ6": [
+          {
+            "test": "Prohibition type Class",
+            "result": "Undefined",
+            "detail": "(undefined/wrong terms: ['Prohibition'])"
+          },
+          {
+            "test": "Constraint type Class",
+            "result": "Undefined",
+            "detail": "(undefined/wrong terms: ['Constraint'])"
+          },
+          {
+            "test": "Operator type Class",
+            "result": "Undefined",
+            "detail": "(undefined/wrong terms: ['Operator'])"
+          },
+          {
+            "test": "Prohibition hasConstraint Constraint",
+            "result": "Undefined",
+            "detail": "(undefined/wrong terms: ['Prohibition', 'hasConstraint', 'Constraint'])"
+          },
+          {
+            "test": "Constraint hasOperator Operator",
+            "result": "Undefined",
+            "detail": "(undefined/wrong terms: ['Constraint', 'hasOperator', 'Operator'])"
+          }
+        ]
+      }
+    },
+    {
+      "n": 6,
+      "round": 2,
+      "phase": "themis",
+      "attempt": 1,
+      "seconds": 0.89,
+      "passed": false,
+      "covered": [
+        "CQ03",
+        "CQ06",
+        "CQ10",
+        "CQ13",
+        "CQ24",
+        "CQ26",
+        "CQ30",
+        "CQ31",
+        "CQ33",
+        "New CQ1",
+        "New CQ2",
+        "New CQ3",
+        "New CQ4",
+        "New CQ5",
+        "New CQ6"
+      ],
+      "uncovered": [
+        "CQ08",
+        "CQ14",
+        "CQ21"
+      ],
+      "results": {
+        "CQ03": [
+          {
+            "test": "Permission type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "TransferRights type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Aggregation SubClassOf Permission",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Disaggregation SubClassOf Permission",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Aggregation isOfType TransferRights",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ06": [
+          {
+            "test": "ContractParty type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Role type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Permission type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Duty type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "ContractParty hasRole Role",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ08": [
+          {
+            "test": "Expression type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Constraint type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "NOT type Expression",
+            "result": "Absent",
+            "detail": ""
+          },
+          {
+            "test": "Expression hasOperator NOT",
+            "result": "Incorrect",
+            "detail": "(undefined/wrong terms: ['NOT'])"
+          }
+        ],
+        "CQ10": [
+          {
+            "test": "ContractParty type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Right type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Duty type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "ContractParty hasRight Right",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "ContractParty hasDuty Duty",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ13": [
+          {
+            "test": "Constraint type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Constraint hasConstraint Constraint",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ14": [
+          {
+            "test": "Constraint type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Operator type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "AND type Operator",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Constraint hasOperator AND",
+            "result": "Incorrect",
+            "detail": "(undefined/wrong terms: ['AND'])"
+          },
+          {
+            "test": "Constraint hasOperator OR",
+            "result": "Incorrect",
+            "detail": "(undefined/wrong terms: ['OR'])"
+          }
+        ],
+        "CQ21": [
+          {
+            "test": "Requirement type Class",
+            "result": "Incorrect",
+            "detail": "(undefined/wrong terms: ['Requirement'])"
+          },
+          {
+            "test": "Constraint type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Requirement hasConstraint Constraint",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ24": [
+          {
+            "test": "Permission type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Permission isExclusive boolean",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ26": [
+          {
+            "test": "Condition type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Constraint type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Condition expressedVia Constraint",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ30": [
+          {
+            "test": "Container type Class",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ31": [
+          {
+            "test": "REL type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Sequencing type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "REL hasPart Sequencing",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ33": [
+          {
+            "test": "DataModel type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Inheritance type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "DataModel canExpress Inheritance",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "New CQ1": [
+          {
+            "test": "Policy type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Asset type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Policy linkedTo Asset",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "New CQ2": [
+          {
+            "test": "Policy type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "ConflictResolutionStrategy type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Policy specifies ConflictResolutionStrategy",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "New CQ3": [
+          {
+            "test": "Prohibition type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Duty type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Prohibition hasRemedyForViolation Duty",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "New CQ4": [
+          {
+            "test": "Rule type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Rule activatedUponFailureOf Rule",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "New CQ5": [
+          {
+            "test": "Duty type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Duty hasConsequence Duty",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "New CQ6": [
+          {
+            "test": "Prohibition type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Constraint type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Operator type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Prohibition hasConstraint Constraint",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Constraint hasOperator Operator",
+            "result": "Passed",
+            "detail": ""
+          }
+        ]
+      }
+    },
+    {
+      "n": 7,
+      "round": 2,
+      "phase": "themis",
+      "attempt": 2,
+      "seconds": 0.82,
+      "passed": false,
+      "covered": [
+        "CQ03",
+        "CQ06",
+        "CQ10",
+        "CQ13",
+        "CQ24",
+        "CQ26",
+        "CQ30",
+        "CQ31",
+        "CQ33",
+        "New CQ1",
+        "New CQ2",
+        "New CQ3",
+        "New CQ4",
+        "New CQ5",
+        "New CQ6"
+      ],
+      "uncovered": [
+        "CQ08",
+        "CQ14",
+        "CQ21"
+      ],
+      "results": {
+        "CQ03": [
+          {
+            "test": "Permission type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "TransferRights type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Aggregation SubClassOf Permission",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Disaggregation SubClassOf Permission",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Aggregation isOfType TransferRights",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ06": [
+          {
+            "test": "ContractParty type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Role type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Permission type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Duty type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "ContractParty hasRole Role",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ08": [
+          {
+            "test": "Expression type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Constraint type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "NOT type Expression",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Expression hasOperator NOT",
+            "result": "Incorrect",
+            "detail": "(undefined/wrong terms: ['NOT'])"
+          }
+        ],
+        "CQ10": [
+          {
+            "test": "ContractParty type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Right type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Duty type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "ContractParty hasRight Right",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "ContractParty hasDuty Duty",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ13": [
+          {
+            "test": "Constraint type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Constraint hasConstraint Constraint",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ14": [
+          {
+            "test": "Constraint type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Operator type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "AND type Operator",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Constraint hasOperator AND",
+            "result": "Incorrect",
+            "detail": "(undefined/wrong terms: ['AND'])"
+          },
+          {
+            "test": "Constraint hasOperator OR",
+            "result": "Incorrect",
+            "detail": "(undefined/wrong terms: ['OR'])"
+          }
+        ],
+        "CQ21": [
+          {
+            "test": "Requirement type Class",
+            "result": "Incorrect",
+            "detail": "(undefined/wrong terms: ['Requirement'])"
+          },
+          {
+            "test": "Constraint type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Requirement hasConstraint Constraint",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ24": [
+          {
+            "test": "Permission type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Permission isExclusive boolean",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ26": [
+          {
+            "test": "Condition type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Constraint type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Condition expressedVia Constraint",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ30": [
+          {
+            "test": "Container type Class",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ31": [
+          {
+            "test": "REL type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Sequencing type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "REL hasPart Sequencing",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ33": [
+          {
+            "test": "DataModel type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Inheritance type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "DataModel canExpress Inheritance",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "New CQ1": [
+          {
+            "test": "Policy type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Asset type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Policy linkedTo Asset",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "New CQ2": [
+          {
+            "test": "Policy type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "ConflictResolutionStrategy type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Policy specifies ConflictResolutionStrategy",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "New CQ3": [
+          {
+            "test": "Prohibition type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Duty type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Prohibition hasRemedyForViolation Duty",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "New CQ4": [
+          {
+            "test": "Rule type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Rule activatedUponFailureOf Rule",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "New CQ5": [
+          {
+            "test": "Duty type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Duty hasConsequence Duty",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "New CQ6": [
+          {
+            "test": "Prohibition type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Constraint type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Operator type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Prohibition hasConstraint Constraint",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Constraint hasOperator Operator",
+            "result": "Passed",
+            "detail": ""
+          }
+        ]
+      }
+    },
+    {
+      "n": 8,
+      "round": 2,
+      "phase": "themis",
+      "attempt": 3,
+      "seconds": 0.81,
+      "passed": false,
+      "covered": [
+        "CQ03",
+        "CQ06",
+        "CQ10",
+        "CQ13",
+        "CQ24",
+        "CQ26",
+        "CQ30",
+        "CQ31",
+        "CQ33",
+        "New CQ1",
+        "New CQ2",
+        "New CQ3",
+        "New CQ4",
+        "New CQ5",
+        "New CQ6"
+      ],
+      "uncovered": [
+        "CQ08",
+        "CQ14",
+        "CQ21"
+      ],
+      "results": {
+        "CQ03": [
+          {
+            "test": "Permission type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "TransferRights type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Aggregation SubClassOf Permission",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Disaggregation SubClassOf Permission",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Aggregation isOfType TransferRights",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ06": [
+          {
+            "test": "ContractParty type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Role type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Permission type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Duty type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "ContractParty hasRole Role",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ08": [
+          {
+            "test": "Expression type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Constraint type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "NOT type Expression",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Expression hasOperator NOT",
+            "result": "Incorrect",
+            "detail": "(undefined/wrong terms: ['NOT'])"
+          }
+        ],
+        "CQ10": [
+          {
+            "test": "ContractParty type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Right type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Duty type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "ContractParty hasRight Right",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "ContractParty hasDuty Duty",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ13": [
+          {
+            "test": "Constraint type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Constraint hasConstraint Constraint",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ14": [
+          {
+            "test": "Constraint type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Operator type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "AND type Operator",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Constraint hasOperator AND",
+            "result": "Incorrect",
+            "detail": "(undefined/wrong terms: ['AND'])"
+          },
+          {
+            "test": "Constraint hasOperator OR",
+            "result": "Incorrect",
+            "detail": "(undefined/wrong terms: ['OR'])"
+          }
+        ],
+        "CQ21": [
+          {
+            "test": "Requirement type Class",
+            "result": "Incorrect",
+            "detail": "(undefined/wrong terms: ['Requirement'])"
+          },
+          {
+            "test": "Constraint type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Requirement hasConstraint Constraint",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ24": [
+          {
+            "test": "Permission type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Permission isExclusive boolean",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ26": [
+          {
+            "test": "Condition type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Constraint type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Condition expressedVia Constraint",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ30": [
+          {
+            "test": "Container type Class",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ31": [
+          {
+            "test": "REL type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Sequencing type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "REL hasPart Sequencing",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ33": [
+          {
+            "test": "DataModel type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Inheritance type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "DataModel canExpress Inheritance",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "New CQ1": [
+          {
+            "test": "Policy type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Asset type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Policy linkedTo Asset",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "New CQ2": [
+          {
+            "test": "Policy type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "ConflictResolutionStrategy type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Policy specifies ConflictResolutionStrategy",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "New CQ3": [
+          {
+            "test": "Prohibition type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Duty type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Prohibition hasRemedyForViolation Duty",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "New CQ4": [
+          {
+            "test": "Rule type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Rule activatedUponFailureOf Rule",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "New CQ5": [
+          {
+            "test": "Duty type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Duty hasConsequence Duty",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "New CQ6": [
+          {
+            "test": "Prohibition type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Constraint type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Operator type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Prohibition hasConstraint Constraint",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Constraint hasOperator Operator",
+            "result": "Passed",
+            "detail": ""
+          }
+        ]
+      }
+    },
+    {
+      "n": 9,
+      "round": 2,
+      "phase": "themis",
+      "attempt": 4,
+      "seconds": 0.75,
+      "passed": false,
+      "covered": [
+        "CQ03",
+        "CQ06",
+        "CQ10",
+        "CQ13",
+        "CQ24",
+        "CQ26",
+        "CQ30",
+        "CQ31",
+        "CQ33",
+        "New CQ1",
+        "New CQ2",
+        "New CQ3",
+        "New CQ4",
+        "New CQ5",
+        "New CQ6"
+      ],
+      "uncovered": [
+        "CQ08",
+        "CQ14",
+        "CQ21"
+      ],
+      "results": {
+        "CQ03": [
+          {
+            "test": "Permission type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "TransferRights type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Aggregation SubClassOf Permission",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Disaggregation SubClassOf Permission",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Aggregation isOfType TransferRights",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ06": [
+          {
+            "test": "ContractParty type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Role type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Permission type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Duty type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "ContractParty hasRole Role",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ08": [
+          {
+            "test": "Expression type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Constraint type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "NOT type Expression",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Expression hasOperator NOT",
+            "result": "Incorrect",
+            "detail": "(undefined/wrong terms: ['NOT'])"
+          }
+        ],
+        "CQ10": [
+          {
+            "test": "ContractParty type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Right type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Duty type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "ContractParty hasRight Right",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "ContractParty hasDuty Duty",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ13": [
+          {
+            "test": "Constraint type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Constraint hasConstraint Constraint",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ14": [
+          {
+            "test": "Constraint type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Operator type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "AND type Operator",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Constraint hasOperator AND",
+            "result": "Incorrect",
+            "detail": "(undefined/wrong terms: ['AND'])"
+          },
+          {
+            "test": "Constraint hasOperator OR",
+            "result": "Incorrect",
+            "detail": "(undefined/wrong terms: ['OR'])"
+          }
+        ],
+        "CQ21": [
+          {
+            "test": "Requirement type Class",
+            "result": "Incorrect",
+            "detail": "(undefined/wrong terms: ['Requirement'])"
+          },
+          {
+            "test": "Constraint type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Requirement hasConstraint Constraint",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ24": [
+          {
+            "test": "Permission type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Permission isExclusive boolean",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ26": [
+          {
+            "test": "Condition type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Constraint type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Condition expressedVia Constraint",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ30": [
+          {
+            "test": "Container type Class",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ31": [
+          {
+            "test": "REL type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Sequencing type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "REL hasPart Sequencing",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ33": [
+          {
+            "test": "DataModel type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Inheritance type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "DataModel canExpress Inheritance",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "New CQ1": [
+          {
+            "test": "Policy type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Asset type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Policy linkedTo Asset",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "New CQ2": [
+          {
+            "test": "Policy type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "ConflictResolutionStrategy type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Policy specifies ConflictResolutionStrategy",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "New CQ3": [
+          {
+            "test": "Prohibition type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Duty type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Prohibition hasRemedyForViolation Duty",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "New CQ4": [
+          {
+            "test": "Rule type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Rule activatedUponFailureOf Rule",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "New CQ5": [
+          {
+            "test": "Duty type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Duty hasConsequence Duty",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "New CQ6": [
+          {
+            "test": "Prohibition type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Constraint type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Operator type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Prohibition hasConstraint Constraint",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Constraint hasOperator Operator",
+            "result": "Passed",
+            "detail": ""
+          }
+        ]
+      }
+    },
+    {
+      "n": 10,
+      "round": 2,
+      "phase": "verify",
+      "seconds": 0.79,
+      "passed": false,
+      "covered": [
+        "CQ03",
+        "CQ06",
+        "CQ10",
+        "CQ13",
+        "CQ24",
+        "CQ26",
+        "CQ30",
+        "CQ31",
+        "CQ33",
+        "New CQ1",
+        "New CQ2",
+        "New CQ3",
+        "New CQ4",
+        "New CQ5",
+        "New CQ6"
+      ],
+      "uncovered": [
+        "CQ08",
+        "CQ14",
+        "CQ21"
+      ],
+      "results": {
+        "CQ03": [
+          {
+            "test": "Permission type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "TransferRights type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Aggregation SubClassOf Permission",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Disaggregation SubClassOf Permission",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Aggregation isOfType TransferRights",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ06": [
+          {
+            "test": "ContractParty type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Role type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Permission type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Duty type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "ContractParty hasRole Role",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ08": [
+          {
+            "test": "Expression type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Constraint type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "NOT type Expression",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Expression hasOperator NOT",
+            "result": "Incorrect",
+            "detail": "(undefined/wrong terms: ['NOT'])"
+          }
+        ],
+        "CQ10": [
+          {
+            "test": "ContractParty type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Right type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Duty type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "ContractParty hasRight Right",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "ContractParty hasDuty Duty",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ13": [
+          {
+            "test": "Constraint type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Constraint hasConstraint Constraint",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ14": [
+          {
+            "test": "Constraint type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Operator type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "AND type Operator",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Constraint hasOperator AND",
+            "result": "Incorrect",
+            "detail": "(undefined/wrong terms: ['AND'])"
+          },
+          {
+            "test": "Constraint hasOperator OR",
+            "result": "Incorrect",
+            "detail": "(undefined/wrong terms: ['OR'])"
+          }
+        ],
+        "CQ21": [
+          {
+            "test": "Requirement type Class",
+            "result": "Incorrect",
+            "detail": "(undefined/wrong terms: ['Requirement'])"
+          },
+          {
+            "test": "Constraint type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Requirement hasConstraint Constraint",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ24": [
+          {
+            "test": "Permission type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Permission isExclusive boolean",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ26": [
+          {
+            "test": "Condition type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Constraint type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Condition expressedVia Constraint",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ30": [
+          {
+            "test": "Container type Class",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ31": [
+          {
+            "test": "REL type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Sequencing type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "REL hasPart Sequencing",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ33": [
+          {
+            "test": "DataModel type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Inheritance type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "DataModel canExpress Inheritance",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "New CQ1": [
+          {
+            "test": "Policy type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Asset type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Policy linkedTo Asset",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "New CQ2": [
+          {
+            "test": "Policy type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "ConflictResolutionStrategy type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Policy specifies ConflictResolutionStrategy",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "New CQ3": [
+          {
+            "test": "Prohibition type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Duty type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Prohibition hasRemedyForViolation Duty",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "New CQ4": [
+          {
+            "test": "Rule type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Rule activatedUponFailureOf Rule",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "New CQ5": [
+          {
+            "test": "Duty type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Duty hasConsequence Duty",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "New CQ6": [
+          {
+            "test": "Prohibition type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Constraint type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Operator type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Prohibition hasConstraint Constraint",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Constraint hasOperator Operator",
+            "result": "Passed",
+            "detail": ""
+          }
+        ]
+      }
+    },
+    {
+      "n": 11,
+      "round": 3,
+      "phase": "themis",
+      "attempt": 1,
+      "seconds": 0.71,
+      "passed": false,
+      "covered": [
+        "CQ03",
+        "CQ06",
+        "CQ10",
+        "CQ13",
+        "CQ24",
+        "CQ26",
+        "CQ30",
+        "CQ31",
+        "CQ33",
+        "New CQ1",
+        "New CQ2",
+        "New CQ3",
+        "New CQ4",
+        "New CQ5",
+        "New CQ6"
+      ],
+      "uncovered": [
+        "CQ08",
+        "CQ14",
+        "CQ21"
+      ],
+      "results": {
+        "CQ03": [
+          {
+            "test": "Permission type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "TransferRights type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Aggregation SubClassOf Permission",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Disaggregation SubClassOf Permission",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Aggregation isOfType TransferRights",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ06": [
+          {
+            "test": "ContractParty type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Role type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Permission type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Duty type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "ContractParty hasRole Role",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ08": [
+          {
+            "test": "Expression type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Constraint type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "NOT type Expression",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Expression hasOperator NOT",
+            "result": "Incorrect",
+            "detail": "(undefined/wrong terms: ['NOT'])"
+          }
+        ],
+        "CQ10": [
+          {
+            "test": "ContractParty type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Right type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Duty type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "ContractParty hasRight Right",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "ContractParty hasDuty Duty",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ13": [
+          {
+            "test": "Constraint type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Constraint hasConstraint Constraint",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ14": [
+          {
+            "test": "Constraint type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Operator type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "AND type Operator",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Constraint hasOperator AND",
+            "result": "Incorrect",
+            "detail": "(undefined/wrong terms: ['AND'])"
+          },
+          {
+            "test": "Constraint hasOperator OR",
+            "result": "Incorrect",
+            "detail": "(undefined/wrong terms: ['OR'])"
+          }
+        ],
+        "CQ21": [
+          {
+            "test": "Requirement type Class",
+            "result": "Incorrect",
+            "detail": "(undefined/wrong terms: ['Requirement'])"
+          },
+          {
+            "test": "Constraint type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Requirement hasConstraint Constraint",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ24": [
+          {
+            "test": "Permission type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Permission isExclusive boolean",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ26": [
+          {
+            "test": "Condition type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Constraint type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Condition expressedVia Constraint",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ30": [
+          {
+            "test": "Container type Class",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ31": [
+          {
+            "test": "REL type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Sequencing type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "REL hasPart Sequencing",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ33": [
+          {
+            "test": "DataModel type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Inheritance type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "DataModel canExpress Inheritance",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "New CQ1": [
+          {
+            "test": "Policy type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Asset type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Policy linkedTo Asset",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "New CQ2": [
+          {
+            "test": "Policy type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "ConflictResolutionStrategy type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Policy specifies ConflictResolutionStrategy",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "New CQ3": [
+          {
+            "test": "Prohibition type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Duty type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Prohibition hasRemedyForViolation Duty",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "New CQ4": [
+          {
+            "test": "Rule type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Rule activatedUponFailureOf Rule",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "New CQ5": [
+          {
+            "test": "Duty type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Duty hasConsequence Duty",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "New CQ6": [
+          {
+            "test": "Prohibition type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Constraint type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Operator type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Prohibition hasConstraint Constraint",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Constraint hasOperator Operator",
+            "result": "Passed",
+            "detail": ""
+          }
+        ]
+      }
+    },
+    {
+      "n": 12,
+      "round": 3,
+      "phase": "themis",
+      "attempt": 2,
+      "seconds": 0.73,
+      "passed": false,
+      "covered": [
+        "CQ03",
+        "CQ06",
+        "CQ10",
+        "CQ13",
+        "CQ24",
+        "CQ26",
+        "CQ30",
+        "CQ31",
+        "CQ33",
+        "New CQ1",
+        "New CQ2",
+        "New CQ3",
+        "New CQ4",
+        "New CQ5",
+        "New CQ6"
+      ],
+      "uncovered": [
+        "CQ08",
+        "CQ14",
+        "CQ21"
+      ],
+      "results": {
+        "CQ03": [
+          {
+            "test": "Permission type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "TransferRights type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Aggregation SubClassOf Permission",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Disaggregation SubClassOf Permission",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Aggregation isOfType TransferRights",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ06": [
+          {
+            "test": "ContractParty type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Role type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Permission type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Duty type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "ContractParty hasRole Role",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ08": [
+          {
+            "test": "Expression type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Constraint type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "NOT type Expression",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Expression hasOperator NOT",
+            "result": "Incorrect",
+            "detail": "(undefined/wrong terms: ['NOT'])"
+          }
+        ],
+        "CQ10": [
+          {
+            "test": "ContractParty type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Right type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Duty type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "ContractParty hasRight Right",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "ContractParty hasDuty Duty",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ13": [
+          {
+            "test": "Constraint type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Constraint hasConstraint Constraint",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ14": [
+          {
+            "test": "Constraint type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Operator type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "AND type Operator",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Constraint hasOperator AND",
+            "result": "Incorrect",
+            "detail": "(undefined/wrong terms: ['AND'])"
+          },
+          {
+            "test": "Constraint hasOperator OR",
+            "result": "Incorrect",
+            "detail": "(undefined/wrong terms: ['OR'])"
+          }
+        ],
+        "CQ21": [
+          {
+            "test": "Requirement type Class",
+            "result": "Incorrect",
+            "detail": "(undefined/wrong terms: ['Requirement'])"
+          },
+          {
+            "test": "Constraint type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Requirement hasConstraint Constraint",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ24": [
+          {
+            "test": "Permission type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Permission isExclusive boolean",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ26": [
+          {
+            "test": "Condition type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Constraint type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Condition expressedVia Constraint",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ30": [
+          {
+            "test": "Container type Class",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ31": [
+          {
+            "test": "REL type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Sequencing type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "REL hasPart Sequencing",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ33": [
+          {
+            "test": "DataModel type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Inheritance type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "DataModel canExpress Inheritance",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "New CQ1": [
+          {
+            "test": "Policy type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Asset type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Policy linkedTo Asset",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "New CQ2": [
+          {
+            "test": "Policy type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "ConflictResolutionStrategy type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Policy specifies ConflictResolutionStrategy",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "New CQ3": [
+          {
+            "test": "Prohibition type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Duty type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Prohibition hasRemedyForViolation Duty",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "New CQ4": [
+          {
+            "test": "Rule type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Rule activatedUponFailureOf Rule",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "New CQ5": [
+          {
+            "test": "Duty type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Duty hasConsequence Duty",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "New CQ6": [
+          {
+            "test": "Prohibition type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Constraint type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Operator type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Prohibition hasConstraint Constraint",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Constraint hasOperator Operator",
+            "result": "Passed",
+            "detail": ""
+          }
+        ]
+      }
+    },
+    {
+      "n": 13,
+      "round": 3,
+      "phase": "themis",
+      "attempt": 3,
+      "seconds": 0.82,
+      "passed": false,
+      "covered": [
+        "CQ03",
+        "CQ06",
+        "CQ10",
+        "CQ13",
+        "CQ24",
+        "CQ26",
+        "CQ30",
+        "CQ31",
+        "CQ33",
+        "New CQ1",
+        "New CQ2",
+        "New CQ3",
+        "New CQ4",
+        "New CQ5",
+        "New CQ6"
+      ],
+      "uncovered": [
+        "CQ08",
+        "CQ14",
+        "CQ21"
+      ],
+      "results": {
+        "CQ03": [
+          {
+            "test": "Permission type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "TransferRights type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Aggregation SubClassOf Permission",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Disaggregation SubClassOf Permission",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Aggregation isOfType TransferRights",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ06": [
+          {
+            "test": "ContractParty type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Role type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Permission type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Duty type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "ContractParty hasRole Role",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ08": [
+          {
+            "test": "Expression type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Constraint type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "NOT type Expression",
+            "result": "Absent",
+            "detail": ""
+          },
+          {
+            "test": "Expression hasOperator NOT",
+            "result": "Incorrect",
+            "detail": "(undefined/wrong terms: ['NOT'])"
+          }
+        ],
+        "CQ10": [
+          {
+            "test": "ContractParty type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Right type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Duty type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "ContractParty hasRight Right",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "ContractParty hasDuty Duty",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ13": [
+          {
+            "test": "Constraint type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Constraint hasConstraint Constraint",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ14": [
+          {
+            "test": "Constraint type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Operator type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "AND type Operator",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Constraint hasOperator AND",
+            "result": "Incorrect",
+            "detail": "(undefined/wrong terms: ['AND'])"
+          },
+          {
+            "test": "Constraint hasOperator OR",
+            "result": "Incorrect",
+            "detail": "(undefined/wrong terms: ['OR'])"
+          }
+        ],
+        "CQ21": [
+          {
+            "test": "Requirement type Class",
+            "result": "Incorrect",
+            "detail": "(undefined/wrong terms: ['Requirement'])"
+          },
+          {
+            "test": "Constraint type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Requirement hasConstraint Constraint",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ24": [
+          {
+            "test": "Permission type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Permission isExclusive boolean",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ26": [
+          {
+            "test": "Condition type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Constraint type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Condition expressedVia Constraint",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ30": [
+          {
+            "test": "Container type Class",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ31": [
+          {
+            "test": "REL type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Sequencing type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "REL hasPart Sequencing",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ33": [
+          {
+            "test": "DataModel type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Inheritance type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "DataModel canExpress Inheritance",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "New CQ1": [
+          {
+            "test": "Policy type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Asset type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Policy linkedTo Asset",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "New CQ2": [
+          {
+            "test": "Policy type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "ConflictResolutionStrategy type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Policy specifies ConflictResolutionStrategy",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "New CQ3": [
+          {
+            "test": "Prohibition type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Duty type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Prohibition hasRemedyForViolation Duty",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "New CQ4": [
+          {
+            "test": "Rule type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Rule activatedUponFailureOf Rule",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "New CQ5": [
+          {
+            "test": "Duty type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Duty hasConsequence Duty",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "New CQ6": [
+          {
+            "test": "Prohibition type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Constraint type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Operator type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Prohibition hasConstraint Constraint",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Constraint hasOperator Operator",
+            "result": "Passed",
+            "detail": ""
+          }
+        ]
+      }
+    },
+    {
+      "n": 14,
+      "round": 3,
+      "phase": "themis",
+      "attempt": 4,
+      "seconds": 0.78,
+      "passed": false,
+      "covered": [
+        "CQ03",
+        "CQ06",
+        "CQ10",
+        "CQ13",
+        "CQ24",
+        "CQ26",
+        "CQ30",
+        "CQ31",
+        "CQ33",
+        "New CQ1",
+        "New CQ2",
+        "New CQ3",
+        "New CQ4",
+        "New CQ5",
+        "New CQ6"
+      ],
+      "uncovered": [
+        "CQ08",
+        "CQ14",
+        "CQ21"
+      ],
+      "results": {
+        "CQ03": [
+          {
+            "test": "Permission type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "TransferRights type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Aggregation SubClassOf Permission",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Disaggregation SubClassOf Permission",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Aggregation isOfType TransferRights",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ06": [
+          {
+            "test": "ContractParty type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Role type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Permission type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Duty type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "ContractParty hasRole Role",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ08": [
+          {
+            "test": "Expression type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Constraint type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "NOT type Expression",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Expression hasOperator NOT",
+            "result": "Incorrect",
+            "detail": "(undefined/wrong terms: ['NOT'])"
+          }
+        ],
+        "CQ10": [
+          {
+            "test": "ContractParty type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Right type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Duty type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "ContractParty hasRight Right",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "ContractParty hasDuty Duty",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ13": [
+          {
+            "test": "Constraint type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Constraint hasConstraint Constraint",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ14": [
+          {
+            "test": "Constraint type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Operator type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "AND type Operator",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Constraint hasOperator AND",
+            "result": "Incorrect",
+            "detail": "(undefined/wrong terms: ['AND'])"
+          },
+          {
+            "test": "Constraint hasOperator OR",
+            "result": "Incorrect",
+            "detail": "(undefined/wrong terms: ['OR'])"
+          }
+        ],
+        "CQ21": [
+          {
+            "test": "Requirement type Class",
+            "result": "Incorrect",
+            "detail": "(undefined/wrong terms: ['Requirement'])"
+          },
+          {
+            "test": "Constraint type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Requirement hasConstraint Constraint",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ24": [
+          {
+            "test": "Permission type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Permission isExclusive boolean",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ26": [
+          {
+            "test": "Condition type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Constraint type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Condition expressedVia Constraint",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ30": [
+          {
+            "test": "Container type Class",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ31": [
+          {
+            "test": "REL type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Sequencing type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "REL hasPart Sequencing",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ33": [
+          {
+            "test": "DataModel type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Inheritance type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "DataModel canExpress Inheritance",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "New CQ1": [
+          {
+            "test": "Policy type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Asset type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Policy linkedTo Asset",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "New CQ2": [
+          {
+            "test": "Policy type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "ConflictResolutionStrategy type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Policy specifies ConflictResolutionStrategy",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "New CQ3": [
+          {
+            "test": "Prohibition type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Duty type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Prohibition hasRemedyForViolation Duty",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "New CQ4": [
+          {
+            "test": "Rule type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Rule activatedUponFailureOf Rule",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "New CQ5": [
+          {
+            "test": "Duty type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Duty hasConsequence Duty",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "New CQ6": [
+          {
+            "test": "Prohibition type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Constraint type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Operator type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Prohibition hasConstraint Constraint",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Constraint hasOperator Operator",
+            "result": "Passed",
+            "detail": ""
+          }
+        ]
+      }
+    },
+    {
+      "n": 15,
+      "round": 3,
+      "phase": "verify",
+      "seconds": 0.77,
+      "passed": false,
+      "covered": [
+        "CQ03",
+        "CQ06",
+        "CQ10",
+        "CQ13",
+        "CQ24",
+        "CQ26",
+        "CQ30",
+        "CQ31",
+        "CQ33",
+        "New CQ1",
+        "New CQ2",
+        "New CQ3",
+        "New CQ4",
+        "New CQ5",
+        "New CQ6"
+      ],
+      "uncovered": [
+        "CQ08",
+        "CQ14",
+        "CQ21"
+      ],
+      "results": {
+        "CQ03": [
+          {
+            "test": "Permission type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "TransferRights type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Aggregation SubClassOf Permission",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Disaggregation SubClassOf Permission",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Aggregation isOfType TransferRights",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ06": [
+          {
+            "test": "ContractParty type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Role type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Permission type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Duty type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "ContractParty hasRole Role",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ08": [
+          {
+            "test": "Expression type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Constraint type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "NOT type Expression",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Expression hasOperator NOT",
+            "result": "Incorrect",
+            "detail": "(undefined/wrong terms: ['NOT'])"
+          }
+        ],
+        "CQ10": [
+          {
+            "test": "ContractParty type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Right type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Duty type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "ContractParty hasRight Right",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "ContractParty hasDuty Duty",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ13": [
+          {
+            "test": "Constraint type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Constraint hasConstraint Constraint",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ14": [
+          {
+            "test": "Constraint type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Operator type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "AND type Operator",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Constraint hasOperator AND",
+            "result": "Incorrect",
+            "detail": "(undefined/wrong terms: ['AND'])"
+          },
+          {
+            "test": "Constraint hasOperator OR",
+            "result": "Incorrect",
+            "detail": "(undefined/wrong terms: ['OR'])"
+          }
+        ],
+        "CQ21": [
+          {
+            "test": "Requirement type Class",
+            "result": "Incorrect",
+            "detail": "(undefined/wrong terms: ['Requirement'])"
+          },
+          {
+            "test": "Constraint type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Requirement hasConstraint Constraint",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ24": [
+          {
+            "test": "Permission type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Permission isExclusive boolean",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ26": [
+          {
+            "test": "Condition type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Constraint type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Condition expressedVia Constraint",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ30": [
+          {
+            "test": "Container type Class",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ31": [
+          {
+            "test": "REL type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Sequencing type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "REL hasPart Sequencing",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ33": [
+          {
+            "test": "DataModel type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Inheritance type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "DataModel canExpress Inheritance",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "New CQ1": [
+          {
+            "test": "Policy type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Asset type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Policy linkedTo Asset",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "New CQ2": [
+          {
+            "test": "Policy type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "ConflictResolutionStrategy type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Policy specifies ConflictResolutionStrategy",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "New CQ3": [
+          {
+            "test": "Prohibition type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Duty type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Prohibition hasRemedyForViolation Duty",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "New CQ4": [
+          {
+            "test": "Rule type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Rule activatedUponFailureOf Rule",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "New CQ5": [
+          {
+            "test": "Duty type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Duty hasConsequence Duty",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "New CQ6": [
+          {
+            "test": "Prohibition type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Constraint type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Operator type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Prohibition hasConstraint Constraint",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Constraint hasOperator Operator",
+            "result": "Passed",
+            "detail": ""
+          }
+        ]
+      }
+    }
+  ],
+  "test_history": {
+    "Permission type Class": [
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Undefined",
+      "Undefined",
+      "Undefined",
+      "Undefined",
+      "Undefined",
+      "Undefined",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed"
+    ],
+    "TransferRights type Class": [
+      "Passed",
+      "Passed",
+      "Passed",
+      "Undefined",
+      "Undefined",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed"
+    ],
+    "Aggregation SubClassOf Permission": [
+      "Passed",
+      "Passed",
+      "Passed",
+      "Undefined",
+      "Undefined",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed"
+    ],
+    "Disaggregation SubClassOf Permission": [
+      "Passed",
+      "Passed",
+      "Passed",
+      "Undefined",
+      "Undefined",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed"
+    ],
+    "Aggregation isOfType TransferRights": [
+      "Passed",
+      "Passed",
+      "Passed",
+      "Undefined",
+      "Undefined",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed"
+    ],
+    "ContractParty type Class": [
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Undefined",
+      "Undefined",
+      "Undefined",
+      "Undefined",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed"
+    ],
+    "Role type Class": [
+      "Passed",
+      "Passed",
+      "Passed",
+      "Undefined",
+      "Undefined",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed"
+    ],
+    "Duty type Class": [
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Undefined",
+      "Undefined",
+      "Undefined",
+      "Undefined",
+      "Undefined",
+      "Undefined",
+      "Undefined",
+      "Undefined",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed"
+    ],
+    "ContractParty hasRole Role": [
+      "Passed",
+      "Passed",
+      "Passed",
+      "Undefined",
+      "Undefined",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed"
+    ],
+    "Expression type Class": [
+      "Passed",
+      "Passed",
+      "Passed",
+      "Undefined",
+      "Undefined",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed"
+    ],
+    "Constraint type Class": [
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Undefined",
+      "Undefined",
+      "Undefined",
+      "Undefined",
+      "Undefined",
+      "Undefined",
+      "Undefined",
+      "Undefined",
+      "Undefined",
+      "Undefined",
+      "Undefined",
+      "Undefined",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed"
+    ],
+    "NOT type Expression": [
+      "Passed",
+      "Absent",
+      "Passed",
+      "Undefined",
+      "Undefined",
+      "Absent",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Absent",
+      "Passed",
+      "Passed"
+    ],
+    "Expression hasOperator NOT": [
+      "Incorrect",
+      "Incorrect",
+      "Incorrect",
+      "Undefined",
+      "Undefined",
+      "Incorrect",
+      "Incorrect",
+      "Incorrect",
+      "Incorrect",
+      "Incorrect",
+      "Incorrect",
+      "Incorrect",
+      "Incorrect",
+      "Incorrect",
+      "Incorrect"
+    ],
+    "Right type Class": [
+      "Passed",
+      "Passed",
+      "Passed",
+      "Undefined",
+      "Undefined",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed"
+    ],
+    "ContractParty hasRight Right": [
+      "Passed",
+      "Passed",
+      "Passed",
+      "Undefined",
+      "Undefined",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed"
+    ],
+    "ContractParty hasDuty Duty": [
+      "Passed",
+      "Passed",
+      "Passed",
+      "Undefined",
+      "Undefined",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed"
+    ],
+    "Constraint hasConstraint Constraint": [
+      "Passed",
+      "Passed",
+      "Passed",
+      "Undefined",
+      "Undefined",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed"
+    ],
+    "Operator type Class": [
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Undefined",
+      "Undefined",
+      "Undefined",
+      "Undefined",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed"
+    ],
+    "AND type Operator": [
+      "Passed",
+      "Passed",
+      "Passed",
+      "Undefined",
+      "Undefined",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed"
+    ],
+    "Constraint hasOperator AND": [
+      "Incorrect",
+      "Incorrect",
+      "Incorrect",
+      "Undefined",
+      "Undefined",
+      "Incorrect",
+      "Incorrect",
+      "Incorrect",
+      "Incorrect",
+      "Incorrect",
+      "Incorrect",
+      "Incorrect",
+      "Incorrect",
+      "Incorrect",
+      "Incorrect"
+    ],
+    "Constraint hasOperator OR": [
+      "Incorrect",
+      "Incorrect",
+      "Incorrect",
+      "Undefined",
+      "Undefined",
+      "Incorrect",
+      "Incorrect",
+      "Incorrect",
+      "Incorrect",
+      "Incorrect",
+      "Incorrect",
+      "Incorrect",
+      "Incorrect",
+      "Incorrect",
+      "Incorrect"
+    ],
+    "Requirement type Class": [
+      "Incorrect",
+      "Incorrect",
+      "Incorrect",
+      "Undefined",
+      "Undefined",
+      "Incorrect",
+      "Incorrect",
+      "Incorrect",
+      "Incorrect",
+      "Incorrect",
+      "Incorrect",
+      "Incorrect",
+      "Incorrect",
+      "Incorrect",
+      "Incorrect"
+    ],
+    "Requirement hasConstraint Constraint": [
+      "Passed",
+      "Passed",
+      "Passed",
+      "Undefined",
+      "Undefined",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed"
+    ],
+    "Permission isExclusive boolean": [
+      "Passed",
+      "Passed",
+      "Passed",
+      "Undefined",
+      "Undefined",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed"
+    ],
+    "Condition type Class": [
+      "Passed",
+      "Passed",
+      "Passed",
+      "Undefined",
+      "Undefined",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed"
+    ],
+    "Condition expressedVia Constraint": [
+      "Passed",
+      "Passed",
+      "Passed",
+      "Undefined",
+      "Undefined",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed"
+    ],
+    "Container type Class": [
+      "Passed",
+      "Passed",
+      "Passed",
+      "Undefined",
+      "Undefined",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed"
+    ],
+    "REL type Class": [
+      "Passed",
+      "Passed",
+      "Passed",
+      "Undefined",
+      "Undefined",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed"
+    ],
+    "Sequencing type Class": [
+      "Passed",
+      "Passed",
+      "Passed",
+      "Undefined",
+      "Undefined",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed"
+    ],
+    "REL hasPart Sequencing": [
+      "Passed",
+      "Passed",
+      "Passed",
+      "Undefined",
+      "Undefined",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed"
+    ],
+    "DataModel type Class": [
+      "Passed",
+      "Passed",
+      "Passed",
+      "Undefined",
+      "Undefined",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed"
+    ],
+    "Inheritance type Class": [
+      "Passed",
+      "Passed",
+      "Passed",
+      "Undefined",
+      "Undefined",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed"
+    ],
+    "DataModel canExpress Inheritance": [
+      "Passed",
+      "Passed",
+      "Passed",
+      "Undefined",
+      "Undefined",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed"
+    ],
+    "Policy type Class": [
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Undefined",
+      "Undefined",
+      "Undefined",
+      "Undefined",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed"
+    ],
+    "Asset type Class": [
+      "Passed",
+      "Passed",
+      "Passed",
+      "Undefined",
+      "Undefined",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed"
+    ],
+    "Policy linkedTo Asset": [
+      "Passed",
+      "Passed",
+      "Passed",
+      "Undefined",
+      "Undefined",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed"
+    ],
+    "ConflictResolutionStrategy type Class": [
+      "Passed",
+      "Passed",
+      "Passed",
+      "Undefined",
+      "Undefined",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed"
+    ],
+    "Policy specifies ConflictResolutionStrategy": [
+      "Passed",
+      "Passed",
+      "Passed",
+      "Undefined",
+      "Undefined",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed"
+    ],
+    "Prohibition type Class": [
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Undefined",
+      "Undefined",
+      "Undefined",
+      "Undefined",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed"
+    ],
+    "Prohibition hasRemedyForViolation Duty": [
+      "Passed",
+      "Passed",
+      "Passed",
+      "Undefined",
+      "Undefined",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed"
+    ],
+    "Rule type Class": [
+      "Passed",
+      "Passed",
+      "Passed",
+      "Undefined",
+      "Undefined",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed"
+    ],
+    "Rule activatedUponFailureOf Rule": [
+      "Passed",
+      "Passed",
+      "Passed",
+      "Undefined",
+      "Undefined",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed"
+    ],
+    "Duty hasConsequence Duty": [
+      "Passed",
+      "Passed",
+      "Passed",
+      "Undefined",
+      "Undefined",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed"
+    ],
+    "Prohibition hasConstraint Constraint": [
+      "Passed",
+      "Passed",
+      "Passed",
+      "Undefined",
+      "Undefined",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed"
+    ],
+    "Constraint hasOperator Operator": [
+      "Passed",
+      "Passed",
+      "Passed",
+      "Undefined",
+      "Undefined",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed"
+    ]
+  },
+  "sanitized": {
+    "CQ13": [
+      "existential test rewritten (a declared rdfs:range makes it unexecutable in Themis): 'Constraint SubClassOf hasConstraint some Constraint' -> 'Constraint hasConstraint Constraint'"
+    ]
+  },
+  "testsuite_file": "/home/jovyan/LLMOnto/Benchmark/OntologyConceptMatching/MASEO_MCP/ollama/odrl/odrl_testsuite.ttl",
+  "generated_warnings": {}
+}

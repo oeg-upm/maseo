@@ -1,0 +1,154 @@
+[
+  {
+    "id": "CQ1",
+    "question": "Which wine characteristics should I consider when choosing a wine?",
+    "classes": [
+      "Wine",
+      "WineCharacteristic"
+    ],
+    "properties": [
+      "hasCharacteristic"
+    ],
+    "data_properties": [],
+    "object_properties": [
+      "hasCharacteristic"
+    ],
+    "axioms": [
+      "Wine hasCharacteristic some WineCharacteristic"
+    ],
+    "individuals": [],
+    "tests": [
+      "WineCharacteristic type Class",
+      "hasCharacteristic type Property",
+      "Wine hasCharacteristic WineCharacteristic"
+    ]
+  },
+  {
+    "id": "CQ2",
+    "question": "Is Bordeaux a red or white wine?",
+    "classes": [
+      "Wine",
+      "RedWine",
+      "WhiteWine",
+      "WineRegion"
+    ],
+    "properties": [
+      "hasColor",
+      "producedIn"
+    ],
+    "data_properties": [],
+    "object_properties": [
+      "hasColor",
+      "producedIn"
+    ],
+    "axioms": [
+      "Bordeaux is a WineRegion that produces wines with specific colors"
+    ],
+    "individuals": [
+      "Bordeaux"
+    ],
+    "tests": [
+      "Bordeaux type WineRegion",
+      "Wine producedIn WineRegion",
+      "RedWine SubClassOf Wine",
+      "WhiteWine SubClassOf Wine",
+      "Wine hasColor string"
+    ]
+  },
+  {
+    "id": "CQ6",
+    "question": "Does a bouquet or body of a specific wine change with vintage year?",
+    "classes": [
+      "Wine",
+      "Vintage"
+    ],
+    "properties": [
+      "hasBouquet",
+      "hasBody",
+      "hasVintage",
+      "vintageYear"
+    ],
+    "data_properties": [
+      "vintageYear"
+    ],
+    "object_properties": [
+      "hasBouquet",
+      "hasBody",
+      "hasVintage"
+    ],
+    "axioms": [
+      "Wine hasVintage some Vintage",
+      "Vintage has vintageYear"
+    ],
+    "individuals": [],
+    "tests": [
+      "hasBouquet type Property",
+      "hasBody type Property",
+      "Wine hasVintage Vintage",
+      "Vintage vintageYear integer"
+    ]
+  },
+  {
+    "id": "CQ7",
+    "question": "What were good vintages for Napa Zinfandel?",
+    "classes": [
+      "Wine",
+      "Vintage",
+      "WineType"
+    ],
+    "properties": [
+      "hasVintage",
+      "hasQuality",
+      "vintageYear"
+    ],
+    "data_properties": [
+      "vintageYear"
+    ],
+    "object_properties": [
+      "hasVintage",
+      "hasQuality"
+    ],
+    "axioms": [
+      "NapaZinfandel is a WineType with associated vintages of varying quality"
+    ],
+    "individuals": [
+      "NapaZinfandel"
+    ],
+    "tests": [
+      "NapaZinfandel type WineType",
+      "Wine hasVintage Vintage",
+      "Vintage hasQuality string",
+      "Vintage vintageYear integer"
+    ]
+  },
+  {
+    "id": "CQnew1",
+    "question": "What grapes are used to make Bordeaux wine?",
+    "classes": [
+      "Wine",
+      "Grape",
+      "WineRegion"
+    ],
+    "properties": [
+      "madeFromGrape",
+      "producedIn"
+    ],
+    "data_properties": [],
+    "object_properties": [
+      "madeFromGrape",
+      "producedIn"
+    ],
+    "axioms": [
+      "Bordeaux wines are made from specific grape varieties"
+    ],
+    "individuals": [
+      "Bordeaux"
+    ],
+    "tests": [
+      "Bordeaux type WineRegion",
+      "Wine producedIn WineRegion",
+      "Wine madeFromGrape Grape",
+      "Grape type Class"
+    ]
+  }
+]

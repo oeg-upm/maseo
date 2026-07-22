@@ -1,0 +1,635 @@
+{
+  "domain": "water",
+  "base_uri": "http://www.semanticweb.org/water#",
+  "cq_file": "/home/jovyan/LLMOnto/Benchmark/OntologyConceptMatching/MASEO_MCP/dataset/water_cq2onto_cqs.json",
+  "cqs": [
+    "CQ01",
+    "CQ04",
+    "CQ05",
+    "CQ06",
+    "CQ08",
+    "CQ09",
+    "CQ10",
+    "CQ11",
+    "CQ12",
+    "CQ18",
+    "CQ19",
+    "CQ20",
+    "CQ25",
+    "CQ33",
+    "CQ34",
+    "CQ37",
+    "CQ38",
+    "CQ39",
+    "CQ40",
+    "CQ42",
+    "CQ43"
+  ],
+  "rounds": 1,
+  "final_status": {
+    "syntax_check": {
+      "passed": true,
+      "errors": []
+    },
+    "oops": {
+      "passed": true,
+      "major_count": 0,
+      "pitfalls": []
+    },
+    "hermit": {
+      "passed": true,
+      "consistent": true,
+      "unsatisfiable_classes": []
+    },
+    "cq_coverage": {
+      "passed": true,
+      "covered": [
+        "CQ01",
+        "CQ04",
+        "CQ05",
+        "CQ06",
+        "CQ08",
+        "CQ09",
+        "CQ10",
+        "CQ11",
+        "CQ12",
+        "CQ18",
+        "CQ19",
+        "CQ20",
+        "CQ25",
+        "CQ33",
+        "CQ34",
+        "CQ37",
+        "CQ38",
+        "CQ39",
+        "CQ40",
+        "CQ42",
+        "CQ43"
+      ],
+      "uncovered": [],
+      "missing": {}
+    },
+    "themis_test": {
+      "passed": true,
+      "covered": [
+        "CQ01",
+        "CQ04",
+        "CQ05",
+        "CQ06",
+        "CQ08",
+        "CQ09",
+        "CQ10",
+        "CQ11",
+        "CQ12",
+        "CQ18",
+        "CQ19",
+        "CQ20",
+        "CQ25",
+        "CQ33",
+        "CQ34",
+        "CQ37",
+        "CQ38",
+        "CQ39",
+        "CQ40",
+        "CQ42",
+        "CQ43"
+      ],
+      "uncovered": [],
+      "missing": {}
+    }
+  },
+  "all_passed": true,
+  "records": [
+    {
+      "round": 0,
+      "index": 1,
+      "phase": "extract",
+      "tool_calling": "extraction_agent",
+      "input_information": {
+        "cqs": [
+          "CQ01",
+          "CQ04",
+          "CQ05",
+          "CQ06",
+          "CQ08",
+          "CQ09",
+          "CQ10",
+          "CQ11",
+          "CQ12",
+          "CQ18",
+          "CQ19",
+          "CQ20",
+          "CQ25",
+          "CQ33",
+          "CQ34",
+          "CQ37",
+          "CQ38",
+          "CQ39",
+          "CQ40",
+          "CQ42",
+          "CQ43"
+        ]
+      },
+      "output": {
+        "terms_file": "/home/jovyan/LLMOnto/Benchmark/OntologyConceptMatching/MASEO_MCP/ollama/water/water_terms.json",
+        "terms_per_cq": {
+          "CQ01": 8,
+          "CQ04": 8,
+          "CQ05": 8,
+          "CQ06": 9,
+          "CQ08": 6,
+          "CQ09": 9,
+          "CQ10": 6,
+          "CQ11": 6,
+          "CQ12": 6,
+          "CQ18": 6,
+          "CQ19": 6,
+          "CQ20": 6,
+          "CQ25": 8,
+          "CQ33": 8,
+          "CQ34": 8,
+          "CQ37": 8,
+          "CQ38": 11,
+          "CQ39": 11,
+          "CQ40": 8,
+          "CQ42": 6,
+          "CQ43": 6
+        }
+      },
+      "seconds": 248.13
+    },
+    {
+      "round": 0,
+      "index": 2,
+      "phase": "generate",
+      "tool_calling": "generation_agent",
+      "input_information": {
+        "cqs": [
+          "CQ01",
+          "CQ04",
+          "CQ05",
+          "CQ06",
+          "CQ08",
+          "CQ09",
+          "CQ10",
+          "CQ11",
+          "CQ12",
+          "CQ18",
+          "CQ19",
+          "CQ20",
+          "CQ25",
+          "CQ33",
+          "CQ34",
+          "CQ37",
+          "CQ38",
+          "CQ39",
+          "CQ40",
+          "CQ42",
+          "CQ43"
+        ],
+        "with_terms": true
+      },
+      "output": {
+        "ontology_file": "/home/jovyan/LLMOnto/Benchmark/OntologyConceptMatching/MASEO_MCP/ollama/water/water_ontology.owl",
+        "ontology_chars": 19842
+      },
+      "seconds": 751.67
+    },
+    {
+      "round": 1,
+      "index": 3,
+      "phase": "syntax",
+      "attempt": 1,
+      "tool_calling": "syntax_check",
+      "input_information": {
+        "ontology_file": "/home/jovyan/LLMOnto/Benchmark/OntologyConceptMatching/MASEO_MCP/ollama/water/water_ontology.owl"
+      },
+      "output": {
+        "passed": true,
+        "errors": []
+      },
+      "next_action": "pass",
+      "seconds": 0.26
+    },
+    {
+      "round": 1,
+      "index": 4,
+      "phase": "cover",
+      "attempt": 1,
+      "tool_calling": "cq_coverage",
+      "input_information": {
+        "ontology_file": "/home/jovyan/LLMOnto/Benchmark/OntologyConceptMatching/MASEO_MCP/ollama/water/water_ontology.owl",
+        "cqs": [
+          "CQ01",
+          "CQ04",
+          "CQ05",
+          "CQ06",
+          "CQ08",
+          "CQ09",
+          "CQ10",
+          "CQ11",
+          "CQ12",
+          "CQ18",
+          "CQ19",
+          "CQ20",
+          "CQ25",
+          "CQ33",
+          "CQ34",
+          "CQ37",
+          "CQ38",
+          "CQ39",
+          "CQ40",
+          "CQ42",
+          "CQ43"
+        ]
+      },
+      "output": {
+        "passed": true,
+        "covered": [
+          "CQ01",
+          "CQ04",
+          "CQ05",
+          "CQ06",
+          "CQ08",
+          "CQ09",
+          "CQ10",
+          "CQ11",
+          "CQ12",
+          "CQ18",
+          "CQ19",
+          "CQ20",
+          "CQ25",
+          "CQ33",
+          "CQ34",
+          "CQ37",
+          "CQ38",
+          "CQ39",
+          "CQ40",
+          "CQ42",
+          "CQ43"
+        ],
+        "uncovered": [],
+        "missing": {}
+      },
+      "next_action": "pass",
+      "seconds": 0.01
+    },
+    {
+      "round": 1,
+      "index": 5,
+      "phase": "oops",
+      "attempt": 1,
+      "tool_calling": "oops_scan",
+      "input_information": {
+        "ontology_file": "/home/jovyan/LLMOnto/Benchmark/OntologyConceptMatching/MASEO_MCP/ollama/water/water_ontology.owl"
+      },
+      "output": {
+        "passed": true,
+        "major_count": 0,
+        "pitfalls": []
+      },
+      "next_action": "pass",
+      "seconds": 1.11
+    },
+    {
+      "round": 1,
+      "index": 6,
+      "phase": "hermit",
+      "attempt": 1,
+      "tool_calling": "hermit_consistency",
+      "input_information": {
+        "ontology_file": "/home/jovyan/LLMOnto/Benchmark/OntologyConceptMatching/MASEO_MCP/ollama/water/water_ontology.owl"
+      },
+      "output": {
+        "passed": true,
+        "consistent": true,
+        "unsatisfiable_classes": []
+      },
+      "next_action": "pass",
+      "seconds": 0.46
+    },
+    {
+      "round": 1,
+      "index": 7,
+      "phase": "themis",
+      "attempt": 1,
+      "tool_calling": "themis_test",
+      "input_information": {
+        "ontology_file": "/home/jovyan/LLMOnto/Benchmark/OntologyConceptMatching/MASEO_MCP/ollama/water/water_ontology.owl",
+        "cqs": [
+          "CQ01",
+          "CQ04",
+          "CQ05",
+          "CQ06",
+          "CQ08",
+          "CQ09",
+          "CQ10",
+          "CQ11",
+          "CQ12",
+          "CQ18",
+          "CQ19",
+          "CQ20",
+          "CQ25",
+          "CQ33",
+          "CQ34",
+          "CQ37",
+          "CQ38",
+          "CQ39",
+          "CQ40",
+          "CQ42",
+          "CQ43"
+        ]
+      },
+      "output": {
+        "passed": true,
+        "covered": [
+          "CQ01",
+          "CQ04",
+          "CQ05",
+          "CQ06",
+          "CQ08",
+          "CQ09",
+          "CQ10",
+          "CQ11",
+          "CQ12",
+          "CQ18",
+          "CQ19",
+          "CQ20",
+          "CQ25",
+          "CQ33",
+          "CQ34",
+          "CQ37",
+          "CQ38",
+          "CQ39",
+          "CQ40",
+          "CQ42",
+          "CQ43"
+        ],
+        "uncovered": [],
+        "missing": {}
+      },
+      "next_action": "pass",
+      "seconds": 0.97
+    },
+    {
+      "round": 1,
+      "index": 8,
+      "phase": "verify",
+      "tool_calling": "syntax_check",
+      "input_information": {
+        "ontology_file": "/home/jovyan/LLMOnto/Benchmark/OntologyConceptMatching/MASEO_MCP/ollama/water/water_ontology.owl"
+      },
+      "output": {
+        "passed": true,
+        "errors": []
+      },
+      "seconds": 0.03
+    },
+    {
+      "round": 1,
+      "index": 9,
+      "phase": "verify",
+      "tool_calling": "hermit_consistency",
+      "input_information": {
+        "ontology_file": "/home/jovyan/LLMOnto/Benchmark/OntologyConceptMatching/MASEO_MCP/ollama/water/water_ontology.owl"
+      },
+      "output": {
+        "passed": true,
+        "consistent": true,
+        "unsatisfiable_classes": []
+      },
+      "seconds": 0.46
+    },
+    {
+      "round": 1,
+      "index": 10,
+      "phase": "verify",
+      "tool_calling": "oops_scan",
+      "input_information": {
+        "ontology_file": "/home/jovyan/LLMOnto/Benchmark/OntologyConceptMatching/MASEO_MCP/ollama/water/water_ontology.owl"
+      },
+      "output": {
+        "passed": true,
+        "major_count": 0,
+        "pitfalls": []
+      },
+      "seconds": 0.09
+    },
+    {
+      "round": 1,
+      "index": 11,
+      "phase": "verify",
+      "tool_calling": "cq_coverage",
+      "input_information": {
+        "ontology_file": "/home/jovyan/LLMOnto/Benchmark/OntologyConceptMatching/MASEO_MCP/ollama/water/water_ontology.owl",
+        "cqs": [
+          "CQ01",
+          "CQ04",
+          "CQ05",
+          "CQ06",
+          "CQ08",
+          "CQ09",
+          "CQ10",
+          "CQ11",
+          "CQ12",
+          "CQ18",
+          "CQ19",
+          "CQ20",
+          "CQ25",
+          "CQ33",
+          "CQ34",
+          "CQ37",
+          "CQ38",
+          "CQ39",
+          "CQ40",
+          "CQ42",
+          "CQ43"
+        ]
+      },
+      "output": {
+        "passed": true,
+        "covered": [
+          "CQ01",
+          "CQ04",
+          "CQ05",
+          "CQ06",
+          "CQ08",
+          "CQ09",
+          "CQ10",
+          "CQ11",
+          "CQ12",
+          "CQ18",
+          "CQ19",
+          "CQ20",
+          "CQ25",
+          "CQ33",
+          "CQ34",
+          "CQ37",
+          "CQ38",
+          "CQ39",
+          "CQ40",
+          "CQ42",
+          "CQ43"
+        ],
+        "uncovered": [],
+        "missing": {}
+      },
+      "seconds": 0.01
+    },
+    {
+      "round": 1,
+      "index": 12,
+      "phase": "verify",
+      "tool_calling": "themis_test",
+      "input_information": {
+        "ontology_file": "/home/jovyan/LLMOnto/Benchmark/OntologyConceptMatching/MASEO_MCP/ollama/water/water_ontology.owl",
+        "cqs": [
+          "CQ01",
+          "CQ04",
+          "CQ05",
+          "CQ06",
+          "CQ08",
+          "CQ09",
+          "CQ10",
+          "CQ11",
+          "CQ12",
+          "CQ18",
+          "CQ19",
+          "CQ20",
+          "CQ25",
+          "CQ33",
+          "CQ34",
+          "CQ37",
+          "CQ38",
+          "CQ39",
+          "CQ40",
+          "CQ42",
+          "CQ43"
+        ]
+      },
+      "output": {
+        "passed": true,
+        "covered": [
+          "CQ01",
+          "CQ04",
+          "CQ05",
+          "CQ06",
+          "CQ08",
+          "CQ09",
+          "CQ10",
+          "CQ11",
+          "CQ12",
+          "CQ18",
+          "CQ19",
+          "CQ20",
+          "CQ25",
+          "CQ33",
+          "CQ34",
+          "CQ37",
+          "CQ38",
+          "CQ39",
+          "CQ40",
+          "CQ42",
+          "CQ43"
+        ],
+        "uncovered": [],
+        "missing": {}
+      },
+      "seconds": 0.87
+    },
+    {
+      "round": 1,
+      "index": 13,
+      "phase": "verify",
+      "tool_calling": "round_summary",
+      "input_information": {
+        "checks": [
+          "syntax_check",
+          "hermit_consistency",
+          "oops_scan",
+          "cq_coverage",
+          "themis_test"
+        ]
+      },
+      "output": {
+        "all_passed": true,
+        "syntax_check": {
+          "passed": true,
+          "errors": []
+        },
+        "cq_coverage": {
+          "passed": true,
+          "covered": [
+            "CQ01",
+            "CQ04",
+            "CQ05",
+            "CQ06",
+            "CQ08",
+            "CQ09",
+            "CQ10",
+            "CQ11",
+            "CQ12",
+            "CQ18",
+            "CQ19",
+            "CQ20",
+            "CQ25",
+            "CQ33",
+            "CQ34",
+            "CQ37",
+            "CQ38",
+            "CQ39",
+            "CQ40",
+            "CQ42",
+            "CQ43"
+          ],
+          "uncovered": [],
+          "missing": {}
+        },
+        "themis_test": {
+          "passed": true,
+          "covered": [
+            "CQ01",
+            "CQ04",
+            "CQ05",
+            "CQ06",
+            "CQ08",
+            "CQ09",
+            "CQ10",
+            "CQ11",
+            "CQ12",
+            "CQ18",
+            "CQ19",
+            "CQ20",
+            "CQ25",
+            "CQ33",
+            "CQ34",
+            "CQ37",
+            "CQ38",
+            "CQ39",
+            "CQ40",
+            "CQ42",
+            "CQ43"
+          ],
+          "uncovered": [],
+          "missing": {}
+        },
+        "oops": {
+          "passed": true,
+          "major_count": 0,
+          "pitfalls": []
+        },
+        "hermit": {
+          "passed": true,
+          "consistent": true,
+          "unsatisfiable_classes": []
+        }
+      },
+      "next_action": "done"
+    }
+  ],
+  "ontology_file": "/home/jovyan/LLMOnto/Benchmark/OntologyConceptMatching/MASEO_MCP/ollama/water/water_ontology.owl",
+  "terms_file": "/home/jovyan/LLMOnto/Benchmark/OntologyConceptMatching/MASEO_MCP/ollama/water/water_terms.json",
+  "tests_file": "/home/jovyan/LLMOnto/Benchmark/OntologyConceptMatching/MASEO_MCP/ollama/water/water_tests.json",
+  "testsuite_file": "/home/jovyan/LLMOnto/Benchmark/OntologyConceptMatching/MASEO_MCP/ollama/water/water_testsuite.ttl",
+  "steps_file": "/home/jovyan/LLMOnto/Benchmark/OntologyConceptMatching/MASEO_MCP/ollama/water/water_steps.json"
+}

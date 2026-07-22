@@ -1,0 +1,193 @@
+@prefix vtc: <https://w3id.org/def/vtc#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix : <http://www.semanticweb.org/awo/tests#> .
+
+:suite rdf:type owl:NamedIndividual , vtc:TestSuite .
+
+:CQ1 rdf:type owl:NamedIndividual , vtc:Requirement ;
+    vtc:requirementId "CQ1"^^xsd:string ;
+    vtc:category "competency question"^^xsd:string ;
+    dcterms:description "Which animal eats which other animal?"^^xsd:string .
+
+:CQ1_test1 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ1 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/awo#CQ1"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Animal type Class"^^xsd:string .
+
+:CQ1_test2 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ1 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/awo#CQ1"^^xsd:anyURI ;
+    vtc:desiredBehaviour "eats type Property"^^xsd:string .
+
+:CQ1_test3 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ1 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/awo#CQ1"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Animal eats Animal"^^xsd:string .
+
+:CQ2 rdf:type owl:NamedIndividual , vtc:Requirement ;
+    vtc:requirementId "CQ2"^^xsd:string ;
+    vtc:category "competency question"^^xsd:string ;
+    dcterms:description "Is [this animal] a herbivore?"^^xsd:string .
+
+:CQ2_test1 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ2 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/awo#CQ2"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Animal type Class"^^xsd:string .
+
+:CQ2_test2 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ2 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/awo#CQ2"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Herbivore type Class"^^xsd:string .
+
+:CQ2_test3 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ2 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/awo#CQ2"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Herbivore SubClassOf Animal"^^xsd:string .
+
+:CQ3 rdf:type owl:NamedIndividual , vtc:Requirement ;
+    vtc:requirementId "CQ3"^^xsd:string ;
+    vtc:category "competency question"^^xsd:string ;
+    dcterms:description "Which plant parts does [this omnivorous or herbivorourus animal] eat?"^^xsd:string .
+
+:CQ3_test1 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ3 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/awo#CQ3"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Animal type Class"^^xsd:string .
+
+:CQ3_test2 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ3 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/awo#CQ3"^^xsd:anyURI ;
+    vtc:desiredBehaviour "PlantPart type Class"^^xsd:string .
+
+:CQ3_test3 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ3 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/awo#CQ3"^^xsd:anyURI ;
+    vtc:desiredBehaviour "eats type Property"^^xsd:string .
+
+:CQ3_test4 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ3 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/awo#CQ3"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Animal eats PlantPart"^^xsd:string .
+
+:CQ4 rdf:type owl:NamedIndividual , vtc:Requirement ;
+    vtc:requirementId "CQ4"^^xsd:string ;
+    vtc:category "competency question"^^xsd:string ;
+    dcterms:description "Does a lion eat plants or plant parts?"^^xsd:string .
+
+:CQ4_test1 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ4 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/awo#CQ4"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Lion type Class"^^xsd:string .
+
+:CQ4_test2 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ4 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/awo#CQ4"^^xsd:anyURI ;
+    vtc:desiredBehaviour "eats type Property"^^xsd:string .
+
+:CQ4_test3 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ4 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/awo#CQ4"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Lion eats Plant"^^xsd:string .
+
+:CQ4_test4 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ4 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/awo#CQ4"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Lion eats PlantPart"^^xsd:string .
+
+:CQ6 rdf:type owl:NamedIndividual , vtc:Requirement ;
+    vtc:requirementId "CQ6"^^xsd:string ;
+    vtc:category "competency question"^^xsd:string ;
+    dcterms:description "Which plants eat animals?"^^xsd:string .
+
+:CQ6_test1 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ6 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/awo#CQ6"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Plant type Class"^^xsd:string .
+
+:CQ6_test2 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ6 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/awo#CQ6"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Animal type Class"^^xsd:string .
+
+:CQ6_test3 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ6 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/awo#CQ6"^^xsd:anyURI ;
+    vtc:desiredBehaviour "eats type Property"^^xsd:string .
+
+:CQ6_test4 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ6 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/awo#CQ6"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Plant eats Animal"^^xsd:string .
+
+:CQ7 rdf:type owl:NamedIndividual , vtc:Requirement ;
+    vtc:requirementId "CQ7"^^xsd:string ;
+    vtc:category "competency question"^^xsd:string ;
+    dcterms:description "Which animals eat [these animals]?"^^xsd:string .
+
+:CQ7_test1 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ7 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/awo#CQ7"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Animal type Class"^^xsd:string .
+
+:CQ7_test2 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ7 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/awo#CQ7"^^xsd:anyURI ;
+    vtc:desiredBehaviour "eats type Property"^^xsd:string .
+
+:CQ7_test3 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ7 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/awo#CQ7"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Animal eats Animal"^^xsd:string .
+
+:CQ14 rdf:type owl:NamedIndividual , vtc:Requirement ;
+    vtc:requirementId "CQ14"^^xsd:string ;
+    vtc:category "competency question"^^xsd:string ;
+    dcterms:description "Are there animals that are carnivore but still eat some plants or parts of plants?"^^xsd:string .
+
+:CQ14_test1 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ14 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/awo#CQ14"^^xsd:anyURI ;
+    vtc:desiredBehaviour "eats type Property"^^xsd:string .
+
+:CQ14_test2 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ14 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/awo#CQ14"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Carnivore SubClassOf Animal"^^xsd:string .
+
+:CQ14_test3 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ14 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/awo#CQ14"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Carnivore eats Plant"^^xsd:string .
+
+:CQ14_test4 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ14 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/awo#CQ14"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Carnivore eats PlantPart"^^xsd:string .

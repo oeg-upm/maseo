@@ -1,0 +1,173 @@
+[
+  {
+    "id": "CQ1",
+    "question": "Which animal eats which other animal?",
+    "classes": [
+      "Animal"
+    ],
+    "properties": [
+      "eats"
+    ],
+    "data_properties": [],
+    "object_properties": [
+      "eats"
+    ],
+    "axioms": [
+      "eats relates Animal to Animal"
+    ],
+    "individuals": [],
+    "tests": [
+      "Animal type Class",
+      "eats type Property",
+      "Animal eats Animal"
+    ]
+  },
+  {
+    "id": "CQ2",
+    "question": "Is [this animal] a herbivore?",
+    "classes": [
+      "Animal",
+      "Herbivore"
+    ],
+    "properties": [],
+    "data_properties": [],
+    "object_properties": [],
+    "axioms": [
+      "Herbivore is a subclass of Animal"
+    ],
+    "individuals": [],
+    "tests": [
+      "Animal type Class",
+      "Herbivore type Class",
+      "Herbivore SubClassOf Animal"
+    ]
+  },
+  {
+    "id": "CQ3",
+    "question": "Which plant parts does [this omnivorous or herbivorourus animal] eat?",
+    "classes": [
+      "Animal",
+      "PlantPart"
+    ],
+    "properties": [
+      "eats"
+    ],
+    "data_properties": [],
+    "object_properties": [
+      "eats"
+    ],
+    "axioms": [
+      "eats can relate Animal to PlantPart"
+    ],
+    "individuals": [],
+    "tests": [
+      "Animal type Class",
+      "PlantPart type Class",
+      "eats type Property",
+      "Animal eats PlantPart"
+    ]
+  },
+  {
+    "id": "CQ4",
+    "question": "Does a lion eat plants or plant parts?",
+    "classes": [
+      "Lion",
+      "Plant",
+      "PlantPart"
+    ],
+    "properties": [
+      "eats"
+    ],
+    "data_properties": [],
+    "object_properties": [
+      "eats"
+    ],
+    "axioms": [
+      "Lion is a subclass of Animal",
+      "eats can relate Lion to Plant and PlantPart"
+    ],
+    "individuals": [],
+    "tests": [
+      "Lion type Class",
+      "eats type Property",
+      "Lion eats Plant",
+      "Lion eats PlantPart"
+    ]
+  },
+  {
+    "id": "CQ6",
+    "question": "Which plants eat animals?",
+    "classes": [
+      "Plant",
+      "Animal"
+    ],
+    "properties": [
+      "eats"
+    ],
+    "data_properties": [],
+    "object_properties": [
+      "eats"
+    ],
+    "axioms": [
+      "eats can relate Plant to Animal"
+    ],
+    "individuals": [],
+    "tests": [
+      "Plant type Class",
+      "Animal type Class",
+      "eats type Property",
+      "Plant eats Animal"
+    ]
+  },
+  {
+    "id": "CQ7",
+    "question": "Which animals eat [these animals]?",
+    "classes": [
+      "Animal"
+    ],
+    "properties": [
+      "eats"
+    ],
+    "data_properties": [],
+    "object_properties": [
+      "eats"
+    ],
+    "axioms": [
+      "eats relates Animal to Animal"
+    ],
+    "individuals": [],
+    "tests": [
+      "Animal type Class",
+      "eats type Property",
+      "Animal eats Animal"
+    ]
+  },
+  {
+    "id": "CQ14",
+    "question": "Are there animals that are carnivore but still eat some plants or parts of plants?",
+    "classes": [
+      "Animal",
+      "Carnivore",
+      "Plant",
+      "PlantPart"
+    ],
+    "properties": [
+      "eats"
+    ],
+    "data_properties": [],
+    "object_properties": [
+      "eats"
+    ],
+    "axioms": [
+      "Carnivore is a subclass of Animal",
+      "eats can relate Carnivore to Plant and PlantPart"
+    ],
+    "individuals": [],
+    "tests": [
+      "eats type Property",
+      "Carnivore SubClassOf Animal",
+      "Carnivore eats Plant",
+      "Carnivore eats PlantPart"
+    ]
+  }
+]

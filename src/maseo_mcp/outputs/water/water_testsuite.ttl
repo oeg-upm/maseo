@@ -1,0 +1,599 @@
+@prefix vtc: <https://w3id.org/def/vtc#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix : <http://www.semanticweb.org/water/tests#> .
+
+:suite rdf:type owl:NamedIndividual , vtc:TestSuite .
+
+:CQ01 rdf:type owl:NamedIndividual , vtc:Requirement ;
+    vtc:requirementId "CQ01"^^xsd:string ;
+    vtc:category "competency question"^^xsd:string ;
+    dcterms:description "Which assets compose a water distribution infrastructure?"^^xsd:string .
+
+:CQ01_test1 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ01 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/water#CQ01"^^xsd:anyURI ;
+    vtc:desiredBehaviour "WaterDistributionInfrastructure type Class"^^xsd:string .
+
+:CQ01_test2 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ01 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/water#CQ01"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Asset type Class"^^xsd:string .
+
+:CQ01_test3 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ01 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/water#CQ01"^^xsd:anyURI ;
+    vtc:desiredBehaviour "composes type Property"^^xsd:string .
+
+:CQ01_test4 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ01 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/water#CQ01"^^xsd:anyURI ;
+    vtc:desiredBehaviour "WaterDistributionInfrastructure composes Asset"^^xsd:string .
+
+:CQ04 rdf:type owl:NamedIndividual , vtc:Requirement ;
+    vtc:requirementId "CQ04"^^xsd:string ;
+    vtc:category "competency question"^^xsd:string ;
+    dcterms:description "Which types of sensors are used in water infrastructures?"^^xsd:string .
+
+:CQ04_test1 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ04 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/water#CQ04"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Sensor type Class"^^xsd:string .
+
+:CQ04_test2 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ04 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/water#CQ04"^^xsd:anyURI ;
+    vtc:desiredBehaviour "WaterInfrastructure type Class"^^xsd:string .
+
+:CQ04_test3 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ04 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/water#CQ04"^^xsd:anyURI ;
+    vtc:desiredBehaviour "usedIn type Property"^^xsd:string .
+
+:CQ04_test4 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ04 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/water#CQ04"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Sensor usedIn WaterInfrastructure"^^xsd:string .
+
+:CQ05 rdf:type owl:NamedIndividual , vtc:Requirement ;
+    vtc:requirementId "CQ05"^^xsd:string ;
+    vtc:category "competency question"^^xsd:string ;
+    dcterms:description "Which types of actuators are used in water infrastructures?"^^xsd:string .
+
+:CQ05_test1 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ05 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/water#CQ05"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Actuator type Class"^^xsd:string .
+
+:CQ05_test2 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ05 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/water#CQ05"^^xsd:anyURI ;
+    vtc:desiredBehaviour "WaterInfrastructure type Class"^^xsd:string .
+
+:CQ05_test3 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ05 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/water#CQ05"^^xsd:anyURI ;
+    vtc:desiredBehaviour "usedIn type Property"^^xsd:string .
+
+:CQ05_test4 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ05 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/water#CQ05"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Actuator usedIn WaterInfrastructure"^^xsd:string .
+
+:CQ06 rdf:type owl:NamedIndividual , vtc:Requirement ;
+    vtc:requirementId "CQ06"^^xsd:string ;
+    vtc:category "competency question"^^xsd:string ;
+    dcterms:description "A water meter is a device that measures different aspects of a water infrastructure."^^xsd:string .
+
+:CQ06_test1 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ06 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/water#CQ06"^^xsd:anyURI ;
+    vtc:desiredBehaviour "WaterMeter type Class"^^xsd:string .
+
+:CQ06_test2 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ06 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/water#CQ06"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Device type Class"^^xsd:string .
+
+:CQ06_test3 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ06 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/water#CQ06"^^xsd:anyURI ;
+    vtc:desiredBehaviour "measures type Property"^^xsd:string .
+
+:CQ06_test4 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ06 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/water#CQ06"^^xsd:anyURI ;
+    vtc:desiredBehaviour "WaterMeter SubClassOf Device"^^xsd:string .
+
+:CQ06_test5 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ06 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/water#CQ06"^^xsd:anyURI ;
+    vtc:desiredBehaviour "WaterMeter measures Device"^^xsd:string .
+
+:CQ08 rdf:type owl:NamedIndividual , vtc:Requirement ;
+    vtc:requirementId "CQ08"^^xsd:string ;
+    vtc:category "competency question"^^xsd:string ;
+    dcterms:description "What is the fabrication number of the water meter?"^^xsd:string .
+
+:CQ08_test1 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ08 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/water#CQ08"^^xsd:anyURI ;
+    vtc:desiredBehaviour "WaterMeter type Class"^^xsd:string .
+
+:CQ08_test2 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ08 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/water#CQ08"^^xsd:anyURI ;
+    vtc:desiredBehaviour "fabricationNumber type Property"^^xsd:string .
+
+:CQ08_test3 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ08 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/water#CQ08"^^xsd:anyURI ;
+    vtc:desiredBehaviour "WaterMeter fabricationNumber string"^^xsd:string .
+
+:CQ09 rdf:type owl:NamedIndividual , vtc:Requirement ;
+    vtc:requirementId "CQ09"^^xsd:string ;
+    vtc:category "competency question"^^xsd:string ;
+    dcterms:description "What are the manufacturer and the model of the water meter?"^^xsd:string .
+
+:CQ09_test1 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ09 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/water#CQ09"^^xsd:anyURI ;
+    vtc:desiredBehaviour "WaterMeter type Class"^^xsd:string .
+
+:CQ09_test2 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ09 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/water#CQ09"^^xsd:anyURI ;
+    vtc:desiredBehaviour "manufacturer type Property"^^xsd:string .
+
+:CQ09_test3 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ09 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/water#CQ09"^^xsd:anyURI ;
+    vtc:desiredBehaviour "model type Property"^^xsd:string .
+
+:CQ09_test4 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ09 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/water#CQ09"^^xsd:anyURI ;
+    vtc:desiredBehaviour "WaterMeter manufacturer string"^^xsd:string .
+
+:CQ09_test5 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ09 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/water#CQ09"^^xsd:anyURI ;
+    vtc:desiredBehaviour "WaterMeter model string"^^xsd:string .
+
+:CQ10 rdf:type owl:NamedIndividual , vtc:Requirement ;
+    vtc:requirementId "CQ10"^^xsd:string ;
+    vtc:category "competency question"^^xsd:string ;
+    dcterms:description "What is the version of the water meter?"^^xsd:string .
+
+:CQ10_test1 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ10 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/water#CQ10"^^xsd:anyURI ;
+    vtc:desiredBehaviour "WaterMeter type Class"^^xsd:string .
+
+:CQ10_test2 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ10 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/water#CQ10"^^xsd:anyURI ;
+    vtc:desiredBehaviour "version type Property"^^xsd:string .
+
+:CQ10_test3 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ10 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/water#CQ10"^^xsd:anyURI ;
+    vtc:desiredBehaviour "WaterMeter version string"^^xsd:string .
+
+:CQ11 rdf:type owl:NamedIndividual , vtc:Requirement ;
+    vtc:requirementId "CQ11"^^xsd:string ;
+    vtc:category "competency question"^^xsd:string ;
+    dcterms:description "What is the hardware version number of the water meter?"^^xsd:string .
+
+:CQ11_test1 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ11 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/water#CQ11"^^xsd:anyURI ;
+    vtc:desiredBehaviour "WaterMeter type Class"^^xsd:string .
+
+:CQ11_test2 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ11 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/water#CQ11"^^xsd:anyURI ;
+    vtc:desiredBehaviour "hardwareVersion type Property"^^xsd:string .
+
+:CQ11_test3 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ11 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/water#CQ11"^^xsd:anyURI ;
+    vtc:desiredBehaviour "WaterMeter hardwareVersion string"^^xsd:string .
+
+:CQ12 rdf:type owl:NamedIndividual , vtc:Requirement ;
+    vtc:requirementId "CQ12"^^xsd:string ;
+    vtc:category "competency question"^^xsd:string ;
+    dcterms:description "What firmware version is the water meter using?"^^xsd:string .
+
+:CQ12_test1 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ12 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/water#CQ12"^^xsd:anyURI ;
+    vtc:desiredBehaviour "WaterMeter type Class"^^xsd:string .
+
+:CQ12_test2 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ12 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/water#CQ12"^^xsd:anyURI ;
+    vtc:desiredBehaviour "firmwareVersion type Property"^^xsd:string .
+
+:CQ12_test3 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ12 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/water#CQ12"^^xsd:anyURI ;
+    vtc:desiredBehaviour "WaterMeter firmwareVersion string"^^xsd:string .
+
+:CQ18 rdf:type owl:NamedIndividual , vtc:Requirement ;
+    vtc:requirementId "CQ18"^^xsd:string ;
+    vtc:category "competency question"^^xsd:string ;
+    dcterms:description "What is the power of the water meter?"^^xsd:string .
+
+:CQ18_test1 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ18 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/water#CQ18"^^xsd:anyURI ;
+    vtc:desiredBehaviour "WaterMeter type Class"^^xsd:string .
+
+:CQ18_test2 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ18 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/water#CQ18"^^xsd:anyURI ;
+    vtc:desiredBehaviour "power type Property"^^xsd:string .
+
+:CQ18_test3 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ18 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/water#CQ18"^^xsd:anyURI ;
+    vtc:desiredBehaviour "WaterMeter power float"^^xsd:string .
+
+:CQ19 rdf:type owl:NamedIndividual , vtc:Requirement ;
+    vtc:requirementId "CQ19"^^xsd:string ;
+    vtc:category "competency question"^^xsd:string ;
+    dcterms:description "What is the radio frequency level of the water meter?"^^xsd:string .
+
+:CQ19_test1 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ19 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/water#CQ19"^^xsd:anyURI ;
+    vtc:desiredBehaviour "WaterMeter type Class"^^xsd:string .
+
+:CQ19_test2 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ19 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/water#CQ19"^^xsd:anyURI ;
+    vtc:desiredBehaviour "radioFrequencyLevel type Property"^^xsd:string .
+
+:CQ19_test3 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ19 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/water#CQ19"^^xsd:anyURI ;
+    vtc:desiredBehaviour "WaterMeter radioFrequencyLevel float"^^xsd:string .
+
+:CQ20 rdf:type owl:NamedIndividual , vtc:Requirement ;
+    vtc:requirementId "CQ20"^^xsd:string ;
+    vtc:category "competency question"^^xsd:string ;
+    dcterms:description "What is the geolocation of the water meter?"^^xsd:string .
+
+:CQ20_test1 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ20 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/water#CQ20"^^xsd:anyURI ;
+    vtc:desiredBehaviour "WaterMeter type Class"^^xsd:string .
+
+:CQ20_test2 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ20 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/water#CQ20"^^xsd:anyURI ;
+    vtc:desiredBehaviour "geolocation type Property"^^xsd:string .
+
+:CQ20_test3 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ20 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/water#CQ20"^^xsd:anyURI ;
+    vtc:desiredBehaviour "WaterMeter geolocation string"^^xsd:string .
+
+:CQ25 rdf:type owl:NamedIndividual , vtc:Requirement ;
+    vtc:requirementId "CQ25"^^xsd:string ;
+    vtc:category "competency question"^^xsd:string ;
+    dcterms:description "Water meters can provide measurements according to different temporal settings."^^xsd:string .
+
+:CQ25_test1 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ25 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/water#CQ25"^^xsd:anyURI ;
+    vtc:desiredBehaviour "WaterMeter type Class"^^xsd:string .
+
+:CQ25_test2 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ25 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/water#CQ25"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Measurement type Class"^^xsd:string .
+
+:CQ25_test3 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ25 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/water#CQ25"^^xsd:anyURI ;
+    vtc:desiredBehaviour "provides type Property"^^xsd:string .
+
+:CQ25_test4 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ25 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/water#CQ25"^^xsd:anyURI ;
+    vtc:desiredBehaviour "WaterMeter provides Measurement"^^xsd:string .
+
+:CQ33 rdf:type owl:NamedIndividual , vtc:Requirement ;
+    vtc:requirementId "CQ33"^^xsd:string ;
+    vtc:category "competency question"^^xsd:string ;
+    dcterms:description "What are the physical properties of water?"^^xsd:string .
+
+:CQ33_test1 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ33 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/water#CQ33"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Water type Class"^^xsd:string .
+
+:CQ33_test2 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ33 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/water#CQ33"^^xsd:anyURI ;
+    vtc:desiredBehaviour "PhysicalProperty type Class"^^xsd:string .
+
+:CQ33_test3 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ33 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/water#CQ33"^^xsd:anyURI ;
+    vtc:desiredBehaviour "hasProperty type Property"^^xsd:string .
+
+:CQ33_test4 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ33 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/water#CQ33"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Water hasProperty PhysicalProperty"^^xsd:string .
+
+:CQ34 rdf:type owl:NamedIndividual , vtc:Requirement ;
+    vtc:requirementId "CQ34"^^xsd:string ;
+    vtc:category "competency question"^^xsd:string ;
+    dcterms:description "What are the chemical properties of water?"^^xsd:string .
+
+:CQ34_test1 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ34 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/water#CQ34"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Water type Class"^^xsd:string .
+
+:CQ34_test2 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ34 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/water#CQ34"^^xsd:anyURI ;
+    vtc:desiredBehaviour "ChemicalProperty type Class"^^xsd:string .
+
+:CQ34_test3 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ34 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/water#CQ34"^^xsd:anyURI ;
+    vtc:desiredBehaviour "hasProperty type Property"^^xsd:string .
+
+:CQ34_test4 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ34 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/water#CQ34"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Water hasProperty ChemicalProperty"^^xsd:string .
+
+:CQ37 rdf:type owl:NamedIndividual , vtc:Requirement ;
+    vtc:requirementId "CQ37"^^xsd:string ;
+    vtc:category "competency question"^^xsd:string ;
+    dcterms:description "Which water indicators are defined for Burgos?"^^xsd:string .
+
+:CQ37_test1 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ37 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/water#CQ37"^^xsd:anyURI ;
+    vtc:desiredBehaviour "WaterIndicator type Class"^^xsd:string .
+
+:CQ37_test2 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ37 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/water#CQ37"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Burgos type Class"^^xsd:string .
+
+:CQ37_test3 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ37 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/water#CQ37"^^xsd:anyURI ;
+    vtc:desiredBehaviour "definedFor type Property"^^xsd:string .
+
+:CQ37_test4 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ37 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/water#CQ37"^^xsd:anyURI ;
+    vtc:desiredBehaviour "WaterIndicator definedFor Burgos"^^xsd:string .
+
+:CQ38 rdf:type owl:NamedIndividual , vtc:Requirement ;
+    vtc:requirementId "CQ38"^^xsd:string ;
+    vtc:category "competency question"^^xsd:string ;
+    dcterms:description "What is the start date and time of the tariff in use in the water meter?"^^xsd:string .
+
+:CQ38_test1 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ38 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/water#CQ38"^^xsd:anyURI ;
+    vtc:desiredBehaviour "WaterMeter type Class"^^xsd:string .
+
+:CQ38_test2 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ38 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/water#CQ38"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Tariff type Class"^^xsd:string .
+
+:CQ38_test3 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ38 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/water#CQ38"^^xsd:anyURI ;
+    vtc:desiredBehaviour "inUse type Property"^^xsd:string .
+
+:CQ38_test4 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ38 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/water#CQ38"^^xsd:anyURI ;
+    vtc:desiredBehaviour "startDateTime type Property"^^xsd:string .
+
+:CQ38_test5 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ38 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/water#CQ38"^^xsd:anyURI ;
+    vtc:desiredBehaviour "WaterMeter inUse Tariff"^^xsd:string .
+
+:CQ38_test6 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ38 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/water#CQ38"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Tariff startDateTime dateTime"^^xsd:string .
+
+:CQ39 rdf:type owl:NamedIndividual , vtc:Requirement ;
+    vtc:requirementId "CQ39"^^xsd:string ;
+    vtc:category "competency question"^^xsd:string ;
+    dcterms:description "What is the duration of the current tariff of the water meter?"^^xsd:string .
+
+:CQ39_test1 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ39 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/water#CQ39"^^xsd:anyURI ;
+    vtc:desiredBehaviour "WaterMeter type Class"^^xsd:string .
+
+:CQ39_test2 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ39 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/water#CQ39"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Tariff type Class"^^xsd:string .
+
+:CQ39_test3 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ39 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/water#CQ39"^^xsd:anyURI ;
+    vtc:desiredBehaviour "inUse type Property"^^xsd:string .
+
+:CQ39_test4 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ39 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/water#CQ39"^^xsd:anyURI ;
+    vtc:desiredBehaviour "duration type Property"^^xsd:string .
+
+:CQ39_test5 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ39 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/water#CQ39"^^xsd:anyURI ;
+    vtc:desiredBehaviour "WaterMeter inUse Tariff"^^xsd:string .
+
+:CQ39_test6 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ39 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/water#CQ39"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Tariff duration float"^^xsd:string .
+
+:CQ40 rdf:type owl:NamedIndividual , vtc:Requirement ;
+    vtc:requirementId "CQ40"^^xsd:string ;
+    vtc:category "competency question"^^xsd:string ;
+    dcterms:description "What is the tariff period of the water meter?"^^xsd:string .
+
+:CQ40_test1 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ40 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/water#CQ40"^^xsd:anyURI ;
+    vtc:desiredBehaviour "WaterMeter type Class"^^xsd:string .
+
+:CQ40_test2 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ40 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/water#CQ40"^^xsd:anyURI ;
+    vtc:desiredBehaviour "TariffPeriod type Class"^^xsd:string .
+
+:CQ40_test3 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ40 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/water#CQ40"^^xsd:anyURI ;
+    vtc:desiredBehaviour "hasTariffPeriod type Property"^^xsd:string .
+
+:CQ40_test4 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ40 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/water#CQ40"^^xsd:anyURI ;
+    vtc:desiredBehaviour "WaterMeter hasTariffPeriod TariffPeriod"^^xsd:string .
+
+:CQ42 rdf:type owl:NamedIndividual , vtc:Requirement ;
+    vtc:requirementId "CQ42"^^xsd:string ;
+    vtc:category "competency question"^^xsd:string ;
+    dcterms:description "What is the billing date of the water meter?"^^xsd:string .
+
+:CQ42_test1 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ42 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/water#CQ42"^^xsd:anyURI ;
+    vtc:desiredBehaviour "WaterMeter type Class"^^xsd:string .
+
+:CQ42_test2 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ42 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/water#CQ42"^^xsd:anyURI ;
+    vtc:desiredBehaviour "billingDate type Property"^^xsd:string .
+
+:CQ42_test3 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ42 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/water#CQ42"^^xsd:anyURI ;
+    vtc:desiredBehaviour "WaterMeter billingDate dateTime"^^xsd:string .
+
+:CQ43 rdf:type owl:NamedIndividual , vtc:Requirement ;
+    vtc:requirementId "CQ43"^^xsd:string ;
+    vtc:category "competency question"^^xsd:string ;
+    dcterms:description "What is the billing date period of the water meter?"^^xsd:string .
+
+:CQ43_test1 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ43 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/water#CQ43"^^xsd:anyURI ;
+    vtc:desiredBehaviour "WaterMeter type Class"^^xsd:string .
+
+:CQ43_test2 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ43 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/water#CQ43"^^xsd:anyURI ;
+    vtc:desiredBehaviour "billingDatePeriod type Property"^^xsd:string .
+
+:CQ43_test3 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ43 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/water#CQ43"^^xsd:anyURI ;
+    vtc:desiredBehaviour "WaterMeter billingDatePeriod string"^^xsd:string .

@@ -1,0 +1,369 @@
+{
+  "domain": "wine",
+  "generated": {
+    "CQ1": [
+      "WineCharacteristic type Class",
+      "hasCharacteristic type Property",
+      "Wine hasCharacteristic WineCharacteristic"
+    ],
+    "CQ2": [
+      "Bordeaux type WineRegion",
+      "Wine producedIn WineRegion",
+      "RedWine SubClassOf Wine",
+      "WhiteWine SubClassOf Wine",
+      "Wine hasColor string"
+    ],
+    "CQ6": [
+      "hasBouquet type Property",
+      "hasBody type Property",
+      "Wine hasVintage Vintage",
+      "Vintage vintageYear integer"
+    ],
+    "CQ7": [
+      "NapaZinfandel type WineType",
+      "Wine hasVintage Vintage",
+      "Vintage hasQuality string",
+      "Vintage vintageYear integer"
+    ],
+    "CQnew1": [
+      "Bordeaux type WineRegion",
+      "Wine producedIn WineRegion",
+      "Wine madeFromGrape Grape",
+      "Grape type Class"
+    ]
+  },
+  "executions": [
+    {
+      "n": 1,
+      "round": 1,
+      "phase": "themis",
+      "attempt": 1,
+      "seconds": 0.56,
+      "passed": true,
+      "covered": [
+        "CQ1",
+        "CQ2",
+        "CQ6",
+        "CQ7",
+        "CQnew1"
+      ],
+      "uncovered": [],
+      "results": {
+        "CQ1": [
+          {
+            "test": "WineCharacteristic type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "hasCharacteristic type Property",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Wine hasCharacteristic WineCharacteristic",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ2": [
+          {
+            "test": "Bordeaux type WineRegion",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Wine producedIn WineRegion",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "RedWine SubClassOf Wine",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "WhiteWine SubClassOf Wine",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Wine hasColor string",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ6": [
+          {
+            "test": "hasBouquet type Property",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "hasBody type Property",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Wine hasVintage Vintage",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Vintage vintageYear integer",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ7": [
+          {
+            "test": "NapaZinfandel type WineType",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Wine hasVintage Vintage",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Vintage hasQuality string",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Vintage vintageYear integer",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQnew1": [
+          {
+            "test": "Bordeaux type WineRegion",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Wine producedIn WineRegion",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Wine madeFromGrape Grape",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Grape type Class",
+            "result": "Passed",
+            "detail": ""
+          }
+        ]
+      }
+    },
+    {
+      "n": 2,
+      "round": 1,
+      "phase": "verify",
+      "seconds": 0.48,
+      "passed": true,
+      "covered": [
+        "CQ1",
+        "CQ2",
+        "CQ6",
+        "CQ7",
+        "CQnew1"
+      ],
+      "uncovered": [],
+      "results": {
+        "CQ1": [
+          {
+            "test": "WineCharacteristic type Class",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "hasCharacteristic type Property",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Wine hasCharacteristic WineCharacteristic",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ2": [
+          {
+            "test": "Bordeaux type WineRegion",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Wine producedIn WineRegion",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "RedWine SubClassOf Wine",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "WhiteWine SubClassOf Wine",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Wine hasColor string",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ6": [
+          {
+            "test": "hasBouquet type Property",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "hasBody type Property",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Wine hasVintage Vintage",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Vintage vintageYear integer",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ7": [
+          {
+            "test": "NapaZinfandel type WineType",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Wine hasVintage Vintage",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Vintage hasQuality string",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Vintage vintageYear integer",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQnew1": [
+          {
+            "test": "Bordeaux type WineRegion",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Wine producedIn WineRegion",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Wine madeFromGrape Grape",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Grape type Class",
+            "result": "Passed",
+            "detail": ""
+          }
+        ]
+      }
+    }
+  ],
+  "test_history": {
+    "WineCharacteristic type Class": [
+      "Passed",
+      "Passed"
+    ],
+    "hasCharacteristic type Property": [
+      "Passed",
+      "Passed"
+    ],
+    "Wine hasCharacteristic WineCharacteristic": [
+      "Passed",
+      "Passed"
+    ],
+    "Bordeaux type WineRegion": [
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed"
+    ],
+    "Wine producedIn WineRegion": [
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed"
+    ],
+    "RedWine SubClassOf Wine": [
+      "Passed",
+      "Passed"
+    ],
+    "WhiteWine SubClassOf Wine": [
+      "Passed",
+      "Passed"
+    ],
+    "Wine hasColor string": [
+      "Passed",
+      "Passed"
+    ],
+    "hasBouquet type Property": [
+      "Passed",
+      "Passed"
+    ],
+    "hasBody type Property": [
+      "Passed",
+      "Passed"
+    ],
+    "Wine hasVintage Vintage": [
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed"
+    ],
+    "Vintage vintageYear integer": [
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed"
+    ],
+    "NapaZinfandel type WineType": [
+      "Passed",
+      "Passed"
+    ],
+    "Vintage hasQuality string": [
+      "Passed",
+      "Passed"
+    ],
+    "Wine madeFromGrape Grape": [
+      "Passed",
+      "Passed"
+    ],
+    "Grape type Class": [
+      "Passed",
+      "Passed"
+    ]
+  },
+  "sanitized": {},
+  "testsuite_file": "/home/jovyan/LLMOnto/Benchmark/OntologyConceptMatching/MASEO_MCP/ollama/wine/wine_testsuite.ttl",
+  "generated_warnings": {}
+}

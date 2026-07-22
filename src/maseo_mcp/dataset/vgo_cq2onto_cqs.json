@@ -1,0 +1,126 @@
+[
+    {
+        "id": "CQ01",
+        "value": "What is the username of the player?"
+    },
+    {
+        "id": "CQ02",
+        "value": "Who are the friends of the player?"
+    },
+    {
+        "id": "CQ03",
+        "value": "Who are the friends that play other games as well with this player?"
+    },
+    {
+        "id": "CQ05",
+        "value": "What are the achievements of my friends?"
+    },
+    {
+        "id": "CQ07",
+        "value": "What are the achievements your friend has received?"
+    },
+    {
+        "id": "CQ08",
+        "value": "What achievements does a game have?"
+    },
+    {
+        "id": "CQ09",
+        "value": "How many hours has this game been played in total?"
+    },
+    {
+        "id": "CQ10",
+        "value": "What are the types of achievements in this game?"
+    },
+    {
+        "id": "CQ11",
+        "value": "What are the types of achievements a game can have?"
+    },
+    {
+        "id": "CQ12",
+        "value": "What is the genre of the game?"
+    },
+    {
+        "id": "CQ13",
+        "value": "What items exist in a game?"
+    },
+    {
+        "id": "CQ15",
+        "value": "What is the release date of the game?"
+    },
+    {
+        "id": "CQ17",
+        "value": "List all games of a certain Genre?"
+    },
+    {
+        "id": "CQ19",
+        "value": "What abilities does an item have?"
+    },
+    {
+        "id": "CQ22",
+        "value": "Who has the best kill count in the game?"
+    },
+    {
+        "id": "CQ24",
+        "value": "What achievements has a player obtained?"
+    },
+    {
+        "id": "CQ25",
+        "value": "What games has the player played?"
+    },
+    {
+        "id": "CQ26",
+        "value": "What items does the player have?"
+    },
+    {
+        "id": "CQ27",
+        "value": "What achievements of a certain type does the player have?"
+    },
+    {
+        "id": "CQ29",
+        "value": "What is the last game a player has played?"
+    },
+    {
+        "id": "CQ35",
+        "value": "In how many games does the player have all the achievements?"
+    },
+    {
+        "id": "CQ52",
+        "value": "What equipment does a player have in a game?"
+    },
+    {
+        "id": "CQ55",
+        "value": "What are the games where a player can use this item?"
+    },
+    {
+        "id": "CQ56",
+        "value": "How many players have made in app purchases?"
+    },
+    {
+        "id": "CQ57",
+        "value": "How many players who have already spent money, spend money again?"
+    },
+    {
+        "id": "CQ62",
+        "value": "What time are most of the in app purchases done?"
+    },
+    {
+        "id": "CQ63",
+        "value": "Where do the most paying customers live?"
+    },
+    {
+        "id": "CQ64",
+        "value": "How long does a player spend in the game before making first IAP?"
+    },
+    {
+        "id": "CQ65",
+        "value": "Where do the players live who have not made any IAP?"
+    },
+    {
+        "id": "CQ66",
+        "value": "Where do the players who have done the most IAP live?"
+    },
+    {
+        "id": "New CQ1",
+        "value": "What playing areas does a game have?"
+    }
+]

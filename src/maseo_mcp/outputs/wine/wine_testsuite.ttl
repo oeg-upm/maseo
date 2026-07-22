@@ -1,0 +1,153 @@
+@prefix vtc: <https://w3id.org/def/vtc#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix : <http://www.semanticweb.org/wine/tests#> .
+
+:suite rdf:type owl:NamedIndividual , vtc:TestSuite .
+
+:CQ1 rdf:type owl:NamedIndividual , vtc:Requirement ;
+    vtc:requirementId "CQ1"^^xsd:string ;
+    vtc:category "competency question"^^xsd:string ;
+    dcterms:description "Which wine characteristics should I consider when choosing a wine?"^^xsd:string .
+
+:CQ1_test1 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ1 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/wine#CQ1"^^xsd:anyURI ;
+    vtc:desiredBehaviour "WineCharacteristic type Class"^^xsd:string .
+
+:CQ1_test2 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ1 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/wine#CQ1"^^xsd:anyURI ;
+    vtc:desiredBehaviour "hasCharacteristic type Property"^^xsd:string .
+
+:CQ1_test3 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ1 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/wine#CQ1"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Wine hasCharacteristic WineCharacteristic"^^xsd:string .
+
+:CQ2 rdf:type owl:NamedIndividual , vtc:Requirement ;
+    vtc:requirementId "CQ2"^^xsd:string ;
+    vtc:category "competency question"^^xsd:string ;
+    dcterms:description "Is Bordeaux a red or white wine?"^^xsd:string .
+
+:CQ2_test1 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ2 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/wine#CQ2"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Bordeaux type WineRegion"^^xsd:string .
+
+:CQ2_test2 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ2 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/wine#CQ2"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Wine producedIn WineRegion"^^xsd:string .
+
+:CQ2_test3 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ2 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/wine#CQ2"^^xsd:anyURI ;
+    vtc:desiredBehaviour "RedWine SubClassOf Wine"^^xsd:string .
+
+:CQ2_test4 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ2 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/wine#CQ2"^^xsd:anyURI ;
+    vtc:desiredBehaviour "WhiteWine SubClassOf Wine"^^xsd:string .
+
+:CQ2_test5 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ2 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/wine#CQ2"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Wine hasColor string"^^xsd:string .
+
+:CQ6 rdf:type owl:NamedIndividual , vtc:Requirement ;
+    vtc:requirementId "CQ6"^^xsd:string ;
+    vtc:category "competency question"^^xsd:string ;
+    dcterms:description "Does a bouquet or body of a specific wine change with vintage year?"^^xsd:string .
+
+:CQ6_test1 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ6 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/wine#CQ6"^^xsd:anyURI ;
+    vtc:desiredBehaviour "hasBouquet type Property"^^xsd:string .
+
+:CQ6_test2 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ6 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/wine#CQ6"^^xsd:anyURI ;
+    vtc:desiredBehaviour "hasBody type Property"^^xsd:string .
+
+:CQ6_test3 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ6 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/wine#CQ6"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Wine hasVintage Vintage"^^xsd:string .
+
+:CQ6_test4 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ6 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/wine#CQ6"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Vintage vintageYear integer"^^xsd:string .
+
+:CQ7 rdf:type owl:NamedIndividual , vtc:Requirement ;
+    vtc:requirementId "CQ7"^^xsd:string ;
+    vtc:category "competency question"^^xsd:string ;
+    dcterms:description "What were good vintages for Napa Zinfandel?"^^xsd:string .
+
+:CQ7_test1 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ7 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/wine#CQ7"^^xsd:anyURI ;
+    vtc:desiredBehaviour "NapaZinfandel type WineType"^^xsd:string .
+
+:CQ7_test2 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ7 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/wine#CQ7"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Wine hasVintage Vintage"^^xsd:string .
+
+:CQ7_test3 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ7 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/wine#CQ7"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Vintage hasQuality string"^^xsd:string .
+
+:CQ7_test4 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ7 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/wine#CQ7"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Vintage vintageYear integer"^^xsd:string .
+
+:CQnew1 rdf:type owl:NamedIndividual , vtc:Requirement ;
+    vtc:requirementId "CQnew1"^^xsd:string ;
+    vtc:category "competency question"^^xsd:string ;
+    dcterms:description "What grapes are used to make Bordeaux wine?"^^xsd:string .
+
+:CQnew1_test1 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQnew1 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/wine#CQnew1"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Bordeaux type WineRegion"^^xsd:string .
+
+:CQnew1_test2 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQnew1 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/wine#CQnew1"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Wine producedIn WineRegion"^^xsd:string .
+
+:CQnew1_test3 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQnew1 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/wine#CQnew1"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Wine madeFromGrape Grape"^^xsd:string .
+
+:CQnew1_test4 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQnew1 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/wine#CQnew1"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Grape type Class"^^xsd:string .
