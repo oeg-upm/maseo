@@ -1,0 +1,140 @@
+[
+  {
+    "cq_id": "CQ03",
+    "cq": "Shall the permissions 'Aggregation' and 'Disaggregation' be of the type Transfer Rights?",
+    "axioms": [
+      "Permission SubClassOf TransferRight"
+    ]
+  },
+  {
+    "cq_id": "CQ06",
+    "cq": "Expressing the various roles of contract parties within the Permission/Duty element.",
+    "axioms": [
+      "hasRole domain ContractParty range Role",
+      "hasParty domain Permission range ContractParty",
+      "hasPermission domain Duty range Permission",
+      "hasDuty domain ContractParty range Duty"
+    ]
+  },
+  {
+    "cq_id": "CQ08",
+    "cq": "How to provide a 'NOT' expression?",
+    "axioms": [
+      "hasOperator domain Constraint range Operator"
+    ]
+  },
+  {
+    "cq_id": "CQ10",
+    "cq": "How are rights and duties supported for all contract parties?",
+    "axioms": [
+      "hasRight domain ContractParty range Right",
+      "hasDuty domain ContractParty range Duty",
+      "hasParty domain Right range ContractParty"
+    ]
+  },
+  {
+    "cq_id": "CQ13",
+    "cq": "Shall ODRLv2 allow for nested constraints?",
+    "axioms": [
+      "hasConstraint domain Constraint range Constraint",
+      "hasPart domain Constraint range Constraint"
+    ]
+  },
+  {
+    "cq_id": "CQ14",
+    "cq": "How do we express 'and', 'or', 'xor' constraints?",
+    "axioms": [
+      "hasOperator domain Constraint range LogicalOperator"
+    ]
+  },
+  {
+    "cq_id": "CQ21",
+    "cq": "How to express constraints on requirements?",
+    "axioms": [
+      "hasConstraint domain Requirement range Constraint",
+      "hasRequirement domain Requirement range Requirement"
+    ]
+  },
+  {
+    "cq_id": "CQ24",
+    "cq": "How to express exclusive permissions?",
+    "axioms": [
+      "isExclusive domain Permission range boolean",
+      "hasPermission domain ContractParty range Permission"
+    ]
+  },
+  {
+    "cq_id": "CQ26",
+    "cq": "How to express Condition via Constraints?",
+    "axioms": [
+      "hasCondition domain Condition range Condition",
+      "hasConstraint domain Condition range Constraint"
+    ]
+  },
+  {
+    "cq_id": "CQ30",
+    "cq": "What do we lose if containers are no longer part of ODRL?",
+    "axioms": [
+      "hasContainer domain Container range Container"
+    ]
+  },
+  {
+    "cq_id": "CQ31",
+    "cq": "Do we need 'Sequencing' as part of the REL?",
+    "axioms": [
+      "partOf domain Rule range Rule",
+      "hasAction domain Rule range Rule"
+    ]
+  },
+  {
+    "cq_id": "CQ33",
+    "cq": "Can the new data model express inheritance?",
+    "axioms": [
+      "inheritsFrom domain Policy range Rule"
+    ]
+  },
+  {
+    "cq_id": "New CQ1",
+    "cq": "Which policy is directly linked to a given asset?",
+    "axioms": [
+      "linkedTo domain Asset range Policy"
+    ]
+  },
+  {
+    "cq_id": "New CQ2",
+    "cq": "What conflict resolution strategy is specified by a policy?",
+    "axioms": [
+      "hasConflictResolutionStrategy domain Policy range ConflictResolutionStrategy"
+    ]
+  },
+  {
+    "cq_id": "New CQ3",
+    "cq": "What duty is specified as a remedy for the violation of a prohibition?",
+    "axioms": [
+      "remedy domain Prohibition range Duty",
+      "violation domain Prohibition range Duty"
+    ]
+  },
+  {
+    "cq_id": "New CQ4",
+    "cq": "Which rule is activated upon the failure of another rule?",
+    "axioms": [
+      "failure domain Rule range Rule"
+    ]
+  },
+  {
+    "cq_id": "New CQ5",
+    "cq": "What duty is specified as a consequence of another duty?",
+    "axioms": [
+      "consequence domain Duty range Duty"
+    ]
+  },
+  {
+    "cq_id": "New CQ6",
+    "cq": "What operator is used in the constraints of a prohibition?",
+    "axioms": [
+      "constraint domain Prohibition range Operator",
+      "hasOperator domain Prohibition range Operator"
+    ]
+  }
+]

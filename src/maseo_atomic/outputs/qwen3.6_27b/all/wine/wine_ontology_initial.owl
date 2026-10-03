@@ -1,0 +1,175 @@
+<?xml version="1.0"?>
+<rdf:RDF xml:base="http://www.semanticweb.org/wine#"
+         xmlns:owl="http://www.w3.org/2002/07/owl#"
+         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+         xmlns:dc="http://purl.org/dc/elements/1.1/"
+         xmlns:vaem="http://www.linkedmodel.org/schema/vaem#">
+
+  <owl:Ontology rdf:about="http://www.semanticweb.org/wine#"/>
+
+  <!-- owl:Class declarations -->
+
+<owl:Class rdf:about="http://www.semanticweb.org/wine#Wine">
+  <rdfs:comment>A fermented beverage produced from grapes, characterized by various attributes and vintages.</rdfs:comment>
+  <rdfs:label>Wine</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: Central class referenced across all competency questions</vaem:rationale>
+  <dc:source>(competency_question) CQ1: Which wine characteristics should I consider when choosing a wine?
+    (competency_question) CQ2: Is Bordeaux a red or white wine?
+    (competency_question) CQ6: Does a bouquet or body of a specific wine change with vintage year?
+    (competency_question) CQ7: What were good vintages for Napa Zinfandel?
+    (competency_question) CQnew1: What grapes are used to make Bordeaux wine?</dc:source>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/wine#Characteristic">
+  <rdfs:comment>An attribute or quality associated with a wine.</rdfs:comment>
+  <rdfs:label>Characteristic</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: Range of the characteristic property in CQ1</vaem:rationale>
+  <dc:source>(competency_question) CQ1: Which wine characteristics should I consider when choosing a wine?</dc:source>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/wine#RedWine">
+  <rdfs:comment>A category of wine made from dark-colored grape varieties.</rdfs:comment>
+  <rdfs:label>Red Wine</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: Subclass of Wine used to answer CQ2</vaem:rationale>
+  <dc:source>(competency_question) CQ2: Is Bordeaux a red or white wine?</dc:source>
+  <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/wine#Wine"/>
+  <owl:disjointWith rdf:resource="http://www.semanticweb.org/wine#WhiteWine"/>
+  <!-- Axiom: Disjoint with WhiteWine -->
+  <!-- Axiom: SubClassOf Wine -->
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/wine#WhiteWine">
+  <rdfs:comment>A category of wine made from white or light-colored grape varieties.</rdfs:comment>
+  <rdfs:label>White Wine</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: Subclass of Wine used to answer CQ2</vaem:rationale>
+  <dc:source>(competency_question) CQ2: Is Bordeaux a red or white wine?</dc:source>
+  <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/wine#Wine"/>
+  <!-- Axiom: SubClassOf Wine -->
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/wine#Bouquet">
+  <rdfs:comment>The complex aroma of a wine that develops over time.</rdfs:comment>
+  <rdfs:label>Bouquet</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: Range of the bouquet property in CQ6</vaem:rationale>
+  <dc:source>(competency_question) CQ6: Does a bouquet or body of a specific wine change with vintage year?</dc:source>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/wine#Body">
+  <rdfs:comment>The weight and texture of a wine on the palate.</rdfs:comment>
+  <rdfs:label>Body</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: Range of the body property in CQ6</vaem:rationale>
+  <dc:source>(competency_question) CQ6: Does a bouquet or body of a specific wine change with vintage year?</dc:source>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/wine#Vintage">
+  <rdfs:comment>The year or season in which the grapes for a wine were harvested.</rdfs:comment>
+  <rdfs:label>Vintage</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: Used to track yearly variations and quality in CQ6 and CQ7</vaem:rationale>
+  <dc:source>(competency_question) CQ6: Does a bouquet or body of a specific wine change with vintage year?
+    (competency_question) CQ7: What were good vintages for Napa Zinfandel?</dc:source>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/wine#Grape">
+  <rdfs:comment>A fruit variety used as the primary ingredient in winemaking.</rdfs:comment>
+  <rdfs:label>Grape</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: Range of the usedToMake property in CQnew1</vaem:rationale>
+  <dc:source>(competency_question) CQnew1: What grapes are used to make Bordeaux wine?</dc:source>
+</owl:Class>
+
+  <!-- owl:ObjectProperty declarations -->
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/wine#characteristic">
+  <rdfs:comment>Relates a wine to one of its characteristics.</rdfs:comment>
+  <rdfs:label>Characteristic</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: Connects Wine to Characteristic in CQ1</vaem:rationale>
+  <dc:source>(competency_question) CQ1: Which wine characteristics should I consider when choosing a wine?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/wine#Wine"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/wine#Characteristic"/>
+  <!-- Axiom: domain Wine -->
+  <!-- Axiom: range Characteristic -->
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/wine#bouquet">
+  <rdfs:comment>Relates a wine to its bouquet.</rdfs:comment>
+  <rdfs:label>Bouquet</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: Connects Wine to Bouquet in CQ6</vaem:rationale>
+  <dc:source>(competency_question) CQ6: Does a bouquet or body of a specific wine change with vintage year?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/wine#Wine"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/wine#Bouquet"/>
+  <!-- Axiom: domain Wine -->
+  <!-- Axiom: range Bouquet -->
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/wine#body">
+  <rdfs:comment>Relates a wine to its body.</rdfs:comment>
+  <rdfs:label>Body</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: Connects Wine to Body in CQ6</vaem:rationale>
+  <dc:source>(competency_question) CQ6: Does a bouquet or body of a specific wine change with vintage year?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/wine#Wine"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/wine#Body"/>
+  <!-- Axiom: domain Wine -->
+  <!-- Axiom: range Body -->
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/wine#vintageYear">
+  <rdfs:comment>Relates a wine to its vintage year.</rdfs:comment>
+  <rdfs:label>Vintage Year</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: Connects Wine to Vintage in CQ6</vaem:rationale>
+  <dc:source>(competency_question) CQ6: Does a bouquet or body of a specific wine change with vintage year?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/wine#Wine"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/wine#Vintage"/>
+  <!-- Axiom: domain Wine -->
+  <!-- Axiom: range Vintage -->
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/wine#isGoodFor">
+  <rdfs:comment>Relates a wine to a vintage that is considered good for it.</rdfs:comment>
+  <rdfs:label>Is Good For</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: Connects Wine to Vintage in CQ7, following the supplied-asks direction rule</vaem:rationale>
+  <dc:source>(competency_question) CQ7: What were good vintages for Napa Zinfandel?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/wine#Wine"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/wine#Vintage"/>
+  <!-- Axiom: domain Wine -->
+  <!-- Axiom: range Vintage -->
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/wine#usedToMake">
+  <rdfs:comment>Relates a wine to the grape variety used to produce it.</rdfs:comment>
+  <rdfs:label>Used To Make</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: Connects Wine to Grape in CQnew1, following the supplied-asks direction rule</vaem:rationale>
+  <dc:source>(competency_question) CQnew1: What grapes are used to make Bordeaux wine?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/wine#Wine"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/wine#Grape"/>
+  <!-- Axiom: domain Wine -->
+  <!-- Axiom: range Grape -->
+</owl:ObjectProperty>
+
+  <!-- owl:NamedIndividual declarations -->
+
+<owl:NamedIndividual rdf:about="http://www.semanticweb.org/wine#Bordeaux">
+  <rdfs:comment>A specific wine instance queried for its color type.</rdfs:comment>
+  <rdfs:label>Bordeaux</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: Instance mentioned in CQ2</vaem:rationale>
+  <dc:source>(competency_question) CQ2: Is Bordeaux a red or white wine?</dc:source>
+  <rdf:type rdf:resource="http://www.semanticweb.org/wine#Wine"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="http://www.semanticweb.org/wine#NapaZinfandel">
+  <rdfs:comment>A specific wine instance queried for good vintages.</rdfs:comment>
+  <rdfs:label>Napa Zinfandel</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: Instance mentioned in CQ7</vaem:rationale>
+  <dc:source>(competency_question) CQ7: What were good vintages for Napa Zinfandel?</dc:source>
+  <rdf:type rdf:resource="http://www.semanticweb.org/wine#Wine"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="http://www.semanticweb.org/wine#BordeauxWine">
+  <rdfs:comment>A specific wine instance queried for its grape composition.</rdfs:comment>
+  <rdfs:label>Bordeaux Wine</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: Instance mentioned in CQnew1</vaem:rationale>
+  <dc:source>(competency_question) CQnew1: What grapes are used to make Bordeaux wine?</dc:source>
+  <rdf:type rdf:resource="http://www.semanticweb.org/wine#Wine"/>
+</owl:NamedIndividual>
+
+</rdf:RDF>

@@ -1,0 +1,153 @@
+[
+  {
+    "cq_id": "CQ03",
+    "cq": "Shall the permissions 'Aggregation' and 'Disaggregation' be of the type Transfer Rights?",
+    "tests": [
+      "TransferRight type Class"
+    ]
+  },
+  {
+    "cq_id": "CQ06",
+    "cq": "Expressing the various roles of contract parties within the Permission/Duty element.",
+    "tests": [
+      "role type Property"
+    ]
+  },
+  {
+    "cq_id": "CQ08",
+    "cq": "How to provide a 'NOT' expression?",
+    "tests": [
+      "Expression type Class",
+      "Operator type Class",
+      "operator type Property",
+      "Expression operator Operator",
+      "operator domain Expression",
+      "operator range Operator"
+    ]
+  },
+  {
+    "cq_id": "CQ10",
+    "cq": "How are rights and duties supported for all contract parties?",
+    "tests": [
+      "Duty type Class"
+    ]
+  },
+  {
+    "cq_id": "CQ13",
+    "cq": "Shall ODRLv2 allow for nested constraints?",
+    "tests": [
+      "constraint type Property"
+    ]
+  },
+  {
+    "cq_id": "CQ14",
+    "cq": "How do we express 'and', 'or', 'xor' constraints?",
+    "tests": [
+      "Constraint type Class",
+      "Operator type Class",
+      "operator type Property",
+      "Constraint operator Operator",
+      "operator domain Constraint",
+      "operator range Operator"
+    ]
+  },
+  {
+    "cq_id": "CQ21",
+    "cq": "How to express constraints on requirements?",
+    "tests": [
+      "constraint type Property"
+    ]
+  },
+  {
+    "cq_id": "CQ24",
+    "cq": "How to express exclusive permissions?",
+    "tests": [
+      "exclusivePermission type Property"
+    ]
+  },
+  {
+    "cq_id": "CQ26",
+    "cq": "How to express Condition via Constraints?",
+    "tests": [
+      "constraint type Property"
+    ]
+  },
+  {
+    "cq_id": "CQ30",
+    "cq": "What do we lose if containers are no longer part of ODRL?",
+    "tests": [
+      "Container type Class"
+    ]
+  },
+  {
+    "cq_id": "CQ31",
+    "cq": "Do we need 'Sequencing' as part of the REL?",
+    "tests": [
+      "sequencing type Property"
+    ]
+  },
+  {
+    "cq_id": "CQ33",
+    "cq": "Can the new data model express inheritance?",
+    "tests": []
+  },
+  {
+    "cq_id": "New CQ1",
+    "cq": "Which policy is directly linked to a given asset?",
+    "tests": [
+      "Policy linkedTo Asset",
+      "linkedTo domain Policy",
+      "linkedTo range Asset"
+    ]
+  },
+  {
+    "cq_id": "New CQ2",
+    "cq": "What conflict resolution strategy is specified by a policy?",
+    "tests": [
+      "Policy strategy ConflictResolutionStrategy",
+      "strategy domain Policy",
+      "strategy range ConflictResolutionStrategy"
+    ]
+  },
+  {
+    "cq_id": "New CQ3",
+    "cq": "What duty is specified as a remedy for the violation of a prohibition?",
+    "tests": [
+      "Prohibition remedy Duty",
+      "remedy domain Prohibition",
+      "remedy range Duty",
+      "violation type Property"
+    ]
+  },
+  {
+    "cq_id": "New CQ4",
+    "cq": "Which rule is activated upon the failure of another rule?",
+    "tests": [
+      "Rule failure Rule",
+      "failure domain Rule",
+      "failure range Rule",
+      "Rule activatedUpon Rule",
+      "activatedUpon domain Rule",
+      "activatedUpon range Rule"
+    ]
+  },
+  {
+    "cq_id": "New CQ5",
+    "cq": "What duty is specified as a consequence of another duty?",
+    "tests": [
+      "Duty consequence Duty",
+      "consequence domain Duty",
+      "consequence range Duty"
+    ]
+  },
+  {
+    "cq_id": "New CQ6",
+    "cq": "What operator is used in the constraints of a prohibition?",
+    "tests": [
+      "Prohibition constraint Constraint",
+      "constraint domain Prohibition",
+      "constraint range Constraint",
+      "operator type Property"
+    ]
+  }
+]

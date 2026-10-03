@@ -1,0 +1,379 @@
+{
+  "domain": "wine",
+  "base_uri": "http://www.semanticweb.org/wine#",
+  "cq_file": "/home/jovyan/LLMOnto/Benchmark/OntologyConceptMatching/MASEO_MCP/dataset/wine_cq2onto_cqs.json",
+  "cqs": [
+    "CQ1",
+    "CQ2",
+    "CQ6",
+    "CQ7",
+    "CQnew1"
+  ],
+  "rounds": 1,
+  "final_status": {
+    "syntax_check": {
+      "passed": true,
+      "errors": []
+    },
+    "oops": {
+      "passed": true,
+      "major_count": 0,
+      "pitfalls": []
+    },
+    "hermit": {
+      "passed": true,
+      "consistent": true,
+      "unsatisfiable_classes": []
+    },
+    "cq_coverage": {
+      "passed": true,
+      "covered": [
+        "CQ1",
+        "CQ2",
+        "CQ6",
+        "CQ7",
+        "CQnew1"
+      ],
+      "uncovered": [],
+      "missing": {}
+    },
+    "themis_test": {
+      "passed": true,
+      "covered": [
+        "CQ1",
+        "CQ2",
+        "CQ6",
+        "CQ7",
+        "CQnew1"
+      ],
+      "uncovered": [],
+      "missing": {}
+    }
+  },
+  "all_passed": true,
+  "records": [
+    {
+      "round": 0,
+      "index": 1,
+      "phase": "extract",
+      "tool_calling": "extraction_agent",
+      "input_information": {
+        "cqs": [
+          "CQ1",
+          "CQ2",
+          "CQ6",
+          "CQ7",
+          "CQnew1"
+        ]
+      },
+      "output": {
+        "terms_file": "/home/jovyan/LLMOnto/Benchmark/OntologyConceptMatching/MASEO_MCP/ollama/wine/wine_terms.json",
+        "terms_per_cq": {
+          "CQ1": 7,
+          "CQ2": 13,
+          "CQ6": 12,
+          "CQ7": 12,
+          "CQnew1": 11
+        }
+      },
+      "seconds": 11.44
+    },
+    {
+      "round": 0,
+      "index": 2,
+      "phase": "generate",
+      "tool_calling": "generation_agent",
+      "input_information": {
+        "cqs": [
+          "CQ1",
+          "CQ2",
+          "CQ6",
+          "CQ7",
+          "CQnew1"
+        ],
+        "with_terms": true
+      },
+      "output": {
+        "ontology_file": "/home/jovyan/LLMOnto/Benchmark/OntologyConceptMatching/MASEO_MCP/ollama/wine/wine_ontology.owl",
+        "ontology_chars": 9050
+      },
+      "seconds": 47.1
+    },
+    {
+      "round": 1,
+      "index": 3,
+      "phase": "syntax",
+      "attempt": 1,
+      "tool_calling": "syntax_check",
+      "input_information": {
+        "ontology_file": "/home/jovyan/LLMOnto/Benchmark/OntologyConceptMatching/MASEO_MCP/ollama/wine/wine_ontology.owl"
+      },
+      "output": {
+        "passed": true,
+        "errors": []
+      },
+      "next_action": "pass",
+      "seconds": 0.21
+    },
+    {
+      "round": 1,
+      "index": 4,
+      "phase": "cover",
+      "attempt": 1,
+      "tool_calling": "cq_coverage",
+      "input_information": {
+        "ontology_file": "/home/jovyan/LLMOnto/Benchmark/OntologyConceptMatching/MASEO_MCP/ollama/wine/wine_ontology.owl",
+        "cqs": [
+          "CQ1",
+          "CQ2",
+          "CQ6",
+          "CQ7",
+          "CQnew1"
+        ]
+      },
+      "output": {
+        "passed": true,
+        "covered": [
+          "CQ1",
+          "CQ2",
+          "CQ6",
+          "CQ7",
+          "CQnew1"
+        ],
+        "uncovered": [],
+        "missing": {}
+      },
+      "next_action": "pass",
+      "seconds": 0.01
+    },
+    {
+      "round": 1,
+      "index": 5,
+      "phase": "oops",
+      "attempt": 1,
+      "tool_calling": "oops_scan",
+      "input_information": {
+        "ontology_file": "/home/jovyan/LLMOnto/Benchmark/OntologyConceptMatching/MASEO_MCP/ollama/wine/wine_ontology.owl"
+      },
+      "output": {
+        "passed": true,
+        "major_count": 0,
+        "pitfalls": []
+      },
+      "next_action": "pass",
+      "seconds": 0.21
+    },
+    {
+      "round": 1,
+      "index": 6,
+      "phase": "hermit",
+      "attempt": 1,
+      "tool_calling": "hermit_consistency",
+      "input_information": {
+        "ontology_file": "/home/jovyan/LLMOnto/Benchmark/OntologyConceptMatching/MASEO_MCP/ollama/wine/wine_ontology.owl"
+      },
+      "output": {
+        "passed": true,
+        "consistent": true,
+        "unsatisfiable_classes": []
+      },
+      "next_action": "pass",
+      "seconds": 0.44
+    },
+    {
+      "round": 1,
+      "index": 7,
+      "phase": "themis",
+      "attempt": 1,
+      "tool_calling": "themis_test",
+      "input_information": {
+        "ontology_file": "/home/jovyan/LLMOnto/Benchmark/OntologyConceptMatching/MASEO_MCP/ollama/wine/wine_ontology.owl",
+        "cqs": [
+          "CQ1",
+          "CQ2",
+          "CQ6",
+          "CQ7",
+          "CQnew1"
+        ]
+      },
+      "output": {
+        "passed": true,
+        "covered": [
+          "CQ1",
+          "CQ2",
+          "CQ6",
+          "CQ7",
+          "CQnew1"
+        ],
+        "uncovered": [],
+        "missing": {}
+      },
+      "next_action": "pass",
+      "seconds": 0.56
+    },
+    {
+      "round": 1,
+      "index": 8,
+      "phase": "verify",
+      "tool_calling": "syntax_check",
+      "input_information": {
+        "ontology_file": "/home/jovyan/LLMOnto/Benchmark/OntologyConceptMatching/MASEO_MCP/ollama/wine/wine_ontology.owl"
+      },
+      "output": {
+        "passed": true,
+        "errors": []
+      },
+      "seconds": 0.02
+    },
+    {
+      "round": 1,
+      "index": 9,
+      "phase": "verify",
+      "tool_calling": "hermit_consistency",
+      "input_information": {
+        "ontology_file": "/home/jovyan/LLMOnto/Benchmark/OntologyConceptMatching/MASEO_MCP/ollama/wine/wine_ontology.owl"
+      },
+      "output": {
+        "passed": true,
+        "consistent": true,
+        "unsatisfiable_classes": []
+      },
+      "seconds": 0.43
+    },
+    {
+      "round": 1,
+      "index": 10,
+      "phase": "verify",
+      "tool_calling": "oops_scan",
+      "input_information": {
+        "ontology_file": "/home/jovyan/LLMOnto/Benchmark/OntologyConceptMatching/MASEO_MCP/ollama/wine/wine_ontology.owl"
+      },
+      "output": {
+        "passed": true,
+        "major_count": 0,
+        "pitfalls": []
+      },
+      "seconds": 0.06
+    },
+    {
+      "round": 1,
+      "index": 11,
+      "phase": "verify",
+      "tool_calling": "cq_coverage",
+      "input_information": {
+        "ontology_file": "/home/jovyan/LLMOnto/Benchmark/OntologyConceptMatching/MASEO_MCP/ollama/wine/wine_ontology.owl",
+        "cqs": [
+          "CQ1",
+          "CQ2",
+          "CQ6",
+          "CQ7",
+          "CQnew1"
+        ]
+      },
+      "output": {
+        "passed": true,
+        "covered": [
+          "CQ1",
+          "CQ2",
+          "CQ6",
+          "CQ7",
+          "CQnew1"
+        ],
+        "uncovered": [],
+        "missing": {}
+      },
+      "seconds": 0.01
+    },
+    {
+      "round": 1,
+      "index": 12,
+      "phase": "verify",
+      "tool_calling": "themis_test",
+      "input_information": {
+        "ontology_file": "/home/jovyan/LLMOnto/Benchmark/OntologyConceptMatching/MASEO_MCP/ollama/wine/wine_ontology.owl",
+        "cqs": [
+          "CQ1",
+          "CQ2",
+          "CQ6",
+          "CQ7",
+          "CQnew1"
+        ]
+      },
+      "output": {
+        "passed": true,
+        "covered": [
+          "CQ1",
+          "CQ2",
+          "CQ6",
+          "CQ7",
+          "CQnew1"
+        ],
+        "uncovered": [],
+        "missing": {}
+      },
+      "seconds": 0.48
+    },
+    {
+      "round": 1,
+      "index": 13,
+      "phase": "verify",
+      "tool_calling": "round_summary",
+      "input_information": {
+        "checks": [
+          "syntax_check",
+          "hermit_consistency",
+          "oops_scan",
+          "cq_coverage",
+          "themis_test"
+        ]
+      },
+      "output": {
+        "all_passed": true,
+        "syntax_check": {
+          "passed": true,
+          "errors": []
+        },
+        "cq_coverage": {
+          "passed": true,
+          "covered": [
+            "CQ1",
+            "CQ2",
+            "CQ6",
+            "CQ7",
+            "CQnew1"
+          ],
+          "uncovered": [],
+          "missing": {}
+        },
+        "themis_test": {
+          "passed": true,
+          "covered": [
+            "CQ1",
+            "CQ2",
+            "CQ6",
+            "CQ7",
+            "CQnew1"
+          ],
+          "uncovered": [],
+          "missing": {}
+        },
+        "oops": {
+          "passed": true,
+          "major_count": 0,
+          "pitfalls": []
+        },
+        "hermit": {
+          "passed": true,
+          "consistent": true,
+          "unsatisfiable_classes": []
+        }
+      },
+      "next_action": "done"
+    }
+  ],
+  "ontology_file": "/home/jovyan/LLMOnto/Benchmark/OntologyConceptMatching/MASEO_MCP/ollama/wine/wine_ontology.owl",
+  "terms_file": "/home/jovyan/LLMOnto/Benchmark/OntologyConceptMatching/MASEO_MCP/ollama/wine/wine_terms.json",
+  "tests_file": "/home/jovyan/LLMOnto/Benchmark/OntologyConceptMatching/MASEO_MCP/ollama/wine/wine_tests.json",
+  "testsuite_file": "/home/jovyan/LLMOnto/Benchmark/OntologyConceptMatching/MASEO_MCP/ollama/wine/wine_testsuite.ttl",
+  "steps_file": "/home/jovyan/LLMOnto/Benchmark/OntologyConceptMatching/MASEO_MCP/ollama/wine/wine_steps.json"
+}

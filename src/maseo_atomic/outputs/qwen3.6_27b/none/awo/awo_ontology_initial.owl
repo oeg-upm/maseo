@@ -1,0 +1,114 @@
+<?xml version="1.0"?>
+<rdf:RDF xml:base="http://www.semanticweb.org/awo#"
+         xmlns:owl="http://www.w3.org/2002/07/owl#"
+         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+         xmlns:dc="http://purl.org/dc/elements/1.1/"
+         xmlns:vaem="http://www.linkedmodel.org/schema/vaem#">
+
+  <owl:Ontology rdf:about="http://www.semanticweb.org/awo#"/>
+
+  <!-- owl:Class declarations -->
+
+<owl:Class rdf:about="http://www.semanticweb.org/awo#Animal">
+  <rdfs:comment>A living organism that may consume other organisms or plants, or be consumed itself.</rdfs:comment>
+  <rdfs:label>Animal</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: Core class referenced in CQ1, CQ2, CQ3, CQ4, CQ6, CQ7, and CQ14 as eater or food</vaem:rationale>
+  <dc:source>(competency_question) CQ1: Which animal eats which other animal?
+    (competency_question) CQ2: Is [this animal] a herbivore?
+    (competency_question) CQ3: Which plant parts does [this omnivorous or herbivorourus animal] eat?
+    (competency_question) CQ4: Does a lion eat plants or plant parts?
+    (competency_question) CQ6: Which plants eat animals?
+    (competency_question) CQ7: Which animals eat [these animals]?
+    (competency_question) CQ14: Are there animals that are carnivore but still eat some plants or parts of plants?</dc:source>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/awo#Herbivore">
+  <rdfs:comment>An animal that primarily consumes plants or plant parts.</rdfs:comment>
+  <rdfs:label>Herbivore</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: CQ2 and CQ3 classify animals by plant-based diet</vaem:rationale>
+  <dc:source>(competency_question) CQ2: Is [this animal] a herbivore?
+    (competency_question) CQ3: Which plant parts does [this omnivorous or herbivorourus animal] eat?</dc:source>
+  <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/awo#Animal"/>
+  <owl:disjointWith rdf:resource="http://www.semanticweb.org/awo#Omnivore"/>
+  <owl:disjointWith rdf:resource="http://www.semanticweb.org/awo#Carnivore"/>
+  <!-- Axiom: Disjoint with Omnivore, Carnivore -->
+  <!-- Axiom: SubClassOf Animal -->
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/awo#Omnivore">
+  <rdfs:comment>An animal that consumes both plants and animals.</rdfs:comment>
+  <rdfs:label>Omnivore</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: CQ3 classifies animals by mixed diet</vaem:rationale>
+  <dc:source>(competency_question) CQ3: Which plant parts does [this omnivorous or herbivorourus animal] eat?</dc:source>
+  <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/awo#Animal"/>
+  <owl:disjointWith rdf:resource="http://www.semanticweb.org/awo#Carnivore"/>
+  <!-- Axiom: Disjoint with Carnivore -->
+  <!-- Axiom: SubClassOf Animal -->
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/awo#Carnivore">
+  <rdfs:comment>An animal that primarily consumes other animals.</rdfs:comment>
+  <rdfs:label>Carnivore</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: CQ14 classifies animals by meat-based diet</vaem:rationale>
+  <dc:source>(competency_question) CQ14: Are there animals that are carnivore but still eat some plants or parts of plants?</dc:source>
+  <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/awo#Animal"/>
+  <!-- Axiom: SubClassOf Animal -->
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/awo#Plant">
+  <rdfs:comment>A living organism that may be eaten or, in some cases, consume animals.</rdfs:comment>
+  <rdfs:label>Plant</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: CQ4, CQ6, and CQ14 refer to plants as food or active eaters</vaem:rationale>
+  <dc:source>(competency_question) CQ4: Does a lion eat plants or plant parts?
+    (competency_question) CQ6: Which plants eat animals?
+    (competency_question) CQ14: Are there animals that are carnivore but still eat some plants or parts of plants?</dc:source>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/awo#PlantPart">
+  <rdfs:comment>A component of a plant that may be consumed by animals.</rdfs:comment>
+  <rdfs:label>Plant Part</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: CQ3, CQ4, and CQ14 refer to plant parts as food</vaem:rationale>
+  <dc:source>(competency_question) CQ3: Which plant parts does [this omnivorous or herbivorourus animal] eat?
+    (competency_question) CQ4: Does a lion eat plants or plant parts?
+    (competency_question) CQ14: Are there animals that are carnivore but still eat some plants or parts of plants?</dc:source>
+</owl:Class>
+
+  <!-- owl:ObjectProperty declarations -->
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/awo#eats">
+  <rdfs:comment>Relates an organism that consumes to the organism or plant part it consumes.</rdfs:comment>
+  <rdfs:label>Eats</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: All CQs query consumption relationships between animals, plants, and plant parts</vaem:rationale>
+  <dc:source>(competency_question) CQ1: Which animal eats which other animal?
+    (competency_question) CQ3: Which plant parts does [this omnivorous or herbivorourus animal] eat?
+    (competency_question) CQ4: Does a lion eat plants or plant parts?
+    (competency_question) CQ6: Which plants eat animals?
+    (competency_question) CQ7: Which animals eat [these animals]?
+    (competency_question) CQ14: Are there animals that are carnivore but still eat some plants or parts of plants?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/awo#Animal"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/awo#Animal"/>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/awo#Plant"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/awo#Plant"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/awo#PlantPart"/>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/awo#Carnivore"/>
+  <!-- Axiom: domain Animal -->
+  <!-- Axiom: range Animal -->
+  <!-- Axiom: domain Plant -->
+  <!-- Axiom: range Plant -->
+  <!-- Axiom: range PlantPart -->
+  <!-- Axiom: domain Carnivore -->
+</owl:ObjectProperty>
+
+  <!-- owl:NamedIndividual declarations -->
+
+<owl:NamedIndividual rdf:about="http://www.semanticweb.org/awo#Lion">
+  <rdfs:comment>A specific animal instance used to query dietary habits.</rdfs:comment>
+  <rdfs:label>Lion</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: CQ4 uses lion as a concrete example</vaem:rationale>
+  <dc:source>(competency_question) CQ4: Does a lion eat plants or plant parts?</dc:source>
+  <rdf:type rdf:resource="http://www.semanticweb.org/awo#Animal"/>
+</owl:NamedIndividual>
+
+</rdf:RDF>

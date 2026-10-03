@@ -1,0 +1,4 @@
+# secrets and what the running deployment writes
+.env
+outputs/
+__pycache__/

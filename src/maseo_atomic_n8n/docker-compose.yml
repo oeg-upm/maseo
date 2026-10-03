@@ -1,0 +1,117 @@
+# The MASEO web app with n8n as its backend: the whole deployment, run from
+# this folder (src/maseo_atomic_n8n). Nothing outside it is used except
+# ../maseo_atomic, the pipeline code the maseo service runs.
+#
+#   cp .env.example .env            then set N8N_ENCRYPTION_KEY in .env
+#   docker compose up -d --build
+#   docker compose exec ollama ollama pull qwen3.6:27b     (once per model)
+#   import the two workflows (README, Part B)
+#
+# Users open the web app at http://<the server's IP>:8080, e.g.
+# http://192.168.1.20:8080 (MASEO_WEB_BIND in .env picks the address).
+# n8n, the service and Ollama are not reachable from outside: they talk to
+# each other inside this compose network.
+#
+# restart: always - every container starts again by itself after a crash
+# and whenever the server (and with it Docker) starts, so the web app comes
+# back on its own after a reboot or a power cut. Docker itself must start
+# at boot: sudo systemctl enable docker
+name: maseo
+
+services:
+  # the web app (webapp/app.py): FastAPI makes every page itself (one small
+  # script, static/live.js, keeps it live) and asks n8n for the data
+  webapp:
+    build:
+      context: .
+      dockerfile: webapp/Dockerfile
+    image: maseo/webapp:latest
+    restart: always
+    environment:
+      - MASEO_N8N_URL=http://n8n:5678
+      - MASEO_WEB_PASSWORD=${MASEO_WEB_PASSWORD:-}   # set it in .env to ask for a password
+      - TZ=${TZ:-UTC}
+    volumes:
+      # the web app folder, read-only: an edited templates/index.html or
+      # static/style.css shows on the next reload, edited .py files after
+      # `docker compose restart webapp`
+      - ./webapp:/app/webapp:ro
+    ports:
+      # every address of the server by default (0.0.0.0), so the LAN reaches
+      # it at http://<server IP>:8080; MASEO_WEB_BIND=192.168.1.20 in .env
+      # limits it to that address, 127.0.0.1 to the server itself
+      - "${MASEO_WEB_BIND:-0.0.0.0}:8080:8080"
+    depends_on:
+      - n8n
+
+  # n8n with the two workflows: "MASEO web app + API" (the web app's API)
+  # and "MASEO worker (agent_graph)" (runs the queued jobs)
+  n8n:
+    image: n8nio/n8n:${N8N_VERSION:-2.38.2}
+    restart: always
+    environment:
+      - N8N_ENCRYPTION_KEY=${N8N_ENCRYPTION_KEY:?set N8N_ENCRYPTION_KEY in .env (openssl rand -hex 24)}
+      - N8N_HOST=localhost
+      - N8N_PORT=5678
+      - N8N_PROTOCOL=http
+      - WEBHOOK_URL=http://localhost:5678/
+      - N8N_SECURE_COOKIE=false
+      - GENERIC_TIMEZONE=${TZ:-UTC}
+      - TZ=${TZ:-UTC}
+      - EXECUTIONS_DATA_PRUNE=true
+      - EXECUTIONS_DATA_MAX_AGE=720
+      - N8N_DIAGNOSTICS_ENABLED=false
+    volumes:
+      - n8n_data:/home/node/.n8n
+    # no ports: the web app and the service reach n8n inside this network.
+    # For the n8n editor (Executions of the worker), uncomment these two
+    # lines and open a tunnel with -L 5678:localhost:5678:
+    # ports:
+    #   - "127.0.0.1:5678:5678"
+
+  # the MASEO atomic service: the job queue, one endpoint per graph node,
+  # maseo_atomic's code (agents -> Ollama, the five MCP tool servers)
+  maseo:
+    build:
+      context: ..                              # src/, for ../maseo_atomic
+      dockerfile: maseo_atomic_n8n/Dockerfile
+    image: maseo/atomic-service:latest
+    restart: always
+    environment:
+      - OLLAMA_HOST=http://ollama:11434
+      - MASEO_WORKER_URL=http://n8n:5678/webhook/maseo-worker   # the worker workflow
+      - TZ=${TZ:-UTC}
+    volumes:
+      - ./outputs:/data/outputs                # the queue (jobs.json) and outputs/<run id>/
+      # the maseo_atomic folder itself, read-only: an edited config.yaml
+      # (prompts, sampling, tool_retries, loop_rounds) counts from the next
+      # job on; edited .py files after `docker compose restart maseo`
+      - ../maseo_atomic:/app/maseo_atomic:ro
+      # what the Reasoning switch offers per model (effort levels or on/off)
+      - ./reasoning_models.yaml:/app/reasoning_models.yaml:ro
+    depends_on:
+      - ollama
+    # no ports: only n8n (same network) calls http://maseo:8030
+
+  ollama:
+    image: ollama/ollama
+    restart: always
+    environment:
+      - OLLAMA_KEEP_ALIVE=30m
+    volumes:
+      - ollama:/root/.ollama
+    ports:
+      # the server's localhost only (curl, scripts on the server); never the network
+      - "127.0.0.1:11434:11434"
+    # with an NVIDIA GPU (nvidia-container-toolkit installed) uncomment:
+    # deploy:
+    #   resources:
+    #     reservations:
+    #       devices:
+    #         - driver: nvidia
+    #           count: all
+    #           capabilities: [gpu]
+
+volumes:
+  n8n_data:        # docker volume maseo_n8n_data
+  ollama:          # docker volume maseo_ollama (the models)

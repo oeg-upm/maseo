@@ -1,0 +1,175 @@
+[
+  {
+    "cq_id": "CQ1",
+    "cq": "Which animal eats which other animal?",
+    "question_type": "domain",
+    "atomic_cq_mapping": [
+      {
+        "atomic_cq_id": "CQ1_a1",
+        "atomic_cq": "Which animal eats which animal?",
+        "classes": [
+          "Animal"
+        ],
+        "object_properties": [
+          "eats"
+        ],
+        "data_properties": [],
+        "individuals": [],
+        "instances": []
+      }
+    ]
+  },
+  {
+    "cq_id": "CQ2",
+    "cq": "Is [this animal] a herbivore?",
+    "question_type": "domain",
+    "atomic_cq_mapping": [
+      {
+        "atomic_cq_id": "CQ2_a1",
+        "atomic_cq": "Is the given animal a herbivore?",
+        "classes": [
+          "Animal",
+          "Herbivore"
+        ],
+        "object_properties": [],
+        "data_properties": [],
+        "individuals": [],
+        "instances": []
+      }
+    ]
+  },
+  {
+    "cq_id": "CQ3",
+    "cq": "Which plant parts does [this omnivorous or herbivorourus animal] eat?",
+    "question_type": "domain",
+    "atomic_cq_mapping": [
+      {
+        "atomic_cq_id": "CQ3_a1",
+        "atomic_cq": "What plant part does the given omnivorous or herbivorous animal eat?",
+        "classes": [
+          "Animal",
+          "PlantPart",
+          "Omnivore",
+          "Herbivore"
+        ],
+        "object_properties": [
+          "eats"
+        ],
+        "data_properties": [],
+        "individuals": [],
+        "instances": []
+      }
+    ]
+  },
+  {
+    "cq_id": "CQ4",
+    "cq": "Does a lion eat plants or plant parts?",
+    "question_type": "domain",
+    "atomic_cq_mapping": [
+      {
+        "atomic_cq_id": "CQ4_a1",
+        "atomic_cq": "Does a lion eat plants?",
+        "classes": [
+          "Lion",
+          "Plant"
+        ],
+        "object_properties": [
+          "eats"
+        ],
+        "data_properties": [],
+        "individuals": [],
+        "instances": []
+      },
+      {
+        "atomic_cq_id": "CQ4_a2",
+        "atomic_cq": "Does a lion eat plant parts?",
+        "classes": [
+          "Lion",
+          "PlantPart"
+        ],
+        "object_properties": [
+          "eats"
+        ],
+        "data_properties": [],
+        "individuals": [],
+        "instances": []
+      }
+    ]
+  },
+  {
+    "cq_id": "CQ6",
+    "cq": "Which plants eat animals?",
+    "question_type": "domain",
+    "atomic_cq_mapping": [
+      {
+        "atomic_cq_id": "CQ6_a1",
+        "atomic_cq": "Which plants eat animals?",
+        "classes": [
+          "Plant",
+          "Animal"
+        ],
+        "object_properties": [
+          "eats"
+        ],
+        "data_properties": [],
+        "individuals": [],
+        "instances": []
+      }
+    ]
+  },
+  {
+    "cq_id": "CQ7",
+    "cq": "Which animals eat [these animals]?",
+    "question_type": "domain",
+    "atomic_cq_mapping": [
+      {
+        "atomic_cq_id": "CQ7_a1",
+        "atomic_cq": "Which animals eat the given animals?",
+        "classes": [
+          "Animal"
+        ],
+        "object_properties": [
+          "eats"
+        ],
+        "data_properties": [],
+        "individuals": [],
+        "instances": []
+      }
+    ]
+  },
+  {
+    "cq_id": "CQ14",
+    "cq": "Are there animals that are carnivore but still eat some plants or parts of plants?",
+    "question_type": "domain",
+    "atomic_cq_mapping": [
+      {
+        "atomic_cq_id": "CQ14_a1",
+        "atomic_cq": "Does a carnivorous animal eat plants?",
+        "classes": [
+          "Carnivore",
+          "Plant"
+        ],
+        "object_properties": [
+          "eats"
+        ],
+        "data_properties": [],
+        "individuals": [],
+        "instances": []
+      },
+      {
+        "atomic_cq_id": "CQ14_a2",
+        "atomic_cq": "Does a carnivorous animal eat parts of plants?",
+        "classes": [
+          "Carnivore",
+          "PlantPart"
+        ],
+        "object_properties": [
+          "eats"
+        ],
+        "data_properties": [],
+        "individuals": [],
+        "instances": []
+      }
+    ]
+  }
+]

@@ -1,0 +1,142 @@
+[
+    {
+        "id": "CQ04",
+        "value": "Which of the named and published algorithms does this tool use?"
+    },
+    {
+        "id": "CQ05",
+        "value": "Are there any modifications to the algorithm the tool uses?"
+    },
+    {
+        "id": "CQ06",
+        "value": "Does this software provide XML editing?"
+    },
+    {
+        "id": "CQ07",
+        "value": "What type of software (API, Desktop application etc) is it?"
+    },
+    {
+        "id": "CQ08",
+        "value": "What software can perform task x?"
+    },
+    {
+        "id": "CQ11",
+        "value": "Is this software available as a web service?"
+    },
+    {
+        "id": "CQ14",
+        "value": "Does it do what I want or need it to do e.g. render a gif?"
+    },
+    {
+        "id": "CQ15",
+        "value": "Which software tool created this data?"
+    },
+    {
+        "id": "CQ16",
+        "value": "What software can I use my data with to support my task?"
+    },
+    {
+        "id": "CQ17",
+        "value": "What are the input and output formats for this software?"
+    },
+    {
+        "id": "CQ19",
+        "value": "What software can read a .cel file?"
+    },
+    {
+        "id": "CQ21",
+        "value": "What is the valid input for this software?"
+    },
+    {
+        "id": "CQ22",
+        "value": "Can this software export from its proprietary data format to an open format such as csv, txt?"
+    },
+    {
+        "id": "CQ23",
+        "value": "Can software A work with data that are output from software B?"
+    },
+    {
+        "id": "CQ26",
+        "value": "What open source, maintained software can I use to process these in this format?"
+    },
+    {
+        "id": "CQ29",
+        "value": "Given input x, what are the data exports for this version?"
+    },
+    {
+        "id": "CQ30",
+        "value": "Where can I get the software?"
+    },
+    {
+        "id": "CQ32",
+        "value": "How do I get help?"
+    },
+    {
+        "id": "CQ36",
+        "value": "Who developed it?"
+    },
+    {
+        "id": "CQ37",
+        "value": "What is the homepage of the software?"
+    },
+    {
+        "id": "CQ38",
+        "value": "Can we collaborate with developers of software x?"
+    },
+    {
+        "id": "CQ40",
+        "value": "Which URL can I get it from?"
+    },
+    {
+        "id": "CQ45",
+        "value": "How long has this software been around?"
+    },
+    {
+        "id": "CQ46",
+        "value": "How actively developed is it?"
+    },
+    {
+        "id": "CQ54",
+        "value": "What is the version of this software?"
+    },
+    {
+        "id": "CQ55",
+        "value": "What new features are in this version?"
+    },
+    {
+        "id": "CQ57",
+        "value": "When was the 1.0 version released?"
+    },
+    {
+        "id": "CQ58",
+        "value": "Is the software open source development? Is there a community development?"
+    },
+    {
+        "id": "CQ59",
+        "value": "What license and what is permissiveness?"
+    },
+    {
+        "id": "CQ60",
+        "value": "Is it open source or not?"
+    },
+    {
+        "id": "CQ65",
+        "value": "Is it FOSS?"
+    },
+    {
+        "id": "CQ68",
+        "value": "Is it free or not?"
+    },
+    {
+        "id": "CQ73",
+        "value": "Where is the documentation?"
+    },
+    {
+        "id": "CQ84",
+        "value": "In what language was it implemented?"
+    },
+    {
+        "id": "CQ85",
+        "value": "What platform does the software run on?"
+    }
+]

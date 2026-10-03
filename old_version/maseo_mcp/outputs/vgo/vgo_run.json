@@ -1,0 +1,1198 @@
+{
+  "domain": "vgo",
+  "base_uri": "http://www.semanticweb.org/vgo#",
+  "cq_file": "/home/jovyan/LLMOnto/Benchmark/OntologyConceptMatching/MASEO_MCP/dataset/vgo_cq2onto_cqs.json",
+  "cqs": [
+    "CQ01",
+    "CQ02",
+    "CQ03",
+    "CQ05",
+    "CQ07",
+    "CQ08",
+    "CQ09",
+    "CQ10",
+    "CQ11",
+    "CQ12",
+    "CQ13",
+    "CQ15",
+    "CQ17",
+    "CQ19",
+    "CQ22",
+    "CQ24",
+    "CQ25",
+    "CQ26",
+    "CQ27",
+    "CQ29",
+    "CQ35",
+    "CQ52",
+    "CQ55",
+    "CQ56",
+    "CQ57",
+    "CQ62",
+    "CQ63",
+    "CQ64",
+    "CQ65",
+    "CQ66",
+    "New CQ1"
+  ],
+  "rounds": 1,
+  "final_status": {
+    "syntax_check": {
+      "passed": true,
+      "errors": []
+    },
+    "oops": {
+      "passed": true,
+      "major_count": 0,
+      "pitfalls": []
+    },
+    "hermit": {
+      "passed": true,
+      "consistent": true,
+      "unsatisfiable_classes": []
+    },
+    "cq_coverage": {
+      "passed": true,
+      "covered": [
+        "CQ01",
+        "CQ02",
+        "CQ03",
+        "CQ05",
+        "CQ07",
+        "CQ08",
+        "CQ09",
+        "CQ10",
+        "CQ11",
+        "CQ12",
+        "CQ13",
+        "CQ15",
+        "CQ17",
+        "CQ19",
+        "CQ22",
+        "CQ24",
+        "CQ25",
+        "CQ26",
+        "CQ27",
+        "CQ29",
+        "CQ35",
+        "CQ52",
+        "CQ55",
+        "CQ56",
+        "CQ57",
+        "CQ62",
+        "CQ63",
+        "CQ64",
+        "CQ65",
+        "CQ66",
+        "New CQ1"
+      ],
+      "uncovered": [],
+      "missing": {}
+    },
+    "themis_test": {
+      "passed": true,
+      "covered": [
+        "CQ01",
+        "CQ02",
+        "CQ03",
+        "CQ05",
+        "CQ07",
+        "CQ08",
+        "CQ09",
+        "CQ10",
+        "CQ11",
+        "CQ12",
+        "CQ13",
+        "CQ15",
+        "CQ17",
+        "CQ19",
+        "CQ22",
+        "CQ24",
+        "CQ25",
+        "CQ26",
+        "CQ27",
+        "CQ29",
+        "CQ35",
+        "CQ52",
+        "CQ55",
+        "CQ56",
+        "CQ57",
+        "CQ62",
+        "CQ63",
+        "CQ64",
+        "CQ65",
+        "CQ66",
+        "New CQ1"
+      ],
+      "uncovered": [],
+      "missing": {}
+    }
+  },
+  "all_passed": true,
+  "records": [
+    {
+      "round": 0,
+      "index": 1,
+      "phase": "extract",
+      "tool_calling": "extraction_agent",
+      "input_information": {
+        "cqs": [
+          "CQ01",
+          "CQ02",
+          "CQ03",
+          "CQ05",
+          "CQ07",
+          "CQ08",
+          "CQ09",
+          "CQ10",
+          "CQ11",
+          "CQ12",
+          "CQ13",
+          "CQ15",
+          "CQ17",
+          "CQ19",
+          "CQ22",
+          "CQ24",
+          "CQ25",
+          "CQ26",
+          "CQ27",
+          "CQ29",
+          "CQ35",
+          "CQ52",
+          "CQ55",
+          "CQ56",
+          "CQ57",
+          "CQ62",
+          "CQ63",
+          "CQ64",
+          "CQ65",
+          "CQ66",
+          "New CQ1"
+        ]
+      },
+      "output": {
+        "terms_file": "/home/jovyan/LLMOnto/Benchmark/OntologyConceptMatching/MASEO_MCP/ollama/vgo/vgo_terms.json",
+        "terms_per_cq": {
+          "CQ01": 4,
+          "CQ02": 4,
+          "CQ03": 7,
+          "CQ05": 7,
+          "CQ07": 5,
+          "CQ08": 5,
+          "CQ09": 4,
+          "CQ10": 5,
+          "CQ11": 5,
+          "CQ12": 5,
+          "CQ13": 5,
+          "CQ15": 4,
+          "CQ17": 5,
+          "CQ19": 5,
+          "CQ22": 5,
+          "CQ24": 5,
+          "CQ25": 5,
+          "CQ26": 5,
+          "CQ27": 8,
+          "CQ29": 5,
+          "CQ35": 9,
+          "CQ52": 8,
+          "CQ55": 5,
+          "CQ56": 5,
+          "CQ57": 5,
+          "CQ62": 4,
+          "CQ63": 5,
+          "CQ64": 7,
+          "CQ65": 5,
+          "CQ66": 8,
+          "New CQ1": 5
+        }
+      },
+      "seconds": 50.31
+    },
+    {
+      "round": 0,
+      "index": 2,
+      "phase": "generate",
+      "tool_calling": "generation_agent",
+      "input_information": {
+        "cqs": [
+          "CQ01",
+          "CQ02",
+          "CQ03",
+          "CQ05",
+          "CQ07",
+          "CQ08",
+          "CQ09",
+          "CQ10",
+          "CQ11",
+          "CQ12",
+          "CQ13",
+          "CQ15",
+          "CQ17",
+          "CQ19",
+          "CQ22",
+          "CQ24",
+          "CQ25",
+          "CQ26",
+          "CQ27",
+          "CQ29",
+          "CQ35",
+          "CQ52",
+          "CQ55",
+          "CQ56",
+          "CQ57",
+          "CQ62",
+          "CQ63",
+          "CQ64",
+          "CQ65",
+          "CQ66",
+          "New CQ1"
+        ],
+        "with_terms": true
+      },
+      "output": {
+        "ontology_file": "/home/jovyan/LLMOnto/Benchmark/OntologyConceptMatching/MASEO_MCP/ollama/vgo/vgo_ontology.owl",
+        "ontology_chars": 6583
+      },
+      "seconds": 365.82
+    },
+    {
+      "round": 1,
+      "index": 3,
+      "phase": "syntax",
+      "attempt": 1,
+      "tool_calling": "syntax_check",
+      "input_information": {
+        "ontology_file": "/home/jovyan/LLMOnto/Benchmark/OntologyConceptMatching/MASEO_MCP/ollama/vgo/vgo_ontology.owl"
+      },
+      "output": {
+        "passed": false,
+        "errors": [
+          "XML is not well-formed: no element found: line 139, column 18"
+        ]
+      },
+      "next_action": "correct",
+      "seconds": 0.02
+    },
+    {
+      "round": 1,
+      "index": 4,
+      "phase": "syntax",
+      "attempt": 1,
+      "tool_calling": "correction_agent",
+      "input_information": {
+        "kind": "RDF/XML syntax and writing-style errors",
+        "report": "SYNTAX / STYLE ERRORS:\n- XML is not well-formed: no element found: line 139, column 18\nReturn ONE complete well-formed RDF/XML document: nothing before '<?xml', an rdf:RDF root element, valid XML, and nothing after '</rdf:RDF>'."
+      },
+      "output": {
+        "ontology_file": "/home/jovyan/LLMOnto/Benchmark/OntologyConceptMatching/MASEO_MCP/ollama/vgo/vgo_ontology.owl",
+        "ontology_chars": 11480
+      },
+      "seconds": 287.16,
+      "effect": {
+        "errors_before": [
+          "XML is not well-formed: no element found: line 139, column 18"
+        ],
+        "errors_after": [],
+        "fixed_errors": [
+          "XML is not well-formed: no element found: line 139, column 18"
+        ],
+        "introduced_errors": []
+      }
+    },
+    {
+      "round": 1,
+      "index": 5,
+      "phase": "syntax",
+      "attempt": 2,
+      "tool_calling": "syntax_check",
+      "input_information": {
+        "ontology_file": "/home/jovyan/LLMOnto/Benchmark/OntologyConceptMatching/MASEO_MCP/ollama/vgo/vgo_ontology.owl"
+      },
+      "output": {
+        "passed": true,
+        "errors": []
+      },
+      "next_action": "pass",
+      "seconds": 0.25
+    },
+    {
+      "round": 1,
+      "index": 6,
+      "phase": "cover",
+      "attempt": 1,
+      "tool_calling": "cq_coverage",
+      "input_information": {
+        "ontology_file": "/home/jovyan/LLMOnto/Benchmark/OntologyConceptMatching/MASEO_MCP/ollama/vgo/vgo_ontology.owl",
+        "cqs": [
+          "CQ01",
+          "CQ02",
+          "CQ03",
+          "CQ05",
+          "CQ07",
+          "CQ08",
+          "CQ09",
+          "CQ10",
+          "CQ11",
+          "CQ12",
+          "CQ13",
+          "CQ15",
+          "CQ17",
+          "CQ19",
+          "CQ22",
+          "CQ24",
+          "CQ25",
+          "CQ26",
+          "CQ27",
+          "CQ29",
+          "CQ35",
+          "CQ52",
+          "CQ55",
+          "CQ56",
+          "CQ57",
+          "CQ62",
+          "CQ63",
+          "CQ64",
+          "CQ65",
+          "CQ66",
+          "New CQ1"
+        ]
+      },
+      "output": {
+        "passed": false,
+        "covered": [
+          "CQ02",
+          "CQ03",
+          "CQ05",
+          "CQ07",
+          "CQ08",
+          "CQ12",
+          "CQ13",
+          "CQ17",
+          "CQ24",
+          "CQ25",
+          "CQ26",
+          "CQ35",
+          "CQ52",
+          "CQ63",
+          "CQ65",
+          "New CQ1"
+        ],
+        "uncovered": [
+          "CQ01",
+          "CQ09",
+          "CQ10",
+          "CQ11",
+          "CQ15",
+          "CQ19",
+          "CQ22",
+          "CQ27",
+          "CQ29",
+          "CQ55",
+          "CQ56",
+          "CQ57",
+          "CQ62",
+          "CQ64",
+          "CQ66"
+        ],
+        "missing": {
+          "CQ01": [
+            "username"
+          ],
+          "CQ09": [
+            "totalPlayTime"
+          ],
+          "CQ10": [
+            "hasAchievementType"
+          ],
+          "CQ11": [
+            "hasAchievementType"
+          ],
+          "CQ15": [
+            "releaseDate"
+          ],
+          "CQ19": [
+            "hasAbility"
+          ],
+          "CQ22": [
+            "hasKillCount"
+          ],
+          "CQ27": [
+            "hasAchievementType"
+          ],
+          "CQ29": [
+            "lastPlayedGame"
+          ],
+          "CQ55": [
+            "usableInGame"
+          ],
+          "CQ56": [
+            "hasInAppPurchase"
+          ],
+          "CQ57": [
+            "hasInAppPurchase"
+          ],
+          "CQ62": [
+            "purchaseTime"
+          ],
+          "CQ64": [
+            "hasInAppPurchase",
+            "timeSpentBeforeFirstIAP"
+          ],
+          "CQ66": [
+            "hasInAppPurchase"
+          ]
+        }
+      },
+      "next_action": "correct",
+      "seconds": 0.02
+    },
+    {
+      "round": 1,
+      "index": 7,
+      "phase": "cover",
+      "attempt": 1,
+      "tool_calling": "correction_agent",
+      "input_information": {
+        "kind": "uncovered competency questions",
+        "report": "Covered 16/31. UNCOVERED: CQ01 missing [username]; CQ09 missing [totalPlayTime]; CQ10 missing [hasAchievementType]; CQ11 missing [hasAchievementType]; CQ15 missing [releaseDate]; CQ19 missing [hasAbility]; CQ22 missing [hasKillCount]; CQ27 missing [hasAchievementType]; CQ29 missing [lastPlayedGame]; CQ55 missing [usableInGame]; CQ56 missing [hasInAppPurchase]; CQ57 missing [hasInAppPurchase]; CQ62 missing [purchaseTime]; CQ64 missing [hasInAppPurchase, timeSpentBeforeFirstIAP]; CQ66 missing [hasInAppPurchase]. Add each missing term under exactly that name and record the CQ id in its dc:source as '(competency_question) <id>'.",
+        "uncovered_cqs": [
+          {
+            "id": "CQ01",
+            "missing": [
+              "username"
+            ]
+          },
+          {
+            "id": "CQ09",
+            "missing": [
+              "totalPlayTime"
+            ]
+          },
+          {
+            "id": "CQ10",
+            "missing": [
+              "hasAchievementType"
+            ]
+          },
+          {
+            "id": "CQ11",
+            "missing": [
+              "hasAchievementType"
+            ]
+          },
+          {
+            "id": "CQ15",
+            "missing": [
+              "releaseDate"
+            ]
+          },
+          {
+            "id": "CQ19",
+            "missing": [
+              "hasAbility"
+            ]
+          },
+          {
+            "id": "CQ22",
+            "missing": [
+              "hasKillCount"
+            ]
+          },
+          {
+            "id": "CQ27",
+            "missing": [
+              "hasAchievementType"
+            ]
+          },
+          {
+            "id": "CQ29",
+            "missing": [
+              "lastPlayedGame"
+            ]
+          },
+          {
+            "id": "CQ55",
+            "missing": [
+              "usableInGame"
+            ]
+          },
+          {
+            "id": "CQ56",
+            "missing": [
+              "hasInAppPurchase"
+            ]
+          },
+          {
+            "id": "CQ57",
+            "missing": [
+              "hasInAppPurchase"
+            ]
+          },
+          {
+            "id": "CQ62",
+            "missing": [
+              "purchaseTime"
+            ]
+          },
+          {
+            "id": "CQ64",
+            "missing": [
+              "hasInAppPurchase",
+              "timeSpentBeforeFirstIAP"
+            ]
+          },
+          {
+            "id": "CQ66",
+            "missing": [
+              "hasInAppPurchase"
+            ]
+          }
+        ]
+      },
+      "output": {
+        "ontology_file": "/home/jovyan/LLMOnto/Benchmark/OntologyConceptMatching/MASEO_MCP/ollama/vgo/vgo_ontology.owl",
+        "ontology_chars": 16564
+      },
+      "seconds": 95.41,
+      "effect": {
+        "covered_before": [
+          "CQ02",
+          "CQ03",
+          "CQ05",
+          "CQ07",
+          "CQ08",
+          "CQ12",
+          "CQ13",
+          "CQ17",
+          "CQ24",
+          "CQ25",
+          "CQ26",
+          "CQ35",
+          "CQ52",
+          "CQ63",
+          "CQ65",
+          "New CQ1"
+        ],
+        "covered_after": [
+          "CQ01",
+          "CQ02",
+          "CQ03",
+          "CQ05",
+          "CQ07",
+          "CQ08",
+          "CQ09",
+          "CQ10",
+          "CQ11",
+          "CQ12",
+          "CQ13",
+          "CQ15",
+          "CQ17",
+          "CQ19",
+          "CQ22",
+          "CQ24",
+          "CQ25",
+          "CQ26",
+          "CQ27",
+          "CQ29",
+          "CQ35",
+          "CQ52",
+          "CQ55",
+          "CQ56",
+          "CQ57",
+          "CQ62",
+          "CQ63",
+          "CQ64",
+          "CQ65",
+          "CQ66",
+          "New CQ1"
+        ],
+        "added_cqs": [
+          "CQ01",
+          "CQ09",
+          "CQ10",
+          "CQ11",
+          "CQ15",
+          "CQ19",
+          "CQ22",
+          "CQ27",
+          "CQ29",
+          "CQ55",
+          "CQ56",
+          "CQ57",
+          "CQ62",
+          "CQ64",
+          "CQ66"
+        ],
+        "removed_cqs": []
+      }
+    },
+    {
+      "round": 1,
+      "index": 8,
+      "phase": "cover",
+      "attempt": 2,
+      "tool_calling": "cq_coverage",
+      "input_information": {
+        "ontology_file": "/home/jovyan/LLMOnto/Benchmark/OntologyConceptMatching/MASEO_MCP/ollama/vgo/vgo_ontology.owl",
+        "cqs": [
+          "CQ01",
+          "CQ02",
+          "CQ03",
+          "CQ05",
+          "CQ07",
+          "CQ08",
+          "CQ09",
+          "CQ10",
+          "CQ11",
+          "CQ12",
+          "CQ13",
+          "CQ15",
+          "CQ17",
+          "CQ19",
+          "CQ22",
+          "CQ24",
+          "CQ25",
+          "CQ26",
+          "CQ27",
+          "CQ29",
+          "CQ35",
+          "CQ52",
+          "CQ55",
+          "CQ56",
+          "CQ57",
+          "CQ62",
+          "CQ63",
+          "CQ64",
+          "CQ65",
+          "CQ66",
+          "New CQ1"
+        ]
+      },
+      "output": {
+        "passed": true,
+        "covered": [
+          "CQ01",
+          "CQ02",
+          "CQ03",
+          "CQ05",
+          "CQ07",
+          "CQ08",
+          "CQ09",
+          "CQ10",
+          "CQ11",
+          "CQ12",
+          "CQ13",
+          "CQ15",
+          "CQ17",
+          "CQ19",
+          "CQ22",
+          "CQ24",
+          "CQ25",
+          "CQ26",
+          "CQ27",
+          "CQ29",
+          "CQ35",
+          "CQ52",
+          "CQ55",
+          "CQ56",
+          "CQ57",
+          "CQ62",
+          "CQ63",
+          "CQ64",
+          "CQ65",
+          "CQ66",
+          "New CQ1"
+        ],
+        "uncovered": [],
+        "missing": {}
+      },
+      "next_action": "pass",
+      "seconds": 0.02
+    },
+    {
+      "round": 1,
+      "index": 9,
+      "phase": "oops",
+      "attempt": 1,
+      "tool_calling": "oops_scan",
+      "input_information": {
+        "ontology_file": "/home/jovyan/LLMOnto/Benchmark/OntologyConceptMatching/MASEO_MCP/ollama/vgo/vgo_ontology.owl"
+      },
+      "output": {
+        "passed": true,
+        "major_count": 0,
+        "pitfalls": []
+      },
+      "next_action": "pass",
+      "seconds": 0.19
+    },
+    {
+      "round": 1,
+      "index": 10,
+      "phase": "hermit",
+      "attempt": 1,
+      "tool_calling": "hermit_consistency",
+      "input_information": {
+        "ontology_file": "/home/jovyan/LLMOnto/Benchmark/OntologyConceptMatching/MASEO_MCP/ollama/vgo/vgo_ontology.owl"
+      },
+      "output": {
+        "passed": false,
+        "consistent": false,
+        "unsatisfiable_classes": [
+          "init"
+        ],
+        "error": "Consistent: unknown"
+      },
+      "next_action": "correct",
+      "seconds": 0.42
+    },
+    {
+      "round": 1,
+      "index": 11,
+      "phase": "hermit",
+      "attempt": 1,
+      "tool_calling": "correction_agent",
+      "input_information": {
+        "kind": "HermiT logical-consistency errors",
+        "report": "Consistent: unknown\nUnsatisfiable classes:\n  - init\n\n\nException in thread \"main\" org.semanticweb.HermiT.datatypes.UnsupportedDatatypeException: HermiT supports all and only the datatypes of the OWL 2 datatype map, see \nhttp://www.w3.org/TR/owl2-syntax/#Datatype_Maps. \nThe datatype 'http://www.w3.org/2001/XMLSchema#date' is not part of the OWL 2 datatype map and \nno custom datatype definition is given; \ntherefore, HermiT cannot handle this datatype.\n\tat org.semanticweb.HermiT.datatypes.DatatypeRegistry.getDatatypeHandlerFor(Unknown Source)\n\tat org.semanticweb.HermiT.datatypes.DatatypeRegistry.getDatatypeHandlerFor(Unknown Source)\n\tat org.semanticweb.HermiT.datatypes.DatatypeRegistry.validateDatatypeRestriction(Unknown Source)\n\tat org.semanticweb.HermiT.structural.OWLClausification$DataRangeConverter.visit(Unknown Source)\n\tat uk.ac.manchester.cs.owl.owlapi.OWLDatatypeImpl.accept(OWLDatatypeImpl.java:343)\n\tat org.semanticweb.HermiT.structural.OWLClausification$DataRangeConverter.convertDataRange(Unknown Source)\n\tat org.semanticweb.HermiT.structural.OWLClausification$NormalizedAxiomClausifier.visit(Unknown Source)\n\tat uk.ac.manchester.cs.owl.owlapi.OWLDataAllValuesFromImpl.accept(OWLDataAllValuesFromImpl.java:99)\n\tat org.semanticweb.HermiT.structural.OWLClausification.clausify(Unknown Source)\n\tat org.semanticweb.HermiT.structural.OWLClausification.preprocessAndClausify(Unknown Source)\n\tat org.semanticweb.HermiT.Reasoner.loadOntology(Unknown Source)\n\tat org.semanticweb.HermiT.Reasoner.<init>(Unknown Source)\n\tat org.semanticweb.HermiT.Reasoner.<init>(Unknown Source)\n\tat org.semanticweb.HermiT.cli.CommandLine.main(Unknown Source)\n"
+      },
+      "output": {
+        "ontology_file": "/home/jovyan/LLMOnto/Benchmark/OntologyConceptMatching/MASEO_MCP/ollama/vgo/vgo_ontology.owl",
+        "ontology_chars": 16596
+      },
+      "seconds": 87.05,
+      "effect": {
+        "consistent_before": false,
+        "consistent_after": true,
+        "unsatisfiable_before": [
+          "init"
+        ],
+        "unsatisfiable_after": [],
+        "fixed_classes": [
+          "init"
+        ],
+        "introduced_classes": []
+      }
+    },
+    {
+      "round": 1,
+      "index": 12,
+      "phase": "hermit",
+      "attempt": 2,
+      "tool_calling": "hermit_consistency",
+      "input_information": {
+        "ontology_file": "/home/jovyan/LLMOnto/Benchmark/OntologyConceptMatching/MASEO_MCP/ollama/vgo/vgo_ontology.owl"
+      },
+      "output": {
+        "passed": true,
+        "consistent": true,
+        "unsatisfiable_classes": []
+      },
+      "next_action": "pass",
+      "seconds": 0.44
+    },
+    {
+      "round": 1,
+      "index": 13,
+      "phase": "themis",
+      "attempt": 1,
+      "tool_calling": "themis_test",
+      "input_information": {
+        "ontology_file": "/home/jovyan/LLMOnto/Benchmark/OntologyConceptMatching/MASEO_MCP/ollama/vgo/vgo_ontology.owl",
+        "cqs": [
+          "CQ01",
+          "CQ02",
+          "CQ03",
+          "CQ05",
+          "CQ07",
+          "CQ08",
+          "CQ09",
+          "CQ10",
+          "CQ11",
+          "CQ12",
+          "CQ13",
+          "CQ15",
+          "CQ17",
+          "CQ19",
+          "CQ22",
+          "CQ24",
+          "CQ25",
+          "CQ26",
+          "CQ27",
+          "CQ29",
+          "CQ35",
+          "CQ52",
+          "CQ55",
+          "CQ56",
+          "CQ57",
+          "CQ62",
+          "CQ63",
+          "CQ64",
+          "CQ65",
+          "CQ66",
+          "New CQ1"
+        ]
+      },
+      "output": {
+        "passed": true,
+        "covered": [
+          "CQ01",
+          "CQ02",
+          "CQ03",
+          "CQ05",
+          "CQ07",
+          "CQ08",
+          "CQ09",
+          "CQ10",
+          "CQ11",
+          "CQ12",
+          "CQ13",
+          "CQ15",
+          "CQ17",
+          "CQ19",
+          "CQ22",
+          "CQ24",
+          "CQ25",
+          "CQ26",
+          "CQ27",
+          "CQ29",
+          "CQ35",
+          "CQ52",
+          "CQ55",
+          "CQ56",
+          "CQ57",
+          "CQ62",
+          "CQ63",
+          "CQ64",
+          "CQ65",
+          "CQ66",
+          "New CQ1"
+        ],
+        "uncovered": [],
+        "missing": {}
+      },
+      "next_action": "pass",
+      "seconds": 0.8
+    },
+    {
+      "round": 1,
+      "index": 14,
+      "phase": "verify",
+      "tool_calling": "syntax_check",
+      "input_information": {
+        "ontology_file": "/home/jovyan/LLMOnto/Benchmark/OntologyConceptMatching/MASEO_MCP/ollama/vgo/vgo_ontology.owl"
+      },
+      "output": {
+        "passed": true,
+        "errors": []
+      },
+      "seconds": 0.03
+    },
+    {
+      "round": 1,
+      "index": 15,
+      "phase": "verify",
+      "tool_calling": "hermit_consistency",
+      "input_information": {
+        "ontology_file": "/home/jovyan/LLMOnto/Benchmark/OntologyConceptMatching/MASEO_MCP/ollama/vgo/vgo_ontology.owl"
+      },
+      "output": {
+        "passed": true,
+        "consistent": true,
+        "unsatisfiable_classes": []
+      },
+      "seconds": 0.45
+    },
+    {
+      "round": 1,
+      "index": 16,
+      "phase": "verify",
+      "tool_calling": "oops_scan",
+      "input_information": {
+        "ontology_file": "/home/jovyan/LLMOnto/Benchmark/OntologyConceptMatching/MASEO_MCP/ollama/vgo/vgo_ontology.owl"
+      },
+      "output": {
+        "passed": true,
+        "major_count": 0,
+        "pitfalls": []
+      },
+      "seconds": 0.11
+    },
+    {
+      "round": 1,
+      "index": 17,
+      "phase": "verify",
+      "tool_calling": "cq_coverage",
+      "input_information": {
+        "ontology_file": "/home/jovyan/LLMOnto/Benchmark/OntologyConceptMatching/MASEO_MCP/ollama/vgo/vgo_ontology.owl",
+        "cqs": [
+          "CQ01",
+          "CQ02",
+          "CQ03",
+          "CQ05",
+          "CQ07",
+          "CQ08",
+          "CQ09",
+          "CQ10",
+          "CQ11",
+          "CQ12",
+          "CQ13",
+          "CQ15",
+          "CQ17",
+          "CQ19",
+          "CQ22",
+          "CQ24",
+          "CQ25",
+          "CQ26",
+          "CQ27",
+          "CQ29",
+          "CQ35",
+          "CQ52",
+          "CQ55",
+          "CQ56",
+          "CQ57",
+          "CQ62",
+          "CQ63",
+          "CQ64",
+          "CQ65",
+          "CQ66",
+          "New CQ1"
+        ]
+      },
+      "output": {
+        "passed": true,
+        "covered": [
+          "CQ01",
+          "CQ02",
+          "CQ03",
+          "CQ05",
+          "CQ07",
+          "CQ08",
+          "CQ09",
+          "CQ10",
+          "CQ11",
+          "CQ12",
+          "CQ13",
+          "CQ15",
+          "CQ17",
+          "CQ19",
+          "CQ22",
+          "CQ24",
+          "CQ25",
+          "CQ26",
+          "CQ27",
+          "CQ29",
+          "CQ35",
+          "CQ52",
+          "CQ55",
+          "CQ56",
+          "CQ57",
+          "CQ62",
+          "CQ63",
+          "CQ64",
+          "CQ65",
+          "CQ66",
+          "New CQ1"
+        ],
+        "uncovered": [],
+        "missing": {}
+      },
+      "seconds": 0.01
+    },
+    {
+      "round": 1,
+      "index": 18,
+      "phase": "verify",
+      "tool_calling": "themis_test",
+      "input_information": {
+        "ontology_file": "/home/jovyan/LLMOnto/Benchmark/OntologyConceptMatching/MASEO_MCP/ollama/vgo/vgo_ontology.owl",
+        "cqs": [
+          "CQ01",
+          "CQ02",
+          "CQ03",
+          "CQ05",
+          "CQ07",
+          "CQ08",
+          "CQ09",
+          "CQ10",
+          "CQ11",
+          "CQ12",
+          "CQ13",
+          "CQ15",
+          "CQ17",
+          "CQ19",
+          "CQ22",
+          "CQ24",
+          "CQ25",
+          "CQ26",
+          "CQ27",
+          "CQ29",
+          "CQ35",
+          "CQ52",
+          "CQ55",
+          "CQ56",
+          "CQ57",
+          "CQ62",
+          "CQ63",
+          "CQ64",
+          "CQ65",
+          "CQ66",
+          "New CQ1"
+        ]
+      },
+      "output": {
+        "passed": true,
+        "covered": [
+          "CQ01",
+          "CQ02",
+          "CQ03",
+          "CQ05",
+          "CQ07",
+          "CQ08",
+          "CQ09",
+          "CQ10",
+          "CQ11",
+          "CQ12",
+          "CQ13",
+          "CQ15",
+          "CQ17",
+          "CQ19",
+          "CQ22",
+          "CQ24",
+          "CQ25",
+          "CQ26",
+          "CQ27",
+          "CQ29",
+          "CQ35",
+          "CQ52",
+          "CQ55",
+          "CQ56",
+          "CQ57",
+          "CQ62",
+          "CQ63",
+          "CQ64",
+          "CQ65",
+          "CQ66",
+          "New CQ1"
+        ],
+        "uncovered": [],
+        "missing": {}
+      },
+      "seconds": 0.76
+    },
+    {
+      "round": 1,
+      "index": 19,
+      "phase": "verify",
+      "tool_calling": "round_summary",
+      "input_information": {
+        "checks": [
+          "syntax_check",
+          "hermit_consistency",
+          "oops_scan",
+          "cq_coverage",
+          "themis_test"
+        ]
+      },
+      "output": {
+        "all_passed": true,
+        "syntax_check": {
+          "passed": true,
+          "errors": []
+        },
+        "cq_coverage": {
+          "passed": true,
+          "covered": [
+            "CQ01",
+            "CQ02",
+            "CQ03",
+            "CQ05",
+            "CQ07",
+            "CQ08",
+            "CQ09",
+            "CQ10",
+            "CQ11",
+            "CQ12",
+            "CQ13",
+            "CQ15",
+            "CQ17",
+            "CQ19",
+            "CQ22",
+            "CQ24",
+            "CQ25",
+            "CQ26",
+            "CQ27",
+            "CQ29",
+            "CQ35",
+            "CQ52",
+            "CQ55",
+            "CQ56",
+            "CQ57",
+            "CQ62",
+            "CQ63",
+            "CQ64",
+            "CQ65",
+            "CQ66",
+            "New CQ1"
+          ],
+          "uncovered": [],
+          "missing": {}
+        },
+        "themis_test": {
+          "passed": true,
+          "covered": [
+            "CQ01",
+            "CQ02",
+            "CQ03",
+            "CQ05",
+            "CQ07",
+            "CQ08",
+            "CQ09",
+            "CQ10",
+            "CQ11",
+            "CQ12",
+            "CQ13",
+            "CQ15",
+            "CQ17",
+            "CQ19",
+            "CQ22",
+            "CQ24",
+            "CQ25",
+            "CQ26",
+            "CQ27",
+            "CQ29",
+            "CQ35",
+            "CQ52",
+            "CQ55",
+            "CQ56",
+            "CQ57",
+            "CQ62",
+            "CQ63",
+            "CQ64",
+            "CQ65",
+            "CQ66",
+            "New CQ1"
+          ],
+          "uncovered": [],
+          "missing": {}
+        },
+        "oops": {
+          "passed": true,
+          "major_count": 0,
+          "pitfalls": []
+        },
+        "hermit": {
+          "passed": true,
+          "consistent": true,
+          "unsatisfiable_classes": []
+        }
+      },
+      "next_action": "done"
+    }
+  ],
+  "ontology_file": "/home/jovyan/LLMOnto/Benchmark/OntologyConceptMatching/MASEO_MCP/ollama/vgo/vgo_ontology.owl",
+  "terms_file": "/home/jovyan/LLMOnto/Benchmark/OntologyConceptMatching/MASEO_MCP/ollama/vgo/vgo_terms.json",
+  "tests_file": "/home/jovyan/LLMOnto/Benchmark/OntologyConceptMatching/MASEO_MCP/ollama/vgo/vgo_tests.json",
+  "testsuite_file": "/home/jovyan/LLMOnto/Benchmark/OntologyConceptMatching/MASEO_MCP/ollama/vgo/vgo_testsuite.ttl",
+  "steps_file": "/home/jovyan/LLMOnto/Benchmark/OntologyConceptMatching/MASEO_MCP/ollama/vgo/vgo_steps.json"
+}

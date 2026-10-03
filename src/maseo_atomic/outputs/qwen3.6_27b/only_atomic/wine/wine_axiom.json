@@ -1,0 +1,48 @@
+[
+  {
+    "cq_id": "CQ1",
+    "cq": "Which wine characteristics should I consider when choosing a wine?",
+    "axioms": [
+      "for domain Wine",
+      "for range WineCharacteristic"
+    ]
+  },
+  {
+    "cq_id": "CQ2",
+    "cq": "Is Bordeaux a red or white wine?",
+    "axioms": [
+      "RedWine SubClassOf Wine",
+      "WhiteWine SubClassOf Wine"
+    ]
+  },
+  {
+    "cq_id": "CQ6",
+    "cq": "Does a bouquet or body of a specific wine change with vintage year?",
+    "axioms": [
+      "bouquet domain Wine",
+      "bouquet range Bouquet",
+      "body domain Wine",
+      "body range Body",
+      "Bouquet SubClassOf WineCharacteristic",
+      "Body SubClassOf WineCharacteristic",
+      "changesWith domain WineCharacteristic",
+      "changesWith range VintageYear"
+    ]
+  },
+  {
+    "cq_id": "CQ7",
+    "cq": "What were good vintages for Napa Zinfandel?",
+    "axioms": [
+      "goodFor domain Wine",
+      "goodFor range Vintage"
+    ]
+  },
+  {
+    "cq_id": "CQnew1",
+    "cq": "What grapes are used to make Bordeaux wine?",
+    "axioms": [
+      "usedToMake domain Wine",
+      "usedToMake range Grape"
+    ]
+  }
+]

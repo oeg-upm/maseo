@@ -1,0 +1,8 @@
+# Build context is src/; the image needs only maseo_atomic and the service.
+*
+!maseo_atomic
+!maseo_atomic_n8n/maseo_service.py
+!maseo_atomic_n8n/reasoning_models.yaml
+maseo_atomic/outputs
+maseo_atomic/config_test*.yaml
+**/__pycache__

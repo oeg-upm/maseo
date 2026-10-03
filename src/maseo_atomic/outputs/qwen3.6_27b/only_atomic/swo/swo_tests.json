@@ -1,0 +1,337 @@
+[
+  {
+    "cq_id": "CQ04",
+    "cq": "Which of the named and published algorithms does this tool use?",
+    "tests": [
+      "Tool uses Algorithm",
+      "uses domain Tool",
+      "uses range Algorithm"
+    ]
+  },
+  {
+    "cq_id": "CQ05",
+    "cq": "Are there any modifications to the algorithm the tool uses?",
+    "tests": [
+      "Tool modification Modification",
+      "modification domain Tool",
+      "modification range Modification",
+      "Algorithm type Class"
+    ]
+  },
+  {
+    "cq_id": "CQ06",
+    "cq": "Does this software provide XML editing?",
+    "tests": [
+      "Software xmlEditing XmlEditing",
+      "xmlEditing domain Software",
+      "xmlEditing range XmlEditing"
+    ]
+  },
+  {
+    "cq_id": "CQ07",
+    "cq": "What type of software (API, Desktop application etc) is it?",
+    "tests": [
+      "Api SubClassOf Software",
+      "DesktopApplication SubClassOf Software",
+      "WebService SubClassOf Software",
+      "Software hasDeploymentModel Software",
+      "hasDeploymentModel domain Software",
+      "hasDeploymentModel range Software"
+    ]
+  },
+  {
+    "cq_id": "CQ08",
+    "cq": "What software can perform task x?",
+    "tests": [
+      "Software performs Task",
+      "performs domain Software",
+      "performs range Task"
+    ]
+  },
+  {
+    "cq_id": "CQ11",
+    "cq": "Is this software available as a web service?",
+    "tests": [
+      "WebService SubClassOf Software",
+      "Software SubClassOf ComputationalArtifact"
+    ]
+  },
+  {
+    "cq_id": "CQ14",
+    "cq": "Does it do what I want or need it to do e.g. render a gif?",
+    "tests": [
+      "System capability Capability",
+      "capability domain System",
+      "capability range Capability",
+      "Capability renders Gif",
+      "renders domain Capability",
+      "renders range Gif"
+    ]
+  },
+  {
+    "cq_id": "CQ15",
+    "cq": "Which software tool created this data?",
+    "tests": [
+      "SoftwareTool creates Data",
+      "creates domain SoftwareTool",
+      "creates range Data"
+    ]
+  },
+  {
+    "cq_id": "CQ16",
+    "cq": "What software can I use my data with to support my task?",
+    "tests": [
+      "Software usedWith Data",
+      "usedWith domain Software",
+      "usedWith range Data",
+      "Software supports Task",
+      "supports domain Software",
+      "supports range Task"
+    ]
+  },
+  {
+    "cq_id": "CQ17",
+    "cq": "What are the input and output formats for this software?",
+    "tests": [
+      "Software inputFormat InputFormat",
+      "inputFormat domain Software",
+      "inputFormat range InputFormat",
+      "Software outputFormat OutputFormat",
+      "outputFormat domain Software",
+      "outputFormat range OutputFormat"
+    ]
+  },
+  {
+    "cq_id": "CQ19",
+    "cq": "What software can read a .cel file?",
+    "tests": [
+      "Software reads CelFile",
+      "reads domain Software",
+      "reads range CelFile"
+    ]
+  },
+  {
+    "cq_id": "CQ21",
+    "cq": "What is the valid input for this software?",
+    "tests": [
+      "Software validInput ValidInput",
+      "validInput domain Software",
+      "validInput range ValidInput"
+    ]
+  },
+  {
+    "cq_id": "CQ22",
+    "cq": "Can this software export from its proprietary data format to an open format such as csv, txt?",
+    "tests": [
+      "Software exportCapability ProprietaryDataFormat",
+      "exportCapability domain Software",
+      "exportCapability range ProprietaryDataFormat",
+      "ProprietaryDataFormat exportsTo DataFormat",
+      "exportsTo domain ProprietaryDataFormat",
+      "exportsTo range DataFormat"
+    ]
+  },
+  {
+    "cq_id": "CQ23",
+    "cq": "Can software A work with data that are output from software B?",
+    "tests": [
+      "Software outputs Data",
+      "outputs domain Software",
+      "outputs range Data",
+      "Software worksWith Data",
+      "worksWith domain Software",
+      "worksWith range Data"
+    ]
+  },
+  {
+    "cq_id": "CQ26",
+    "cq": "What open source, maintained software can I use to process these in this format?",
+    "tests": [
+      "Software processes Data",
+      "processes domain Software",
+      "processes range Data",
+      "Data format Format",
+      "format domain Data",
+      "format range Format",
+      "Software isOpenSource boolean",
+      "Software isMaintained boolean"
+    ]
+  },
+  {
+    "cq_id": "CQ29",
+    "cq": "Given input x, what are the data exports for this version?",
+    "tests": [
+      "Input version Version",
+      "version domain Input",
+      "version range Version",
+      "Version dataExport DataExport",
+      "dataExport domain Version",
+      "dataExport range DataExport"
+    ]
+  },
+  {
+    "cq_id": "CQ30",
+    "cq": "Where can I get the software?",
+    "tests": [
+      "Software hasLocation anyURI",
+      "Software hasUrl anyURI"
+    ]
+  },
+  {
+    "cq_id": "CQ32",
+    "cq": "How do I get help?",
+    "tests": [
+      "HelpResource helpMechanism HelpResource",
+      "helpMechanism domain HelpResource",
+      "helpMechanism range HelpResource"
+    ]
+  },
+  {
+    "cq_id": "CQ36",
+    "cq": "Who developed it?",
+    "tests": [
+      "Developer develops Entity",
+      "develops domain Developer",
+      "develops range Entity"
+    ]
+  },
+  {
+    "cq_id": "CQ37",
+    "cq": "What is the homepage of the software?",
+    "tests": [
+      "Software homepage Homepage",
+      "homepage domain Software",
+      "homepage range Homepage"
+    ]
+  },
+  {
+    "cq_id": "CQ38",
+    "cq": "Can we collaborate with developers of software x?",
+    "tests": [
+      "Software developer Developer",
+      "developer domain Software",
+      "developer range Developer",
+      "Developer collaboration Collaboration",
+      "collaboration domain Developer",
+      "collaboration range Collaboration"
+    ]
+  },
+  {
+    "cq_id": "CQ40",
+    "cq": "Which URL can I get it from?",
+    "tests": [
+      "Entity url Url",
+      "url domain Entity",
+      "url range Url"
+    ]
+  },
+  {
+    "cq_id": "CQ45",
+    "cq": "How long has this software been around?",
+    "tests": [
+      "Software age integer",
+      "Software releaseDate dateTime"
+    ]
+  },
+  {
+    "cq_id": "CQ46",
+    "cq": "How actively developed is it?",
+    "tests": [
+      "Entity developmentActivity string"
+    ]
+  },
+  {
+    "cq_id": "CQ54",
+    "cq": "What is the version of this software?",
+    "tests": [
+      "Software version Version",
+      "version domain Software",
+      "version range Version"
+    ]
+  },
+  {
+    "cq_id": "CQ55",
+    "cq": "What new features are in this version?",
+    "tests": [
+      "Version feature Feature",
+      "feature domain Version",
+      "feature range Feature",
+      "Feature isNew boolean"
+    ]
+  },
+  {
+    "cq_id": "CQ57",
+    "cq": "When was the 1.0 version released?",
+    "tests": [
+      "Version release Release",
+      "release domain Version",
+      "release range Release",
+      "Release date dateTime"
+    ]
+  },
+  {
+    "cq_id": "CQ58",
+    "cq": "Is the software open source development? Is there a community development?",
+    "tests": [
+      "OpenSourceDevelopment SubClassOf Software",
+      "Software communityDevelopment CommunityDevelopment",
+      "communityDevelopment domain Software",
+      "communityDevelopment range CommunityDevelopment"
+    ]
+  },
+  {
+    "cq_id": "CQ59",
+    "cq": "What license and what is permissiveness?",
+    "tests": [
+      "License type Class",
+      "license type Property",
+      "Permissiveness permissivenessLevel string"
+    ]
+  },
+  {
+    "cq_id": "CQ60",
+    "cq": "Is it open source or not?",
+    "tests": [
+      "OpenSourceSoftware SubClassOf Entity"
+    ]
+  },
+  {
+    "cq_id": "CQ65",
+    "cq": "Is it FOSS?",
+    "tests": [
+      "FossSoftware SubClassOf Entity"
+    ]
+  },
+  {
+    "cq_id": "CQ68",
+    "cq": "Is it free or not?",
+    "tests": [
+      "FreeSoftware SubClassOf Entity"
+    ]
+  },
+  {
+    "cq_id": "CQ73",
+    "cq": "Where is the documentation?",
+    "tests": [
+      "Documentation hasLocation anyURI"
+    ]
+  },
+  {
+    "cq_id": "CQ84",
+    "cq": "In what language was it implemented?",
+    "tests": [
+      "System implementationLanguage ProgrammingLanguage",
+      "implementationLanguage domain System",
+      "implementationLanguage range ProgrammingLanguage"
+    ]
+  },
+  {
+    "cq_id": "CQ85",
+    "cq": "What platform does the software run on?",
+    "tests": [
+      "Software runsOn Platform",
+      "runsOn domain Software",
+      "runsOn range Platform"
+    ]
+  }
+]

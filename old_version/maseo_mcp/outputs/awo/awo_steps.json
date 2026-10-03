@@ -1,0 +1,286 @@
+[
+  {
+    "step": "extraction_agent",
+    "prompt_information": {
+      "cqs": [
+        {
+          "id": "CQ1",
+          "value": "Which animal eats which other animal?"
+        },
+        {
+          "id": "CQ2",
+          "value": "Is [this animal] a herbivore?"
+        },
+        {
+          "id": "CQ3",
+          "value": "Which plant parts does [this omnivorous or herbivorourus animal] eat?"
+        },
+        {
+          "id": "CQ4",
+          "value": "Does a lion eat plants or plant parts?"
+        },
+        {
+          "id": "CQ6",
+          "value": "Which plants eat animals?"
+        },
+        {
+          "id": "CQ7",
+          "value": "Which animals eat [these animals]?"
+        },
+        {
+          "id": "CQ14",
+          "value": "Are there animals that are carnivore but still eat some plants or parts of plants?"
+        }
+      ]
+    },
+    "ontology": ""
+  },
+  {
+    "step": "generation_agent",
+    "prompt_information": {
+      "cqs": [
+        {
+          "id": "CQ1",
+          "value": "Which animal eats which other animal?"
+        },
+        {
+          "id": "CQ2",
+          "value": "Is [this animal] a herbivore?"
+        },
+        {
+          "id": "CQ3",
+          "value": "Which plant parts does [this omnivorous or herbivorourus animal] eat?"
+        },
+        {
+          "id": "CQ4",
+          "value": "Does a lion eat plants or plant parts?"
+        },
+        {
+          "id": "CQ6",
+          "value": "Which plants eat animals?"
+        },
+        {
+          "id": "CQ7",
+          "value": "Which animals eat [these animals]?"
+        },
+        {
+          "id": "CQ14",
+          "value": "Are there animals that are carnivore but still eat some plants or parts of plants?"
+        }
+      ],
+      "terms": {
+        "CQ1": {
+          "classes": [
+            "Animal"
+          ],
+          "object_properties": [
+            "eats"
+          ],
+          "data_properties": [],
+          "individuals": [],
+          "axioms": [
+            "eats relates Animal to Animal"
+          ],
+          "tests": [
+            "Animal type Class",
+            "eats type Property",
+            "Animal eats Animal"
+          ]
+        },
+        "CQ2": {
+          "classes": [
+            "Animal",
+            "Herbivore"
+          ],
+          "object_properties": [],
+          "data_properties": [],
+          "individuals": [],
+          "axioms": [
+            "Herbivore is a subclass of Animal"
+          ],
+          "tests": [
+            "Animal type Class",
+            "Herbivore type Class",
+            "Herbivore SubClassOf Animal"
+          ]
+        },
+        "CQ3": {
+          "classes": [
+            "Animal",
+            "PlantPart"
+          ],
+          "object_properties": [
+            "eats"
+          ],
+          "data_properties": [],
+          "individuals": [],
+          "axioms": [
+            "eats can relate Animal to PlantPart"
+          ],
+          "tests": [
+            "Animal type Class",
+            "PlantPart type Class",
+            "eats type Property",
+            "Animal eats PlantPart"
+          ]
+        },
+        "CQ4": {
+          "classes": [
+            "Lion",
+            "Plant",
+            "PlantPart"
+          ],
+          "object_properties": [
+            "eats"
+          ],
+          "data_properties": [],
+          "individuals": [],
+          "axioms": [
+            "Lion is a subclass of Animal",
+            "eats can relate Lion to Plant and PlantPart"
+          ],
+          "tests": [
+            "Lion type Class",
+            "eats type Property",
+            "Lion eats Plant",
+            "Lion eats PlantPart"
+          ]
+        },
+        "CQ6": {
+          "classes": [
+            "Plant",
+            "Animal"
+          ],
+          "object_properties": [
+            "eats"
+          ],
+          "data_properties": [],
+          "individuals": [],
+          "axioms": [
+            "eats can relate Plant to Animal"
+          ],
+          "tests": [
+            "Plant type Class",
+            "Animal type Class",
+            "eats type Property",
+            "Plant eats Animal"
+          ]
+        },
+        "CQ7": {
+          "classes": [
+            "Animal"
+          ],
+          "object_properties": [
+            "eats"
+          ],
+          "data_properties": [],
+          "individuals": [],
+          "axioms": [
+            "eats relates Animal to Animal"
+          ],
+          "tests": [
+            "Animal type Class",
+            "eats type Property",
+            "Animal eats Animal"
+          ]
+        },
+        "CQ14": {
+          "classes": [
+            "Animal",
+            "Carnivore",
+            "Plant",
+            "PlantPart"
+          ],
+          "object_properties": [
+            "eats"
+          ],
+          "data_properties": [],
+          "individuals": [],
+          "axioms": [
+            "Carnivore is a subclass of Animal",
+            "eats can relate Carnivore to Plant and PlantPart"
+          ],
+          "tests": [
+            "eats type Property",
+            "Carnivore SubClassOf Animal",
+            "Carnivore eats Plant",
+            "Carnivore eats PlantPart"
+          ]
+        }
+      }
+    },
+    "ontology": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n         xmlns:owl=\"http://www.w3.org/2002/07/owl#\"\n         xmlns:rdfs=\"http://www.w3.org/2000/01/rdf-schema#\"\n         xmlns:dc=\"http://purl.org/dc/elements/1.1/\"\n         xmlns:vaem=\"http://www.linkedmodel.org/schema/vaem#\"\n         xml:base=\"http://www.semanticweb.org/awo#\">\n\n    <owl:Ontology rdf:about=\"http://www.semanticweb.org/awo#\">\n        <rdfs:label>Animal Food Web Ontology</rdfs:label>\n        <rdfs:comment>Ontology modeling animal-plant food relationships</rdfs:comment>\n    </owl:Ontology>\n\n    <!-- Classes -->\n    <owl:Class rdf:about=\"http://www.semanticweb.org/awo#Animal\">\n        <rdfs:label>Animal</rdfs:label>\n        <rdfs:comment>Any animal organism</rdfs:comment>\n        <dc:source>(competency_question) CQ1</dc:source>\n        <dc:source>(competency_question) CQ2</dc:source>\n        <dc:source>(competency_question) CQ3</dc:source>\n        <dc:source>(competency_question) CQ4</dc:source>\n        <dc:source>(competency_question) CQ6</dc:source>\n        <dc:source>(competency_question) CQ7</dc:source>\n        <dc:source>(competency_question) CQ14</dc:source>\n    </owl:Class>\n\n    <owl:Class rdf:about=\"http://www.semanticweb.org/awo#Herbivore\">\n        <rdfs:label>Herbivore</rdfs:label>\n        <rdfs:comment>An animal that eats only plants or plant parts</rdfs:comment>\n        <rdfs:subClassOf rdf:resource=\"http://www.semanticweb.org/awo#Animal\"/>\n        <dc:source>(competency_question) CQ2</dc:source>\n    </owl:Class>\n\n    <owl:Class rdf:about=\"http://www.semanticweb.org/awo#Carnivore\">\n        <rdfs:label>Carnivore</rdfs:label>\n        <rdfs:comment>An animal that primarily eats other animals</rdfs:comment>\n        <rdfs:subClassOf rdf:resource=\"http://www.semanticweb.org/awo#Animal\"/>\n        <dc:source>(competency_question) CQ14</dc:source>\n    </owl:Class>\n\n    <owl:Class rdf:about=\"http://www.semanticweb.org/awo#Lion\">\n        <rdfs:label>Lion</rdfs:label>\n        <rdfs:comment>A large carnivorous feline</rdfs:comment>\n        <rdfs:subClassOf rdf:resource=\"http://www.semanticweb.org/awo#Animal\"/>\n        <dc:source>(competency_question) CQ4</dc:source>\n    </owl:Class>\n\n    <owl:Class rdf:about=\"http://www.semanticweb.org/awo#Plant\">\n        <rdfs:label>Plant</rdfs:label>\n        <rdfs:comment>Any plant organism</rdfs:comment>\n        <dc:source>(competency_question) CQ4</dc:source>\n        <dc:source>(competency_question) CQ6</dc:source>\n        <dc:source>(competency_question) CQ14</dc:source>\n    </owl:Class>\n\n    <owl:Class rdf:about=\"http://www.semanticweb.org/awo#PlantPart\">\n        <rdfs:label>PlantPart</rdfs:label>\n        <rdfs:comment>A part of a plant (e.g., leaf, root, fruit)</rdfs:comment>\n        <dc:source>(competency_question) CQ3</dc:source>\n        <dc:source>(competency_question) CQ4</dc:source>\n        <dc:source>(competency_question) CQ14</dc:source>\n    </owl:Class>\n\n    <!-- Object Property -->\n    <owl:ObjectProperty rdf:about=\"http://www.semanticweb.org/awo#eats\">\n        <rdfs:label>eats</rdfs:label>\n        <rdfs:comment>Relates an organism to what it consumes</rdfs:comment>\n        <rdfs:domain rdf:resource=\"http://www.semanticweb.org/awo#Animal\"/>\n        <rdfs:range rdf:resource=\"http://www.semanticweb.org/awo#Animal\"/>\n        <dc:source>(competency_question) CQ1</dc:source>\n        <dc:source>(competency_question) CQ3</dc:source>\n        <dc:source>(competency_question) CQ4</dc:source>\n        <dc:source>(competency_question) CQ6</dc:source>\n        <dc:source>(competency_question) CQ7</dc:source>\n        <dc:source>(competency_question) CQ14</dc:source>\n    </owl:ObjectProperty>\n\n    <!-- Additional domain/range axioms for eats to cover Plant and PlantPart -->\n    <rdf:Description rdf:about=\"http://www.semanticweb.org/awo#eats\">\n        <rdfs:domain rdf:resource=\"http://www.semanticweb.org/awo#Plant\"/>\n        <rdfs:range rdf:resource=\"http://www.semanticweb.org/awo#PlantPart\"/>\n    </rdf:Description>\n\n    <!-- Subclass restrictions for Lion -->\n    <owl:Class rdf:about=\"http://www.semanticweb.org/awo#Lion\">\n        <rdfs:subClassOf>\n            <owl:Restriction>\n                <owl:onProperty rdf:resource=\"http://www.semanticweb.org/awo#eats\"/>\n                <owl:someValuesFrom rdf:resource=\"http://www.semanticweb.org/awo#Plant\"/>\n            </owl:Restriction>\n        </rdfs:subClassOf>\n        <rdfs:subClassOf>\n            <owl:Restriction>\n                <owl:onProperty rdf:resource=\"http://www.semanticweb.org/awo#eats\"/>\n                <owl:someValuesFrom rdf:resource=\"http://www.semanticweb.org/awo#PlantPart\"/>\n            </owl:Restriction>\n        </rdfs:subClassOf>\n    </owl:Class>\n\n    <!-- Subclass restrictions for Carnivore -->\n    <owl:Class rdf:about=\"http://www.semanticweb.org/awo#Carnivore\">\n        <rdfs:subClassOf>\n            <owl:Restriction>\n                <owl:onProperty rdf:resource=\"http://www.semanticweb.org/awo#eats\"/>\n                <owl:someValuesFrom rdf:resource=\"http://www.semanticweb.org/awo#Plant\"/>\n            </owl:Restriction>\n        </rdfs:subClassOf>\n        <rdfs:subClassOf>\n            <owl:Restriction>\n                <owl:onProperty rdf:resource=\"http://www.semanticweb.org/awo#eats\"/>\n                <owl:someValuesFrom rdf:resource=\"http://www.semanticweb.org/awo#PlantPart\"/>\n            </owl:Restriction>\n        </rdfs:subClassOf>\n    </owl:Class>\n\n</rdf:RDF>"
+  },
+  {
+    "step": "syntax_check",
+    "prompt_information": {
+      "ontology_file": "/home/jovyan/LLMOnto/Benchmark/OntologyConceptMatching/MASEO_MCP/ollama/awo/awo_ontology.owl",
+      "report": "No syntax or style problems."
+    },
+    "ontology": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n         xmlns:owl=\"http://www.w3.org/2002/07/owl#\"\n         xmlns:rdfs=\"http://www.w3.org/2000/01/rdf-schema#\"\n         xmlns:dc=\"http://purl.org/dc/elements/1.1/\"\n         xmlns:vaem=\"http://www.linkedmodel.org/schema/vaem#\"\n         xml:base=\"http://www.semanticweb.org/awo#\">\n\n    <owl:Ontology rdf:about=\"http://www.semanticweb.org/awo#\">\n        <rdfs:label>Animal Food Web Ontology</rdfs:label>\n        <rdfs:comment>Ontology modeling animal-plant food relationships</rdfs:comment>\n    </owl:Ontology>\n\n    <!-- Classes -->\n    <owl:Class rdf:about=\"http://www.semanticweb.org/awo#Animal\">\n        <rdfs:label>Animal</rdfs:label>\n        <rdfs:comment>Any animal organism</rdfs:comment>\n        <dc:source>(competency_question) CQ1</dc:source>\n        <dc:source>(competency_question) CQ2</dc:source>\n        <dc:source>(competency_question) CQ3</dc:source>\n        <dc:source>(competency_question) CQ4</dc:source>\n        <dc:source>(competency_question) CQ6</dc:source>\n        <dc:source>(competency_question) CQ7</dc:source>\n        <dc:source>(competency_question) CQ14</dc:source>\n    </owl:Class>\n\n    <owl:Class rdf:about=\"http://www.semanticweb.org/awo#Herbivore\">\n        <rdfs:label>Herbivore</rdfs:label>\n        <rdfs:comment>An animal that eats only plants or plant parts</rdfs:comment>\n        <rdfs:subClassOf rdf:resource=\"http://www.semanticweb.org/awo#Animal\"/>\n        <dc:source>(competency_question) CQ2</dc:source>\n    </owl:Class>\n\n    <owl:Class rdf:about=\"http://www.semanticweb.org/awo#Carnivore\">\n        <rdfs:label>Carnivore</rdfs:label>\n        <rdfs:comment>An animal that primarily eats other animals</rdfs:comment>\n        <rdfs:subClassOf rdf:resource=\"http://www.semanticweb.org/awo#Animal\"/>\n        <dc:source>(competency_question) CQ14</dc:source>\n    </owl:Class>\n\n    <owl:Class rdf:about=\"http://www.semanticweb.org/awo#Lion\">\n        <rdfs:label>Lion</rdfs:label>\n        <rdfs:comment>A large carnivorous feline</rdfs:comment>\n        <rdfs:subClassOf rdf:resource=\"http://www.semanticweb.org/awo#Animal\"/>\n        <dc:source>(competency_question) CQ4</dc:source>\n    </owl:Class>\n\n    <owl:Class rdf:about=\"http://www.semanticweb.org/awo#Plant\">\n        <rdfs:label>Plant</rdfs:label>\n        <rdfs:comment>Any plant organism</rdfs:comment>\n        <dc:source>(competency_question) CQ4</dc:source>\n        <dc:source>(competency_question) CQ6</dc:source>\n        <dc:source>(competency_question) CQ14</dc:source>\n    </owl:Class>\n\n    <owl:Class rdf:about=\"http://www.semanticweb.org/awo#PlantPart\">\n        <rdfs:label>PlantPart</rdfs:label>\n        <rdfs:comment>A part of a plant (e.g., leaf, root, fruit)</rdfs:comment>\n        <dc:source>(competency_question) CQ3</dc:source>\n        <dc:source>(competency_question) CQ4</dc:source>\n        <dc:source>(competency_question) CQ14</dc:source>\n    </owl:Class>\n\n    <!-- Object Property -->\n    <owl:ObjectProperty rdf:about=\"http://www.semanticweb.org/awo#eats\">\n        <rdfs:label>eats</rdfs:label>\n        <rdfs:comment>Relates an organism to what it consumes</rdfs:comment>\n        <rdfs:domain rdf:resource=\"http://www.semanticweb.org/awo#Animal\"/>\n        <rdfs:range rdf:resource=\"http://www.semanticweb.org/awo#Animal\"/>\n        <dc:source>(competency_question) CQ1</dc:source>\n        <dc:source>(competency_question) CQ3</dc:source>\n        <dc:source>(competency_question) CQ4</dc:source>\n        <dc:source>(competency_question) CQ6</dc:source>\n        <dc:source>(competency_question) CQ7</dc:source>\n        <dc:source>(competency_question) CQ14</dc:source>\n    </owl:ObjectProperty>\n\n    <!-- Additional domain/range axioms for eats to cover Plant and PlantPart -->\n    <rdf:Description rdf:about=\"http://www.semanticweb.org/awo#eats\">\n        <rdfs:domain rdf:resource=\"http://www.semanticweb.org/awo#Plant\"/>\n        <rdfs:range rdf:resource=\"http://www.semanticweb.org/awo#PlantPart\"/>\n    </rdf:Description>\n\n    <!-- Subclass restrictions for Lion -->\n    <owl:Class rdf:about=\"http://www.semanticweb.org/awo#Lion\">\n        <rdfs:subClassOf>\n            <owl:Restriction>\n                <owl:onProperty rdf:resource=\"http://www.semanticweb.org/awo#eats\"/>\n                <owl:someValuesFrom rdf:resource=\"http://www.semanticweb.org/awo#Plant\"/>\n            </owl:Restriction>\n        </rdfs:subClassOf>\n        <rdfs:subClassOf>\n            <owl:Restriction>\n                <owl:onProperty rdf:resource=\"http://www.semanticweb.org/awo#eats\"/>\n                <owl:someValuesFrom rdf:resource=\"http://www.semanticweb.org/awo#PlantPart\"/>\n            </owl:Restriction>\n        </rdfs:subClassOf>\n    </owl:Class>\n\n    <!-- Subclass restrictions for Carnivore -->\n    <owl:Class rdf:about=\"http://www.semanticweb.org/awo#Carnivore\">\n        <rdfs:subClassOf>\n            <owl:Restriction>\n                <owl:onProperty rdf:resource=\"http://www.semanticweb.org/awo#eats\"/>\n                <owl:someValuesFrom rdf:resource=\"http://www.semanticweb.org/awo#Plant\"/>\n            </owl:Restriction>\n        </rdfs:subClassOf>\n        <rdfs:subClassOf>\n            <owl:Restriction>\n                <owl:onProperty rdf:resource=\"http://www.semanticweb.org/awo#eats\"/>\n                <owl:someValuesFrom rdf:resource=\"http://www.semanticweb.org/awo#PlantPart\"/>\n            </owl:Restriction>\n        </rdfs:subClassOf>\n    </owl:Class>\n\n</rdf:RDF>"
+  },
+  {
+    "step": "cq_coverage",
+    "prompt_information": {
+      "ontology_file": "/home/jovyan/LLMOnto/Benchmark/OntologyConceptMatching/MASEO_MCP/ollama/awo/awo_ontology.owl",
+      "cqs": [
+        "CQ1",
+        "CQ2",
+        "CQ3",
+        "CQ4",
+        "CQ6",
+        "CQ7",
+        "CQ14"
+      ],
+      "report": "Covered 7/7. All competency-question terms are captured."
+    },
+    "ontology": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n         xmlns:owl=\"http://www.w3.org/2002/07/owl#\"\n         xmlns:rdfs=\"http://www.w3.org/2000/01/rdf-schema#\"\n         xmlns:dc=\"http://purl.org/dc/elements/1.1/\"\n         xmlns:vaem=\"http://www.linkedmodel.org/schema/vaem#\"\n         xml:base=\"http://www.semanticweb.org/awo#\">\n\n    <owl:Ontology rdf:about=\"http://www.semanticweb.org/awo#\">\n        <rdfs:label>Animal Food Web Ontology</rdfs:label>\n        <rdfs:comment>Ontology modeling animal-plant food relationships</rdfs:comment>\n    </owl:Ontology>\n\n    <!-- Classes -->\n    <owl:Class rdf:about=\"http://www.semanticweb.org/awo#Animal\">\n        <rdfs:label>Animal</rdfs:label>\n        <rdfs:comment>Any animal organism</rdfs:comment>\n        <dc:source>(competency_question) CQ1</dc:source>\n        <dc:source>(competency_question) CQ2</dc:source>\n        <dc:source>(competency_question) CQ3</dc:source>\n        <dc:source>(competency_question) CQ4</dc:source>\n        <dc:source>(competency_question) CQ6</dc:source>\n        <dc:source>(competency_question) CQ7</dc:source>\n        <dc:source>(competency_question) CQ14</dc:source>\n    </owl:Class>\n\n    <owl:Class rdf:about=\"http://www.semanticweb.org/awo#Herbivore\">\n        <rdfs:label>Herbivore</rdfs:label>\n        <rdfs:comment>An animal that eats only plants or plant parts</rdfs:comment>\n        <rdfs:subClassOf rdf:resource=\"http://www.semanticweb.org/awo#Animal\"/>\n        <dc:source>(competency_question) CQ2</dc:source>\n    </owl:Class>\n\n    <owl:Class rdf:about=\"http://www.semanticweb.org/awo#Carnivore\">\n        <rdfs:label>Carnivore</rdfs:label>\n        <rdfs:comment>An animal that primarily eats other animals</rdfs:comment>\n        <rdfs:subClassOf rdf:resource=\"http://www.semanticweb.org/awo#Animal\"/>\n        <dc:source>(competency_question) CQ14</dc:source>\n    </owl:Class>\n\n    <owl:Class rdf:about=\"http://www.semanticweb.org/awo#Lion\">\n        <rdfs:label>Lion</rdfs:label>\n        <rdfs:comment>A large carnivorous feline</rdfs:comment>\n        <rdfs:subClassOf rdf:resource=\"http://www.semanticweb.org/awo#Animal\"/>\n        <dc:source>(competency_question) CQ4</dc:source>\n    </owl:Class>\n\n    <owl:Class rdf:about=\"http://www.semanticweb.org/awo#Plant\">\n        <rdfs:label>Plant</rdfs:label>\n        <rdfs:comment>Any plant organism</rdfs:comment>\n        <dc:source>(competency_question) CQ4</dc:source>\n        <dc:source>(competency_question) CQ6</dc:source>\n        <dc:source>(competency_question) CQ14</dc:source>\n    </owl:Class>\n\n    <owl:Class rdf:about=\"http://www.semanticweb.org/awo#PlantPart\">\n        <rdfs:label>PlantPart</rdfs:label>\n        <rdfs:comment>A part of a plant (e.g., leaf, root, fruit)</rdfs:comment>\n        <dc:source>(competency_question) CQ3</dc:source>\n        <dc:source>(competency_question) CQ4</dc:source>\n        <dc:source>(competency_question) CQ14</dc:source>\n    </owl:Class>\n\n    <!-- Object Property -->\n    <owl:ObjectProperty rdf:about=\"http://www.semanticweb.org/awo#eats\">\n        <rdfs:label>eats</rdfs:label>\n        <rdfs:comment>Relates an organism to what it consumes</rdfs:comment>\n        <rdfs:domain rdf:resource=\"http://www.semanticweb.org/awo#Animal\"/>\n        <rdfs:range rdf:resource=\"http://www.semanticweb.org/awo#Animal\"/>\n        <dc:source>(competency_question) CQ1</dc:source>\n        <dc:source>(competency_question) CQ3</dc:source>\n        <dc:source>(competency_question) CQ4</dc:source>\n        <dc:source>(competency_question) CQ6</dc:source>\n        <dc:source>(competency_question) CQ7</dc:source>\n        <dc:source>(competency_question) CQ14</dc:source>\n    </owl:ObjectProperty>\n\n    <!-- Additional domain/range axioms for eats to cover Plant and PlantPart -->\n    <rdf:Description rdf:about=\"http://www.semanticweb.org/awo#eats\">\n        <rdfs:domain rdf:resource=\"http://www.semanticweb.org/awo#Plant\"/>\n        <rdfs:range rdf:resource=\"http://www.semanticweb.org/awo#PlantPart\"/>\n    </rdf:Description>\n\n    <!-- Subclass restrictions for Lion -->\n    <owl:Class rdf:about=\"http://www.semanticweb.org/awo#Lion\">\n        <rdfs:subClassOf>\n            <owl:Restriction>\n                <owl:onProperty rdf:resource=\"http://www.semanticweb.org/awo#eats\"/>\n                <owl:someValuesFrom rdf:resource=\"http://www.semanticweb.org/awo#Plant\"/>\n            </owl:Restriction>\n        </rdfs:subClassOf>\n        <rdfs:subClassOf>\n            <owl:Restriction>\n                <owl:onProperty rdf:resource=\"http://www.semanticweb.org/awo#eats\"/>\n                <owl:someValuesFrom rdf:resource=\"http://www.semanticweb.org/awo#PlantPart\"/>\n            </owl:Restriction>\n        </rdfs:subClassOf>\n    </owl:Class>\n\n    <!-- Subclass restrictions for Carnivore -->\n    <owl:Class rdf:about=\"http://www.semanticweb.org/awo#Carnivore\">\n        <rdfs:subClassOf>\n            <owl:Restriction>\n                <owl:onProperty rdf:resource=\"http://www.semanticweb.org/awo#eats\"/>\n                <owl:someValuesFrom rdf:resource=\"http://www.semanticweb.org/awo#Plant\"/>\n            </owl:Restriction>\n        </rdfs:subClassOf>\n        <rdfs:subClassOf>\n            <owl:Restriction>\n                <owl:onProperty rdf:resource=\"http://www.semanticweb.org/awo#eats\"/>\n                <owl:someValuesFrom rdf:resource=\"http://www.semanticweb.org/awo#PlantPart\"/>\n            </owl:Restriction>\n        </rdfs:subClassOf>\n    </owl:Class>\n\n</rdf:RDF>"
+  },
+  {
+    "step": "oops_scan",
+    "prompt_information": {
+      "ontology_file": "/home/jovyan/LLMOnto/Benchmark/OntologyConceptMatching/MASEO_MCP/ollama/awo/awo_ontology.owl",
+      "report": "No major pitfalls."
+    },
+    "ontology": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n         xmlns:owl=\"http://www.w3.org/2002/07/owl#\"\n         xmlns:rdfs=\"http://www.w3.org/2000/01/rdf-schema#\"\n         xmlns:dc=\"http://purl.org/dc/elements/1.1/\"\n         xmlns:vaem=\"http://www.linkedmodel.org/schema/vaem#\"\n         xml:base=\"http://www.semanticweb.org/awo#\">\n\n    <owl:Ontology rdf:about=\"http://www.semanticweb.org/awo#\">\n        <rdfs:label>Animal Food Web Ontology</rdfs:label>\n        <rdfs:comment>Ontology modeling animal-plant food relationships</rdfs:comment>\n    </owl:Ontology>\n\n    <!-- Classes -->\n    <owl:Class rdf:about=\"http://www.semanticweb.org/awo#Animal\">\n        <rdfs:label>Animal</rdfs:label>\n        <rdfs:comment>Any animal organism</rdfs:comment>\n        <dc:source>(competency_question) CQ1</dc:source>\n        <dc:source>(competency_question) CQ2</dc:source>\n        <dc:source>(competency_question) CQ3</dc:source>\n        <dc:source>(competency_question) CQ4</dc:source>\n        <dc:source>(competency_question) CQ6</dc:source>\n        <dc:source>(competency_question) CQ7</dc:source>\n        <dc:source>(competency_question) CQ14</dc:source>\n    </owl:Class>\n\n    <owl:Class rdf:about=\"http://www.semanticweb.org/awo#Herbivore\">\n        <rdfs:label>Herbivore</rdfs:label>\n        <rdfs:comment>An animal that eats only plants or plant parts</rdfs:comment>\n        <rdfs:subClassOf rdf:resource=\"http://www.semanticweb.org/awo#Animal\"/>\n        <dc:source>(competency_question) CQ2</dc:source>\n    </owl:Class>\n\n    <owl:Class rdf:about=\"http://www.semanticweb.org/awo#Carnivore\">\n        <rdfs:label>Carnivore</rdfs:label>\n        <rdfs:comment>An animal that primarily eats other animals</rdfs:comment>\n        <rdfs:subClassOf rdf:resource=\"http://www.semanticweb.org/awo#Animal\"/>\n        <dc:source>(competency_question) CQ14</dc:source>\n    </owl:Class>\n\n    <owl:Class rdf:about=\"http://www.semanticweb.org/awo#Lion\">\n        <rdfs:label>Lion</rdfs:label>\n        <rdfs:comment>A large carnivorous feline</rdfs:comment>\n        <rdfs:subClassOf rdf:resource=\"http://www.semanticweb.org/awo#Animal\"/>\n        <dc:source>(competency_question) CQ4</dc:source>\n    </owl:Class>\n\n    <owl:Class rdf:about=\"http://www.semanticweb.org/awo#Plant\">\n        <rdfs:label>Plant</rdfs:label>\n        <rdfs:comment>Any plant organism</rdfs:comment>\n        <dc:source>(competency_question) CQ4</dc:source>\n        <dc:source>(competency_question) CQ6</dc:source>\n        <dc:source>(competency_question) CQ14</dc:source>\n    </owl:Class>\n\n    <owl:Class rdf:about=\"http://www.semanticweb.org/awo#PlantPart\">\n        <rdfs:label>PlantPart</rdfs:label>\n        <rdfs:comment>A part of a plant (e.g., leaf, root, fruit)</rdfs:comment>\n        <dc:source>(competency_question) CQ3</dc:source>\n        <dc:source>(competency_question) CQ4</dc:source>\n        <dc:source>(competency_question) CQ14</dc:source>\n    </owl:Class>\n\n    <!-- Object Property -->\n    <owl:ObjectProperty rdf:about=\"http://www.semanticweb.org/awo#eats\">\n        <rdfs:label>eats</rdfs:label>\n        <rdfs:comment>Relates an organism to what it consumes</rdfs:comment>\n        <rdfs:domain rdf:resource=\"http://www.semanticweb.org/awo#Animal\"/>\n        <rdfs:range rdf:resource=\"http://www.semanticweb.org/awo#Animal\"/>\n        <dc:source>(competency_question) CQ1</dc:source>\n        <dc:source>(competency_question) CQ3</dc:source>\n        <dc:source>(competency_question) CQ4</dc:source>\n        <dc:source>(competency_question) CQ6</dc:source>\n        <dc:source>(competency_question) CQ7</dc:source>\n        <dc:source>(competency_question) CQ14</dc:source>\n    </owl:ObjectProperty>\n\n    <!-- Additional domain/range axioms for eats to cover Plant and PlantPart -->\n    <rdf:Description rdf:about=\"http://www.semanticweb.org/awo#eats\">\n        <rdfs:domain rdf:resource=\"http://www.semanticweb.org/awo#Plant\"/>\n        <rdfs:range rdf:resource=\"http://www.semanticweb.org/awo#PlantPart\"/>\n    </rdf:Description>\n\n    <!-- Subclass restrictions for Lion -->\n    <owl:Class rdf:about=\"http://www.semanticweb.org/awo#Lion\">\n        <rdfs:subClassOf>\n            <owl:Restriction>\n                <owl:onProperty rdf:resource=\"http://www.semanticweb.org/awo#eats\"/>\n                <owl:someValuesFrom rdf:resource=\"http://www.semanticweb.org/awo#Plant\"/>\n            </owl:Restriction>\n        </rdfs:subClassOf>\n        <rdfs:subClassOf>\n            <owl:Restriction>\n                <owl:onProperty rdf:resource=\"http://www.semanticweb.org/awo#eats\"/>\n                <owl:someValuesFrom rdf:resource=\"http://www.semanticweb.org/awo#PlantPart\"/>\n            </owl:Restriction>\n        </rdfs:subClassOf>\n    </owl:Class>\n\n    <!-- Subclass restrictions for Carnivore -->\n    <owl:Class rdf:about=\"http://www.semanticweb.org/awo#Carnivore\">\n        <rdfs:subClassOf>\n            <owl:Restriction>\n                <owl:onProperty rdf:resource=\"http://www.semanticweb.org/awo#eats\"/>\n                <owl:someValuesFrom rdf:resource=\"http://www.semanticweb.org/awo#Plant\"/>\n            </owl:Restriction>\n        </rdfs:subClassOf>\n        <rdfs:subClassOf>\n            <owl:Restriction>\n                <owl:onProperty rdf:resource=\"http://www.semanticweb.org/awo#eats\"/>\n                <owl:someValuesFrom rdf:resource=\"http://www.semanticweb.org/awo#PlantPart\"/>\n            </owl:Restriction>\n        </rdfs:subClassOf>\n    </owl:Class>\n\n</rdf:RDF>"
+  },
+  {
+    "step": "hermit_consistency",
+    "prompt_information": {
+      "ontology_file": "/home/jovyan/LLMOnto/Benchmark/OntologyConceptMatching/MASEO_MCP/ollama/awo/awo_ontology.owl",
+      "report": "Consistent: yes\nUnsatisfiable classes: none\n\nhttp://www.w3.org/2002/07/owl#Thing is satisfiable.\nClasses equivalent to 'owl:Nothing':\n\towl:Nothing\n"
+    },
+    "ontology": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n         xmlns:owl=\"http://www.w3.org/2002/07/owl#\"\n         xmlns:rdfs=\"http://www.w3.org/2000/01/rdf-schema#\"\n         xmlns:dc=\"http://purl.org/dc/elements/1.1/\"\n         xmlns:vaem=\"http://www.linkedmodel.org/schema/vaem#\"\n         xml:base=\"http://www.semanticweb.org/awo#\">\n\n    <owl:Ontology rdf:about=\"http://www.semanticweb.org/awo#\">\n        <rdfs:label>Animal Food Web Ontology</rdfs:label>\n        <rdfs:comment>Ontology modeling animal-plant food relationships</rdfs:comment>\n    </owl:Ontology>\n\n    <!-- Classes -->\n    <owl:Class rdf:about=\"http://www.semanticweb.org/awo#Animal\">\n        <rdfs:label>Animal</rdfs:label>\n        <rdfs:comment>Any animal organism</rdfs:comment>\n        <dc:source>(competency_question) CQ1</dc:source>\n        <dc:source>(competency_question) CQ2</dc:source>\n        <dc:source>(competency_question) CQ3</dc:source>\n        <dc:source>(competency_question) CQ4</dc:source>\n        <dc:source>(competency_question) CQ6</dc:source>\n        <dc:source>(competency_question) CQ7</dc:source>\n        <dc:source>(competency_question) CQ14</dc:source>\n    </owl:Class>\n\n    <owl:Class rdf:about=\"http://www.semanticweb.org/awo#Herbivore\">\n        <rdfs:label>Herbivore</rdfs:label>\n        <rdfs:comment>An animal that eats only plants or plant parts</rdfs:comment>\n        <rdfs:subClassOf rdf:resource=\"http://www.semanticweb.org/awo#Animal\"/>\n        <dc:source>(competency_question) CQ2</dc:source>\n    </owl:Class>\n\n    <owl:Class rdf:about=\"http://www.semanticweb.org/awo#Carnivore\">\n        <rdfs:label>Carnivore</rdfs:label>\n        <rdfs:comment>An animal that primarily eats other animals</rdfs:comment>\n        <rdfs:subClassOf rdf:resource=\"http://www.semanticweb.org/awo#Animal\"/>\n        <dc:source>(competency_question) CQ14</dc:source>\n    </owl:Class>\n\n    <owl:Class rdf:about=\"http://www.semanticweb.org/awo#Lion\">\n        <rdfs:label>Lion</rdfs:label>\n        <rdfs:comment>A large carnivorous feline</rdfs:comment>\n        <rdfs:subClassOf rdf:resource=\"http://www.semanticweb.org/awo#Animal\"/>\n        <dc:source>(competency_question) CQ4</dc:source>\n    </owl:Class>\n\n    <owl:Class rdf:about=\"http://www.semanticweb.org/awo#Plant\">\n        <rdfs:label>Plant</rdfs:label>\n        <rdfs:comment>Any plant organism</rdfs:comment>\n        <dc:source>(competency_question) CQ4</dc:source>\n        <dc:source>(competency_question) CQ6</dc:source>\n        <dc:source>(competency_question) CQ14</dc:source>\n    </owl:Class>\n\n    <owl:Class rdf:about=\"http://www.semanticweb.org/awo#PlantPart\">\n        <rdfs:label>PlantPart</rdfs:label>\n        <rdfs:comment>A part of a plant (e.g., leaf, root, fruit)</rdfs:comment>\n        <dc:source>(competency_question) CQ3</dc:source>\n        <dc:source>(competency_question) CQ4</dc:source>\n        <dc:source>(competency_question) CQ14</dc:source>\n    </owl:Class>\n\n    <!-- Object Property -->\n    <owl:ObjectProperty rdf:about=\"http://www.semanticweb.org/awo#eats\">\n        <rdfs:label>eats</rdfs:label>\n        <rdfs:comment>Relates an organism to what it consumes</rdfs:comment>\n        <rdfs:domain rdf:resource=\"http://www.semanticweb.org/awo#Animal\"/>\n        <rdfs:range rdf:resource=\"http://www.semanticweb.org/awo#Animal\"/>\n        <dc:source>(competency_question) CQ1</dc:source>\n        <dc:source>(competency_question) CQ3</dc:source>\n        <dc:source>(competency_question) CQ4</dc:source>\n        <dc:source>(competency_question) CQ6</dc:source>\n        <dc:source>(competency_question) CQ7</dc:source>\n        <dc:source>(competency_question) CQ14</dc:source>\n    </owl:ObjectProperty>\n\n    <!-- Additional domain/range axioms for eats to cover Plant and PlantPart -->\n    <rdf:Description rdf:about=\"http://www.semanticweb.org/awo#eats\">\n        <rdfs:domain rdf:resource=\"http://www.semanticweb.org/awo#Plant\"/>\n        <rdfs:range rdf:resource=\"http://www.semanticweb.org/awo#PlantPart\"/>\n    </rdf:Description>\n\n    <!-- Subclass restrictions for Lion -->\n    <owl:Class rdf:about=\"http://www.semanticweb.org/awo#Lion\">\n        <rdfs:subClassOf>\n            <owl:Restriction>\n                <owl:onProperty rdf:resource=\"http://www.semanticweb.org/awo#eats\"/>\n                <owl:someValuesFrom rdf:resource=\"http://www.semanticweb.org/awo#Plant\"/>\n            </owl:Restriction>\n        </rdfs:subClassOf>\n        <rdfs:subClassOf>\n            <owl:Restriction>\n                <owl:onProperty rdf:resource=\"http://www.semanticweb.org/awo#eats\"/>\n                <owl:someValuesFrom rdf:resource=\"http://www.semanticweb.org/awo#PlantPart\"/>\n            </owl:Restriction>\n        </rdfs:subClassOf>\n    </owl:Class>\n\n    <!-- Subclass restrictions for Carnivore -->\n    <owl:Class rdf:about=\"http://www.semanticweb.org/awo#Carnivore\">\n        <rdfs:subClassOf>\n            <owl:Restriction>\n                <owl:onProperty rdf:resource=\"http://www.semanticweb.org/awo#eats\"/>\n                <owl:someValuesFrom rdf:resource=\"http://www.semanticweb.org/awo#Plant\"/>\n            </owl:Restriction>\n        </rdfs:subClassOf>\n        <rdfs:subClassOf>\n            <owl:Restriction>\n                <owl:onProperty rdf:resource=\"http://www.semanticweb.org/awo#eats\"/>\n                <owl:someValuesFrom rdf:resource=\"http://www.semanticweb.org/awo#PlantPart\"/>\n            </owl:Restriction>\n        </rdfs:subClassOf>\n    </owl:Class>\n\n</rdf:RDF>"
+  },
+  {
+    "step": "themis_test",
+    "prompt_information": {
+      "ontology_file": "/home/jovyan/LLMOnto/Benchmark/OntologyConceptMatching/MASEO_MCP/ollama/awo/awo_ontology.owl",
+      "cqs": [
+        "CQ1",
+        "CQ2",
+        "CQ3",
+        "CQ4",
+        "CQ6",
+        "CQ7",
+        "CQ14"
+      ],
+      "report": "Themis tests: 7/7 CQs pass all their tests. Every competency-question test passed."
+    },
+    "ontology": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n         xmlns:owl=\"http://www.w3.org/2002/07/owl#\"\n         xmlns:rdfs=\"http://www.w3.org/2000/01/rdf-schema#\"\n         xmlns:dc=\"http://purl.org/dc/elements/1.1/\"\n         xmlns:vaem=\"http://www.linkedmodel.org/schema/vaem#\"\n         xml:base=\"http://www.semanticweb.org/awo#\">\n\n    <owl:Ontology rdf:about=\"http://www.semanticweb.org/awo#\">\n        <rdfs:label>Animal Food Web Ontology</rdfs:label>\n        <rdfs:comment>Ontology modeling animal-plant food relationships</rdfs:comment>\n    </owl:Ontology>\n\n    <!-- Classes -->\n    <owl:Class rdf:about=\"http://www.semanticweb.org/awo#Animal\">\n        <rdfs:label>Animal</rdfs:label>\n        <rdfs:comment>Any animal organism</rdfs:comment>\n        <dc:source>(competency_question) CQ1</dc:source>\n        <dc:source>(competency_question) CQ2</dc:source>\n        <dc:source>(competency_question) CQ3</dc:source>\n        <dc:source>(competency_question) CQ4</dc:source>\n        <dc:source>(competency_question) CQ6</dc:source>\n        <dc:source>(competency_question) CQ7</dc:source>\n        <dc:source>(competency_question) CQ14</dc:source>\n    </owl:Class>\n\n    <owl:Class rdf:about=\"http://www.semanticweb.org/awo#Herbivore\">\n        <rdfs:label>Herbivore</rdfs:label>\n        <rdfs:comment>An animal that eats only plants or plant parts</rdfs:comment>\n        <rdfs:subClassOf rdf:resource=\"http://www.semanticweb.org/awo#Animal\"/>\n        <dc:source>(competency_question) CQ2</dc:source>\n    </owl:Class>\n\n    <owl:Class rdf:about=\"http://www.semanticweb.org/awo#Carnivore\">\n        <rdfs:label>Carnivore</rdfs:label>\n        <rdfs:comment>An animal that primarily eats other animals</rdfs:comment>\n        <rdfs:subClassOf rdf:resource=\"http://www.semanticweb.org/awo#Animal\"/>\n        <dc:source>(competency_question) CQ14</dc:source>\n    </owl:Class>\n\n    <owl:Class rdf:about=\"http://www.semanticweb.org/awo#Lion\">\n        <rdfs:label>Lion</rdfs:label>\n        <rdfs:comment>A large carnivorous feline</rdfs:comment>\n        <rdfs:subClassOf rdf:resource=\"http://www.semanticweb.org/awo#Animal\"/>\n        <dc:source>(competency_question) CQ4</dc:source>\n    </owl:Class>\n\n    <owl:Class rdf:about=\"http://www.semanticweb.org/awo#Plant\">\n        <rdfs:label>Plant</rdfs:label>\n        <rdfs:comment>Any plant organism</rdfs:comment>\n        <dc:source>(competency_question) CQ4</dc:source>\n        <dc:source>(competency_question) CQ6</dc:source>\n        <dc:source>(competency_question) CQ14</dc:source>\n    </owl:Class>\n\n    <owl:Class rdf:about=\"http://www.semanticweb.org/awo#PlantPart\">\n        <rdfs:label>PlantPart</rdfs:label>\n        <rdfs:comment>A part of a plant (e.g., leaf, root, fruit)</rdfs:comment>\n        <dc:source>(competency_question) CQ3</dc:source>\n        <dc:source>(competency_question) CQ4</dc:source>\n        <dc:source>(competency_question) CQ14</dc:source>\n    </owl:Class>\n\n    <!-- Object Property -->\n    <owl:ObjectProperty rdf:about=\"http://www.semanticweb.org/awo#eats\">\n        <rdfs:label>eats</rdfs:label>\n        <rdfs:comment>Relates an organism to what it consumes</rdfs:comment>\n        <rdfs:domain rdf:resource=\"http://www.semanticweb.org/awo#Animal\"/>\n        <rdfs:range rdf:resource=\"http://www.semanticweb.org/awo#Animal\"/>\n        <dc:source>(competency_question) CQ1</dc:source>\n        <dc:source>(competency_question) CQ3</dc:source>\n        <dc:source>(competency_question) CQ4</dc:source>\n        <dc:source>(competency_question) CQ6</dc:source>\n        <dc:source>(competency_question) CQ7</dc:source>\n        <dc:source>(competency_question) CQ14</dc:source>\n    </owl:ObjectProperty>\n\n    <!-- Additional domain/range axioms for eats to cover Plant and PlantPart -->\n    <rdf:Description rdf:about=\"http://www.semanticweb.org/awo#eats\">\n        <rdfs:domain rdf:resource=\"http://www.semanticweb.org/awo#Plant\"/>\n        <rdfs:range rdf:resource=\"http://www.semanticweb.org/awo#PlantPart\"/>\n    </rdf:Description>\n\n    <!-- Subclass restrictions for Lion -->\n    <owl:Class rdf:about=\"http://www.semanticweb.org/awo#Lion\">\n        <rdfs:subClassOf>\n            <owl:Restriction>\n                <owl:onProperty rdf:resource=\"http://www.semanticweb.org/awo#eats\"/>\n                <owl:someValuesFrom rdf:resource=\"http://www.semanticweb.org/awo#Plant\"/>\n            </owl:Restriction>\n        </rdfs:subClassOf>\n        <rdfs:subClassOf>\n            <owl:Restriction>\n                <owl:onProperty rdf:resource=\"http://www.semanticweb.org/awo#eats\"/>\n                <owl:someValuesFrom rdf:resource=\"http://www.semanticweb.org/awo#PlantPart\"/>\n            </owl:Restriction>\n        </rdfs:subClassOf>\n    </owl:Class>\n\n    <!-- Subclass restrictions for Carnivore -->\n    <owl:Class rdf:about=\"http://www.semanticweb.org/awo#Carnivore\">\n        <rdfs:subClassOf>\n            <owl:Restriction>\n                <owl:onProperty rdf:resource=\"http://www.semanticweb.org/awo#eats\"/>\n                <owl:someValuesFrom rdf:resource=\"http://www.semanticweb.org/awo#Plant\"/>\n            </owl:Restriction>\n        </rdfs:subClassOf>\n        <rdfs:subClassOf>\n            <owl:Restriction>\n                <owl:onProperty rdf:resource=\"http://www.semanticweb.org/awo#eats\"/>\n                <owl:someValuesFrom rdf:resource=\"http://www.semanticweb.org/awo#PlantPart\"/>\n            </owl:Restriction>\n        </rdfs:subClassOf>\n    </owl:Class>\n\n</rdf:RDF>"
+  },
+  {
+    "step": "verify [syntax_check + hermit_consistency + oops_scan + cq_coverage + themis_test]",
+    "prompt_information": {
+      "all_passed": true,
+      "reports": {
+        "syntax_check": "No syntax or style problems.",
+        "hermit_consistency": "Consistent: yes\nUnsatisfiable classes: none\n\nhttp://www.w3.org/2002/07/owl#Thing is satisfiable.\nClasses equivalent to 'owl:Nothing':\n\towl:Nothing\n",
+        "oops_scan": "No major pitfalls.",
+        "cq_coverage": "Covered 7/7. All competency-question terms are captured.",
+        "themis_test": "Themis tests: 7/7 CQs pass all their tests. Every competency-question test passed."
+      }
+    },
+    "ontology": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n         xmlns:owl=\"http://www.w3.org/2002/07/owl#\"\n         xmlns:rdfs=\"http://www.w3.org/2000/01/rdf-schema#\"\n         xmlns:dc=\"http://purl.org/dc/elements/1.1/\"\n         xmlns:vaem=\"http://www.linkedmodel.org/schema/vaem#\"\n         xml:base=\"http://www.semanticweb.org/awo#\">\n\n    <owl:Ontology rdf:about=\"http://www.semanticweb.org/awo#\">\n        <rdfs:label>Animal Food Web Ontology</rdfs:label>\n        <rdfs:comment>Ontology modeling animal-plant food relationships</rdfs:comment>\n    </owl:Ontology>\n\n    <!-- Classes -->\n    <owl:Class rdf:about=\"http://www.semanticweb.org/awo#Animal\">\n        <rdfs:label>Animal</rdfs:label>\n        <rdfs:comment>Any animal organism</rdfs:comment>\n        <dc:source>(competency_question) CQ1</dc:source>\n        <dc:source>(competency_question) CQ2</dc:source>\n        <dc:source>(competency_question) CQ3</dc:source>\n        <dc:source>(competency_question) CQ4</dc:source>\n        <dc:source>(competency_question) CQ6</dc:source>\n        <dc:source>(competency_question) CQ7</dc:source>\n        <dc:source>(competency_question) CQ14</dc:source>\n    </owl:Class>\n\n    <owl:Class rdf:about=\"http://www.semanticweb.org/awo#Herbivore\">\n        <rdfs:label>Herbivore</rdfs:label>\n        <rdfs:comment>An animal that eats only plants or plant parts</rdfs:comment>\n        <rdfs:subClassOf rdf:resource=\"http://www.semanticweb.org/awo#Animal\"/>\n        <dc:source>(competency_question) CQ2</dc:source>\n    </owl:Class>\n\n    <owl:Class rdf:about=\"http://www.semanticweb.org/awo#Carnivore\">\n        <rdfs:label>Carnivore</rdfs:label>\n        <rdfs:comment>An animal that primarily eats other animals</rdfs:comment>\n        <rdfs:subClassOf rdf:resource=\"http://www.semanticweb.org/awo#Animal\"/>\n        <dc:source>(competency_question) CQ14</dc:source>\n    </owl:Class>\n\n    <owl:Class rdf:about=\"http://www.semanticweb.org/awo#Lion\">\n        <rdfs:label>Lion</rdfs:label>\n        <rdfs:comment>A large carnivorous feline</rdfs:comment>\n        <rdfs:subClassOf rdf:resource=\"http://www.semanticweb.org/awo#Animal\"/>\n        <dc:source>(competency_question) CQ4</dc:source>\n    </owl:Class>\n\n    <owl:Class rdf:about=\"http://www.semanticweb.org/awo#Plant\">\n        <rdfs:label>Plant</rdfs:label>\n        <rdfs:comment>Any plant organism</rdfs:comment>\n        <dc:source>(competency_question) CQ4</dc:source>\n        <dc:source>(competency_question) CQ6</dc:source>\n        <dc:source>(competency_question) CQ14</dc:source>\n    </owl:Class>\n\n    <owl:Class rdf:about=\"http://www.semanticweb.org/awo#PlantPart\">\n        <rdfs:label>PlantPart</rdfs:label>\n        <rdfs:comment>A part of a plant (e.g., leaf, root, fruit)</rdfs:comment>\n        <dc:source>(competency_question) CQ3</dc:source>\n        <dc:source>(competency_question) CQ4</dc:source>\n        <dc:source>(competency_question) CQ14</dc:source>\n    </owl:Class>\n\n    <!-- Object Property -->\n    <owl:ObjectProperty rdf:about=\"http://www.semanticweb.org/awo#eats\">\n        <rdfs:label>eats</rdfs:label>\n        <rdfs:comment>Relates an organism to what it consumes</rdfs:comment>\n        <rdfs:domain rdf:resource=\"http://www.semanticweb.org/awo#Animal\"/>\n        <rdfs:range rdf:resource=\"http://www.semanticweb.org/awo#Animal\"/>\n        <dc:source>(competency_question) CQ1</dc:source>\n        <dc:source>(competency_question) CQ3</dc:source>\n        <dc:source>(competency_question) CQ4</dc:source>\n        <dc:source>(competency_question) CQ6</dc:source>\n        <dc:source>(competency_question) CQ7</dc:source>\n        <dc:source>(competency_question) CQ14</dc:source>\n    </owl:ObjectProperty>\n\n    <!-- Additional domain/range axioms for eats to cover Plant and PlantPart -->\n    <rdf:Description rdf:about=\"http://www.semanticweb.org/awo#eats\">\n        <rdfs:domain rdf:resource=\"http://www.semanticweb.org/awo#Plant\"/>\n        <rdfs:range rdf:resource=\"http://www.semanticweb.org/awo#PlantPart\"/>\n    </rdf:Description>\n\n    <!-- Subclass restrictions for Lion -->\n    <owl:Class rdf:about=\"http://www.semanticweb.org/awo#Lion\">\n        <rdfs:subClassOf>\n            <owl:Restriction>\n                <owl:onProperty rdf:resource=\"http://www.semanticweb.org/awo#eats\"/>\n                <owl:someValuesFrom rdf:resource=\"http://www.semanticweb.org/awo#Plant\"/>\n            </owl:Restriction>\n        </rdfs:subClassOf>\n        <rdfs:subClassOf>\n            <owl:Restriction>\n                <owl:onProperty rdf:resource=\"http://www.semanticweb.org/awo#eats\"/>\n                <owl:someValuesFrom rdf:resource=\"http://www.semanticweb.org/awo#PlantPart\"/>\n            </owl:Restriction>\n        </rdfs:subClassOf>\n    </owl:Class>\n\n    <!-- Subclass restrictions for Carnivore -->\n    <owl:Class rdf:about=\"http://www.semanticweb.org/awo#Carnivore\">\n        <rdfs:subClassOf>\n            <owl:Restriction>\n                <owl:onProperty rdf:resource=\"http://www.semanticweb.org/awo#eats\"/>\n                <owl:someValuesFrom rdf:resource=\"http://www.semanticweb.org/awo#Plant\"/>\n            </owl:Restriction>\n        </rdfs:subClassOf>\n        <rdfs:subClassOf>\n            <owl:Restriction>\n                <owl:onProperty rdf:resource=\"http://www.semanticweb.org/awo#eats\"/>\n                <owl:someValuesFrom rdf:resource=\"http://www.semanticweb.org/awo#PlantPart\"/>\n            </owl:Restriction>\n        </rdfs:subClassOf>\n    </owl:Class>\n\n</rdf:RDF>"
+  }
+]

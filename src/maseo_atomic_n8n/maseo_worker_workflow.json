@@ -1,0 +1,1541 @@
+{
+  "id": "MaseoAtomicWorker",
+  "name": "MASEO worker (agent_graph)",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "maseo-worker",
+        "responseMode": "onReceived",
+        "options": {}
+      },
+      "id": "2d1191e6-1229-50d8-9021-e4d057e2f6e5",
+      "name": "Start worker",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        0,
+        300
+      ],
+      "webhookId": "2c9575e5-5fe5-56dd-a8dd-0baaba5a5dbe",
+      "notesInFlow": true,
+      "notes": "POST /webhook/maseo-worker - called by the service when a job is queued, and by this workflow when a job ends"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "5ff15c56-4d9a-5a3d-b123-0d16ec1c05ea",
+              "name": "service_url",
+              "value": "http://maseo:8030",
+              "type": "string"
+            },
+            {
+              "id": "413584cd-7034-5cf1-9bba-355395d45540",
+              "name": "worker_url",
+              "value": "http://localhost:5678/webhook/maseo-worker",
+              "type": "string"
+            },
+            {
+              "id": "777f6ed3-3bc0-582d-ae3b-0c48fd3e6359",
+              "name": "node_timeout_hours",
+              "value": 12,
+              "type": "number"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "818ae334-dfd7-5f16-a84b-9494505df938",
+      "name": "Settings",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        220,
+        300
+      ],
+      "notesInFlow": true,
+      "notes": "service_url = the MASEO atomic service; worker_url = this workflow's webhook; node_timeout_hours = the longest one graph node may take"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $('Settings').first().json.service_url }}/queue/claim",
+        "options": {
+          "timeout": 120000
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={}"
+      },
+      "id": "b508c79f-65a1-57d9-8df4-5b54db12ef26",
+      "name": "Claim next job",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        440,
+        300
+      ],
+      "notesInFlow": true,
+      "notes": "the oldest queued job - nothing while another job is running (one at a time)",
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "loose",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "9c45e839-0f9c-55eb-a894-2f960925f20f",
+              "leftValue": "={{ $json.job_id ? true : false }}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "ab549915-f463-570e-9807-968b17c9d902",
+      "name": "Got a job?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        660,
+        300
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "0dccfea8-baf8-5d83-8d5c-1234d0528aa9",
+      "name": "Nothing to do",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        880,
+        480
+      ],
+      "notesInFlow": true,
+      "notes": "queue empty, or a job is already running"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $('Settings').first().json.service_url }}/runs/{{ $('Claim next job').first().json.run_id }}/node/atomize_cqs",
+        "options": {
+          "timeout": "={{ $('Settings').first().json.node_timeout_hours * 3600000 }}"
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={}"
+      },
+      "id": "ed61cef0-4858-527f-ab37-d7b78a79f360",
+      "name": "atomize_cqs (CQAtomization Agent)",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        900,
+        300
+      ],
+      "notesInFlow": true,
+      "notes": "CQAtomization Agent, one call per competency question (a pass-through when the agent is off).",
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $('Settings').first().json.service_url }}/runs/{{ $('Claim next job').first().json.run_id }}/node/extract_terms",
+        "options": {
+          "timeout": "={{ $('Settings').first().json.node_timeout_hours * 3600000 }}"
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={}"
+      },
+      "id": "ee48b8d1-1d11-52d3-a2da-39b7fbda055f",
+      "name": "extract_terms (TermExtraction Agent)",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1120,
+        300
+      ],
+      "notesInFlow": true,
+      "notes": "TermExtraction Agent - always runs.",
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "3272d950-19cf-5213-9c53-910024df8e02",
+              "leftValue": "={{ $json.next }}",
+              "rightValue": "identify_terms",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "b51fe617-9274-56e5-bb64-24ecf82e1b13",
+      "name": "TermIdentification on?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1340,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $('Settings').first().json.service_url }}/runs/{{ $('Claim next job').first().json.run_id }}/node/identify_terms",
+        "options": {
+          "timeout": "={{ $('Settings').first().json.node_timeout_hours * 3600000 }}"
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={}"
+      },
+      "id": "a54c181b-0167-564d-aa38-52d7caae3359",
+      "name": "identify_terms (TermIdentification Agent)",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1560,
+        160
+      ],
+      "notesInFlow": true,
+      "notes": "TermIdentification Agent (per-question filtering).",
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "61b83270-5cf5-5381-9f35-d48543ad53b0",
+              "leftValue": "={{ $json.next }}",
+              "rightValue": "refine_terms",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "7ee65fe6-9dbe-5c3a-afbb-dbbe8f44deea",
+      "name": "TermRefinement on?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1780,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $('Settings').first().json.service_url }}/runs/{{ $('Claim next job').first().json.run_id }}/node/refine_terms",
+        "options": {
+          "timeout": "={{ $('Settings').first().json.node_timeout_hours * 3600000 }}"
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={}"
+      },
+      "id": "05ddc256-f9d0-5a8d-9e49-99a216816894",
+      "name": "refine_terms (TermRefinement Agent)",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2000,
+        160
+      ],
+      "notesInFlow": true,
+      "notes": "TermRefinement Agent + the specification prune.",
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $('Settings').first().json.service_url }}/runs/{{ $('Claim next job').first().json.run_id }}/node/finalize_terms",
+        "options": {
+          "timeout": "={{ $('Settings').first().json.node_timeout_hours * 3600000 }}"
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={}"
+      },
+      "id": "3e9d3b35-a211-5343-9ced-fc876806cd8a",
+      "name": "finalize_terms",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2220,
+        300
+      ],
+      "notesInFlow": true,
+      "notes": "The final JSON object of the requirements phase (no model call).",
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "f27290fc-6087-5cc6-b65a-aa4d144973ab",
+              "leftValue": "={{ $json.next }}",
+              "rightValue": "generate_axioms",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "9e21b7d2-c554-54ac-b6a6-c84af7e789d3",
+      "name": "AxiomGeneration on?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        2440,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $('Settings').first().json.service_url }}/runs/{{ $('Claim next job').first().json.run_id }}/node/generate_axioms",
+        "options": {
+          "timeout": "={{ $('Settings').first().json.node_timeout_hours * 3600000 }}"
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={}"
+      },
+      "id": "9a6e900d-d6f8-5c7a-952a-4fe925f3ce20",
+      "name": "generate_axioms (AxiomGeneration Agent)",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2660,
+        160
+      ],
+      "notesInFlow": true,
+      "notes": "AxiomGeneration Agent.",
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "0eaaf62d-1f31-5c39-89b6-02832736cd79",
+              "leftValue": "={{ $json.next }}",
+              "rightValue": "generate_tests",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "6f331b79-d914-516c-b4e2-019b882d47ec",
+      "name": "TestGeneration on?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        2880,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $('Settings').first().json.service_url }}/runs/{{ $('Claim next job').first().json.run_id }}/node/generate_tests",
+        "options": {
+          "timeout": "={{ $('Settings').first().json.node_timeout_hours * 3600000 }}"
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={}"
+      },
+      "id": "f139e58d-5bfe-5d27-bffe-fedc4eb7fd7d",
+      "name": "generate_tests (TestGeneration Agent)",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        3100,
+        160
+      ],
+      "notesInFlow": true,
+      "notes": "TestGeneration Agent.",
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $('Settings').first().json.service_url }}/runs/{{ $('Claim next job').first().json.run_id }}/node/generate_ontology",
+        "options": {
+          "timeout": "={{ $('Settings').first().json.node_timeout_hours * 3600000 }}"
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={}"
+      },
+      "id": "873ab84b-0c4f-5d2e-bc0a-864874f4a09a",
+      "name": "generate_ontology (OntoGeneration Agent)",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        3320,
+        300
+      ],
+      "notesInFlow": true,
+      "notes": "OntoGeneration Agent; writes <domain>_ontology_initial.owl and starts the validation loop.",
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "189c50a9-09a2-55a4-b161-9601c5593e6f",
+                    "leftValue": "={{ $json.tool }}",
+                    "rightValue": "syntax_check",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "syntax_check"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "4ffc92f5-870a-5079-a0ab-aa929a4660b9",
+                    "leftValue": "={{ $json.tool }}",
+                    "rightValue": "cq_coverage",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "cq_coverage"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "7311e75b-dc7b-5bb4-9130-f8e6ee92a495",
+                    "leftValue": "={{ $json.tool }}",
+                    "rightValue": "oops_scan",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "oops_scan"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "5e9df29d-93ba-53cd-80d4-84cb89dda39b",
+                    "leftValue": "={{ $json.tool }}",
+                    "rightValue": "hermit_consistency",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "hermit_consistency"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "6166c5b4-7d0a-52e4-a5b5-6c33df5999ab",
+                    "leftValue": "={{ $json.tool }}",
+                    "rightValue": "themis_test",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "themis_test"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "397d477a-c190-57ec-b2ed-fdec35c8ec49",
+      "name": "check_tool: which tool?",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        3600,
+        300
+      ],
+      "notesInFlow": true,
+      "notes": "the tool at tool_index (themis_test only when TestGeneration ran)"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $('Settings').first().json.service_url }}/runs/{{ $('Claim next job').first().json.run_id }}/node/check_tool",
+        "options": {
+          "timeout": "={{ $('Settings').first().json.node_timeout_hours * 3600000 }}"
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ expect_tool: 'syntax_check' }) }}"
+      },
+      "id": "df96763a-0491-5b47-a07d-0dfd3fcfd934",
+      "name": "check_tool: syntax_check (MCP)",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        3860,
+        -60
+      ],
+      "notesInFlow": true,
+      "notes": "check_tool -> MCP server syntax_check_server.py",
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $('Settings').first().json.service_url }}/runs/{{ $('Claim next job').first().json.run_id }}/node/check_tool",
+        "options": {
+          "timeout": "={{ $('Settings').first().json.node_timeout_hours * 3600000 }}"
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ expect_tool: 'cq_coverage' }) }}"
+      },
+      "id": "2c821875-96c9-52bd-be89-340135a0c450",
+      "name": "check_tool: cq_coverage (MCP)",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        3860,
+        120
+      ],
+      "notesInFlow": true,
+      "notes": "check_tool -> MCP server cq_coverage_server.py",
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $('Settings').first().json.service_url }}/runs/{{ $('Claim next job').first().json.run_id }}/node/check_tool",
+        "options": {
+          "timeout": "={{ $('Settings').first().json.node_timeout_hours * 3600000 }}"
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ expect_tool: 'oops_scan' }) }}"
+      },
+      "id": "c749c94d-318d-5fcd-9fd8-56c49f1c80a7",
+      "name": "check_tool: oops_scan (MCP)",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        3860,
+        300
+      ],
+      "notesInFlow": true,
+      "notes": "check_tool -> MCP server oops_scan_server.py",
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $('Settings').first().json.service_url }}/runs/{{ $('Claim next job').first().json.run_id }}/node/check_tool",
+        "options": {
+          "timeout": "={{ $('Settings').first().json.node_timeout_hours * 3600000 }}"
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ expect_tool: 'hermit_consistency' }) }}"
+      },
+      "id": "d8dd8615-3a51-584e-b906-c1f305297340",
+      "name": "check_tool: hermit_consistency (MCP)",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        3860,
+        480
+      ],
+      "notesInFlow": true,
+      "notes": "check_tool -> MCP server hermit_consistency_server.py",
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $('Settings').first().json.service_url }}/runs/{{ $('Claim next job').first().json.run_id }}/node/check_tool",
+        "options": {
+          "timeout": "={{ $('Settings').first().json.node_timeout_hours * 3600000 }}"
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ expect_tool: 'themis_test' }) }}"
+      },
+      "id": "b4880674-0ed4-58fa-8c03-b39127a38c59",
+      "name": "check_tool: themis_test (MCP)",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        3860,
+        660
+      ],
+      "notesInFlow": true,
+      "notes": "check_tool -> MCP server themis_test_server.py",
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "15b8bf0b-cac5-5f58-99a9-aeaa623126ae",
+                    "leftValue": "={{ $json.route }}",
+                    "rightValue": "correct",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "correct"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "9dca4aa0-4037-57ae-8969-60780b478f64",
+                    "leftValue": "={{ $json.route }}",
+                    "rightValue": "advance",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "advance"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "2b9ac663-98b1-5419-a9f8-fbb16ccd5fd2",
+      "name": "route_after_check",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        4120,
+        300
+      ],
+      "notesInFlow": true,
+      "notes": "correct while the tool fails and attempt <= tool_retries (never in verify, never on tool_error)"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $('Settings').first().json.service_url }}/runs/{{ $('Claim next job').first().json.run_id }}/node/correct_ontology",
+        "options": {
+          "timeout": "={{ $('Settings').first().json.node_timeout_hours * 3600000 }}"
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={}"
+      },
+      "id": "d952e336-6b72-5812-8c97-72f58ef053a9",
+      "name": "correct_ontology (OntoCorrection Agent)",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        4380,
+        560
+      ],
+      "notesInFlow": true,
+      "notes": "OntoCorrection Agent: repairs what the last tool reported, merges, rewrites the ontology.",
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $('Settings').first().json.service_url }}/runs/{{ $('Claim next job').first().json.run_id }}/node/advance",
+        "options": {
+          "timeout": "={{ $('Settings').first().json.node_timeout_hours * 3600000 }}"
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={}"
+      },
+      "id": "844e3ba5-7a4a-55e8-9905-741b665c7fc1",
+      "name": "advance",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        4380,
+        120
+      ],
+      "notesInFlow": true,
+      "notes": "Next tool, the verification pass, the next round, or done.",
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "ee82531b-a318-5681-bfbe-6449d5361932",
+              "leftValue": "={{ $json.route }}",
+              "rightValue": "check",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "9e1b3267-89ef-5189-8036-f416f1c80f96",
+      "name": "route_after_advance",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        4600,
+        120
+      ],
+      "notesInFlow": true,
+      "notes": "true: check the next tool   false: finish"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $('Settings').first().json.service_url }}/runs/{{ $('Claim next job').first().json.run_id }}/finish",
+        "options": {
+          "timeout": "={{ $('Settings').first().json.node_timeout_hours * 3600000 }}"
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={}"
+      },
+      "id": "ffd3618d-bdeb-5af9-a4b0-c1b1e7c51a1e",
+      "name": "END (write_final)",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        4840,
+        100
+      ],
+      "notesInFlow": true,
+      "notes": "write_final(): the final ontology and its provenance; the verdict",
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $('Settings').first().json.worker_url }}",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\"why\": \"job ended\"}",
+        "options": {
+          "timeout": 20000
+        }
+      },
+      "id": "f798f5ce-8aac-5757-be5b-4872742fa455",
+      "name": "Start next job",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        5060,
+        100
+      ],
+      "onError": "continueRegularOutput",
+      "notesInFlow": true,
+      "notes": "starts this workflow again for the next queued job"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $('Settings').first().json.service_url }}/jobs/{{ $('Claim next job').first().json.job_id }}/fail",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ node: $prevNode.name, error: (() => { const m = String($json.error?.message ?? $json.error ?? 'failed'); try { return JSON.parse(JSON.parse(m.replace(/^\\d+ - /, ''))).error; } catch (e) { return m; } })() }) }}",
+        "options": {
+          "timeout": 60000
+        }
+      },
+      "id": "a08be71e-841d-5c34-ba01-60c9ca2ab860",
+      "name": "Mark job failed",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2440,
+        1000
+      ],
+      "onError": "continueRegularOutput",
+      "notesInFlow": true,
+      "notes": "the web app shows the failed node and its error"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $('Settings').first().json.worker_url }}",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\"why\": \"job failed\"}",
+        "options": {
+          "timeout": 20000
+        }
+      },
+      "id": "c3e7ef44-2543-5957-8b69-241c612c5c77",
+      "name": "Start next job (after failure)",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2680,
+        1000
+      ],
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "errorMessage": "={{ 'MASEO job ' + $('Claim next job').first().json.job_id + ' failed at ' + $('Mark job failed').first().json.error_node + ': ' + $('Mark job failed').first().json.error }}"
+      },
+      "id": "61920b29-27cf-5261-bad3-09039b778726",
+      "name": "Mark execution as failed",
+      "type": "n8n-nodes-base.stopAndError",
+      "typeVersion": 1,
+      "position": [
+        2920,
+        1000
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## MASEO worker - agent_graph.py in n8n\nRuns the queued jobs of the web app, **one at a time**. `Claim next job` asks the **MASEO atomic service** for the oldest queued job; then each orange node is **one node of maseo_atomic's LangGraph** (`MASEOPipeline.build_graph`), run by the service with the **unchanged maseo_atomic code** (agents on Ollama, `config.yaml`, `models.py`, the five MCP servers). The IF/Switch nodes are the graph's edges.\n\nWhen the job ends (or fails), `Start next job` calls this workflow's webhook again. One execution = one job; open it to see every node's `output`, `log`, `next`, `route`, `position`.\n\nThe web app: port 8080 (webapp/app.py), backed by the workflow *MASEO web app + API*.",
+        "height": 460,
+        "width": 1100,
+        "color": 5
+      },
+      "id": "7affaa8e-88ff-58c9-ae2f-ebcc1cef3116",
+      "name": "Note: how it works",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -40,
+        -300
+      ]
+    },
+    {
+      "parameters": {
+        "content": "### Requirements phase and OntoGeneration\nA switched-off agent is skipped exactly as `build_graph` skips it.",
+        "height": 500,
+        "width": 2640,
+        "color": 7
+      },
+      "id": "d748a9ea-8e62-5780-aebe-6ae6b26619eb",
+      "name": "Note: requirements phase",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        860,
+        40
+      ]
+    },
+    {
+      "parameters": {
+        "content": "### Validation loop (check_tool / correct_ontology / advance)\nEvery round runs the tools in order; a failing tool is corrected up to `run.tool_retries` times. A round with no findings ends the loop; otherwise a verification pass follows, then the next round (up to `run.loop_rounds`).",
+        "height": 1160,
+        "width": 1780,
+        "color": 6
+      },
+      "id": "190cf9fd-1071-5592-9a9c-0acc6b4ad755",
+      "name": "Note: validation loop",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        3540,
+        -300
+      ]
+    },
+    {
+      "parameters": {
+        "content": "### Failures\nThe error output of every graph node lands here: the job is marked failed (the web app shows where and why), the next queued job starts, the execution ends red.",
+        "height": 280,
+        "width": 780,
+        "color": 3
+      },
+      "id": "eb6b5edc-39ff-5bd7-a427-56ac56f13448",
+      "name": "Note: failures",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        2380,
+        880
+      ]
+    }
+  ],
+  "connections": {
+    "Start worker": {
+      "main": [
+        [
+          {
+            "node": "Settings",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Settings": {
+      "main": [
+        [
+          {
+            "node": "Claim next job",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Claim next job": {
+      "main": [
+        [
+          {
+            "node": "Got a job?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Got a job?": {
+      "main": [
+        [
+          {
+            "node": "atomize_cqs (CQAtomization Agent)",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Nothing to do",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "atomize_cqs (CQAtomization Agent)": {
+      "main": [
+        [
+          {
+            "node": "extract_terms (TermExtraction Agent)",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Mark job failed",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "extract_terms (TermExtraction Agent)": {
+      "main": [
+        [
+          {
+            "node": "TermIdentification on?",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Mark job failed",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "TermIdentification on?": {
+      "main": [
+        [
+          {
+            "node": "identify_terms (TermIdentification Agent)",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "TermRefinement on?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "identify_terms (TermIdentification Agent)": {
+      "main": [
+        [
+          {
+            "node": "TermRefinement on?",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Mark job failed",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "TermRefinement on?": {
+      "main": [
+        [
+          {
+            "node": "refine_terms (TermRefinement Agent)",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "finalize_terms",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "refine_terms (TermRefinement Agent)": {
+      "main": [
+        [
+          {
+            "node": "finalize_terms",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Mark job failed",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "finalize_terms": {
+      "main": [
+        [
+          {
+            "node": "AxiomGeneration on?",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Mark job failed",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AxiomGeneration on?": {
+      "main": [
+        [
+          {
+            "node": "generate_axioms (AxiomGeneration Agent)",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "TestGeneration on?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "generate_axioms (AxiomGeneration Agent)": {
+      "main": [
+        [
+          {
+            "node": "TestGeneration on?",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Mark job failed",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "TestGeneration on?": {
+      "main": [
+        [
+          {
+            "node": "generate_tests (TestGeneration Agent)",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "generate_ontology (OntoGeneration Agent)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "generate_tests (TestGeneration Agent)": {
+      "main": [
+        [
+          {
+            "node": "generate_ontology (OntoGeneration Agent)",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Mark job failed",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "check_tool: which tool?": {
+      "main": [
+        [
+          {
+            "node": "check_tool: syntax_check (MCP)",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "check_tool: cq_coverage (MCP)",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "check_tool: oops_scan (MCP)",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "check_tool: hermit_consistency (MCP)",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "check_tool: themis_test (MCP)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "check_tool: syntax_check (MCP)": {
+      "main": [
+        [
+          {
+            "node": "route_after_check",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Mark job failed",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "check_tool: cq_coverage (MCP)": {
+      "main": [
+        [
+          {
+            "node": "route_after_check",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Mark job failed",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "check_tool: oops_scan (MCP)": {
+      "main": [
+        [
+          {
+            "node": "route_after_check",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Mark job failed",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "check_tool: hermit_consistency (MCP)": {
+      "main": [
+        [
+          {
+            "node": "route_after_check",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Mark job failed",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "check_tool: themis_test (MCP)": {
+      "main": [
+        [
+          {
+            "node": "route_after_check",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Mark job failed",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "generate_ontology (OntoGeneration Agent)": {
+      "main": [
+        [
+          {
+            "node": "check_tool: which tool?",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Mark job failed",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "route_after_check": {
+      "main": [
+        [
+          {
+            "node": "correct_ontology (OntoCorrection Agent)",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "advance",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "correct_ontology (OntoCorrection Agent)": {
+      "main": [
+        [
+          {
+            "node": "check_tool: which tool?",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Mark job failed",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "advance": {
+      "main": [
+        [
+          {
+            "node": "route_after_advance",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Mark job failed",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "route_after_advance": {
+      "main": [
+        [
+          {
+            "node": "check_tool: which tool?",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "END (write_final)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "END (write_final)": {
+      "main": [
+        [
+          {
+            "node": "Start next job",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Mark job failed",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Mark job failed": {
+      "main": [
+        [
+          {
+            "node": "Start next job (after failure)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Start next job (after failure)": {
+      "main": [
+        [
+          {
+            "node": "Mark execution as failed",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "saveDataErrorExecution": "all",
+    "saveDataSuccessExecution": "all",
+    "saveManualExecutions": true,
+    "saveExecutionProgress": true,
+    "timezone": "Europe/Madrid"
+  },
+  "pinData": {},
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "tags": []
+}

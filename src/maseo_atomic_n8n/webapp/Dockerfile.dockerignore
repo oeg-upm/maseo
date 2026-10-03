@@ -1,0 +1,5 @@
+# build context is src/maseo_atomic_n8n; the image needs the web app folder only
+*
+!webapp
+webapp/Dockerfile*
+**/__pycache__

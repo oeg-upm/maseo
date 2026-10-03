@@ -1,0 +1,1561 @@
+<?xml version="1.0"?>
+<rdf:RDF xml:base="http://www.semanticweb.org/awo#"
+         xmlns:owl="http://www.w3.org/2002/07/owl#"
+         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+         xmlns:dc="http://purl.org/dc/elements/1.1/"
+         xmlns:vaem="http://www.linkedmodel.org/schema/vaem#"
+         xmlns:earl="http://www.w3.org/ns/earl#"
+         xmlns:prov="http://www.w3.org/ns/prov#"
+         xmlns:awo_prov="http://www.semanticweb.org/awo_prov#">
+
+  <owl:Ontology rdf:about="http://www.semanticweb.org/awo#">
+    <owl:versionInfo>iteration 1</owl:versionInfo>
+    <prov:wasAttributedTo rdf:resource="http://www.semanticweb.org/awo_prov#MASEO"/>
+    <prov:wasGeneratedBy rdf:resource="http://www.semanticweb.org/awo_prov#OntoCorrectionActivity"/>
+    <prov:wasRevisionOf rdf:resource="http://www.semanticweb.org/awo_prov#OntologyDraft_iteration0"/>
+    <prov:wasAttributedTo rdf:resource="http://www.semanticweb.org/awo_prov#agent_OntoGeneration_Agent"/>
+    <prov:wasAttributedTo rdf:resource="http://www.semanticweb.org/awo_prov#agent_OntoCorrection_Agent"/>
+  </owl:Ontology>
+
+  <!-- ================================================================ -->
+  <!-- Provenance vocabulary used in this file.                          -->
+  <!-- PROV-O / EARL terms are declared once so the file is self-contained;-->
+  <!-- prov:* and evaluation predicates are declared as ANNOTATION       -->
+  <!-- properties so the domain ontology stays inside OWL 2 DL.          -->
+  <!-- ================================================================ -->
+
+  <!-- PROV-O classes -->
+  <owl:Class rdf:about="http://www.w3.org/ns/prov#Entity">
+    <rdfs:comment>A thing with provenance: competency questions, term sets, axioms, ontology versions, reports.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.w3.org/ns/prov#Activity">
+    <rdfs:comment>Something that happened over time: an agent stage, a tool check, a validation round.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.w3.org/ns/prov#SoftwareAgent">
+    <rdfs:comment>An LLM agent or a validation tool of the pipeline.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.w3.org/ns/prov#Plan">
+    <rdfs:comment>The prompt / procedure an agent followed (generation prompt, correction prompt, validation plan).</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.w3.org/ns/prov#Role">
+    <rdfs:comment>The function an agent had in an activity: GeneratorRole, RefinementRole, FixRole, ValidatorRole.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.w3.org/ns/prov#Association">
+    <rdfs:comment>Qualified link agent-activity carrying the role the agent played.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.w3.org/ns/prov#Derivation">
+    <rdfs:comment>Qualified link element-CQ recording the activity in which the element was first derived from that CQ.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.w3.org/ns/prov#Invalidation">
+    <rdfs:comment>Event instance: a term or element was removed by an activity.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.w3.org/ns/prov#Generation">
+    <rdfs:comment>Event instance: a term was introduced by an activity.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.w3.org/ns/prov#Collection">
+    <rdfs:comment>An entity whose members are other entities: a term stage and its set of terms.</rdfs:comment>
+  </owl:Class>
+
+  <!-- PROV-O relations (as annotation properties) -->
+  <owl:AnnotationProperty rdf:about="http://www.w3.org/ns/prov#wasDerivedFrom">
+    <rdfs:comment>Element/axiom/test &lt;- competency question or failing report it was derived from.</rdfs:comment>
+  </owl:AnnotationProperty>
+  <owl:AnnotationProperty rdf:about="http://www.w3.org/ns/prov#wasGeneratedBy">
+    <rdfs:comment>Entity &lt;- activity that created it.</rdfs:comment>
+  </owl:AnnotationProperty>
+  <owl:AnnotationProperty rdf:about="http://www.w3.org/ns/prov#wasInfluencedBy">
+    <rdfs:comment>Entity &lt;- activity that kept or changed it without creating it (weaker than wasGeneratedBy).</rdfs:comment>
+  </owl:AnnotationProperty>
+  <owl:AnnotationProperty rdf:about="http://www.w3.org/ns/prov#wasInformedBy">
+    <rdfs:comment>Activity &lt;- earlier activity whose output it built on (pipeline order).</rdfs:comment>
+  </owl:AnnotationProperty>
+  <owl:AnnotationProperty rdf:about="http://www.w3.org/ns/prov#used">
+    <rdfs:comment>Activity -&gt; entity it consumed as input.</rdfs:comment>
+  </owl:AnnotationProperty>
+  <owl:AnnotationProperty rdf:about="http://www.w3.org/ns/prov#generated">
+    <rdfs:comment>Activity -&gt; entity it produced (inverse of wasGeneratedBy).</rdfs:comment>
+  </owl:AnnotationProperty>
+  <owl:AnnotationProperty rdf:about="http://www.w3.org/ns/prov#wasAssociatedWith">
+    <rdfs:comment>Activity -&gt; agent/tool that performed it.</rdfs:comment>
+  </owl:AnnotationProperty>
+  <owl:AnnotationProperty rdf:about="http://www.w3.org/ns/prov#actedOnBehalfOf">
+    <rdfs:comment>Agent -&gt; the pipeline it acts for.</rdfs:comment>
+  </owl:AnnotationProperty>
+  <owl:AnnotationProperty rdf:about="http://www.w3.org/ns/prov#wasAttributedTo">
+    <rdfs:comment>Entity -&gt; agent credited with it.</rdfs:comment>
+  </owl:AnnotationProperty>
+  <owl:AnnotationProperty rdf:about="http://www.w3.org/ns/prov#wasRevisionOf">
+    <rdfs:comment>Entity -&gt; earlier version it revises (ontology after correction; term replacing another).</rdfs:comment>
+  </owl:AnnotationProperty>
+  <owl:AnnotationProperty rdf:about="http://www.w3.org/ns/prov#wasInvalidatedBy">
+    <rdfs:comment>Entity -&gt; activity that made it obsolete (old ontology draft superseded by a correction).</rdfs:comment>
+  </owl:AnnotationProperty>
+  <owl:AnnotationProperty rdf:about="http://www.w3.org/ns/prov#wasQuotedFrom">
+    <rdfs:comment>Reified axiom -&gt; the element it is quoted from.</rdfs:comment>
+  </owl:AnnotationProperty>
+  <owl:AnnotationProperty rdf:about="http://www.w3.org/ns/prov#hadRole">
+    <rdfs:comment>Activity/association/agent -&gt; the role played (GeneratorRole, RefinementRole, FixRole, ValidatorRole).</rdfs:comment>
+  </owl:AnnotationProperty>
+  <owl:AnnotationProperty rdf:about="http://www.w3.org/ns/prov#hadPlan">
+    <rdfs:comment>Activity -&gt; the plan/prompt followed.</rdfs:comment>
+  </owl:AnnotationProperty>
+  <owl:AnnotationProperty rdf:about="http://www.w3.org/ns/prov#hadActivity">
+    <rdfs:comment>Event or derivation -&gt; the activity in which it happened.</rdfs:comment>
+  </owl:AnnotationProperty>
+  <owl:AnnotationProperty rdf:about="http://www.w3.org/ns/prov#qualifiedDerivation">
+    <rdfs:comment>Element -&gt; Derivation node (which CQ, in which activity).</rdfs:comment>
+  </owl:AnnotationProperty>
+  <owl:AnnotationProperty rdf:about="http://www.w3.org/ns/prov#qualifiedAssociation">
+    <rdfs:comment>Activity -&gt; Association node (which agent, in which role).</rdfs:comment>
+  </owl:AnnotationProperty>
+  <owl:AnnotationProperty rdf:about="http://www.w3.org/ns/prov#entity">
+    <rdfs:comment>Derivation -&gt; the CQ it derives from.</rdfs:comment>
+  </owl:AnnotationProperty>
+  <owl:AnnotationProperty rdf:about="http://www.w3.org/ns/prov#agent">
+    <rdfs:comment>Association -&gt; the agent.</rdfs:comment>
+  </owl:AnnotationProperty>
+  <owl:AnnotationProperty rdf:about="http://www.w3.org/ns/prov#value">
+    <rdfs:comment>Literal payload: CQ text, test text, tool report.</rdfs:comment>
+  </owl:AnnotationProperty>
+  <owl:AnnotationProperty rdf:about="http://www.w3.org/ns/prov#type">
+    <rdfs:comment>PROV sub-typing hook (unused unless a step supplies one).</rdfs:comment>
+  </owl:AnnotationProperty>
+  <owl:AnnotationProperty rdf:about="http://www.w3.org/ns/prov#hadMember">
+    <rdfs:comment>Collection -&gt; one of its members (term stage -&gt; a term it contains).</rdfs:comment>
+  </owl:AnnotationProperty>
+  <owl:AnnotationProperty rdf:about="http://www.w3.org/ns/prov#alternateOf">
+    <rdfs:comment>Term &lt;-&gt; the ontology element presenting the same thing (symmetric in PROV-O).</rdfs:comment>
+  </owl:AnnotationProperty>
+  <owl:AnnotationProperty rdf:about="http://www.w3.org/ns/prov#generatedAtTime">
+    <rdfs:comment>Timestamp of generation (only if the log supplies one).</rdfs:comment>
+  </owl:AnnotationProperty>
+
+  <!-- Other standard vocabularies -->
+  <owl:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/source">
+    <rdfs:comment>Original source text kept verbatim (CQ, tool error) when no report entity carries it.</rdfs:comment>
+  </owl:AnnotationProperty>
+  <owl:AnnotationProperty rdf:about="http://www.linkedmodel.org/schema/vaem#rationale">
+    <rdfs:comment>Human-readable reason: why an element exists, what a stage changed, why an axiom was added.</rdfs:comment>
+  </owl:AnnotationProperty>
+  <owl:AnnotationProperty rdf:about="http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate">
+    <rdfs:comment>With rdf:subject/rdf:object: the reified axiom (S P O) an ax_* entity stands for.</rdfs:comment>
+  </owl:AnnotationProperty>
+  <owl:Class rdf:about="http://www.w3.org/ns/earl#TestResult">
+    <rdfs:comment>Result of one validation-tool run or of a whole validation round.</rdfs:comment>
+  </owl:Class>
+  <owl:AnnotationProperty rdf:about="http://www.w3.org/ns/earl#outcome">
+    <rdfs:comment>earl:passed or earl:failed.</rdfs:comment>
+  </owl:AnnotationProperty>
+  <owl:NamedIndividual rdf:about="http://www.w3.org/ns/earl#passed"/>
+  <owl:NamedIndividual rdf:about="http://www.w3.org/ns/earl#failed"/>
+
+  <!-- ================================================================ -->
+  <!-- Evaluation layer: run-quality facts, queryable per run.           -->
+  <!-- Success is NOT stored; it is derived by query as:                 -->
+  <!--   (1) the final verify round has roundPassed=true  AND            -->
+  <!--   (2) no failed attempt is left with supersededByRetry=false.     -->
+  <!-- ================================================================ -->
+  <owl:Class rdf:about="http://www.semanticweb.org/awo_prov#PipelineRun">
+    <rdfs:comment>One execution of the pipeline (one steps log). All rounds/checks/corrections point to it via ofRun.</rdfs:comment>
+  </owl:Class>
+  <owl:AnnotationProperty rdf:about="http://www.semanticweb.org/awo_prov#runId">
+    <rdfs:comment>Identifier of the run (steps file name unless --run-id given). Group by it when merging many runs.</rdfs:comment>
+  </owl:AnnotationProperty>
+  <owl:AnnotationProperty rdf:about="http://www.semanticweb.org/awo_prov#ofRun">
+    <rdfs:comment>Check / round / correction / attempt -&gt; the PipelineRun it belongs to.</rdfs:comment>
+  </owl:AnnotationProperty>
+  <owl:AnnotationProperty rdf:about="http://www.semanticweb.org/awo_prov#roundIndex">
+    <rdfs:comment>Validation round number = ontology version being validated (1 = first draft).</rdfs:comment>
+  </owl:AnnotationProperty>
+  <owl:AnnotationProperty rdf:about="http://www.semanticweb.org/awo_prov#phase">
+    <rdfs:comment>'loop' (find errors) or 'verify' (confirm after correction), from the log.</rdfs:comment>
+  </owl:AnnotationProperty>
+  <owl:AnnotationProperty rdf:about="http://www.semanticweb.org/awo_prov#attempt">
+    <rdfs:comment>Attempt counter from the log (tool re-run, or n-th failed agent attempt).</rdfs:comment>
+  </owl:AnnotationProperty>
+  <owl:AnnotationProperty rdf:about="http://www.semanticweb.org/awo_prov#isVerifyRound">
+    <rdfs:comment>true on validation rounds whose phase is verify.</rdfs:comment>
+  </owl:AnnotationProperty>
+  <owl:AnnotationProperty rdf:about="http://www.semanticweb.org/awo_prov#isFinalRound">
+    <rdfs:comment>true on the last validation round of the run; on PipelineRun, points to it.</rdfs:comment>
+  </owl:AnnotationProperty>
+  <owl:AnnotationProperty rdf:about="http://www.semanticweb.org/awo_prov#roundPassed">
+    <rdfs:comment>true when every tool in the round passed.</rdfs:comment>
+  </owl:AnnotationProperty>
+  <owl:AnnotationProperty rdf:about="http://www.semanticweb.org/awo_prov#toolName">
+    <rdfs:comment>Name of the validation tool that ran the check.</rdfs:comment>
+  </owl:AnnotationProperty>
+  <owl:AnnotationProperty rdf:about="http://www.semanticweb.org/awo_prov#checkOutcome">
+    <rdfs:comment>'passed' or 'failed' for a check or a failed agent attempt.</rdfs:comment>
+  </owl:AnnotationProperty>
+  <owl:AnnotationProperty rdf:about="http://www.semanticweb.org/awo_prov#correctionRound">
+    <rdfs:comment>n-th ontology correction of the run (1-based).</rdfs:comment>
+  </owl:AnnotationProperty>
+  <owl:AnnotationProperty rdf:about="http://www.semanticweb.org/awo_prov#correctionOutcome">
+    <rdfs:comment>'succeeded' when the correction produced a usable ontology.</rdfs:comment>
+  </owl:AnnotationProperty>
+  <owl:AnnotationProperty rdf:about="http://www.semanticweb.org/awo_prov#triggeredBy">
+    <rdfs:comment>Correction -&gt; the tool whose failure triggered it.</rdfs:comment>
+  </owl:AnnotationProperty>
+  <owl:AnnotationProperty rdf:about="http://www.semanticweb.org/awo_prov#stage">
+    <rdfs:comment>Pipeline stage of a failed attempt (e.g. Generation).</rdfs:comment>
+  </owl:AnnotationProperty>
+  <owl:AnnotationProperty rdf:about="http://www.semanticweb.org/awo_prov#supersededByRetry">
+    <rdfs:comment>On a failed attempt's report: true if a later successful attempt replaced it.</rdfs:comment>
+  </owl:AnnotationProperty>
+
+  <!-- ================================================================ -->
+  <!-- Term layer: every term of every term stage, split by kind.        -->
+  <!-- One Term individual per distinct name, shared by the stages that   -->
+  <!-- held it; the kind is carried by the STAGE -> term link, because a  -->
+  <!-- term can be reclassified from one stage to the next.               -->
+  <!-- ================================================================ -->
+  <owl:Class rdf:about="http://www.semanticweb.org/awo_prov#Term">
+    <rdfs:comment>A vocabulary term proposed by a term stage, before (or without) becoming an ontology element. prov:alternateOf points at the ontology element that presents the same thing, when the term reached the ontology.</rdfs:comment>
+  </owl:Class>
+  <owl:AnnotationProperty rdf:about="http://www.semanticweb.org/awo_prov#termName">
+    <rdfs:comment>Local name of the term exactly as the agent wrote it.</rdfs:comment>
+  </owl:AnnotationProperty>
+  <owl:AnnotationProperty rdf:about="http://www.semanticweb.org/awo_prov#reachedOntology">
+    <rdfs:comment>true when the term is an element of the final ontology.</rdfs:comment>
+  </owl:AnnotationProperty>
+  <owl:AnnotationProperty rdf:about="http://www.semanticweb.org/awo_prov#class">
+    <rdfs:comment>Term stage -&gt; a term it classified as class (classes). Every such term is also a prov:hadMember of the stage.</rdfs:comment>
+  </owl:AnnotationProperty>
+  <owl:AnnotationProperty rdf:about="http://www.semanticweb.org/awo_prov#objectProperty">
+    <rdfs:comment>Term stage -&gt; a term it classified as objectProperty (object_properties). Every such term is also a prov:hadMember of the stage.</rdfs:comment>
+  </owl:AnnotationProperty>
+  <owl:AnnotationProperty rdf:about="http://www.semanticweb.org/awo_prov#dataProperty">
+    <rdfs:comment>Term stage -&gt; a term it classified as dataProperty (data_properties). Every such term is also a prov:hadMember of the stage.</rdfs:comment>
+  </owl:AnnotationProperty>
+  <owl:AnnotationProperty rdf:about="http://www.semanticweb.org/awo_prov#individual">
+    <rdfs:comment>Term stage -&gt; a term it classified as individual (individuals). Every such term is also a prov:hadMember of the stage.</rdfs:comment>
+  </owl:AnnotationProperty>
+  <owl:AnnotationProperty rdf:about="http://www.semanticweb.org/awo_prov#instance">
+    <rdfs:comment>Term stage -&gt; a term it classified as instance (instances). Every such term is also a prov:hadMember of the stage.</rdfs:comment>
+  </owl:AnnotationProperty>
+
+  <!-- owl:Class declarations -->
+
+<owl:Class rdf:about="http://www.semanticweb.org/awo#Animal">
+  <rdfs:comment>A living organism that may consume other organisms or plants, or be consumed itself.</rdfs:comment>
+  <rdfs:label>Animal</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: Core class referenced in CQ1, CQ2, CQ3, CQ4, CQ6, CQ7, and CQ14 as eater or food
+    [OntoCorrection Agent | loop_rounds: 1 tool_retries: 1 | themis_test] created: [OntoGeneration Agent] created: Core class referenced in CQ1, CQ2, CQ3, CQ4, CQ6, CQ7, and CQ14 as eater or food</vaem:rationale>
+  <dc:source>(competency_question) CQ1: Which animal eats which other animal?
+    (competency_question) CQ2: Is [this animal] a herbivore?
+    (competency_question) CQ3: Which plant parts does [this omnivorous or herbivorourus animal] eat?
+    (competency_question) CQ4: Does a lion eat plants or plant parts?
+    (competency_question) CQ6: Which plants eat animals?
+    (competency_question) CQ7: Which animals eat [these animals]?
+    (competency_question) CQ14: Are there animals that are carnivore but still eat some plants or parts of plants?</dc:source>
+  <prov:wasDerivedFrom rdf:resource="http://www.semanticweb.org/awo_prov#CQ1"/>
+  <prov:qualifiedDerivation>
+    <prov:Derivation>
+      <prov:entity rdf:resource="http://www.semanticweb.org/awo_prov#CQ1"/>
+      <prov:hadActivity rdf:resource="http://www.semanticweb.org/awo_prov#ExtractionActivity"/>
+    </prov:Derivation>
+  </prov:qualifiedDerivation>
+  <prov:wasDerivedFrom rdf:resource="http://www.semanticweb.org/awo_prov#CQ2"/>
+  <prov:qualifiedDerivation>
+    <prov:Derivation>
+      <prov:entity rdf:resource="http://www.semanticweb.org/awo_prov#CQ2"/>
+      <prov:hadActivity rdf:resource="http://www.semanticweb.org/awo_prov#ExtractionActivity"/>
+    </prov:Derivation>
+  </prov:qualifiedDerivation>
+  <prov:wasDerivedFrom rdf:resource="http://www.semanticweb.org/awo_prov#CQ3"/>
+  <prov:qualifiedDerivation>
+    <prov:Derivation>
+      <prov:entity rdf:resource="http://www.semanticweb.org/awo_prov#CQ3"/>
+      <prov:hadActivity rdf:resource="http://www.semanticweb.org/awo_prov#ExtractionActivity"/>
+    </prov:Derivation>
+  </prov:qualifiedDerivation>
+  <prov:wasDerivedFrom rdf:resource="http://www.semanticweb.org/awo_prov#CQ4"/>
+  <prov:qualifiedDerivation>
+    <prov:Derivation>
+      <prov:entity rdf:resource="http://www.semanticweb.org/awo_prov#CQ4"/>
+      <prov:hadActivity rdf:resource="http://www.semanticweb.org/awo_prov#ExtractionActivity"/>
+    </prov:Derivation>
+  </prov:qualifiedDerivation>
+  <prov:wasDerivedFrom rdf:resource="http://www.semanticweb.org/awo_prov#CQ6"/>
+  <prov:qualifiedDerivation>
+    <prov:Derivation>
+      <prov:entity rdf:resource="http://www.semanticweb.org/awo_prov#CQ6"/>
+      <prov:hadActivity rdf:resource="http://www.semanticweb.org/awo_prov#ExtractionActivity"/>
+    </prov:Derivation>
+  </prov:qualifiedDerivation>
+  <prov:wasDerivedFrom rdf:resource="http://www.semanticweb.org/awo_prov#CQ7"/>
+  <prov:qualifiedDerivation>
+    <prov:Derivation>
+      <prov:entity rdf:resource="http://www.semanticweb.org/awo_prov#CQ7"/>
+      <prov:hadActivity rdf:resource="http://www.semanticweb.org/awo_prov#ExtractionActivity"/>
+    </prov:Derivation>
+  </prov:qualifiedDerivation>
+  <prov:wasDerivedFrom rdf:resource="http://www.semanticweb.org/awo_prov#CQ14"/>
+  <prov:qualifiedDerivation>
+    <prov:Derivation>
+      <prov:entity rdf:resource="http://www.semanticweb.org/awo_prov#CQ14"/>
+      <prov:hadActivity rdf:resource="http://www.semanticweb.org/awo_prov#ExtractionActivity"/>
+    </prov:Derivation>
+  </prov:qualifiedDerivation>
+  <prov:wasGeneratedBy rdf:resource="http://www.semanticweb.org/awo_prov#GenerationActivity"/>
+  <prov:wasInfluencedBy rdf:resource="http://www.semanticweb.org/awo_prov#ExtractionActivity"/>
+  <prov:wasAttributedTo rdf:resource="http://www.semanticweb.org/awo_prov#agent_TermExtraction_Agent"/>
+  <prov:wasAttributedTo rdf:resource="http://www.semanticweb.org/awo_prov#agent_OntoGeneration_Agent"/>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/awo#Herbivore">
+  <rdfs:comment>An animal that primarily consumes plants or plant parts.</rdfs:comment>
+  <rdfs:label>Herbivore</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: CQ2 and CQ3 classify animals by plant-based diet
+    [OntoCorrection Agent | loop_rounds: 1 tool_retries: 1 | themis_test] created: [OntoGeneration Agent] created: CQ2 and CQ3 classify animals by plant-based diet</vaem:rationale>
+  <dc:source>(competency_question) CQ2: Is [this animal] a herbivore?
+    (competency_question) CQ3: Which plant parts does [this omnivorous or herbivorourus animal] eat?</dc:source>
+  <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/awo#Animal"/>
+  <owl:disjointWith rdf:resource="http://www.semanticweb.org/awo#Omnivore"/>
+  <owl:disjointWith rdf:resource="http://www.semanticweb.org/awo#Carnivore"/>
+  <!-- Axiom: Disjoint with Omnivore, Carnivore -->
+  <!-- Axiom: SubClassOf Animal -->
+  <prov:wasDerivedFrom rdf:resource="http://www.semanticweb.org/awo_prov#CQ2"/>
+  <prov:qualifiedDerivation>
+    <prov:Derivation>
+      <prov:entity rdf:resource="http://www.semanticweb.org/awo_prov#CQ2"/>
+      <prov:hadActivity rdf:resource="http://www.semanticweb.org/awo_prov#ExtractionActivity"/>
+    </prov:Derivation>
+  </prov:qualifiedDerivation>
+  <prov:wasDerivedFrom rdf:resource="http://www.semanticweb.org/awo_prov#CQ3"/>
+  <prov:qualifiedDerivation>
+    <prov:Derivation>
+      <prov:entity rdf:resource="http://www.semanticweb.org/awo_prov#CQ3"/>
+      <prov:hadActivity rdf:resource="http://www.semanticweb.org/awo_prov#ExtractionActivity"/>
+    </prov:Derivation>
+  </prov:qualifiedDerivation>
+  <prov:wasGeneratedBy rdf:resource="http://www.semanticweb.org/awo_prov#GenerationActivity"/>
+  <prov:wasInfluencedBy rdf:resource="http://www.semanticweb.org/awo_prov#ExtractionActivity"/>
+  <prov:wasAttributedTo rdf:resource="http://www.semanticweb.org/awo_prov#agent_TermExtraction_Agent"/>
+  <prov:wasAttributedTo rdf:resource="http://www.semanticweb.org/awo_prov#agent_OntoGeneration_Agent"/>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/awo#Omnivore">
+  <rdfs:comment>An animal that consumes both plants and animals.</rdfs:comment>
+  <rdfs:label>Omnivore</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: CQ3 classifies animals by mixed diet
+    [OntoCorrection Agent | loop_rounds: 1 tool_retries: 1 | themis_test] created: [OntoGeneration Agent] created: CQ3 classifies animals by mixed diet</vaem:rationale>
+  <dc:source>(competency_question) CQ3: Which plant parts does [this omnivorous or herbivorourus animal] eat?</dc:source>
+  <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/awo#Animal"/>
+  <owl:disjointWith rdf:resource="http://www.semanticweb.org/awo#Carnivore"/>
+  <!-- Axiom: Disjoint with Carnivore -->
+  <!-- Axiom: SubClassOf Animal -->
+  <prov:wasDerivedFrom rdf:resource="http://www.semanticweb.org/awo_prov#CQ3"/>
+  <prov:qualifiedDerivation>
+    <prov:Derivation>
+      <prov:entity rdf:resource="http://www.semanticweb.org/awo_prov#CQ3"/>
+      <prov:hadActivity rdf:resource="http://www.semanticweb.org/awo_prov#ExtractionActivity"/>
+    </prov:Derivation>
+  </prov:qualifiedDerivation>
+  <prov:wasGeneratedBy rdf:resource="http://www.semanticweb.org/awo_prov#GenerationActivity"/>
+  <prov:wasInfluencedBy rdf:resource="http://www.semanticweb.org/awo_prov#ExtractionActivity"/>
+  <prov:wasAttributedTo rdf:resource="http://www.semanticweb.org/awo_prov#agent_TermExtraction_Agent"/>
+  <prov:wasAttributedTo rdf:resource="http://www.semanticweb.org/awo_prov#agent_OntoGeneration_Agent"/>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/awo#Carnivore">
+  <rdfs:comment>An animal that primarily consumes other animals.</rdfs:comment>
+  <rdfs:label>Carnivore</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: CQ14 classifies animals by meat-based diet
+    [OntoCorrection Agent | loop_rounds: 1 tool_retries: 1 | themis_test] created: [OntoGeneration Agent] created: CQ14 classifies animals by meat-based diet</vaem:rationale>
+  <dc:source>(competency_question) CQ14: Are there animals that are carnivore but still eat some plants or parts of plants?</dc:source>
+  <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/awo#Animal"/>
+  <!-- Axiom: SubClassOf Animal -->
+  <prov:wasDerivedFrom rdf:resource="http://www.semanticweb.org/awo_prov#CQ14"/>
+  <prov:qualifiedDerivation>
+    <prov:Derivation>
+      <prov:entity rdf:resource="http://www.semanticweb.org/awo_prov#CQ14"/>
+      <prov:hadActivity rdf:resource="http://www.semanticweb.org/awo_prov#ExtractionActivity"/>
+    </prov:Derivation>
+  </prov:qualifiedDerivation>
+  <prov:wasGeneratedBy rdf:resource="http://www.semanticweb.org/awo_prov#GenerationActivity"/>
+  <prov:wasInfluencedBy rdf:resource="http://www.semanticweb.org/awo_prov#ExtractionActivity"/>
+  <prov:wasAttributedTo rdf:resource="http://www.semanticweb.org/awo_prov#agent_TermExtraction_Agent"/>
+  <prov:wasAttributedTo rdf:resource="http://www.semanticweb.org/awo_prov#agent_OntoGeneration_Agent"/>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/awo#Plant">
+  <rdfs:comment>A living organism that may be eaten or, in some cases, consume animals.</rdfs:comment>
+  <rdfs:label>Plant</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: CQ4, CQ6, and CQ14 refer to plants as food or active eaters
+    [OntoCorrection Agent | loop_rounds: 1 tool_retries: 1 | themis_test] created: [OntoGeneration Agent] created: CQ4, CQ6, and CQ14 refer to plants as food or active eaters</vaem:rationale>
+  <dc:source>(competency_question) CQ4: Does a lion eat plants or plant parts?
+    (competency_question) CQ6: Which plants eat animals?
+    (competency_question) CQ14: Are there animals that are carnivore but still eat some plants or parts of plants?</dc:source>
+  <prov:wasDerivedFrom rdf:resource="http://www.semanticweb.org/awo_prov#CQ4"/>
+  <prov:qualifiedDerivation>
+    <prov:Derivation>
+      <prov:entity rdf:resource="http://www.semanticweb.org/awo_prov#CQ4"/>
+      <prov:hadActivity rdf:resource="http://www.semanticweb.org/awo_prov#ExtractionActivity"/>
+    </prov:Derivation>
+  </prov:qualifiedDerivation>
+  <prov:wasDerivedFrom rdf:resource="http://www.semanticweb.org/awo_prov#CQ6"/>
+  <prov:qualifiedDerivation>
+    <prov:Derivation>
+      <prov:entity rdf:resource="http://www.semanticweb.org/awo_prov#CQ6"/>
+      <prov:hadActivity rdf:resource="http://www.semanticweb.org/awo_prov#ExtractionActivity"/>
+    </prov:Derivation>
+  </prov:qualifiedDerivation>
+  <prov:wasDerivedFrom rdf:resource="http://www.semanticweb.org/awo_prov#CQ14"/>
+  <prov:qualifiedDerivation>
+    <prov:Derivation>
+      <prov:entity rdf:resource="http://www.semanticweb.org/awo_prov#CQ14"/>
+      <prov:hadActivity rdf:resource="http://www.semanticweb.org/awo_prov#ExtractionActivity"/>
+    </prov:Derivation>
+  </prov:qualifiedDerivation>
+  <prov:wasGeneratedBy rdf:resource="http://www.semanticweb.org/awo_prov#GenerationActivity"/>
+  <prov:wasInfluencedBy rdf:resource="http://www.semanticweb.org/awo_prov#ExtractionActivity"/>
+  <prov:wasAttributedTo rdf:resource="http://www.semanticweb.org/awo_prov#agent_TermExtraction_Agent"/>
+  <prov:wasAttributedTo rdf:resource="http://www.semanticweb.org/awo_prov#agent_OntoGeneration_Agent"/>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/awo#PlantPart">
+  <rdfs:comment>A component of a plant that may be consumed by animals.</rdfs:comment>
+  <rdfs:label>Plant Part</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: CQ3, CQ4, and CQ14 refer to plant parts as food
+    [OntoCorrection Agent | loop_rounds: 1 tool_retries: 1 | themis_test] created: [OntoGeneration Agent] created: CQ3, CQ4, and CQ14 refer to plant parts as food</vaem:rationale>
+  <dc:source>(competency_question) CQ3: Which plant parts does [this omnivorous or herbivorourus animal] eat?
+    (competency_question) CQ4: Does a lion eat plants or plant parts?
+    (competency_question) CQ14: Are there animals that are carnivore but still eat some plants or parts of plants?</dc:source>
+  <prov:wasDerivedFrom rdf:resource="http://www.semanticweb.org/awo_prov#CQ3"/>
+  <prov:qualifiedDerivation>
+    <prov:Derivation>
+      <prov:entity rdf:resource="http://www.semanticweb.org/awo_prov#CQ3"/>
+      <prov:hadActivity rdf:resource="http://www.semanticweb.org/awo_prov#ExtractionActivity"/>
+    </prov:Derivation>
+  </prov:qualifiedDerivation>
+  <prov:wasDerivedFrom rdf:resource="http://www.semanticweb.org/awo_prov#CQ4"/>
+  <prov:qualifiedDerivation>
+    <prov:Derivation>
+      <prov:entity rdf:resource="http://www.semanticweb.org/awo_prov#CQ4"/>
+      <prov:hadActivity rdf:resource="http://www.semanticweb.org/awo_prov#ExtractionActivity"/>
+    </prov:Derivation>
+  </prov:qualifiedDerivation>
+  <prov:wasDerivedFrom rdf:resource="http://www.semanticweb.org/awo_prov#CQ14"/>
+  <prov:qualifiedDerivation>
+    <prov:Derivation>
+      <prov:entity rdf:resource="http://www.semanticweb.org/awo_prov#CQ14"/>
+      <prov:hadActivity rdf:resource="http://www.semanticweb.org/awo_prov#ExtractionActivity"/>
+    </prov:Derivation>
+  </prov:qualifiedDerivation>
+  <prov:wasGeneratedBy rdf:resource="http://www.semanticweb.org/awo_prov#GenerationActivity"/>
+  <prov:wasInfluencedBy rdf:resource="http://www.semanticweb.org/awo_prov#ExtractionActivity"/>
+  <prov:wasAttributedTo rdf:resource="http://www.semanticweb.org/awo_prov#agent_TermExtraction_Agent"/>
+  <prov:wasAttributedTo rdf:resource="http://www.semanticweb.org/awo_prov#agent_OntoGeneration_Agent"/>
+</owl:Class>
+
+  <!-- owl:ObjectProperty declarations -->
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/awo#eats">
+  <rdfs:comment>Relates an organism that consumes to the organism or plant part it consumes.</rdfs:comment>
+  <rdfs:label>Eats</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: All CQs query consumption relationships between animals, plants, and plant parts
+    [OntoCorrection Agent | loop_rounds: 1 tool_retries: 1 | themis_test] created: [OntoGeneration Agent] created: All CQs query consumption relationships between animals, plants, and plant parts
+    [OntoCorrection Agent | loop_rounds: 1 tool_retries: 1 | themis_test] removed conflicting domain and range axioms: multiple assertions implied intersection, causing Conflict in CQ3; removing them allows the property to apply across different class pairs as required</vaem:rationale>
+  <dc:source>(competency_question) CQ1: Which animal eats which other animal?
+    (competency_question) CQ3: Which plant parts does [this omnivorous or herbivorourus animal] eat?
+    (competency_question) CQ4: Does a lion eat plants or plant parts?
+    (competency_question) CQ6: Which plants eat animals?
+    (competency_question) CQ7: Which animals eat [these animals]?
+    (competency_question) CQ14: Are there animals that are carnivore but still eat some plants or parts of plants?
+    (themis_test) CQ3: Omnivore eats PlantPart -&gt; Conflict; Herbivore eats PlantPart -&gt; Conflict</dc:source>
+  <prov:wasDerivedFrom rdf:resource="http://www.semanticweb.org/awo_prov#CQ1"/>
+  <prov:qualifiedDerivation>
+    <prov:Derivation>
+      <prov:entity rdf:resource="http://www.semanticweb.org/awo_prov#CQ1"/>
+      <prov:hadActivity rdf:resource="http://www.semanticweb.org/awo_prov#ExtractionActivity"/>
+    </prov:Derivation>
+  </prov:qualifiedDerivation>
+  <prov:wasDerivedFrom rdf:resource="http://www.semanticweb.org/awo_prov#CQ3"/>
+  <prov:qualifiedDerivation>
+    <prov:Derivation>
+      <prov:entity rdf:resource="http://www.semanticweb.org/awo_prov#CQ3"/>
+      <prov:hadActivity rdf:resource="http://www.semanticweb.org/awo_prov#ExtractionActivity"/>
+    </prov:Derivation>
+  </prov:qualifiedDerivation>
+  <prov:wasDerivedFrom rdf:resource="http://www.semanticweb.org/awo_prov#CQ4"/>
+  <prov:qualifiedDerivation>
+    <prov:Derivation>
+      <prov:entity rdf:resource="http://www.semanticweb.org/awo_prov#CQ4"/>
+      <prov:hadActivity rdf:resource="http://www.semanticweb.org/awo_prov#ExtractionActivity"/>
+    </prov:Derivation>
+  </prov:qualifiedDerivation>
+  <prov:wasDerivedFrom rdf:resource="http://www.semanticweb.org/awo_prov#CQ6"/>
+  <prov:qualifiedDerivation>
+    <prov:Derivation>
+      <prov:entity rdf:resource="http://www.semanticweb.org/awo_prov#CQ6"/>
+      <prov:hadActivity rdf:resource="http://www.semanticweb.org/awo_prov#ExtractionActivity"/>
+    </prov:Derivation>
+  </prov:qualifiedDerivation>
+  <prov:wasDerivedFrom rdf:resource="http://www.semanticweb.org/awo_prov#CQ7"/>
+  <prov:qualifiedDerivation>
+    <prov:Derivation>
+      <prov:entity rdf:resource="http://www.semanticweb.org/awo_prov#CQ7"/>
+      <prov:hadActivity rdf:resource="http://www.semanticweb.org/awo_prov#ExtractionActivity"/>
+    </prov:Derivation>
+  </prov:qualifiedDerivation>
+  <prov:wasDerivedFrom rdf:resource="http://www.semanticweb.org/awo_prov#CQ14"/>
+  <prov:qualifiedDerivation>
+    <prov:Derivation>
+      <prov:entity rdf:resource="http://www.semanticweb.org/awo_prov#CQ14"/>
+      <prov:hadActivity rdf:resource="http://www.semanticweb.org/awo_prov#ExtractionActivity"/>
+    </prov:Derivation>
+  </prov:qualifiedDerivation>
+  <prov:wasGeneratedBy rdf:resource="http://www.semanticweb.org/awo_prov#GenerationActivity"/>
+  <prov:wasInfluencedBy rdf:resource="http://www.semanticweb.org/awo_prov#ExtractionActivity"/>
+  <prov:wasAttributedTo rdf:resource="http://www.semanticweb.org/awo_prov#agent_TermExtraction_Agent"/>
+  <prov:wasAttributedTo rdf:resource="http://www.semanticweb.org/awo_prov#agent_OntoGeneration_Agent"/>
+  <prov:wasInfluencedBy rdf:resource="http://www.semanticweb.org/awo_prov#OntoCorrectionActivity"/>
+  <prov:wasAttributedTo rdf:resource="http://www.semanticweb.org/awo_prov#agent_OntoCorrection_Agent"/>
+  <prov:wasDerivedFrom rdf:resource="http://www.semanticweb.org/awo_prov#Report_r1_themis_test_8"/>
+  <vaem:rationale>[OntoCorrection Agent | themis_test] changed at OntoCorrectionActivity: removed axioms: eats domain Animal; eats domain Carnivore; eats domain Plant; eats range Animal; eats range Plant; eats range PlantPart; Domain changed; Range changed</vaem:rationale>
+</owl:ObjectProperty>
+
+  <!-- owl:NamedIndividual declarations -->
+
+<owl:NamedIndividual rdf:about="http://www.semanticweb.org/awo#Lion">
+  <rdfs:comment>A specific animal instance used to query dietary habits.</rdfs:comment>
+  <rdfs:label>Lion</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: CQ4 uses lion as a concrete example
+    [OntoCorrection Agent | loop_rounds: 1 tool_retries: 1 | themis_test] created: [OntoGeneration Agent] created: CQ4 uses lion as a concrete example</vaem:rationale>
+  <dc:source>(competency_question) CQ4: Does a lion eat plants or plant parts?</dc:source>
+  <rdf:type rdf:resource="http://www.semanticweb.org/awo#Animal"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://www.semanticweb.org/awo#Type"/>
+      <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/awo#Animal"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <!-- Axiom: Type Animal -->
+  <prov:wasDerivedFrom rdf:resource="http://www.semanticweb.org/awo_prov#CQ4"/>
+  <prov:qualifiedDerivation>
+    <prov:Derivation>
+      <prov:entity rdf:resource="http://www.semanticweb.org/awo_prov#CQ4"/>
+      <prov:hadActivity rdf:resource="http://www.semanticweb.org/awo_prov#ExtractionActivity"/>
+    </prov:Derivation>
+  </prov:qualifiedDerivation>
+  <prov:wasGeneratedBy rdf:resource="http://www.semanticweb.org/awo_prov#GenerationActivity"/>
+  <prov:wasInfluencedBy rdf:resource="http://www.semanticweb.org/awo_prov#ExtractionActivity"/>
+  <prov:wasAttributedTo rdf:resource="http://www.semanticweb.org/awo_prov#agent_TermExtraction_Agent"/>
+  <prov:wasAttributedTo rdf:resource="http://www.semanticweb.org/awo_prov#agent_OntoGeneration_Agent"/>
+  <prov:wasInfluencedBy rdf:resource="http://www.semanticweb.org/awo_prov#OntoCorrectionActivity"/>
+  <prov:wasAttributedTo rdf:resource="http://www.semanticweb.org/awo_prov#agent_OntoCorrection_Agent"/>
+  <prov:wasDerivedFrom rdf:resource="http://www.semanticweb.org/awo_prov#Report_r1_themis_test_8"/>
+  <vaem:rationale>[OntoCorrection Agent | themis_test] changed at OntoCorrectionActivity: added axioms: Lion Type Animal</vaem:rationale>
+</owl:NamedIndividual>
+
+
+  <!-- PROV-O provenance -->
+
+<prov:Entity rdf:about="http://www.semanticweb.org/awo_prov#CQ1">
+  <rdfs:label>CQ1</rdfs:label>
+  <prov:value>Which animal eats which other animal?</prov:value>
+</prov:Entity>
+
+<prov:Entity rdf:about="http://www.semanticweb.org/awo_prov#CQ2">
+  <rdfs:label>CQ2</rdfs:label>
+  <prov:value>Is [this animal] a herbivore?</prov:value>
+</prov:Entity>
+
+<prov:Entity rdf:about="http://www.semanticweb.org/awo_prov#CQ3">
+  <rdfs:label>CQ3</rdfs:label>
+  <prov:value>Which plant parts does [this omnivorous or herbivorourus animal] eat?</prov:value>
+</prov:Entity>
+
+<prov:Entity rdf:about="http://www.semanticweb.org/awo_prov#CQ4">
+  <rdfs:label>CQ4</rdfs:label>
+  <prov:value>Does a lion eat plants or plant parts?</prov:value>
+</prov:Entity>
+
+<prov:Entity rdf:about="http://www.semanticweb.org/awo_prov#CQ6">
+  <rdfs:label>CQ6</rdfs:label>
+  <prov:value>Which plants eat animals?</prov:value>
+</prov:Entity>
+
+<prov:Entity rdf:about="http://www.semanticweb.org/awo_prov#CQ7">
+  <rdfs:label>CQ7</rdfs:label>
+  <prov:value>Which animals eat [these animals]?</prov:value>
+</prov:Entity>
+
+<prov:Entity rdf:about="http://www.semanticweb.org/awo_prov#CQ14">
+  <rdfs:label>CQ14</rdfs:label>
+  <prov:value>Are there animals that are carnivore but still eat some plants or parts of plants?</prov:value>
+</prov:Entity>
+
+<prov:Entity rdf:about="http://www.semanticweb.org/awo_prov#CandidateTerms">
+  <rdfs:label>Term mapping (Extraction output)</rdfs:label>
+  <rdf:type rdf:resource="http://www.w3.org/ns/prov#Collection"/>
+  <prov:hadMember rdf:resource="http://www.semanticweb.org/awo_prov#term_Animal"/>
+  <prov:hadMember rdf:resource="http://www.semanticweb.org/awo_prov#term_Carnivore"/>
+  <prov:hadMember rdf:resource="http://www.semanticweb.org/awo_prov#term_Herbivore"/>
+  <prov:hadMember rdf:resource="http://www.semanticweb.org/awo_prov#term_Lion"/>
+  <prov:hadMember rdf:resource="http://www.semanticweb.org/awo_prov#term_Omnivore"/>
+  <prov:hadMember rdf:resource="http://www.semanticweb.org/awo_prov#term_Plant"/>
+  <prov:hadMember rdf:resource="http://www.semanticweb.org/awo_prov#term_PlantPart"/>
+  <prov:hadMember rdf:resource="http://www.semanticweb.org/awo_prov#term_eats"/>
+  <awo_prov:class rdf:resource="http://www.semanticweb.org/awo_prov#term_Animal"/>
+  <awo_prov:class rdf:resource="http://www.semanticweb.org/awo_prov#term_Carnivore"/>
+  <awo_prov:class rdf:resource="http://www.semanticweb.org/awo_prov#term_Herbivore"/>
+  <awo_prov:class rdf:resource="http://www.semanticweb.org/awo_prov#term_Omnivore"/>
+  <awo_prov:class rdf:resource="http://www.semanticweb.org/awo_prov#term_Plant"/>
+  <awo_prov:class rdf:resource="http://www.semanticweb.org/awo_prov#term_PlantPart"/>
+  <awo_prov:objectProperty rdf:resource="http://www.semanticweb.org/awo_prov#term_eats"/>
+  <awo_prov:instance rdf:resource="http://www.semanticweb.org/awo_prov#term_Lion"/>
+  <prov:wasGeneratedBy rdf:resource="http://www.semanticweb.org/awo_prov#ExtractionActivity"/>
+  <prov:wasAttributedTo rdf:resource="http://www.semanticweb.org/awo_prov#agent_TermExtraction_Agent"/>
+</prov:Entity>
+
+<prov:Entity rdf:about="http://www.semanticweb.org/awo_prov#ProposedAxioms">
+  <rdfs:label>Axioms proposed by axiom generation</rdfs:label>
+  <prov:wasGeneratedBy rdf:resource="http://www.semanticweb.org/awo_prov#AxiomGenerationActivity"/>
+  <prov:wasAttributedTo rdf:resource="http://www.semanticweb.org/awo_prov#agent_AxiomGeneration_Agent"/>
+</prov:Entity>
+
+<prov:Entity rdf:about="http://www.semanticweb.org/awo_prov#ProposedTests">
+  <rdfs:label>Tests proposed by test generation</rdfs:label>
+  <prov:wasGeneratedBy rdf:resource="http://www.semanticweb.org/awo_prov#TestGenerationActivity"/>
+  <prov:wasAttributedTo rdf:resource="http://www.semanticweb.org/awo_prov#agent_TestGeneration_Agent"/>
+</prov:Entity>
+
+<prov:Entity rdf:about="http://www.semanticweb.org/awo_prov#OntologyDraft_iteration0">
+  <rdfs:label>Ontology draft (iteration 0)</rdfs:label>
+  <prov:wasInvalidatedBy rdf:resource="http://www.semanticweb.org/awo_prov#OntoCorrectionActivity"/>
+  <vaem:rationale>superseded by OntoCorrectionActivity; failed: themis_test</vaem:rationale>
+  <prov:wasGeneratedBy rdf:resource="http://www.semanticweb.org/awo_prov#GenerationActivity"/>
+  <prov:wasAttributedTo rdf:resource="http://www.semanticweb.org/awo_prov#agent_OntoGeneration_Agent"/>
+</prov:Entity>
+
+<prov:Entity rdf:about="http://www.semanticweb.org/awo_prov#term_Animal">
+  <rdf:type rdf:resource="http://www.semanticweb.org/awo_prov#Term"/>
+  <rdfs:label>Animal</rdfs:label>
+  <awo_prov:termName>Animal</awo_prov:termName>
+  <awo_prov:reachedOntology rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</awo_prov:reachedOntology>
+  <prov:alternateOf rdf:resource="http://www.semanticweb.org/awo#Animal"/>
+  <prov:wasGeneratedBy rdf:resource="http://www.semanticweb.org/awo_prov#ExtractionActivity"/>
+  <prov:wasAttributedTo rdf:resource="http://www.semanticweb.org/awo_prov#agent_TermExtraction_Agent"/>
+  <prov:wasDerivedFrom rdf:resource="http://www.semanticweb.org/awo_prov#CQ14"/>
+  <prov:wasDerivedFrom rdf:resource="http://www.semanticweb.org/awo_prov#CQ1"/>
+  <prov:wasDerivedFrom rdf:resource="http://www.semanticweb.org/awo_prov#CQ2"/>
+  <prov:wasDerivedFrom rdf:resource="http://www.semanticweb.org/awo_prov#CQ3"/>
+  <prov:wasDerivedFrom rdf:resource="http://www.semanticweb.org/awo_prov#CQ4"/>
+  <prov:wasDerivedFrom rdf:resource="http://www.semanticweb.org/awo_prov#CQ6"/>
+  <prov:wasDerivedFrom rdf:resource="http://www.semanticweb.org/awo_prov#CQ7"/>
+  <vaem:rationale>proposed as class</vaem:rationale>
+</prov:Entity>
+
+<prov:Entity rdf:about="http://www.semanticweb.org/awo_prov#term_Carnivore">
+  <rdf:type rdf:resource="http://www.semanticweb.org/awo_prov#Term"/>
+  <rdfs:label>Carnivore</rdfs:label>
+  <awo_prov:termName>Carnivore</awo_prov:termName>
+  <awo_prov:reachedOntology rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</awo_prov:reachedOntology>
+  <prov:alternateOf rdf:resource="http://www.semanticweb.org/awo#Carnivore"/>
+  <prov:wasGeneratedBy rdf:resource="http://www.semanticweb.org/awo_prov#ExtractionActivity"/>
+  <prov:wasAttributedTo rdf:resource="http://www.semanticweb.org/awo_prov#agent_TermExtraction_Agent"/>
+  <prov:wasDerivedFrom rdf:resource="http://www.semanticweb.org/awo_prov#CQ14"/>
+  <vaem:rationale>proposed as class</vaem:rationale>
+</prov:Entity>
+
+<prov:Entity rdf:about="http://www.semanticweb.org/awo_prov#term_Herbivore">
+  <rdf:type rdf:resource="http://www.semanticweb.org/awo_prov#Term"/>
+  <rdfs:label>Herbivore</rdfs:label>
+  <awo_prov:termName>Herbivore</awo_prov:termName>
+  <awo_prov:reachedOntology rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</awo_prov:reachedOntology>
+  <prov:alternateOf rdf:resource="http://www.semanticweb.org/awo#Herbivore"/>
+  <prov:wasGeneratedBy rdf:resource="http://www.semanticweb.org/awo_prov#ExtractionActivity"/>
+  <prov:wasAttributedTo rdf:resource="http://www.semanticweb.org/awo_prov#agent_TermExtraction_Agent"/>
+  <prov:wasDerivedFrom rdf:resource="http://www.semanticweb.org/awo_prov#CQ2"/>
+  <prov:wasDerivedFrom rdf:resource="http://www.semanticweb.org/awo_prov#CQ3"/>
+  <vaem:rationale>proposed as class</vaem:rationale>
+</prov:Entity>
+
+<prov:Entity rdf:about="http://www.semanticweb.org/awo_prov#term_Lion">
+  <rdf:type rdf:resource="http://www.semanticweb.org/awo_prov#Term"/>
+  <rdfs:label>Lion</rdfs:label>
+  <awo_prov:termName>Lion</awo_prov:termName>
+  <awo_prov:reachedOntology rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</awo_prov:reachedOntology>
+  <prov:alternateOf rdf:resource="http://www.semanticweb.org/awo#Lion"/>
+  <prov:wasGeneratedBy rdf:resource="http://www.semanticweb.org/awo_prov#ExtractionActivity"/>
+  <prov:wasAttributedTo rdf:resource="http://www.semanticweb.org/awo_prov#agent_TermExtraction_Agent"/>
+  <prov:wasDerivedFrom rdf:resource="http://www.semanticweb.org/awo_prov#CQ4"/>
+  <vaem:rationale>proposed as instance</vaem:rationale>
+</prov:Entity>
+
+<prov:Entity rdf:about="http://www.semanticweb.org/awo_prov#term_Omnivore">
+  <rdf:type rdf:resource="http://www.semanticweb.org/awo_prov#Term"/>
+  <rdfs:label>Omnivore</rdfs:label>
+  <awo_prov:termName>Omnivore</awo_prov:termName>
+  <awo_prov:reachedOntology rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</awo_prov:reachedOntology>
+  <prov:alternateOf rdf:resource="http://www.semanticweb.org/awo#Omnivore"/>
+  <prov:wasGeneratedBy rdf:resource="http://www.semanticweb.org/awo_prov#ExtractionActivity"/>
+  <prov:wasAttributedTo rdf:resource="http://www.semanticweb.org/awo_prov#agent_TermExtraction_Agent"/>
+  <prov:wasDerivedFrom rdf:resource="http://www.semanticweb.org/awo_prov#CQ3"/>
+  <vaem:rationale>proposed as class</vaem:rationale>
+</prov:Entity>
+
+<prov:Entity rdf:about="http://www.semanticweb.org/awo_prov#term_Plant">
+  <rdf:type rdf:resource="http://www.semanticweb.org/awo_prov#Term"/>
+  <rdfs:label>Plant</rdfs:label>
+  <awo_prov:termName>Plant</awo_prov:termName>
+  <awo_prov:reachedOntology rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</awo_prov:reachedOntology>
+  <prov:alternateOf rdf:resource="http://www.semanticweb.org/awo#Plant"/>
+  <prov:wasGeneratedBy rdf:resource="http://www.semanticweb.org/awo_prov#ExtractionActivity"/>
+  <prov:wasAttributedTo rdf:resource="http://www.semanticweb.org/awo_prov#agent_TermExtraction_Agent"/>
+  <prov:wasDerivedFrom rdf:resource="http://www.semanticweb.org/awo_prov#CQ14"/>
+  <prov:wasDerivedFrom rdf:resource="http://www.semanticweb.org/awo_prov#CQ4"/>
+  <prov:wasDerivedFrom rdf:resource="http://www.semanticweb.org/awo_prov#CQ6"/>
+  <vaem:rationale>proposed as class</vaem:rationale>
+</prov:Entity>
+
+<prov:Entity rdf:about="http://www.semanticweb.org/awo_prov#term_PlantPart">
+  <rdf:type rdf:resource="http://www.semanticweb.org/awo_prov#Term"/>
+  <rdfs:label>PlantPart</rdfs:label>
+  <awo_prov:termName>PlantPart</awo_prov:termName>
+  <awo_prov:reachedOntology rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</awo_prov:reachedOntology>
+  <prov:alternateOf rdf:resource="http://www.semanticweb.org/awo#PlantPart"/>
+  <prov:wasGeneratedBy rdf:resource="http://www.semanticweb.org/awo_prov#ExtractionActivity"/>
+  <prov:wasAttributedTo rdf:resource="http://www.semanticweb.org/awo_prov#agent_TermExtraction_Agent"/>
+  <prov:wasDerivedFrom rdf:resource="http://www.semanticweb.org/awo_prov#CQ14"/>
+  <prov:wasDerivedFrom rdf:resource="http://www.semanticweb.org/awo_prov#CQ3"/>
+  <prov:wasDerivedFrom rdf:resource="http://www.semanticweb.org/awo_prov#CQ4"/>
+  <vaem:rationale>proposed as class</vaem:rationale>
+</prov:Entity>
+
+<prov:Entity rdf:about="http://www.semanticweb.org/awo_prov#term_eats">
+  <rdf:type rdf:resource="http://www.semanticweb.org/awo_prov#Term"/>
+  <rdfs:label>eats</rdfs:label>
+  <awo_prov:termName>eats</awo_prov:termName>
+  <awo_prov:reachedOntology rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</awo_prov:reachedOntology>
+  <prov:alternateOf rdf:resource="http://www.semanticweb.org/awo#eats"/>
+  <prov:wasGeneratedBy rdf:resource="http://www.semanticweb.org/awo_prov#ExtractionActivity"/>
+  <prov:wasAttributedTo rdf:resource="http://www.semanticweb.org/awo_prov#agent_TermExtraction_Agent"/>
+  <prov:wasDerivedFrom rdf:resource="http://www.semanticweb.org/awo_prov#CQ14"/>
+  <prov:wasDerivedFrom rdf:resource="http://www.semanticweb.org/awo_prov#CQ1"/>
+  <prov:wasDerivedFrom rdf:resource="http://www.semanticweb.org/awo_prov#CQ3"/>
+  <prov:wasDerivedFrom rdf:resource="http://www.semanticweb.org/awo_prov#CQ4"/>
+  <prov:wasDerivedFrom rdf:resource="http://www.semanticweb.org/awo_prov#CQ6"/>
+  <prov:wasDerivedFrom rdf:resource="http://www.semanticweb.org/awo_prov#CQ7"/>
+  <vaem:rationale>proposed as objectProperty</vaem:rationale>
+</prov:Entity>
+
+<prov:Entity rdf:about="http://www.semanticweb.org/awo_prov#ax_000_Herbivore">
+  <rdfs:label>Herbivore SubClassOf Animal</rdfs:label>
+  <rdf:subject rdf:resource="http://www.semanticweb.org/awo#Herbivore"/>
+  <rdf:predicate rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
+  <rdf:object rdf:resource="http://www.semanticweb.org/awo#Animal"/>
+  <prov:wasQuotedFrom rdf:resource="http://www.semanticweb.org/awo#Herbivore"/>
+  <prov:wasGeneratedBy rdf:resource="http://www.semanticweb.org/awo_prov#GenerationActivity"/>
+  <prov:wasAttributedTo rdf:resource="http://www.semanticweb.org/awo_prov#agent_OntoGeneration_Agent"/>
+  <prov:wasGeneratedBy rdf:resource="http://www.semanticweb.org/awo_prov#AxiomGenerationActivity"/>
+  <prov:wasAttributedTo rdf:resource="http://www.semanticweb.org/awo_prov#agent_AxiomGeneration_Agent"/>
+  <prov:wasDerivedFrom rdf:resource="http://www.semanticweb.org/awo_prov#CQ2"/>
+  <prov:wasDerivedFrom rdf:resource="http://www.semanticweb.org/awo_prov#CQ3"/>
+</prov:Entity>
+
+<prov:Entity rdf:about="http://www.semanticweb.org/awo_prov#ax_001_Herbivore">
+  <rdfs:label>Herbivore DisjointWith Omnivore</rdfs:label>
+  <rdf:subject rdf:resource="http://www.semanticweb.org/awo#Herbivore"/>
+  <rdf:predicate rdf:resource="http://www.w3.org/2002/07/owl#disjointWith"/>
+  <rdf:object rdf:resource="http://www.semanticweb.org/awo#Omnivore"/>
+  <prov:wasQuotedFrom rdf:resource="http://www.semanticweb.org/awo#Herbivore"/>
+  <prov:wasGeneratedBy rdf:resource="http://www.semanticweb.org/awo_prov#GenerationActivity"/>
+  <prov:wasAttributedTo rdf:resource="http://www.semanticweb.org/awo_prov#agent_OntoGeneration_Agent"/>
+  <prov:wasDerivedFrom rdf:resource="http://www.semanticweb.org/awo_prov#CQ2"/>
+  <prov:wasDerivedFrom rdf:resource="http://www.semanticweb.org/awo_prov#CQ3"/>
+</prov:Entity>
+
+<prov:Entity rdf:about="http://www.semanticweb.org/awo_prov#ax_002_Herbivore">
+  <rdfs:label>Herbivore DisjointWith Carnivore</rdfs:label>
+  <rdf:subject rdf:resource="http://www.semanticweb.org/awo#Herbivore"/>
+  <rdf:predicate rdf:resource="http://www.w3.org/2002/07/owl#disjointWith"/>
+  <rdf:object rdf:resource="http://www.semanticweb.org/awo#Carnivore"/>
+  <prov:wasQuotedFrom rdf:resource="http://www.semanticweb.org/awo#Herbivore"/>
+  <prov:wasGeneratedBy rdf:resource="http://www.semanticweb.org/awo_prov#GenerationActivity"/>
+  <prov:wasAttributedTo rdf:resource="http://www.semanticweb.org/awo_prov#agent_OntoGeneration_Agent"/>
+  <prov:wasDerivedFrom rdf:resource="http://www.semanticweb.org/awo_prov#CQ2"/>
+  <prov:wasDerivedFrom rdf:resource="http://www.semanticweb.org/awo_prov#CQ3"/>
+</prov:Entity>
+
+<prov:Entity rdf:about="http://www.semanticweb.org/awo_prov#ax_003_Omnivore">
+  <rdfs:label>Omnivore SubClassOf Animal</rdfs:label>
+  <rdf:subject rdf:resource="http://www.semanticweb.org/awo#Omnivore"/>
+  <rdf:predicate rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
+  <rdf:object rdf:resource="http://www.semanticweb.org/awo#Animal"/>
+  <prov:wasQuotedFrom rdf:resource="http://www.semanticweb.org/awo#Omnivore"/>
+  <prov:wasGeneratedBy rdf:resource="http://www.semanticweb.org/awo_prov#GenerationActivity"/>
+  <prov:wasAttributedTo rdf:resource="http://www.semanticweb.org/awo_prov#agent_OntoGeneration_Agent"/>
+  <prov:wasGeneratedBy rdf:resource="http://www.semanticweb.org/awo_prov#AxiomGenerationActivity"/>
+  <prov:wasAttributedTo rdf:resource="http://www.semanticweb.org/awo_prov#agent_AxiomGeneration_Agent"/>
+  <prov:wasDerivedFrom rdf:resource="http://www.semanticweb.org/awo_prov#CQ3"/>
+</prov:Entity>
+
+<prov:Entity rdf:about="http://www.semanticweb.org/awo_prov#ax_004_Omnivore">
+  <rdfs:label>Omnivore DisjointWith Carnivore</rdfs:label>
+  <rdf:subject rdf:resource="http://www.semanticweb.org/awo#Omnivore"/>
+  <rdf:predicate rdf:resource="http://www.w3.org/2002/07/owl#disjointWith"/>
+  <rdf:object rdf:resource="http://www.semanticweb.org/awo#Carnivore"/>
+  <prov:wasQuotedFrom rdf:resource="http://www.semanticweb.org/awo#Omnivore"/>
+  <prov:wasGeneratedBy rdf:resource="http://www.semanticweb.org/awo_prov#GenerationActivity"/>
+  <prov:wasAttributedTo rdf:resource="http://www.semanticweb.org/awo_prov#agent_OntoGeneration_Agent"/>
+  <prov:wasDerivedFrom rdf:resource="http://www.semanticweb.org/awo_prov#CQ3"/>
+</prov:Entity>
+
+<prov:Entity rdf:about="http://www.semanticweb.org/awo_prov#ax_005_Carnivore">
+  <rdfs:label>Carnivore SubClassOf Animal</rdfs:label>
+  <rdf:subject rdf:resource="http://www.semanticweb.org/awo#Carnivore"/>
+  <rdf:predicate rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
+  <rdf:object rdf:resource="http://www.semanticweb.org/awo#Animal"/>
+  <prov:wasQuotedFrom rdf:resource="http://www.semanticweb.org/awo#Carnivore"/>
+  <prov:wasGeneratedBy rdf:resource="http://www.semanticweb.org/awo_prov#GenerationActivity"/>
+  <prov:wasAttributedTo rdf:resource="http://www.semanticweb.org/awo_prov#agent_OntoGeneration_Agent"/>
+  <prov:wasGeneratedBy rdf:resource="http://www.semanticweb.org/awo_prov#AxiomGenerationActivity"/>
+  <prov:wasAttributedTo rdf:resource="http://www.semanticweb.org/awo_prov#agent_AxiomGeneration_Agent"/>
+  <prov:wasDerivedFrom rdf:resource="http://www.semanticweb.org/awo_prov#CQ14"/>
+</prov:Entity>
+
+<prov:Entity rdf:about="http://www.semanticweb.org/awo_prov#ax_006_Lion">
+  <rdfs:label>Lion Type Animal</rdfs:label>
+  <rdf:subject rdf:resource="http://www.semanticweb.org/awo#Lion"/>
+  <prov:wasQuotedFrom rdf:resource="http://www.semanticweb.org/awo#Lion"/>
+  <prov:wasGeneratedBy rdf:resource="http://www.semanticweb.org/awo_prov#OntoCorrectionActivity"/>
+  <prov:wasAttributedTo rdf:resource="http://www.semanticweb.org/awo_prov#agent_OntoCorrection_Agent"/>
+  <prov:wasDerivedFrom rdf:resource="http://www.semanticweb.org/awo_prov#Report_r1_themis_test_8"/>
+  <vaem:rationale>added by [OntoCorrection Agent | themis_test] at OntoCorrectionActivity</vaem:rationale>
+  <prov:wasDerivedFrom rdf:resource="http://www.semanticweb.org/awo_prov#CQ4"/>
+</prov:Entity>
+
+<prov:Entity rdf:about="http://www.semanticweb.org/awo_prov#ax_007_Lion">
+  <rdfs:label>Lion type Animal</rdfs:label>
+  <rdf:subject rdf:resource="http://www.semanticweb.org/awo#Lion"/>
+  <rdf:predicate rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#type"/>
+  <rdf:object rdf:resource="http://www.semanticweb.org/awo#Animal"/>
+  <prov:wasQuotedFrom rdf:resource="http://www.semanticweb.org/awo#Lion"/>
+  <prov:wasGeneratedBy rdf:resource="http://www.semanticweb.org/awo_prov#GenerationActivity"/>
+  <prov:wasAttributedTo rdf:resource="http://www.semanticweb.org/awo_prov#agent_OntoGeneration_Agent"/>
+  <prov:wasDerivedFrom rdf:resource="http://www.semanticweb.org/awo_prov#CQ4"/>
+</prov:Entity>
+
+<prov:Entity rdf:about="http://www.semanticweb.org/awo_prov#ax_removed_008_eats">
+  <rdfs:label>eats domain Plant</rdfs:label>
+  <rdf:subject rdf:resource="http://www.semanticweb.org/awo#eats"/>
+  <rdf:predicate rdf:resource="http://www.w3.org/2000/01/rdf-schema#domain"/>
+  <rdf:object rdf:resource="http://www.semanticweb.org/awo#Plant"/>
+  <prov:wasQuotedFrom rdf:resource="http://www.semanticweb.org/awo#eats"/>
+  <prov:wasGeneratedBy rdf:resource="http://www.semanticweb.org/awo_prov#GenerationActivity"/>
+  <prov:wasAttributedTo rdf:resource="http://www.semanticweb.org/awo_prov#agent_OntoGeneration_Agent"/>
+  <prov:wasDerivedFrom rdf:resource="http://www.semanticweb.org/awo_prov#CQ1"/>
+  <prov:wasDerivedFrom rdf:resource="http://www.semanticweb.org/awo_prov#CQ3"/>
+  <prov:wasDerivedFrom rdf:resource="http://www.semanticweb.org/awo_prov#CQ4"/>
+  <prov:wasDerivedFrom rdf:resource="http://www.semanticweb.org/awo_prov#CQ6"/>
+  <prov:wasDerivedFrom rdf:resource="http://www.semanticweb.org/awo_prov#CQ7"/>
+  <prov:wasDerivedFrom rdf:resource="http://www.semanticweb.org/awo_prov#CQ14"/>
+  <prov:wasInvalidatedBy rdf:resource="http://www.semanticweb.org/awo_prov#OntoCorrectionActivity"/>
+  <prov:wasDerivedFrom rdf:resource="http://www.semanticweb.org/awo_prov#Report_r1_themis_test_8"/>
+  <vaem:rationale>removed by [OntoCorrection Agent | themis_test] at OntoCorrectionActivity</vaem:rationale>
+</prov:Entity>
+
+<prov:Entity rdf:about="http://www.semanticweb.org/awo_prov#ax_removed_009_eats">
+  <rdfs:label>eats range PlantPart</rdfs:label>
+  <rdf:subject rdf:resource="http://www.semanticweb.org/awo#eats"/>
+  <rdf:predicate rdf:resource="http://www.w3.org/2000/01/rdf-schema#range"/>
+  <rdf:object rdf:resource="http://www.semanticweb.org/awo#PlantPart"/>
+  <prov:wasQuotedFrom rdf:resource="http://www.semanticweb.org/awo#eats"/>
+  <prov:wasGeneratedBy rdf:resource="http://www.semanticweb.org/awo_prov#GenerationActivity"/>
+  <prov:wasAttributedTo rdf:resource="http://www.semanticweb.org/awo_prov#agent_OntoGeneration_Agent"/>
+  <prov:wasDerivedFrom rdf:resource="http://www.semanticweb.org/awo_prov#CQ1"/>
+  <prov:wasDerivedFrom rdf:resource="http://www.semanticweb.org/awo_prov#CQ3"/>
+  <prov:wasDerivedFrom rdf:resource="http://www.semanticweb.org/awo_prov#CQ4"/>
+  <prov:wasDerivedFrom rdf:resource="http://www.semanticweb.org/awo_prov#CQ6"/>
+  <prov:wasDerivedFrom rdf:resource="http://www.semanticweb.org/awo_prov#CQ7"/>
+  <prov:wasDerivedFrom rdf:resource="http://www.semanticweb.org/awo_prov#CQ14"/>
+  <prov:wasInvalidatedBy rdf:resource="http://www.semanticweb.org/awo_prov#OntoCorrectionActivity"/>
+  <prov:wasDerivedFrom rdf:resource="http://www.semanticweb.org/awo_prov#Report_r1_themis_test_8"/>
+  <vaem:rationale>removed by [OntoCorrection Agent | themis_test] at OntoCorrectionActivity</vaem:rationale>
+</prov:Entity>
+
+<prov:Entity rdf:about="http://www.semanticweb.org/awo_prov#ax_removed_010_eats">
+  <rdfs:label>eats range Animal</rdfs:label>
+  <rdf:subject rdf:resource="http://www.semanticweb.org/awo#eats"/>
+  <rdf:predicate rdf:resource="http://www.w3.org/2000/01/rdf-schema#range"/>
+  <rdf:object rdf:resource="http://www.semanticweb.org/awo#Animal"/>
+  <prov:wasQuotedFrom rdf:resource="http://www.semanticweb.org/awo#eats"/>
+  <prov:wasGeneratedBy rdf:resource="http://www.semanticweb.org/awo_prov#GenerationActivity"/>
+  <prov:wasAttributedTo rdf:resource="http://www.semanticweb.org/awo_prov#agent_OntoGeneration_Agent"/>
+  <prov:wasDerivedFrom rdf:resource="http://www.semanticweb.org/awo_prov#CQ1"/>
+  <prov:wasDerivedFrom rdf:resource="http://www.semanticweb.org/awo_prov#CQ3"/>
+  <prov:wasDerivedFrom rdf:resource="http://www.semanticweb.org/awo_prov#CQ4"/>
+  <prov:wasDerivedFrom rdf:resource="http://www.semanticweb.org/awo_prov#CQ6"/>
+  <prov:wasDerivedFrom rdf:resource="http://www.semanticweb.org/awo_prov#CQ7"/>
+  <prov:wasDerivedFrom rdf:resource="http://www.semanticweb.org/awo_prov#CQ14"/>
+  <prov:wasInvalidatedBy rdf:resource="http://www.semanticweb.org/awo_prov#OntoCorrectionActivity"/>
+  <prov:wasDerivedFrom rdf:resource="http://www.semanticweb.org/awo_prov#Report_r1_themis_test_8"/>
+  <vaem:rationale>removed by [OntoCorrection Agent | themis_test] at OntoCorrectionActivity</vaem:rationale>
+</prov:Entity>
+
+<prov:Entity rdf:about="http://www.semanticweb.org/awo_prov#ax_removed_011_eats">
+  <rdfs:label>eats range Plant</rdfs:label>
+  <rdf:subject rdf:resource="http://www.semanticweb.org/awo#eats"/>
+  <rdf:predicate rdf:resource="http://www.w3.org/2000/01/rdf-schema#range"/>
+  <rdf:object rdf:resource="http://www.semanticweb.org/awo#Plant"/>
+  <prov:wasQuotedFrom rdf:resource="http://www.semanticweb.org/awo#eats"/>
+  <prov:wasGeneratedBy rdf:resource="http://www.semanticweb.org/awo_prov#GenerationActivity"/>
+  <prov:wasAttributedTo rdf:resource="http://www.semanticweb.org/awo_prov#agent_OntoGeneration_Agent"/>
+  <prov:wasDerivedFrom rdf:resource="http://www.semanticweb.org/awo_prov#CQ1"/>
+  <prov:wasDerivedFrom rdf:resource="http://www.semanticweb.org/awo_prov#CQ3"/>
+  <prov:wasDerivedFrom rdf:resource="http://www.semanticweb.org/awo_prov#CQ4"/>
+  <prov:wasDerivedFrom rdf:resource="http://www.semanticweb.org/awo_prov#CQ6"/>
+  <prov:wasDerivedFrom rdf:resource="http://www.semanticweb.org/awo_prov#CQ7"/>
+  <prov:wasDerivedFrom rdf:resource="http://www.semanticweb.org/awo_prov#CQ14"/>
+  <prov:wasInvalidatedBy rdf:resource="http://www.semanticweb.org/awo_prov#OntoCorrectionActivity"/>
+  <prov:wasDerivedFrom rdf:resource="http://www.semanticweb.org/awo_prov#Report_r1_themis_test_8"/>
+  <vaem:rationale>removed by [OntoCorrection Agent | themis_test] at OntoCorrectionActivity</vaem:rationale>
+</prov:Entity>
+
+<prov:Entity rdf:about="http://www.semanticweb.org/awo_prov#ax_removed_012_eats">
+  <rdfs:label>eats domain Carnivore</rdfs:label>
+  <rdf:subject rdf:resource="http://www.semanticweb.org/awo#eats"/>
+  <rdf:predicate rdf:resource="http://www.w3.org/2000/01/rdf-schema#domain"/>
+  <rdf:object rdf:resource="http://www.semanticweb.org/awo#Carnivore"/>
+  <prov:wasQuotedFrom rdf:resource="http://www.semanticweb.org/awo#eats"/>
+  <prov:wasGeneratedBy rdf:resource="http://www.semanticweb.org/awo_prov#GenerationActivity"/>
+  <prov:wasAttributedTo rdf:resource="http://www.semanticweb.org/awo_prov#agent_OntoGeneration_Agent"/>
+  <prov:wasDerivedFrom rdf:resource="http://www.semanticweb.org/awo_prov#CQ1"/>
+  <prov:wasDerivedFrom rdf:resource="http://www.semanticweb.org/awo_prov#CQ3"/>
+  <prov:wasDerivedFrom rdf:resource="http://www.semanticweb.org/awo_prov#CQ4"/>
+  <prov:wasDerivedFrom rdf:resource="http://www.semanticweb.org/awo_prov#CQ6"/>
+  <prov:wasDerivedFrom rdf:resource="http://www.semanticweb.org/awo_prov#CQ7"/>
+  <prov:wasDerivedFrom rdf:resource="http://www.semanticweb.org/awo_prov#CQ14"/>
+  <prov:wasInvalidatedBy rdf:resource="http://www.semanticweb.org/awo_prov#OntoCorrectionActivity"/>
+  <prov:wasDerivedFrom rdf:resource="http://www.semanticweb.org/awo_prov#Report_r1_themis_test_8"/>
+  <vaem:rationale>removed by [OntoCorrection Agent | themis_test] at OntoCorrectionActivity</vaem:rationale>
+</prov:Entity>
+
+<prov:Entity rdf:about="http://www.semanticweb.org/awo_prov#ax_removed_013_eats">
+  <rdfs:label>eats domain Animal</rdfs:label>
+  <rdf:subject rdf:resource="http://www.semanticweb.org/awo#eats"/>
+  <rdf:predicate rdf:resource="http://www.w3.org/2000/01/rdf-schema#domain"/>
+  <rdf:object rdf:resource="http://www.semanticweb.org/awo#Animal"/>
+  <prov:wasQuotedFrom rdf:resource="http://www.semanticweb.org/awo#eats"/>
+  <prov:wasGeneratedBy rdf:resource="http://www.semanticweb.org/awo_prov#GenerationActivity"/>
+  <prov:wasAttributedTo rdf:resource="http://www.semanticweb.org/awo_prov#agent_OntoGeneration_Agent"/>
+  <prov:wasDerivedFrom rdf:resource="http://www.semanticweb.org/awo_prov#CQ1"/>
+  <prov:wasDerivedFrom rdf:resource="http://www.semanticweb.org/awo_prov#CQ3"/>
+  <prov:wasDerivedFrom rdf:resource="http://www.semanticweb.org/awo_prov#CQ4"/>
+  <prov:wasDerivedFrom rdf:resource="http://www.semanticweb.org/awo_prov#CQ6"/>
+  <prov:wasDerivedFrom rdf:resource="http://www.semanticweb.org/awo_prov#CQ7"/>
+  <prov:wasDerivedFrom rdf:resource="http://www.semanticweb.org/awo_prov#CQ14"/>
+  <prov:wasInvalidatedBy rdf:resource="http://www.semanticweb.org/awo_prov#OntoCorrectionActivity"/>
+  <prov:wasDerivedFrom rdf:resource="http://www.semanticweb.org/awo_prov#Report_r1_themis_test_8"/>
+  <vaem:rationale>removed by [OntoCorrection Agent | themis_test] at OntoCorrectionActivity</vaem:rationale>
+</prov:Entity>
+
+<prov:Entity rdf:about="http://www.semanticweb.org/awo_prov#axiom_000">
+  <rdfs:label>Animal SubClassOf Eater</rdfs:label>
+  <prov:wasGeneratedBy rdf:resource="http://www.semanticweb.org/awo_prov#AxiomGenerationActivity"/>
+  <prov:wasAttributedTo rdf:resource="http://www.semanticweb.org/awo_prov#agent_AxiomGeneration_Agent"/>
+  <prov:wasDerivedFrom rdf:resource="http://www.semanticweb.org/awo_prov#CQ1"/>
+  <vaem:rationale>proposed by [AxiomGeneration Agent] but not materialised in the ontology</vaem:rationale>
+</prov:Entity>
+
+<prov:Entity rdf:about="http://www.semanticweb.org/awo_prov#axiom_001">
+  <rdfs:label>Animal SubClassOf FoodItem</rdfs:label>
+  <prov:wasGeneratedBy rdf:resource="http://www.semanticweb.org/awo_prov#AxiomGenerationActivity"/>
+  <prov:wasAttributedTo rdf:resource="http://www.semanticweb.org/awo_prov#agent_AxiomGeneration_Agent"/>
+  <prov:wasDerivedFrom rdf:resource="http://www.semanticweb.org/awo_prov#CQ1"/>
+  <vaem:rationale>proposed by [AxiomGeneration Agent] but not materialised in the ontology</vaem:rationale>
+</prov:Entity>
+
+<prov:Entity rdf:about="http://www.semanticweb.org/awo_prov#axiom_002">
+  <rdfs:label>eats domain Eater</rdfs:label>
+  <prov:wasGeneratedBy rdf:resource="http://www.semanticweb.org/awo_prov#AxiomGenerationActivity"/>
+  <prov:wasAttributedTo rdf:resource="http://www.semanticweb.org/awo_prov#agent_AxiomGeneration_Agent"/>
+  <prov:wasDerivedFrom rdf:resource="http://www.semanticweb.org/awo_prov#CQ1"/>
+  <vaem:rationale>proposed by [AxiomGeneration Agent] but not materialised in the ontology</vaem:rationale>
+</prov:Entity>
+
+<prov:Entity rdf:about="http://www.semanticweb.org/awo_prov#axiom_003">
+  <rdfs:label>eats range FoodItem</rdfs:label>
+  <prov:wasGeneratedBy rdf:resource="http://www.semanticweb.org/awo_prov#AxiomGenerationActivity"/>
+  <prov:wasAttributedTo rdf:resource="http://www.semanticweb.org/awo_prov#agent_AxiomGeneration_Agent"/>
+  <prov:wasDerivedFrom rdf:resource="http://www.semanticweb.org/awo_prov#CQ1"/>
+  <vaem:rationale>proposed by [AxiomGeneration Agent] but not materialised in the ontology</vaem:rationale>
+</prov:Entity>
+
+<prov:Entity rdf:about="http://www.semanticweb.org/awo_prov#axiom_004">
+  <rdfs:label>PlantPart SubClassOf FoodItem</rdfs:label>
+  <prov:wasGeneratedBy rdf:resource="http://www.semanticweb.org/awo_prov#AxiomGenerationActivity"/>
+  <prov:wasAttributedTo rdf:resource="http://www.semanticweb.org/awo_prov#agent_AxiomGeneration_Agent"/>
+  <prov:wasDerivedFrom rdf:resource="http://www.semanticweb.org/awo_prov#CQ3"/>
+  <vaem:rationale>proposed by [AxiomGeneration Agent] but not materialised in the ontology</vaem:rationale>
+</prov:Entity>
+
+<prov:Entity rdf:about="http://www.semanticweb.org/awo_prov#axiom_005">
+  <rdfs:label>Plant SubClassOf FoodItem</rdfs:label>
+  <prov:wasGeneratedBy rdf:resource="http://www.semanticweb.org/awo_prov#AxiomGenerationActivity"/>
+  <prov:wasAttributedTo rdf:resource="http://www.semanticweb.org/awo_prov#agent_AxiomGeneration_Agent"/>
+  <prov:wasDerivedFrom rdf:resource="http://www.semanticweb.org/awo_prov#CQ4"/>
+  <vaem:rationale>proposed by [AxiomGeneration Agent] but not materialised in the ontology</vaem:rationale>
+</prov:Entity>
+
+<prov:Entity rdf:about="http://www.semanticweb.org/awo_prov#axiom_006">
+  <rdfs:label>Plant SubClassOf Eater</rdfs:label>
+  <prov:wasGeneratedBy rdf:resource="http://www.semanticweb.org/awo_prov#AxiomGenerationActivity"/>
+  <prov:wasAttributedTo rdf:resource="http://www.semanticweb.org/awo_prov#agent_AxiomGeneration_Agent"/>
+  <prov:wasDerivedFrom rdf:resource="http://www.semanticweb.org/awo_prov#CQ6"/>
+  <vaem:rationale>proposed by [AxiomGeneration Agent] but not materialised in the ontology</vaem:rationale>
+</prov:Entity>
+
+<prov:Entity rdf:about="http://www.semanticweb.org/awo_prov#axiom_007">
+  <rdfs:label>Animal SubClassOf FoodItem</rdfs:label>
+  <prov:wasGeneratedBy rdf:resource="http://www.semanticweb.org/awo_prov#AxiomGenerationActivity"/>
+  <prov:wasAttributedTo rdf:resource="http://www.semanticweb.org/awo_prov#agent_AxiomGeneration_Agent"/>
+  <prov:wasDerivedFrom rdf:resource="http://www.semanticweb.org/awo_prov#CQ6"/>
+  <vaem:rationale>proposed by [AxiomGeneration Agent] but not materialised in the ontology</vaem:rationale>
+</prov:Entity>
+
+<prov:Entity rdf:about="http://www.semanticweb.org/awo_prov#axiom_008">
+  <rdfs:label>Plant SubClassOf FoodItem</rdfs:label>
+  <prov:wasGeneratedBy rdf:resource="http://www.semanticweb.org/awo_prov#AxiomGenerationActivity"/>
+  <prov:wasAttributedTo rdf:resource="http://www.semanticweb.org/awo_prov#agent_AxiomGeneration_Agent"/>
+  <prov:wasDerivedFrom rdf:resource="http://www.semanticweb.org/awo_prov#CQ14"/>
+  <vaem:rationale>proposed by [AxiomGeneration Agent] but not materialised in the ontology</vaem:rationale>
+</prov:Entity>
+
+<prov:Entity rdf:about="http://www.semanticweb.org/awo_prov#test_000">
+  <rdfs:label>Animal eats Animal</rdfs:label>
+  <prov:value>Animal eats Animal</prov:value>
+  <prov:wasGeneratedBy rdf:resource="http://www.semanticweb.org/awo_prov#TestGenerationActivity"/>
+  <prov:wasAttributedTo rdf:resource="http://www.semanticweb.org/awo_prov#agent_TestGeneration_Agent"/>
+  <prov:wasDerivedFrom rdf:resource="http://www.semanticweb.org/awo_prov#CQ1"/>
+</prov:Entity>
+
+<prov:Entity rdf:about="http://www.semanticweb.org/awo_prov#test_001">
+  <rdfs:label>eats domain Animal</rdfs:label>
+  <prov:value>eats domain Animal</prov:value>
+  <prov:wasGeneratedBy rdf:resource="http://www.semanticweb.org/awo_prov#TestGenerationActivity"/>
+  <prov:wasAttributedTo rdf:resource="http://www.semanticweb.org/awo_prov#agent_TestGeneration_Agent"/>
+  <prov:wasDerivedFrom rdf:resource="http://www.semanticweb.org/awo_prov#CQ1"/>
+</prov:Entity>
+
+<prov:Entity rdf:about="http://www.semanticweb.org/awo_prov#test_002">
+  <rdfs:label>eats range Animal</rdfs:label>
+  <prov:value>eats range Animal</prov:value>
+  <prov:wasGeneratedBy rdf:resource="http://www.semanticweb.org/awo_prov#TestGenerationActivity"/>
+  <prov:wasAttributedTo rdf:resource="http://www.semanticweb.org/awo_prov#agent_TestGeneration_Agent"/>
+  <prov:wasDerivedFrom rdf:resource="http://www.semanticweb.org/awo_prov#CQ1"/>
+</prov:Entity>
+
+<prov:Entity rdf:about="http://www.semanticweb.org/awo_prov#test_003">
+  <rdfs:label>Herbivore SubClassOf Animal</rdfs:label>
+  <prov:value>Herbivore SubClassOf Animal</prov:value>
+  <prov:wasGeneratedBy rdf:resource="http://www.semanticweb.org/awo_prov#TestGenerationActivity"/>
+  <prov:wasAttributedTo rdf:resource="http://www.semanticweb.org/awo_prov#agent_TestGeneration_Agent"/>
+  <prov:wasDerivedFrom rdf:resource="http://www.semanticweb.org/awo_prov#CQ2"/>
+</prov:Entity>
+
+<prov:Entity rdf:about="http://www.semanticweb.org/awo_prov#test_004">
+  <rdfs:label>Omnivore eats PlantPart</rdfs:label>
+  <prov:value>Omnivore eats PlantPart</prov:value>
+  <prov:wasGeneratedBy rdf:resource="http://www.semanticweb.org/awo_prov#TestGenerationActivity"/>
+  <prov:wasAttributedTo rdf:resource="http://www.semanticweb.org/awo_prov#agent_TestGeneration_Agent"/>
+  <prov:wasDerivedFrom rdf:resource="http://www.semanticweb.org/awo_prov#CQ3"/>
+</prov:Entity>
+
+<prov:Entity rdf:about="http://www.semanticweb.org/awo_prov#test_005">
+  <rdfs:label>Herbivore eats PlantPart</rdfs:label>
+  <prov:value>Herbivore eats PlantPart</prov:value>
+  <prov:wasGeneratedBy rdf:resource="http://www.semanticweb.org/awo_prov#TestGenerationActivity"/>
+  <prov:wasAttributedTo rdf:resource="http://www.semanticweb.org/awo_prov#agent_TestGeneration_Agent"/>
+  <prov:wasDerivedFrom rdf:resource="http://www.semanticweb.org/awo_prov#CQ3"/>
+</prov:Entity>
+
+<prov:Entity rdf:about="http://www.semanticweb.org/awo_prov#test_006">
+  <rdfs:label>eats domain Animal</rdfs:label>
+  <prov:value>eats domain Animal</prov:value>
+  <prov:wasGeneratedBy rdf:resource="http://www.semanticweb.org/awo_prov#TestGenerationActivity"/>
+  <prov:wasAttributedTo rdf:resource="http://www.semanticweb.org/awo_prov#agent_TestGeneration_Agent"/>
+  <prov:wasDerivedFrom rdf:resource="http://www.semanticweb.org/awo_prov#CQ3"/>
+</prov:Entity>
+
+<prov:Entity rdf:about="http://www.semanticweb.org/awo_prov#test_007">
+  <rdfs:label>eats range PlantPart</rdfs:label>
+  <prov:value>eats range PlantPart</prov:value>
+  <prov:wasGeneratedBy rdf:resource="http://www.semanticweb.org/awo_prov#TestGenerationActivity"/>
+  <prov:wasAttributedTo rdf:resource="http://www.semanticweb.org/awo_prov#agent_TestGeneration_Agent"/>
+  <prov:wasDerivedFrom rdf:resource="http://www.semanticweb.org/awo_prov#CQ3"/>
+</prov:Entity>
+
+<prov:Entity rdf:about="http://www.semanticweb.org/awo_prov#test_008">
+  <rdfs:label>Animal eats Plant</rdfs:label>
+  <prov:value>Animal eats Plant</prov:value>
+  <prov:wasGeneratedBy rdf:resource="http://www.semanticweb.org/awo_prov#TestGenerationActivity"/>
+  <prov:wasAttributedTo rdf:resource="http://www.semanticweb.org/awo_prov#agent_TestGeneration_Agent"/>
+  <prov:wasDerivedFrom rdf:resource="http://www.semanticweb.org/awo_prov#CQ4"/>
+</prov:Entity>
+
+<prov:Entity rdf:about="http://www.semanticweb.org/awo_prov#test_009">
+  <rdfs:label>Animal eats PlantPart</rdfs:label>
+  <prov:value>Animal eats PlantPart</prov:value>
+  <prov:wasGeneratedBy rdf:resource="http://www.semanticweb.org/awo_prov#TestGenerationActivity"/>
+  <prov:wasAttributedTo rdf:resource="http://www.semanticweb.org/awo_prov#agent_TestGeneration_Agent"/>
+  <prov:wasDerivedFrom rdf:resource="http://www.semanticweb.org/awo_prov#CQ4"/>
+</prov:Entity>
+
+<prov:Entity rdf:about="http://www.semanticweb.org/awo_prov#test_010">
+  <rdfs:label>eats domain Animal</rdfs:label>
+  <prov:value>eats domain Animal</prov:value>
+  <prov:wasGeneratedBy rdf:resource="http://www.semanticweb.org/awo_prov#TestGenerationActivity"/>
+  <prov:wasAttributedTo rdf:resource="http://www.semanticweb.org/awo_prov#agent_TestGeneration_Agent"/>
+  <prov:wasDerivedFrom rdf:resource="http://www.semanticweb.org/awo_prov#CQ4"/>
+</prov:Entity>
+
+<prov:Entity rdf:about="http://www.semanticweb.org/awo_prov#test_011">
+  <rdfs:label>eats range Plant</rdfs:label>
+  <prov:value>eats range Plant</prov:value>
+  <prov:wasGeneratedBy rdf:resource="http://www.semanticweb.org/awo_prov#TestGenerationActivity"/>
+  <prov:wasAttributedTo rdf:resource="http://www.semanticweb.org/awo_prov#agent_TestGeneration_Agent"/>
+  <prov:wasDerivedFrom rdf:resource="http://www.semanticweb.org/awo_prov#CQ4"/>
+</prov:Entity>
+
+<prov:Entity rdf:about="http://www.semanticweb.org/awo_prov#test_012">
+  <rdfs:label>Plant eats Animal</rdfs:label>
+  <prov:value>Plant eats Animal</prov:value>
+  <prov:wasGeneratedBy rdf:resource="http://www.semanticweb.org/awo_prov#TestGenerationActivity"/>
+  <prov:wasAttributedTo rdf:resource="http://www.semanticweb.org/awo_prov#agent_TestGeneration_Agent"/>
+  <prov:wasDerivedFrom rdf:resource="http://www.semanticweb.org/awo_prov#CQ6"/>
+</prov:Entity>
+
+<prov:Entity rdf:about="http://www.semanticweb.org/awo_prov#test_013">
+  <rdfs:label>eats domain Plant</rdfs:label>
+  <prov:value>eats domain Plant</prov:value>
+  <prov:wasGeneratedBy rdf:resource="http://www.semanticweb.org/awo_prov#TestGenerationActivity"/>
+  <prov:wasAttributedTo rdf:resource="http://www.semanticweb.org/awo_prov#agent_TestGeneration_Agent"/>
+  <prov:wasDerivedFrom rdf:resource="http://www.semanticweb.org/awo_prov#CQ6"/>
+</prov:Entity>
+
+<prov:Entity rdf:about="http://www.semanticweb.org/awo_prov#test_014">
+  <rdfs:label>eats range Animal</rdfs:label>
+  <prov:value>eats range Animal</prov:value>
+  <prov:wasGeneratedBy rdf:resource="http://www.semanticweb.org/awo_prov#TestGenerationActivity"/>
+  <prov:wasAttributedTo rdf:resource="http://www.semanticweb.org/awo_prov#agent_TestGeneration_Agent"/>
+  <prov:wasDerivedFrom rdf:resource="http://www.semanticweb.org/awo_prov#CQ6"/>
+</prov:Entity>
+
+<prov:Entity rdf:about="http://www.semanticweb.org/awo_prov#test_015">
+  <rdfs:label>Animal eats Animal</rdfs:label>
+  <prov:value>Animal eats Animal</prov:value>
+  <prov:wasGeneratedBy rdf:resource="http://www.semanticweb.org/awo_prov#TestGenerationActivity"/>
+  <prov:wasAttributedTo rdf:resource="http://www.semanticweb.org/awo_prov#agent_TestGeneration_Agent"/>
+  <prov:wasDerivedFrom rdf:resource="http://www.semanticweb.org/awo_prov#CQ7"/>
+</prov:Entity>
+
+<prov:Entity rdf:about="http://www.semanticweb.org/awo_prov#test_016">
+  <rdfs:label>eats domain Animal</rdfs:label>
+  <prov:value>eats domain Animal</prov:value>
+  <prov:wasGeneratedBy rdf:resource="http://www.semanticweb.org/awo_prov#TestGenerationActivity"/>
+  <prov:wasAttributedTo rdf:resource="http://www.semanticweb.org/awo_prov#agent_TestGeneration_Agent"/>
+  <prov:wasDerivedFrom rdf:resource="http://www.semanticweb.org/awo_prov#CQ7"/>
+</prov:Entity>
+
+<prov:Entity rdf:about="http://www.semanticweb.org/awo_prov#test_017">
+  <rdfs:label>eats range Animal</rdfs:label>
+  <prov:value>eats range Animal</prov:value>
+  <prov:wasGeneratedBy rdf:resource="http://www.semanticweb.org/awo_prov#TestGenerationActivity"/>
+  <prov:wasAttributedTo rdf:resource="http://www.semanticweb.org/awo_prov#agent_TestGeneration_Agent"/>
+  <prov:wasDerivedFrom rdf:resource="http://www.semanticweb.org/awo_prov#CQ7"/>
+</prov:Entity>
+
+<prov:Entity rdf:about="http://www.semanticweb.org/awo_prov#test_018">
+  <rdfs:label>Carnivore SubClassOf Animal</rdfs:label>
+  <prov:value>Carnivore SubClassOf Animal</prov:value>
+  <prov:wasGeneratedBy rdf:resource="http://www.semanticweb.org/awo_prov#TestGenerationActivity"/>
+  <prov:wasAttributedTo rdf:resource="http://www.semanticweb.org/awo_prov#agent_TestGeneration_Agent"/>
+  <prov:wasDerivedFrom rdf:resource="http://www.semanticweb.org/awo_prov#CQ14"/>
+</prov:Entity>
+
+<prov:Entity rdf:about="http://www.semanticweb.org/awo_prov#test_019">
+  <rdfs:label>Carnivore eats Plant</rdfs:label>
+  <prov:value>Carnivore eats Plant</prov:value>
+  <prov:wasGeneratedBy rdf:resource="http://www.semanticweb.org/awo_prov#TestGenerationActivity"/>
+  <prov:wasAttributedTo rdf:resource="http://www.semanticweb.org/awo_prov#agent_TestGeneration_Agent"/>
+  <prov:wasDerivedFrom rdf:resource="http://www.semanticweb.org/awo_prov#CQ14"/>
+</prov:Entity>
+
+<prov:Entity rdf:about="http://www.semanticweb.org/awo_prov#test_020">
+  <rdfs:label>Carnivore eats PlantPart</rdfs:label>
+  <prov:value>Carnivore eats PlantPart</prov:value>
+  <prov:wasGeneratedBy rdf:resource="http://www.semanticweb.org/awo_prov#TestGenerationActivity"/>
+  <prov:wasAttributedTo rdf:resource="http://www.semanticweb.org/awo_prov#agent_TestGeneration_Agent"/>
+  <prov:wasDerivedFrom rdf:resource="http://www.semanticweb.org/awo_prov#CQ14"/>
+</prov:Entity>
+
+<prov:Entity rdf:about="http://www.semanticweb.org/awo_prov#test_021">
+  <rdfs:label>eats domain Carnivore</rdfs:label>
+  <prov:value>eats domain Carnivore</prov:value>
+  <prov:wasGeneratedBy rdf:resource="http://www.semanticweb.org/awo_prov#TestGenerationActivity"/>
+  <prov:wasAttributedTo rdf:resource="http://www.semanticweb.org/awo_prov#agent_TestGeneration_Agent"/>
+  <prov:wasDerivedFrom rdf:resource="http://www.semanticweb.org/awo_prov#CQ14"/>
+</prov:Entity>
+
+<prov:Entity rdf:about="http://www.semanticweb.org/awo_prov#test_022">
+  <rdfs:label>eats range Plant</rdfs:label>
+  <prov:value>eats range Plant</prov:value>
+  <prov:wasGeneratedBy rdf:resource="http://www.semanticweb.org/awo_prov#TestGenerationActivity"/>
+  <prov:wasAttributedTo rdf:resource="http://www.semanticweb.org/awo_prov#agent_TestGeneration_Agent"/>
+  <prov:wasDerivedFrom rdf:resource="http://www.semanticweb.org/awo_prov#CQ14"/>
+</prov:Entity>
+
+<prov:Activity rdf:about="http://www.semanticweb.org/awo_prov#ExtractionActivity">
+  <rdfs:label>Extraction (TermExtraction Agent; step 0)</rdfs:label>
+  <prov:used rdf:resource="http://www.semanticweb.org/awo_prov#CQ1"/>
+  <prov:used rdf:resource="http://www.semanticweb.org/awo_prov#CQ2"/>
+  <prov:used rdf:resource="http://www.semanticweb.org/awo_prov#CQ3"/>
+  <prov:used rdf:resource="http://www.semanticweb.org/awo_prov#CQ4"/>
+  <prov:used rdf:resource="http://www.semanticweb.org/awo_prov#CQ6"/>
+  <prov:used rdf:resource="http://www.semanticweb.org/awo_prov#CQ7"/>
+  <prov:used rdf:resource="http://www.semanticweb.org/awo_prov#CQ14"/>
+  <prov:generated rdf:resource="http://www.semanticweb.org/awo_prov#CandidateTerms"/>
+  <prov:wasAssociatedWith rdf:resource="http://www.semanticweb.org/awo_prov#agent_TermExtraction_Agent"/>
+  <prov:hadRole rdf:resource="http://www.semanticweb.org/awo_prov#GeneratorRole"/>
+  <prov:hadPlan rdf:resource="http://www.semanticweb.org/awo_prov#GenerationPrompt"/>
+  <prov:qualifiedAssociation>
+    <prov:Association>
+      <prov:agent rdf:resource="http://www.semanticweb.org/awo_prov#agent_TermExtraction_Agent"/>
+      <prov:hadRole rdf:resource="http://www.semanticweb.org/awo_prov#GeneratorRole"/>
+    </prov:Association>
+  </prov:qualifiedAssociation>
+</prov:Activity>
+
+<prov:Activity rdf:about="http://www.semanticweb.org/awo_prov#AxiomGenerationActivity">
+  <rdfs:label>AxiomGeneration (AxiomGeneration Agent; step 1)</rdfs:label>
+  <prov:used rdf:resource="http://www.semanticweb.org/awo_prov#CandidateTerms"/>
+  <prov:used rdf:resource="http://www.semanticweb.org/awo_prov#CQ1"/>
+  <prov:used rdf:resource="http://www.semanticweb.org/awo_prov#CQ2"/>
+  <prov:used rdf:resource="http://www.semanticweb.org/awo_prov#CQ3"/>
+  <prov:used rdf:resource="http://www.semanticweb.org/awo_prov#CQ4"/>
+  <prov:used rdf:resource="http://www.semanticweb.org/awo_prov#CQ6"/>
+  <prov:used rdf:resource="http://www.semanticweb.org/awo_prov#CQ7"/>
+  <prov:used rdf:resource="http://www.semanticweb.org/awo_prov#CQ14"/>
+  <prov:generated rdf:resource="http://www.semanticweb.org/awo_prov#ProposedAxioms"/>
+  <prov:wasInformedBy rdf:resource="http://www.semanticweb.org/awo_prov#ExtractionActivity"/>
+  <prov:wasAssociatedWith rdf:resource="http://www.semanticweb.org/awo_prov#agent_AxiomGeneration_Agent"/>
+  <prov:hadRole rdf:resource="http://www.semanticweb.org/awo_prov#RefinementRole"/>
+  <prov:hadPlan rdf:resource="http://www.semanticweb.org/awo_prov#GenerationPrompt"/>
+  <prov:qualifiedAssociation>
+    <prov:Association>
+      <prov:agent rdf:resource="http://www.semanticweb.org/awo_prov#agent_AxiomGeneration_Agent"/>
+      <prov:hadRole rdf:resource="http://www.semanticweb.org/awo_prov#RefinementRole"/>
+    </prov:Association>
+  </prov:qualifiedAssociation>
+</prov:Activity>
+
+<prov:Activity rdf:about="http://www.semanticweb.org/awo_prov#TestGenerationActivity">
+  <rdfs:label>TestGeneration (TestGeneration Agent; step 2)</rdfs:label>
+  <prov:used rdf:resource="http://www.semanticweb.org/awo_prov#CandidateTerms"/>
+  <prov:used rdf:resource="http://www.semanticweb.org/awo_prov#CQ1"/>
+  <prov:used rdf:resource="http://www.semanticweb.org/awo_prov#CQ2"/>
+  <prov:used rdf:resource="http://www.semanticweb.org/awo_prov#CQ3"/>
+  <prov:used rdf:resource="http://www.semanticweb.org/awo_prov#CQ4"/>
+  <prov:used rdf:resource="http://www.semanticweb.org/awo_prov#CQ6"/>
+  <prov:used rdf:resource="http://www.semanticweb.org/awo_prov#CQ7"/>
+  <prov:used rdf:resource="http://www.semanticweb.org/awo_prov#CQ14"/>
+  <prov:generated rdf:resource="http://www.semanticweb.org/awo_prov#ProposedTests"/>
+  <prov:wasInformedBy rdf:resource="http://www.semanticweb.org/awo_prov#AxiomGenerationActivity"/>
+  <prov:wasAssociatedWith rdf:resource="http://www.semanticweb.org/awo_prov#agent_TestGeneration_Agent"/>
+  <prov:hadRole rdf:resource="http://www.semanticweb.org/awo_prov#RefinementRole"/>
+  <prov:hadPlan rdf:resource="http://www.semanticweb.org/awo_prov#GenerationPrompt"/>
+  <prov:qualifiedAssociation>
+    <prov:Association>
+      <prov:agent rdf:resource="http://www.semanticweb.org/awo_prov#agent_TestGeneration_Agent"/>
+      <prov:hadRole rdf:resource="http://www.semanticweb.org/awo_prov#RefinementRole"/>
+    </prov:Association>
+  </prov:qualifiedAssociation>
+</prov:Activity>
+
+<prov:Activity rdf:about="http://www.semanticweb.org/awo_prov#GenerationActivity">
+  <rdfs:label>Ontology generation by OntoGeneration Agent (step 3)</rdfs:label>
+  <prov:used rdf:resource="http://www.semanticweb.org/awo_prov#CandidateTerms"/>
+  <prov:used rdf:resource="http://www.semanticweb.org/awo_prov#ProposedAxioms"/>
+  <prov:used rdf:resource="http://www.semanticweb.org/awo_prov#ProposedTests"/>
+  <prov:generated rdf:resource="http://www.semanticweb.org/awo_prov#OntologyDraft_iteration0"/>
+  <prov:wasInformedBy rdf:resource="http://www.semanticweb.org/awo_prov#TestGenerationActivity"/>
+  <prov:wasAssociatedWith rdf:resource="http://www.semanticweb.org/awo_prov#agent_OntoGeneration_Agent"/>
+  <prov:hadRole rdf:resource="http://www.semanticweb.org/awo_prov#GeneratorRole"/>
+  <prov:hadPlan rdf:resource="http://www.semanticweb.org/awo_prov#GenerationPrompt"/>
+  <prov:qualifiedAssociation>
+    <prov:Association>
+      <prov:agent rdf:resource="http://www.semanticweb.org/awo_prov#agent_OntoGeneration_Agent"/>
+      <prov:hadRole rdf:resource="http://www.semanticweb.org/awo_prov#GeneratorRole"/>
+    </prov:Association>
+  </prov:qualifiedAssociation>
+  <vaem:rationale>The ontology models the supplied classes (Animal, Herbivore, Omnivore, Carnivore, Plant, PlantPart) and instance (Lion) with a single object property (eats). Subclass axioms establish dietary categories under Animal, disjoint axioms separate mutually exclusive diets, and domain/range axioms on eats cover all consumption scenarios across animals, plants, and plant parts as required by the tests.</vaem:rationale>
+</prov:Activity>
+
+<prov:Activity rdf:about="http://www.semanticweb.org/awo_prov#OntoCorrectionActivity">
+  <rdfs:label>Ontology correction by OntoCorrection Agent (triggered by themis_test) (step 9)</rdfs:label>
+  <prov:used rdf:resource="http://www.semanticweb.org/awo_prov#OntologyDraft_iteration0"/>
+  <prov:used rdf:resource="http://www.semanticweb.org/awo_prov#CandidateTerms"/>
+  <prov:used rdf:resource="http://www.semanticweb.org/awo_prov#ProposedAxioms"/>
+  <prov:used rdf:resource="http://www.semanticweb.org/awo_prov#ProposedTests"/>
+  <prov:used rdf:resource="http://www.semanticweb.org/awo_prov#Report_r1_themis_test_8"/>
+  <prov:generated rdf:resource="http://www.semanticweb.org/awo#"/>
+  <prov:wasInformedBy rdf:resource="http://www.semanticweb.org/awo_prov#GenerationActivity"/>
+  <prov:wasInformedBy rdf:resource="http://www.semanticweb.org/awo_prov#Check_r1_themis_test_8"/>
+  <prov:wasAssociatedWith rdf:resource="http://www.semanticweb.org/awo_prov#agent_OntoCorrection_Agent"/>
+  <prov:hadRole rdf:resource="http://www.semanticweb.org/awo_prov#FixRole"/>
+  <prov:hadPlan rdf:resource="http://www.semanticweb.org/awo_prov#CorrectionPrompt"/>
+  <prov:qualifiedAssociation>
+    <prov:Association>
+      <prov:agent rdf:resource="http://www.semanticweb.org/awo_prov#agent_OntoCorrection_Agent"/>
+      <prov:hadRole rdf:resource="http://www.semanticweb.org/awo_prov#FixRole"/>
+    </prov:Association>
+  </prov:qualifiedAssociation>
+  <vaem:rationale>The ontology contradicted CQ3 tests because multiple domain and range assertions on 'eats' implied an empty intersection in OWL 2. Removing these conflicting axioms allows the property to relate various classes as required, resolving the Conflict.</vaem:rationale>
+  <awo_prov:correctionRound rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</awo_prov:correctionRound>
+  <awo_prov:correctionOutcome>succeeded</awo_prov:correctionOutcome>
+  <awo_prov:ofRun rdf:resource="http://www.semanticweb.org/awo_prov#run_awo_none"/>
+  <awo_prov:triggeredBy rdf:resource="http://www.semanticweb.org/awo_prov#tool_themis_test"/>
+</prov:Activity>
+
+<prov:Activity rdf:about="http://www.semanticweb.org/awo_prov#ValidationRound1_loop">
+  <rdfs:label>Validation round 1 / loop of OntologyDraft_iteration0</rdfs:label>
+  <prov:used rdf:resource="http://www.semanticweb.org/awo_prov#OntologyDraft_iteration0"/>
+  <prov:wasInformedBy rdf:resource="http://www.semanticweb.org/awo_prov#GenerationActivity"/>
+  <prov:hadRole rdf:resource="http://www.semanticweb.org/awo_prov#ValidatorRole"/>
+  <prov:hadPlan rdf:resource="http://www.semanticweb.org/awo_prov#ValidationPlan"/>
+  <awo_prov:roundIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</awo_prov:roundIndex>
+  <awo_prov:phase>loop</awo_prov:phase>
+  <awo_prov:isVerifyRound rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</awo_prov:isVerifyRound>
+  <awo_prov:isFinalRound rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</awo_prov:isFinalRound>
+  <awo_prov:roundPassed rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</awo_prov:roundPassed>
+  <awo_prov:ofRun rdf:resource="http://www.semanticweb.org/awo_prov#run_awo_none"/>
+</prov:Activity>
+<earl:TestResult rdf:about="http://www.semanticweb.org/awo_prov#Report_ValidationRound1_loop">
+  <rdf:type rdf:resource="http://www.w3.org/ns/prov#Entity"/>
+  <earl:outcome rdf:resource="http://www.w3.org/ns/earl#failed"/>
+  <prov:wasGeneratedBy rdf:resource="http://www.semanticweb.org/awo_prov#ValidationRound1_loop"/>
+</earl:TestResult>
+
+<prov:Activity rdf:about="http://www.semanticweb.org/awo_prov#Check_r1_syntax_check_4">
+  <rdfs:label>syntax_check (round 1 / loop, round 1, phase loop, attempt 1, step 4)</rdfs:label>
+  <prov:wasInformedBy rdf:resource="http://www.semanticweb.org/awo_prov#ValidationRound1_loop"/>
+  <prov:used rdf:resource="http://www.semanticweb.org/awo_prov#OntologyDraft_iteration0"/>
+  <prov:wasAssociatedWith rdf:resource="http://www.semanticweb.org/awo_prov#tool_syntax_check"/>
+  <prov:hadRole rdf:resource="http://www.semanticweb.org/awo_prov#ValidatorRole"/>
+  <awo_prov:toolName>syntax_check</awo_prov:toolName>
+  <awo_prov:roundIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</awo_prov:roundIndex>
+  <awo_prov:phase>loop</awo_prov:phase>
+  <awo_prov:attempt rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</awo_prov:attempt>
+  <awo_prov:checkOutcome>passed</awo_prov:checkOutcome>
+  <awo_prov:ofRun rdf:resource="http://www.semanticweb.org/awo_prov#run_awo_none"/>
+</prov:Activity>
+<earl:TestResult rdf:about="http://www.semanticweb.org/awo_prov#Report_r1_syntax_check_4">
+  <rdf:type rdf:resource="http://www.w3.org/ns/prov#Entity"/>
+  <earl:outcome rdf:resource="http://www.w3.org/ns/earl#passed"/>
+  <prov:wasGeneratedBy rdf:resource="http://www.semanticweb.org/awo_prov#Check_r1_syntax_check_4"/>
+  <prov:value>No syntax problems (54 triples parsed).</prov:value>
+</earl:TestResult>
+
+<prov:Activity rdf:about="http://www.semanticweb.org/awo_prov#Check_r1_cq_coverage_5">
+  <rdfs:label>cq_coverage (round 1 / loop, round 1, phase loop, attempt 1, step 5)</rdfs:label>
+  <prov:wasInformedBy rdf:resource="http://www.semanticweb.org/awo_prov#ValidationRound1_loop"/>
+  <prov:used rdf:resource="http://www.semanticweb.org/awo_prov#OntologyDraft_iteration0"/>
+  <prov:wasAssociatedWith rdf:resource="http://www.semanticweb.org/awo_prov#tool_cq_coverage"/>
+  <prov:hadRole rdf:resource="http://www.semanticweb.org/awo_prov#ValidatorRole"/>
+  <awo_prov:toolName>cq_coverage</awo_prov:toolName>
+  <awo_prov:roundIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</awo_prov:roundIndex>
+  <awo_prov:phase>loop</awo_prov:phase>
+  <awo_prov:attempt rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</awo_prov:attempt>
+  <awo_prov:checkOutcome>passed</awo_prov:checkOutcome>
+  <awo_prov:ofRun rdf:resource="http://www.semanticweb.org/awo_prov#run_awo_none"/>
+</prov:Activity>
+<earl:TestResult rdf:about="http://www.semanticweb.org/awo_prov#Report_r1_cq_coverage_5">
+  <rdf:type rdf:resource="http://www.w3.org/ns/prov#Entity"/>
+  <earl:outcome rdf:resource="http://www.w3.org/ns/earl#passed"/>
+  <prov:wasGeneratedBy rdf:resource="http://www.semanticweb.org/awo_prov#Check_r1_cq_coverage_5"/>
+  <prov:value>Covered 7/7. All competency-question terms are captured.</prov:value>
+</earl:TestResult>
+
+<prov:Activity rdf:about="http://www.semanticweb.org/awo_prov#Check_r1_oops_scan_6">
+  <rdfs:label>oops_scan (round 1 / loop, round 1, phase loop, attempt 1, step 6)</rdfs:label>
+  <prov:wasInformedBy rdf:resource="http://www.semanticweb.org/awo_prov#ValidationRound1_loop"/>
+  <prov:used rdf:resource="http://www.semanticweb.org/awo_prov#OntologyDraft_iteration0"/>
+  <prov:wasAssociatedWith rdf:resource="http://www.semanticweb.org/awo_prov#tool_oops_scan"/>
+  <prov:hadRole rdf:resource="http://www.semanticweb.org/awo_prov#ValidatorRole"/>
+  <awo_prov:toolName>oops_scan</awo_prov:toolName>
+  <awo_prov:roundIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</awo_prov:roundIndex>
+  <awo_prov:phase>loop</awo_prov:phase>
+  <awo_prov:attempt rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</awo_prov:attempt>
+  <awo_prov:checkOutcome>passed</awo_prov:checkOutcome>
+  <awo_prov:ofRun rdf:resource="http://www.semanticweb.org/awo_prov#run_awo_none"/>
+</prov:Activity>
+<earl:TestResult rdf:about="http://www.semanticweb.org/awo_prov#Report_r1_oops_scan_6">
+  <rdf:type rdf:resource="http://www.w3.org/ns/prov#Entity"/>
+  <earl:outcome rdf:resource="http://www.w3.org/ns/earl#passed"/>
+  <prov:wasGeneratedBy rdf:resource="http://www.semanticweb.org/awo_prov#Check_r1_oops_scan_6"/>
+  <prov:value>No major pitfalls.</prov:value>
+</earl:TestResult>
+
+<prov:Activity rdf:about="http://www.semanticweb.org/awo_prov#Check_r1_hermit_consistency_7">
+  <rdfs:label>hermit_consistency (round 1 / loop, round 1, phase loop, attempt 1, step 7)</rdfs:label>
+  <prov:wasInformedBy rdf:resource="http://www.semanticweb.org/awo_prov#ValidationRound1_loop"/>
+  <prov:used rdf:resource="http://www.semanticweb.org/awo_prov#OntologyDraft_iteration0"/>
+  <prov:wasAssociatedWith rdf:resource="http://www.semanticweb.org/awo_prov#tool_hermit_consistency"/>
+  <prov:hadRole rdf:resource="http://www.semanticweb.org/awo_prov#ValidatorRole"/>
+  <awo_prov:toolName>hermit_consistency</awo_prov:toolName>
+  <awo_prov:roundIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</awo_prov:roundIndex>
+  <awo_prov:phase>loop</awo_prov:phase>
+  <awo_prov:attempt rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</awo_prov:attempt>
+  <awo_prov:checkOutcome>passed</awo_prov:checkOutcome>
+  <awo_prov:ofRun rdf:resource="http://www.semanticweb.org/awo_prov#run_awo_none"/>
+</prov:Activity>
+<earl:TestResult rdf:about="http://www.semanticweb.org/awo_prov#Report_r1_hermit_consistency_7">
+  <rdf:type rdf:resource="http://www.w3.org/ns/prov#Entity"/>
+  <earl:outcome rdf:resource="http://www.w3.org/ns/earl#passed"/>
+  <prov:wasGeneratedBy rdf:resource="http://www.semanticweb.org/awo_prov#Check_r1_hermit_consistency_7"/>
+  <prov:value>Consistent: yes
+Unsatisfiable classes: none
+
+http://www.w3.org/2002/07/owl#Thing is satisfiable.
+Classes equivalent to 'owl:Nothing':
+	owl:Nothing</prov:value>
+</earl:TestResult>
+
+<prov:Activity rdf:about="http://www.semanticweb.org/awo_prov#Check_r1_themis_test_8">
+  <rdfs:label>themis_test (round 1 / loop, round 1, phase loop, attempt 1, step 8)</rdfs:label>
+  <prov:wasInformedBy rdf:resource="http://www.semanticweb.org/awo_prov#ValidationRound1_loop"/>
+  <prov:used rdf:resource="http://www.semanticweb.org/awo_prov#OntologyDraft_iteration0"/>
+  <prov:used rdf:resource="http://www.semanticweb.org/awo_prov#ProposedTests"/>
+  <prov:wasAssociatedWith rdf:resource="http://www.semanticweb.org/awo_prov#tool_themis_test"/>
+  <prov:hadRole rdf:resource="http://www.semanticweb.org/awo_prov#ValidatorRole"/>
+  <awo_prov:toolName>themis_test</awo_prov:toolName>
+  <awo_prov:roundIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</awo_prov:roundIndex>
+  <awo_prov:phase>loop</awo_prov:phase>
+  <awo_prov:attempt rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</awo_prov:attempt>
+  <awo_prov:checkOutcome>failed</awo_prov:checkOutcome>
+  <awo_prov:ofRun rdf:resource="http://www.semanticweb.org/awo_prov#run_awo_none"/>
+</prov:Activity>
+<earl:TestResult rdf:about="http://www.semanticweb.org/awo_prov#Report_r1_themis_test_8">
+  <rdf:type rdf:resource="http://www.w3.org/ns/prov#Entity"/>
+  <earl:outcome rdf:resource="http://www.w3.org/ns/earl#failed"/>
+  <prov:wasGeneratedBy rdf:resource="http://www.semanticweb.org/awo_prov#Check_r1_themis_test_8"/>
+  <prov:value>Themis tests: 6/7 CQs pass all their tests. FAILING TESTS:
+CQ3:
+  Omnivore eats PlantPart -&gt; Conflict
+  Herbivore eats PlantPart -&gt; Conflict
+Fix each failing test in the ontology: Undefined = add the term under exactly that name; Incorrect = declare it with the right type; Absent = add the tested axiom so the knowledge is modelled; Conflict = the ontology contradicts the test, correct the axioms.</prov:value>
+</earl:TestResult>
+
+<owl:NamedIndividual rdf:about="http://www.semanticweb.org/awo_prov#run_awo_none">
+  <rdf:type rdf:resource="http://www.semanticweb.org/awo_prov#PipelineRun"/>
+  <awo_prov:runId>awo_none</awo_prov:runId>
+  <rdfs:label>pipeline run awo_none</rdfs:label>
+  <prov:wasAttributedTo rdf:resource="http://www.semanticweb.org/awo_prov#MASEO"/>
+</owl:NamedIndividual>
+
+<prov:SoftwareAgent rdf:about="http://www.semanticweb.org/awo_prov#agent_TermExtraction_Agent">
+  <rdfs:label>TermExtraction Agent</rdfs:label>
+  <prov:actedOnBehalfOf rdf:resource="http://www.semanticweb.org/awo_prov#MASEO"/>
+  <prov:hadRole rdf:resource="http://www.semanticweb.org/awo_prov#GeneratorRole"/>
+</prov:SoftwareAgent>
+
+<prov:SoftwareAgent rdf:about="http://www.semanticweb.org/awo_prov#agent_AxiomGeneration_Agent">
+  <rdfs:label>AxiomGeneration Agent</rdfs:label>
+  <prov:actedOnBehalfOf rdf:resource="http://www.semanticweb.org/awo_prov#MASEO"/>
+  <prov:hadRole rdf:resource="http://www.semanticweb.org/awo_prov#RefinementRole"/>
+</prov:SoftwareAgent>
+
+<prov:SoftwareAgent rdf:about="http://www.semanticweb.org/awo_prov#agent_TestGeneration_Agent">
+  <rdfs:label>TestGeneration Agent</rdfs:label>
+  <prov:actedOnBehalfOf rdf:resource="http://www.semanticweb.org/awo_prov#MASEO"/>
+  <prov:hadRole rdf:resource="http://www.semanticweb.org/awo_prov#RefinementRole"/>
+</prov:SoftwareAgent>
+
+<prov:SoftwareAgent rdf:about="http://www.semanticweb.org/awo_prov#agent_OntoGeneration_Agent">
+  <rdfs:label>OntoGeneration Agent</rdfs:label>
+  <prov:actedOnBehalfOf rdf:resource="http://www.semanticweb.org/awo_prov#MASEO"/>
+  <prov:hadRole rdf:resource="http://www.semanticweb.org/awo_prov#GeneratorRole"/>
+</prov:SoftwareAgent>
+
+<prov:SoftwareAgent rdf:about="http://www.semanticweb.org/awo_prov#agent_OntoCorrection_Agent">
+  <rdfs:label>OntoCorrection Agent</rdfs:label>
+  <prov:actedOnBehalfOf rdf:resource="http://www.semanticweb.org/awo_prov#MASEO"/>
+  <prov:hadRole rdf:resource="http://www.semanticweb.org/awo_prov#FixRole"/>
+</prov:SoftwareAgent>
+
+<prov:SoftwareAgent rdf:about="http://www.semanticweb.org/awo_prov#MASEO">
+  <rdfs:label>MASEO pipeline</rdfs:label>
+</prov:SoftwareAgent>
+
+<owl:NamedIndividual rdf:about="http://www.semanticweb.org/awo_prov#GeneratorRole">
+  <rdf:type rdf:resource="http://www.w3.org/ns/prov#Role"/>
+  <rdfs:label>generator</rdfs:label>
+  <rdfs:comment>Creates new content from the competency questions: CQ atomization, term extraction, ontology generation.</rdfs:comment>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="http://www.semanticweb.org/awo_prov#RefinementRole">
+  <rdf:type rdf:resource="http://www.w3.org/ns/prov#Role"/>
+  <rdfs:label>refinement</rdfs:label>
+  <rdfs:comment>Filters or reshapes existing content: term identification/refinement, axiom and test proposal, other LLM stages.</rdfs:comment>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="http://www.semanticweb.org/awo_prov#FixRole">
+  <rdf:type rdf:resource="http://www.w3.org/ns/prov#Role"/>
+  <rdfs:label>fix</rdfs:label>
+  <rdfs:comment>Corrects the ontology in response to a validation-tool failure (ontology correction).</rdfs:comment>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="http://www.semanticweb.org/awo_prov#ValidatorRole">
+  <rdf:type rdf:resource="http://www.w3.org/ns/prov#Role"/>
+  <rdfs:label>validator</rdfs:label>
+  <rdfs:comment>Checks the ontology without changing it: syntax, CQ coverage, OOPS, HermiT, Themis.</rdfs:comment>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="http://www.semanticweb.org/awo_prov#GenerationPrompt">
+  <rdf:type rdf:resource="http://www.w3.org/ns/prov#Plan"/>
+  <rdfs:label>generation prompt</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="http://www.semanticweb.org/awo_prov#CorrectionPrompt">
+  <rdf:type rdf:resource="http://www.w3.org/ns/prov#Plan"/>
+  <rdfs:label>correction prompt</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="http://www.semanticweb.org/awo_prov#ValidationPlan">
+  <rdf:type rdf:resource="http://www.w3.org/ns/prov#Plan"/>
+  <rdfs:label>validation plan</rdfs:label>
+</owl:NamedIndividual>
+
+<prov:SoftwareAgent rdf:about="http://www.semanticweb.org/awo_prov#tool_syntax_check">
+  <rdfs:label>syntax_check</rdfs:label>
+  <prov:actedOnBehalfOf rdf:resource="http://www.semanticweb.org/awo_prov#MASEO"/>
+</prov:SoftwareAgent>
+
+<prov:SoftwareAgent rdf:about="http://www.semanticweb.org/awo_prov#tool_cq_coverage">
+  <rdfs:label>cq_coverage</rdfs:label>
+  <prov:actedOnBehalfOf rdf:resource="http://www.semanticweb.org/awo_prov#MASEO"/>
+</prov:SoftwareAgent>
+
+<prov:SoftwareAgent rdf:about="http://www.semanticweb.org/awo_prov#tool_oops_scan">
+  <rdfs:label>oops_scan</rdfs:label>
+  <prov:actedOnBehalfOf rdf:resource="http://www.semanticweb.org/awo_prov#MASEO"/>
+</prov:SoftwareAgent>
+
+<prov:SoftwareAgent rdf:about="http://www.semanticweb.org/awo_prov#tool_hermit_consistency">
+  <rdfs:label>hermit_consistency</rdfs:label>
+  <prov:actedOnBehalfOf rdf:resource="http://www.semanticweb.org/awo_prov#MASEO"/>
+</prov:SoftwareAgent>
+
+<prov:SoftwareAgent rdf:about="http://www.semanticweb.org/awo_prov#tool_themis_test">
+  <rdfs:label>themis_test</rdfs:label>
+  <prov:actedOnBehalfOf rdf:resource="http://www.semanticweb.org/awo_prov#MASEO"/>
+</prov:SoftwareAgent>
+
+</rdf:RDF>

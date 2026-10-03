@@ -1,0 +1,834 @@
+{
+  "domain": "vgo",
+  "generated": {
+    "CQ01": [
+      "Player username string"
+    ],
+    "CQ02": [
+      "Player hasFriend Player"
+    ],
+    "CQ03": [
+      "Player hasFriend Player",
+      "Player playsGame Game"
+    ],
+    "CQ05": [
+      "Player hasFriend Player",
+      "Player hasAchievement Achievement"
+    ],
+    "CQ07": [
+      "Player hasAchievement Achievement"
+    ],
+    "CQ08": [
+      "Game hasAchievement Achievement"
+    ],
+    "CQ09": [
+      "Game totalPlayTime float"
+    ],
+    "CQ10": [
+      "Game hasAchievementType AchievementType"
+    ],
+    "CQ11": [
+      "Game hasAchievementType AchievementType"
+    ],
+    "CQ12": [
+      "Game hasGenre Genre"
+    ],
+    "CQ13": [
+      "Game hasItem Item"
+    ],
+    "CQ15": [
+      "Game releaseDate dateTime"
+    ],
+    "CQ17": [
+      "Game hasGenre Genre"
+    ],
+    "CQ19": [
+      "Item hasAbility Ability"
+    ],
+    "CQ22": [
+      "Player hasKillCount Game"
+    ],
+    "CQ24": [
+      "Player hasAchievement Achievement"
+    ],
+    "CQ25": [
+      "Player playsGame Game"
+    ],
+    "CQ26": [
+      "Player hasItem Item"
+    ],
+    "CQ27": [
+      "Player hasAchievement Achievement",
+      "Achievement hasAchievementType AchievementType"
+    ],
+    "CQ29": [
+      "Player lastPlayedGame Game"
+    ],
+    "CQ35": [
+      "Player playsGame Game",
+      "Game hasAchievement Achievement",
+      "Player hasAchievement Achievement"
+    ],
+    "CQ52": [
+      "Player hasItem Item",
+      "Player playsGame Game"
+    ],
+    "CQ55": [
+      "Item usableInGame Game"
+    ],
+    "CQ56": [
+      "Player hasInAppPurchase InAppPurchase"
+    ],
+    "CQ57": [
+      "Player hasInAppPurchase InAppPurchase"
+    ],
+    "CQ62": [
+      "InAppPurchase purchaseTime dateTime"
+    ],
+    "CQ63": [
+      "Player livesIn Location"
+    ],
+    "CQ64": [
+      "Player hasInAppPurchase InAppPurchase",
+      "Player timeSpentBeforeFirstIAP float"
+    ],
+    "CQ65": [
+      "Player livesIn Location"
+    ],
+    "CQ66": [
+      "Player livesIn Location",
+      "Player hasInAppPurchase InAppPurchase"
+    ],
+    "New CQ1": [
+      "Game hasPlayingArea PlayingArea"
+    ]
+  },
+  "executions": [
+    {
+      "n": 1,
+      "round": 1,
+      "phase": "themis",
+      "attempt": 1,
+      "seconds": 0.8,
+      "passed": true,
+      "covered": [
+        "CQ01",
+        "CQ02",
+        "CQ03",
+        "CQ05",
+        "CQ07",
+        "CQ08",
+        "CQ09",
+        "CQ10",
+        "CQ11",
+        "CQ12",
+        "CQ13",
+        "CQ15",
+        "CQ17",
+        "CQ19",
+        "CQ22",
+        "CQ24",
+        "CQ25",
+        "CQ26",
+        "CQ27",
+        "CQ29",
+        "CQ35",
+        "CQ52",
+        "CQ55",
+        "CQ56",
+        "CQ57",
+        "CQ62",
+        "CQ63",
+        "CQ64",
+        "CQ65",
+        "CQ66",
+        "New CQ1"
+      ],
+      "uncovered": [],
+      "results": {
+        "CQ01": [
+          {
+            "test": "Player username string",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ02": [
+          {
+            "test": "Player hasFriend Player",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ03": [
+          {
+            "test": "Player hasFriend Player",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Player playsGame Game",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ05": [
+          {
+            "test": "Player hasFriend Player",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Player hasAchievement Achievement",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ07": [
+          {
+            "test": "Player hasAchievement Achievement",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ08": [
+          {
+            "test": "Game hasAchievement Achievement",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ09": [
+          {
+            "test": "Game totalPlayTime float",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ10": [
+          {
+            "test": "Game hasAchievementType AchievementType",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ11": [
+          {
+            "test": "Game hasAchievementType AchievementType",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ12": [
+          {
+            "test": "Game hasGenre Genre",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ13": [
+          {
+            "test": "Game hasItem Item",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ15": [
+          {
+            "test": "Game releaseDate dateTime",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ17": [
+          {
+            "test": "Game hasGenre Genre",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ19": [
+          {
+            "test": "Item hasAbility Ability",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ22": [
+          {
+            "test": "Player hasKillCount Game",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ24": [
+          {
+            "test": "Player hasAchievement Achievement",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ25": [
+          {
+            "test": "Player playsGame Game",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ26": [
+          {
+            "test": "Player hasItem Item",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ27": [
+          {
+            "test": "Player hasAchievement Achievement",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Achievement hasAchievementType AchievementType",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ29": [
+          {
+            "test": "Player lastPlayedGame Game",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ35": [
+          {
+            "test": "Player playsGame Game",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Game hasAchievement Achievement",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Player hasAchievement Achievement",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ52": [
+          {
+            "test": "Player hasItem Item",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Player playsGame Game",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ55": [
+          {
+            "test": "Item usableInGame Game",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ56": [
+          {
+            "test": "Player hasInAppPurchase InAppPurchase",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ57": [
+          {
+            "test": "Player hasInAppPurchase InAppPurchase",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ62": [
+          {
+            "test": "InAppPurchase purchaseTime dateTime",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ63": [
+          {
+            "test": "Player livesIn Location",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ64": [
+          {
+            "test": "Player hasInAppPurchase InAppPurchase",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Player timeSpentBeforeFirstIAP float",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ65": [
+          {
+            "test": "Player livesIn Location",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ66": [
+          {
+            "test": "Player livesIn Location",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Player hasInAppPurchase InAppPurchase",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "New CQ1": [
+          {
+            "test": "Game hasPlayingArea PlayingArea",
+            "result": "Passed",
+            "detail": ""
+          }
+        ]
+      }
+    },
+    {
+      "n": 2,
+      "round": 1,
+      "phase": "verify",
+      "seconds": 0.76,
+      "passed": true,
+      "covered": [
+        "CQ01",
+        "CQ02",
+        "CQ03",
+        "CQ05",
+        "CQ07",
+        "CQ08",
+        "CQ09",
+        "CQ10",
+        "CQ11",
+        "CQ12",
+        "CQ13",
+        "CQ15",
+        "CQ17",
+        "CQ19",
+        "CQ22",
+        "CQ24",
+        "CQ25",
+        "CQ26",
+        "CQ27",
+        "CQ29",
+        "CQ35",
+        "CQ52",
+        "CQ55",
+        "CQ56",
+        "CQ57",
+        "CQ62",
+        "CQ63",
+        "CQ64",
+        "CQ65",
+        "CQ66",
+        "New CQ1"
+      ],
+      "uncovered": [],
+      "results": {
+        "CQ01": [
+          {
+            "test": "Player username string",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ02": [
+          {
+            "test": "Player hasFriend Player",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ03": [
+          {
+            "test": "Player hasFriend Player",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Player playsGame Game",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ05": [
+          {
+            "test": "Player hasFriend Player",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Player hasAchievement Achievement",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ07": [
+          {
+            "test": "Player hasAchievement Achievement",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ08": [
+          {
+            "test": "Game hasAchievement Achievement",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ09": [
+          {
+            "test": "Game totalPlayTime float",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ10": [
+          {
+            "test": "Game hasAchievementType AchievementType",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ11": [
+          {
+            "test": "Game hasAchievementType AchievementType",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ12": [
+          {
+            "test": "Game hasGenre Genre",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ13": [
+          {
+            "test": "Game hasItem Item",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ15": [
+          {
+            "test": "Game releaseDate dateTime",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ17": [
+          {
+            "test": "Game hasGenre Genre",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ19": [
+          {
+            "test": "Item hasAbility Ability",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ22": [
+          {
+            "test": "Player hasKillCount Game",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ24": [
+          {
+            "test": "Player hasAchievement Achievement",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ25": [
+          {
+            "test": "Player playsGame Game",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ26": [
+          {
+            "test": "Player hasItem Item",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ27": [
+          {
+            "test": "Player hasAchievement Achievement",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Achievement hasAchievementType AchievementType",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ29": [
+          {
+            "test": "Player lastPlayedGame Game",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ35": [
+          {
+            "test": "Player playsGame Game",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Game hasAchievement Achievement",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Player hasAchievement Achievement",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ52": [
+          {
+            "test": "Player hasItem Item",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Player playsGame Game",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ55": [
+          {
+            "test": "Item usableInGame Game",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ56": [
+          {
+            "test": "Player hasInAppPurchase InAppPurchase",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ57": [
+          {
+            "test": "Player hasInAppPurchase InAppPurchase",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ62": [
+          {
+            "test": "InAppPurchase purchaseTime dateTime",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ63": [
+          {
+            "test": "Player livesIn Location",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ64": [
+          {
+            "test": "Player hasInAppPurchase InAppPurchase",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Player timeSpentBeforeFirstIAP float",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ65": [
+          {
+            "test": "Player livesIn Location",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "CQ66": [
+          {
+            "test": "Player livesIn Location",
+            "result": "Passed",
+            "detail": ""
+          },
+          {
+            "test": "Player hasInAppPurchase InAppPurchase",
+            "result": "Passed",
+            "detail": ""
+          }
+        ],
+        "New CQ1": [
+          {
+            "test": "Game hasPlayingArea PlayingArea",
+            "result": "Passed",
+            "detail": ""
+          }
+        ]
+      }
+    }
+  ],
+  "test_history": {
+    "Player username string": [
+      "Passed",
+      "Passed"
+    ],
+    "Player hasFriend Player": [
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed"
+    ],
+    "Player playsGame Game": [
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed"
+    ],
+    "Player hasAchievement Achievement": [
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed"
+    ],
+    "Game hasAchievement Achievement": [
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed"
+    ],
+    "Game totalPlayTime float": [
+      "Passed",
+      "Passed"
+    ],
+    "Game hasAchievementType AchievementType": [
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed"
+    ],
+    "Game hasGenre Genre": [
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed"
+    ],
+    "Game hasItem Item": [
+      "Passed",
+      "Passed"
+    ],
+    "Game releaseDate dateTime": [
+      "Passed",
+      "Passed"
+    ],
+    "Item hasAbility Ability": [
+      "Passed",
+      "Passed"
+    ],
+    "Player hasKillCount Game": [
+      "Passed",
+      "Passed"
+    ],
+    "Player hasItem Item": [
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed"
+    ],
+    "Achievement hasAchievementType AchievementType": [
+      "Passed",
+      "Passed"
+    ],
+    "Player lastPlayedGame Game": [
+      "Passed",
+      "Passed"
+    ],
+    "Item usableInGame Game": [
+      "Passed",
+      "Passed"
+    ],
+    "Player hasInAppPurchase InAppPurchase": [
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed"
+    ],
+    "InAppPurchase purchaseTime dateTime": [
+      "Passed",
+      "Passed"
+    ],
+    "Player livesIn Location": [
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed",
+      "Passed"
+    ],
+    "Player timeSpentBeforeFirstIAP float": [
+      "Passed",
+      "Passed"
+    ],
+    "Game hasPlayingArea PlayingArea": [
+      "Passed",
+      "Passed"
+    ]
+  },
+  "sanitized": {},
+  "testsuite_file": "/home/jovyan/LLMOnto/Benchmark/OntologyConceptMatching/MASEO_MCP/ollama/vgo/vgo_testsuite.ttl",
+  "generated_warnings": {}
+}

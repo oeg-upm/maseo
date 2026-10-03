@@ -1,0 +1,309 @@
+[
+  {
+    "cq_id": "CQ01",
+    "cq": "What is the username of the player?",
+    "tests": [
+      "Player username string"
+    ]
+  },
+  {
+    "cq_id": "CQ02",
+    "cq": "Who are the friends of the player?",
+    "tests": [
+      "Player friend Player",
+      "friend domain Player",
+      "friend range Player",
+      "friend characteristic symmetricProperty"
+    ]
+  },
+  {
+    "cq_id": "CQ03",
+    "cq": "Who are the friends that play other games as well with this player?",
+    "tests": [
+      "Player friend Player",
+      "friend domain Player",
+      "friend range Player",
+      "Player playsWith Player",
+      "playsWith domain Player",
+      "playsWith range Player"
+    ]
+  },
+  {
+    "cq_id": "CQ05",
+    "cq": "What are the achievements of my friends?",
+    "tests": [
+      "Player achievement Achievement",
+      "achievement domain Player",
+      "achievement range Achievement"
+    ]
+  },
+  {
+    "cq_id": "CQ07",
+    "cq": "What are the achievements your friend has received?",
+    "tests": [
+      "Player receives Achievement",
+      "receives domain Player",
+      "receives range Achievement"
+    ]
+  },
+  {
+    "cq_id": "CQ08",
+    "cq": "What achievements does a game have?",
+    "tests": [
+      "Game hasAchievement Achievement",
+      "hasAchievement domain Game",
+      "hasAchievement range Achievement"
+    ]
+  },
+  {
+    "cq_id": "CQ09",
+    "cq": "How many hours has this game been played in total?",
+    "tests": [
+      "Game playTime float"
+    ]
+  },
+  {
+    "cq_id": "CQ10",
+    "cq": "What are the types of achievements in this game?",
+    "tests": [
+      "Achievement type Achievement",
+      "type domain Achievement",
+      "type range Achievement"
+    ]
+  },
+  {
+    "cq_id": "CQ11",
+    "cq": "What are the types of achievements a game can have?",
+    "tests": [
+      "Game achievement Achievement",
+      "achievement domain Game",
+      "achievement range Achievement",
+      "Achievement type Achievement",
+      "type domain Achievement",
+      "type range Achievement"
+    ]
+  },
+  {
+    "cq_id": "CQ12",
+    "cq": "What is the genre of the game?",
+    "tests": [
+      "Game genre Genre",
+      "genre domain Game",
+      "genre range Genre"
+    ]
+  },
+  {
+    "cq_id": "CQ13",
+    "cq": "What items exist in a game?",
+    "tests": [
+      "Item existsIn Game",
+      "existsIn domain Item",
+      "existsIn range Game"
+    ]
+  },
+  {
+    "cq_id": "CQ15",
+    "cq": "What is the release date of the game?",
+    "tests": [
+      "Game releaseDate dateTime"
+    ]
+  },
+  {
+    "cq_id": "CQ17",
+    "cq": "List all games of a certain Genre?",
+    "tests": [
+      "Game hasGenre Genre",
+      "hasGenre domain Game",
+      "hasGenre range Genre"
+    ]
+  },
+  {
+    "cq_id": "CQ19",
+    "cq": "What abilities does an item have?",
+    "tests": [
+      "Item ability Ability",
+      "ability domain Item",
+      "ability range Ability"
+    ]
+  },
+  {
+    "cq_id": "CQ22",
+    "cq": "Who has the best kill count in the game?",
+    "tests": [
+      "Player playsIn Game",
+      "playsIn domain Player",
+      "playsIn range Game",
+      "Player killCount integer"
+    ]
+  },
+  {
+    "cq_id": "CQ24",
+    "cq": "What achievements has a player obtained?",
+    "tests": [
+      "Player obtains Achievement",
+      "obtains domain Player",
+      "obtains range Achievement"
+    ]
+  },
+  {
+    "cq_id": "CQ25",
+    "cq": "What games has the player played?",
+    "tests": [
+      "Player hasPlayed Game",
+      "hasPlayed domain Player",
+      "hasPlayed range Game"
+    ]
+  },
+  {
+    "cq_id": "CQ26",
+    "cq": "What items does the player have?",
+    "tests": [
+      "Item player Player",
+      "player domain Item",
+      "player range Player"
+    ]
+  },
+  {
+    "cq_id": "CQ27",
+    "cq": "What achievements of a certain type does the player have?",
+    "tests": [
+      "Achievement player Player",
+      "player domain Achievement",
+      "player range Player",
+      "Achievement type AchievementType",
+      "type domain Achievement",
+      "type range AchievementType"
+    ]
+  },
+  {
+    "cq_id": "CQ29",
+    "cq": "What is the last game a player has played?",
+    "tests": [
+      "Player lastGame Game",
+      "lastGame domain Player",
+      "lastGame range Game"
+    ]
+  },
+  {
+    "cq_id": "CQ35",
+    "cq": "In how many games does the player have all the achievements?",
+    "tests": [
+      "Player playsIn Game",
+      "playsIn domain Player",
+      "playsIn range Game",
+      "Player hasAchievement Achievement",
+      "hasAchievement domain Player",
+      "hasAchievement range Achievement"
+    ]
+  },
+  {
+    "cq_id": "CQ52",
+    "cq": "What equipment does a player have in a game?",
+    "tests": [
+      "Player hasEquipment Equipment",
+      "hasEquipment domain Player",
+      "hasEquipment range Equipment",
+      "Player playsIn Game",
+      "playsIn domain Player",
+      "playsIn range Game"
+    ]
+  },
+  {
+    "cq_id": "CQ55",
+    "cq": "What are the games where a player can use this item?",
+    "tests": [
+      "Game allowsUseOf Item",
+      "allowsUseOf domain Game",
+      "allowsUseOf range Item"
+    ]
+  },
+  {
+    "cq_id": "CQ56",
+    "cq": "How many players have made in app purchases?",
+    "tests": [
+      "Player makesPurchase InAppPurchase",
+      "makesPurchase domain Player",
+      "makesPurchase range InAppPurchase"
+    ]
+  },
+  {
+    "cq_id": "CQ57",
+    "cq": "How many players who have already spent money, spend money again?",
+    "tests": [
+      "Player hasSpentMoney Purchase",
+      "hasSpentMoney domain Player",
+      "hasSpentMoney range Purchase",
+      "Player hasSpentMoneyAgain Purchase",
+      "hasSpentMoneyAgain domain Player",
+      "hasSpentMoneyAgain range Purchase"
+    ]
+  },
+  {
+    "cq_id": "CQ62",
+    "cq": "What time are most of the in app purchases done?",
+    "tests": [
+      "InAppPurchase time dateTime"
+    ]
+  },
+  {
+    "cq_id": "CQ63",
+    "cq": "Where do the most paying customers live?",
+    "tests": [
+      "Customer payment Payment",
+      "payment domain Customer",
+      "payment range Payment",
+      "Customer hasPayment Payment",
+      "hasPayment domain Customer",
+      "hasPayment range Payment",
+      "Customer livesIn Location",
+      "livesIn domain Customer",
+      "livesIn range Location"
+    ]
+  },
+  {
+    "cq_id": "CQ64",
+    "cq": "How long does a player spend in the game before making first IAP?",
+    "tests": [
+      "Player playsIn Game",
+      "playsIn domain Player",
+      "playsIn range Game",
+      "Player makesPurchase InAppPurchase",
+      "makesPurchase domain Player",
+      "makesPurchase range InAppPurchase",
+      "Player timeBeforeFirstIap float"
+    ]
+  },
+  {
+    "cq_id": "CQ65",
+    "cq": "Where do the players live who have not made any IAP?",
+    "tests": [
+      "Player makesPurchase InAppPurchase",
+      "makesPurchase domain Player",
+      "makesPurchase range InAppPurchase",
+      "Player livesIn Location",
+      "livesIn domain Player",
+      "livesIn range Location"
+    ]
+  },
+  {
+    "cq_id": "CQ66",
+    "cq": "Where do the players who have done the most IAP live?",
+    "tests": [
+      "Player makesPurchase InAppPurchase",
+      "makesPurchase domain Player",
+      "makesPurchase range InAppPurchase",
+      "Player livesIn Location",
+      "livesIn domain Player",
+      "livesIn range Location"
+    ]
+  },
+  {
+    "cq_id": "New CQ1",
+    "cq": "What playing areas does a game have?",
+    "tests": [
+      "Game hasPlayingArea PlayingArea",
+      "hasPlayingArea domain Game",
+      "hasPlayingArea range PlayingArea"
+    ]
+  }
+]

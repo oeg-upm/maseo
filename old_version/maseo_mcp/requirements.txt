@@ -1,0 +1,15 @@
+# MASEO agent + MCP server dependencies (Python 3.10).
+
+# --- MCP server (mcp_server.py) ---
+mcp>=1.2                     # FastMCP server, stdio transport
+requests>=2.31              # OOPS! REST call
+rdflib>=7.0,<8.0            # parse OOPS response + ontology provenance
+# HermiT runs via the bundled HermiT.jar + `java` on PATH (no Python dep).
+
+# --- Agent (agent.py, LangGraph) ---
+langgraph>=1.0             # state-machine orchestration
+langchain-mcp-adapters>=0.3 # stdio MCP client -> loads server tools
+langchain-core>=1.0
+langchain-openai>=1.0      # OpenRouter + DeepSeek (OpenAI-compatible)
+langchain-ollama>=0.3      # Ollama (local) provider
+pyyaml>=6.0                # config.yaml parsing

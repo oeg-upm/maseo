@@ -1,0 +1,899 @@
+[
+  {
+    "cq_id": "CQ04",
+    "cq": "Which of the named and published algorithms does this tool use?",
+    "question_type": "domain",
+    "recomposition": "identity",
+    "atomic_cq_mapping": [
+      {
+        "atomic_cq_id": "CQ04_a1",
+        "atomic_cq": "Which of the named and published algorithms does this tool use?",
+        "template": "none",
+        "classes": [
+          "Software",
+          "Algorithm"
+        ],
+        "object_properties": [
+          "uses"
+        ],
+        "data_properties": [],
+        "individuals": [],
+        "instances": [
+          "ThisTool"
+        ]
+      }
+    ]
+  },
+  {
+    "cq_id": "CQ05",
+    "cq": "Are there any modifications to the algorithm the tool uses?",
+    "question_type": "domain",
+    "recomposition": "identity",
+    "atomic_cq_mapping": [
+      {
+        "atomic_cq_id": "CQ05_a1",
+        "atomic_cq": "Are there any modifications to the algorithm the tool uses?",
+        "template": "none",
+        "classes": [
+          "Software",
+          "Algorithm",
+          "Modification"
+        ],
+        "object_properties": [
+          "uses",
+          "modification"
+        ],
+        "data_properties": [],
+        "individuals": [],
+        "instances": [
+          "ThisTool"
+        ]
+      }
+    ]
+  },
+  {
+    "cq_id": "CQ06",
+    "cq": "Does this software provide XML editing?",
+    "question_type": "domain",
+    "recomposition": "identity",
+    "atomic_cq_mapping": [
+      {
+        "atomic_cq_id": "CQ06_a1",
+        "atomic_cq": "Does this software provide XML editing?",
+        "template": "none",
+        "classes": [
+          "Software",
+          "Capability"
+        ],
+        "object_properties": [
+          "provides"
+        ],
+        "data_properties": [],
+        "individuals": [
+          "XmlEditing"
+        ],
+        "instances": [
+          "ThisSoftware"
+        ]
+      }
+    ]
+  },
+  {
+    "cq_id": "CQ07",
+    "cq": "What type of software (API, Desktop application etc) is it?",
+    "question_type": "domain",
+    "recomposition": "identity",
+    "atomic_cq_mapping": [
+      {
+        "atomic_cq_id": "CQ07_a1",
+        "atomic_cq": "What type of software (API, Desktop application etc) is it?",
+        "template": "none",
+        "classes": [
+          "Software",
+          "SoftwareType"
+        ],
+        "object_properties": [
+          "hasSoftwareType"
+        ],
+        "data_properties": [],
+        "individuals": [
+          "Api",
+          "DesktopApplication",
+          "WebApplication"
+        ],
+        "instances": []
+      }
+    ]
+  },
+  {
+    "cq_id": "CQ08",
+    "cq": "What software can perform task x?",
+    "question_type": "domain",
+    "recomposition": "identity",
+    "atomic_cq_mapping": [
+      {
+        "atomic_cq_id": "CQ08_a1",
+        "atomic_cq": "What software can perform task x?",
+        "template": "none",
+        "classes": [
+          "Software",
+          "Task"
+        ],
+        "object_properties": [
+          "performs"
+        ],
+        "data_properties": [],
+        "individuals": [],
+        "instances": [
+          "TaskX"
+        ]
+      }
+    ]
+  },
+  {
+    "cq_id": "CQ11",
+    "cq": "Is this software available as a web service?",
+    "question_type": "domain",
+    "recomposition": "identity",
+    "atomic_cq_mapping": [
+      {
+        "atomic_cq_id": "CQ11_a1",
+        "atomic_cq": "Is this software available as a web service?",
+        "template": "none",
+        "classes": [
+          "Software",
+          "DeploymentType"
+        ],
+        "object_properties": [
+          "isAvailableAs"
+        ],
+        "data_properties": [],
+        "individuals": [
+          "WebService"
+        ],
+        "instances": [
+          "ThisSoftware"
+        ]
+      }
+    ]
+  },
+  {
+    "cq_id": "CQ14",
+    "cq": "Does it do what I want or need it to do e.g. render a gif?",
+    "question_type": "domain",
+    "recomposition": "identity",
+    "atomic_cq_mapping": [
+      {
+        "atomic_cq_id": "CQ14_a1",
+        "atomic_cq": "Does it do what I want or need it to do e.g. render a gif?",
+        "template": "none",
+        "classes": [
+          "Software",
+          "Task"
+        ],
+        "object_properties": [
+          "performs"
+        ],
+        "data_properties": [],
+        "individuals": [
+          "RenderGif"
+        ],
+        "instances": [
+          "ThisSoftware"
+        ]
+      }
+    ]
+  },
+  {
+    "cq_id": "CQ15",
+    "cq": "Which software tool created this data?",
+    "question_type": "domain",
+    "recomposition": "identity",
+    "atomic_cq_mapping": [
+      {
+        "atomic_cq_id": "CQ15_a1",
+        "atomic_cq": "Which software tool created this data?",
+        "template": "none",
+        "classes": [
+          "Software",
+          "Data"
+        ],
+        "object_properties": [
+          "creates"
+        ],
+        "data_properties": [],
+        "individuals": [],
+        "instances": [
+          "ThisData"
+        ]
+      }
+    ]
+  },
+  {
+    "cq_id": "CQ16",
+    "cq": "What software can I use my data with to support my task?",
+    "question_type": "domain",
+    "recomposition": "identity",
+    "atomic_cq_mapping": [
+      {
+        "atomic_cq_id": "CQ16_a1",
+        "atomic_cq": "What software can I use my data with to support my task?",
+        "template": "none",
+        "classes": [
+          "Software",
+          "Data",
+          "Task"
+        ],
+        "object_properties": [
+          "supports",
+          "uses"
+        ],
+        "data_properties": [],
+        "individuals": [],
+        "instances": [
+          "MyData",
+          "MyTask"
+        ]
+      }
+    ]
+  },
+  {
+    "cq_id": "CQ17",
+    "cq": "What are the input and output formats for this software?",
+    "question_type": "domain",
+    "recomposition": "identity",
+    "atomic_cq_mapping": [
+      {
+        "atomic_cq_id": "CQ17_a1",
+        "atomic_cq": "What are the input and output formats for this software?",
+        "template": "none",
+        "classes": [
+          "Software",
+          "Format"
+        ],
+        "object_properties": [
+          "inputFormat",
+          "outputFormat"
+        ],
+        "data_properties": [],
+        "individuals": [],
+        "instances": [
+          "ThisSoftware"
+        ]
+      }
+    ]
+  },
+  {
+    "cq_id": "CQ19",
+    "cq": "What software can read a .cel file?",
+    "question_type": "domain",
+    "recomposition": "identity",
+    "atomic_cq_mapping": [
+      {
+        "atomic_cq_id": "CQ19_a1",
+        "atomic_cq": "What software can read a .cel file?",
+        "template": "none",
+        "classes": [
+          "Software",
+          "Format"
+        ],
+        "object_properties": [
+          "reads"
+        ],
+        "data_properties": [],
+        "individuals": [
+          "CelFile"
+        ],
+        "instances": []
+      }
+    ]
+  },
+  {
+    "cq_id": "CQ21",
+    "cq": "What is the valid input for this software?",
+    "question_type": "domain",
+    "recomposition": "identity",
+    "atomic_cq_mapping": [
+      {
+        "atomic_cq_id": "CQ21_a1",
+        "atomic_cq": "What is the valid input for this software?",
+        "template": "none",
+        "classes": [
+          "Software",
+          "Format"
+        ],
+        "object_properties": [
+          "validInput"
+        ],
+        "data_properties": [],
+        "individuals": [],
+        "instances": [
+          "ThisSoftware"
+        ]
+      }
+    ]
+  },
+  {
+    "cq_id": "CQ22",
+    "cq": "Can this software export from its proprietary data format to an open format such as csv, txt?",
+    "question_type": "domain",
+    "recomposition": "identity",
+    "atomic_cq_mapping": [
+      {
+        "atomic_cq_id": "CQ22_a1",
+        "atomic_cq": "Can this software export from its proprietary data format to an open format such as csv, txt?",
+        "template": "none",
+        "classes": [
+          "Software",
+          "Format"
+        ],
+        "object_properties": [
+          "exportsTo"
+        ],
+        "data_properties": [],
+        "individuals": [
+          "Csv",
+          "Txt",
+          "ProprietaryFormat"
+        ],
+        "instances": [
+          "ThisSoftware"
+        ]
+      }
+    ]
+  },
+  {
+    "cq_id": "CQ23",
+    "cq": "Can software A work with data that are output from software B?",
+    "question_type": "domain",
+    "recomposition": "identity",
+    "atomic_cq_mapping": [
+      {
+        "atomic_cq_id": "CQ23_a1",
+        "atomic_cq": "Can software A work with data that are output from software B?",
+        "template": "none",
+        "classes": [
+          "Software",
+          "Data"
+        ],
+        "object_properties": [
+          "worksWith",
+          "outputs"
+        ],
+        "data_properties": [],
+        "individuals": [],
+        "instances": [
+          "SoftwareA",
+          "SoftwareB"
+        ]
+      }
+    ]
+  },
+  {
+    "cq_id": "CQ26",
+    "cq": "What open source, maintained software can I use to process these in this format?",
+    "question_type": "domain",
+    "recomposition": "identity",
+    "atomic_cq_mapping": [
+      {
+        "atomic_cq_id": "CQ26_a1",
+        "atomic_cq": "What open source, maintained software can I use to process these in this format?",
+        "template": "none",
+        "classes": [
+          "Software",
+          "Format"
+        ],
+        "object_properties": [
+          "processes"
+        ],
+        "data_properties": [
+          "isOpenSource",
+          "isMaintained"
+        ],
+        "individuals": [],
+        "instances": [
+          "ThisFormat"
+        ]
+      }
+    ]
+  },
+  {
+    "cq_id": "CQ29",
+    "cq": "Given input x, what are the data exports for this version?",
+    "question_type": "domain",
+    "recomposition": "identity",
+    "atomic_cq_mapping": [
+      {
+        "atomic_cq_id": "CQ29_a1",
+        "atomic_cq": "Given input x, what are the data exports for this version?",
+        "template": "none",
+        "classes": [
+          "Version",
+          "Format",
+          "Data"
+        ],
+        "object_properties": [
+          "dataExport"
+        ],
+        "data_properties": [],
+        "individuals": [],
+        "instances": [
+          "InputX",
+          "ThisVersion"
+        ]
+      }
+    ]
+  },
+  {
+    "cq_id": "CQ30",
+    "cq": "Where can I get the software?",
+    "question_type": "domain",
+    "recomposition": "identity",
+    "atomic_cq_mapping": [
+      {
+        "atomic_cq_id": "CQ30_a1",
+        "atomic_cq": "Where can I get the software?",
+        "template": "none",
+        "classes": [
+          "Software"
+        ],
+        "object_properties": [],
+        "data_properties": [
+          "downloadUrl"
+        ],
+        "individuals": [],
+        "instances": [
+          "ThisSoftware"
+        ]
+      }
+    ]
+  },
+  {
+    "cq_id": "CQ32",
+    "cq": "How do I get help?",
+    "question_type": "domain",
+    "recomposition": "identity",
+    "atomic_cq_mapping": [
+      {
+        "atomic_cq_id": "CQ32_a1",
+        "atomic_cq": "How do I get help?",
+        "template": "none",
+        "classes": [
+          "Software",
+          "HelpResource"
+        ],
+        "object_properties": [
+          "helpResource"
+        ],
+        "data_properties": [],
+        "individuals": [],
+        "instances": [
+          "ThisSoftware"
+        ]
+      }
+    ]
+  },
+  {
+    "cq_id": "CQ36",
+    "cq": "Who developed it?",
+    "question_type": "domain",
+    "recomposition": "identity",
+    "atomic_cq_mapping": [
+      {
+        "atomic_cq_id": "CQ36_a1",
+        "atomic_cq": "Who developed it?",
+        "template": "none",
+        "classes": [
+          "Software",
+          "Developer"
+        ],
+        "object_properties": [
+          "developer"
+        ],
+        "data_properties": [],
+        "individuals": [],
+        "instances": [
+          "ThisSoftware"
+        ]
+      }
+    ]
+  },
+  {
+    "cq_id": "CQ37",
+    "cq": "What is the homepage of the software?",
+    "question_type": "domain",
+    "recomposition": "identity",
+    "atomic_cq_mapping": [
+      {
+        "atomic_cq_id": "CQ37_a1",
+        "atomic_cq": "What is the homepage of the software?",
+        "template": "none",
+        "classes": [
+          "Software"
+        ],
+        "object_properties": [],
+        "data_properties": [
+          "homepage"
+        ],
+        "individuals": [],
+        "instances": [
+          "ThisSoftware"
+        ]
+      }
+    ]
+  },
+  {
+    "cq_id": "CQ38",
+    "cq": "Can we collaborate with developers of software x?",
+    "question_type": "domain",
+    "recomposition": "identity",
+    "atomic_cq_mapping": [
+      {
+        "atomic_cq_id": "CQ38_a1",
+        "atomic_cq": "Can we collaborate with developers of software x?",
+        "template": "none",
+        "classes": [
+          "Software",
+          "Developer"
+        ],
+        "object_properties": [
+          "developer",
+          "acceptsCollaboration"
+        ],
+        "data_properties": [],
+        "individuals": [],
+        "instances": [
+          "SoftwareX"
+        ]
+      }
+    ]
+  },
+  {
+    "cq_id": "CQ40",
+    "cq": "Which URL can I get it from?",
+    "question_type": "domain",
+    "recomposition": "identity",
+    "atomic_cq_mapping": [
+      {
+        "atomic_cq_id": "CQ40_a1",
+        "atomic_cq": "Which URL can I get it from?",
+        "template": "none",
+        "classes": [
+          "Software"
+        ],
+        "object_properties": [],
+        "data_properties": [
+          "downloadUrl"
+        ],
+        "individuals": [],
+        "instances": [
+          "ThisSoftware"
+        ]
+      }
+    ]
+  },
+  {
+    "cq_id": "CQ45",
+    "cq": "How long has this software been around?",
+    "question_type": "domain",
+    "recomposition": "identity",
+    "atomic_cq_mapping": [
+      {
+        "atomic_cq_id": "CQ45_a1",
+        "atomic_cq": "How long has this software been around?",
+        "template": "none",
+        "classes": [
+          "Software"
+        ],
+        "object_properties": [],
+        "data_properties": [
+          "firstReleaseDate"
+        ],
+        "individuals": [],
+        "instances": [
+          "ThisSoftware"
+        ]
+      }
+    ]
+  },
+  {
+    "cq_id": "CQ46",
+    "cq": "How actively developed is it?",
+    "question_type": "domain",
+    "recomposition": "identity",
+    "atomic_cq_mapping": [
+      {
+        "atomic_cq_id": "CQ46_a1",
+        "atomic_cq": "How actively developed is it?",
+        "template": "none",
+        "classes": [
+          "Software"
+        ],
+        "object_properties": [],
+        "data_properties": [
+          "developmentActivity"
+        ],
+        "individuals": [],
+        "instances": [
+          "ThisSoftware"
+        ]
+      }
+    ]
+  },
+  {
+    "cq_id": "CQ54",
+    "cq": "What is the version of this software?",
+    "question_type": "domain",
+    "recomposition": "identity",
+    "atomic_cq_mapping": [
+      {
+        "atomic_cq_id": "CQ54_a1",
+        "atomic_cq": "What is the version of this software?",
+        "template": "none",
+        "classes": [
+          "Software",
+          "Version"
+        ],
+        "object_properties": [
+          "version"
+        ],
+        "data_properties": [],
+        "individuals": [],
+        "instances": [
+          "ThisSoftware"
+        ]
+      }
+    ]
+  },
+  {
+    "cq_id": "CQ55",
+    "cq": "What new features are in this version?",
+    "question_type": "domain",
+    "recomposition": "identity",
+    "atomic_cq_mapping": [
+      {
+        "atomic_cq_id": "CQ55_a1",
+        "atomic_cq": "What new features are in this version?",
+        "template": "none",
+        "classes": [
+          "Version",
+          "Feature"
+        ],
+        "object_properties": [
+          "feature"
+        ],
+        "data_properties": [],
+        "individuals": [],
+        "instances": [
+          "ThisVersion"
+        ]
+      }
+    ]
+  },
+  {
+    "cq_id": "CQ57",
+    "cq": "When was the 1.0 version released?",
+    "question_type": "domain",
+    "recomposition": "identity",
+    "atomic_cq_mapping": [
+      {
+        "atomic_cq_id": "CQ57_a1",
+        "atomic_cq": "When was the 1.0 version released?",
+        "template": "none",
+        "classes": [
+          "Version"
+        ],
+        "object_properties": [],
+        "data_properties": [
+          "releaseDate"
+        ],
+        "individuals": [
+          "Version1_0"
+        ],
+        "instances": []
+      }
+    ]
+  },
+  {
+    "cq_id": "CQ58",
+    "cq": "Is the software open source development? Is there a community development?",
+    "question_type": "domain",
+    "recomposition": "identity",
+    "atomic_cq_mapping": [
+      {
+        "atomic_cq_id": "CQ58_a1",
+        "atomic_cq": "Is the software open source development? Is there a community development?",
+        "template": "none",
+        "classes": [
+          "Software",
+          "DevelopmentModel"
+        ],
+        "object_properties": [
+          "developmentModel"
+        ],
+        "data_properties": [],
+        "individuals": [
+          "OpenSourceDevelopment",
+          "CommunityDrivenDevelopment"
+        ],
+        "instances": [
+          "ThisSoftware"
+        ]
+      }
+    ]
+  },
+  {
+    "cq_id": "CQ59",
+    "cq": "What license and what is permissiveness?",
+    "question_type": "domain",
+    "recomposition": "identity",
+    "atomic_cq_mapping": [
+      {
+        "atomic_cq_id": "CQ59_a1",
+        "atomic_cq": "What license and what is permissiveness?",
+        "template": "none",
+        "classes": [
+          "Software",
+          "License"
+        ],
+        "object_properties": [
+          "license"
+        ],
+        "data_properties": [
+          "permissiveness"
+        ],
+        "individuals": [],
+        "instances": [
+          "ThisSoftware"
+        ]
+      }
+    ]
+  },
+  {
+    "cq_id": "CQ60",
+    "cq": "Is it open source or not?",
+    "question_type": "domain",
+    "recomposition": "identity",
+    "atomic_cq_mapping": [
+      {
+        "atomic_cq_id": "CQ60_a1",
+        "atomic_cq": "Is it open source or not?",
+        "template": "none",
+        "classes": [
+          "Software"
+        ],
+        "object_properties": [],
+        "data_properties": [
+          "isOpenSource"
+        ],
+        "individuals": [],
+        "instances": [
+          "ThisSoftware"
+        ]
+      }
+    ]
+  },
+  {
+    "cq_id": "CQ65",
+    "cq": "Is it FOSS?",
+    "question_type": "domain",
+    "recomposition": "identity",
+    "atomic_cq_mapping": [
+      {
+        "atomic_cq_id": "CQ65_a1",
+        "atomic_cq": "Is it FOSS?",
+        "template": "none",
+        "classes": [
+          "Software"
+        ],
+        "object_properties": [],
+        "data_properties": [
+          "isFoss"
+        ],
+        "individuals": [],
+        "instances": [
+          "ThisSoftware"
+        ]
+      }
+    ]
+  },
+  {
+    "cq_id": "CQ68",
+    "cq": "Is it free or not?",
+    "question_type": "domain",
+    "recomposition": "identity",
+    "atomic_cq_mapping": [
+      {
+        "atomic_cq_id": "CQ68_a1",
+        "atomic_cq": "Is it free or not?",
+        "template": "none",
+        "classes": [
+          "Software"
+        ],
+        "object_properties": [],
+        "data_properties": [
+          "isFree"
+        ],
+        "individuals": [],
+        "instances": [
+          "ThisSoftware"
+        ]
+      }
+    ]
+  },
+  {
+    "cq_id": "CQ73",
+    "cq": "Where is the documentation?",
+    "question_type": "domain",
+    "recomposition": "identity",
+    "atomic_cq_mapping": [
+      {
+        "atomic_cq_id": "CQ73_a1",
+        "atomic_cq": "Where is the documentation?",
+        "template": "none",
+        "classes": [
+          "Software",
+          "Documentation"
+        ],
+        "object_properties": [
+          "documentation"
+        ],
+        "data_properties": [],
+        "individuals": [],
+        "instances": [
+          "ThisSoftware"
+        ]
+      }
+    ]
+  },
+  {
+    "cq_id": "CQ84",
+    "cq": "In what language was it implemented?",
+    "question_type": "domain",
+    "recomposition": "identity",
+    "atomic_cq_mapping": [
+      {
+        "atomic_cq_id": "CQ84_a1",
+        "atomic_cq": "In what language was it implemented?",
+        "template": "none",
+        "classes": [
+          "Software",
+          "ProgrammingLanguage"
+        ],
+        "object_properties": [
+          "implementationLanguage"
+        ],
+        "data_properties": [],
+        "individuals": [],
+        "instances": [
+          "ThisSoftware"
+        ]
+      }
+    ]
+  },
+  {
+    "cq_id": "CQ85",
+    "cq": "What platform does the software run on?",
+    "question_type": "domain",
+    "recomposition": "identity",
+    "atomic_cq_mapping": [
+      {
+        "atomic_cq_id": "CQ85_a1",
+        "atomic_cq": "What platform does the software run on?",
+        "template": "none",
+        "classes": [
+          "Software",
+          "Platform"
+        ],
+        "object_properties": [
+          "runsOn"
+        ],
+        "data_properties": [],
+        "individuals": [],
+        "instances": [
+          "ThisSoftware"
+        ]
+      }
+    ]
+  }
+]

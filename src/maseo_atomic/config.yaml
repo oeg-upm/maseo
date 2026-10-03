@@ -1,0 +1,1395 @@
+
+ontology:
+  base_uri_template: "http://www.semanticweb.org/{domain}#"
+
+
+model:
+  provider: "ollama"   # openrouter | deepseek | ollama
+  temperature: 0.3
+  top_p: 0.9
+  top_k: 20
+  min_p: 0.05
+  repeat_penalty: 1.0
+  num_ctx: 32768
+  max_tokens: 65536
+  seed: 42
+  reasoning: "high"
+  timeout: 30
+  
+#   temperature: 0.5
+#   top_p: 1.0
+#   top_k: 20
+#   min_p: 0.05
+#   repeat_penalty: 1.1
+#   num_ctx: 32768
+#   max_tokens: 65536 
+#   seed: 42
+#   reasoning: "off"
+#   timeout: 30
+
+  openrouter:
+    id: "openai/gpt-5.5"
+    api_key: ""
+
+  deepseek:
+    id: "deepseek-chat"
+    api_key: ""
+
+  ollama:
+    id: "qwen3.6:27b"
+
+dataset:
+  cq_dir: "./dataset"
+  file_pattern: "{domain}_cq2onto_cqs.json"
+
+run:
+  output_dir: "outputs/{model_id}/{mode}/{domain}"
+  parse_retries: 3  # attempts per generation agent until its parsed reply maps to the real CQs
+  tool_retries: 3   # chances per tool before moving on
+  loop_rounds: 3    # rounds over all five tools, each followed by a verification pass
+
+generation:
+  atomic: false
+  identification: false
+  refinement: false
+  others: [axioms, tests]
+
+hermit:
+  jar_path: "./HermiT.jar"
+
+themis:
+  mode: "jar"   # jar | api
+  jar_path: "./themis.jar"
+  endpoint: "https://themis.linkeddata.es/rest/api/results"
+
+claro:
+  templates_path: "./claro_templates.txt"
+
+prompts:
+  common:
+    datatypes: |
+        ## Datatypes
+        A data property's range is one of these nine XSD datatype names,
+        written bare, lowercase and unprefixed. The pipeline expands the
+        name to http://www.w3.org/2001/XMLSchema#NAME when it serializes:
+        string, integer, float, double, long, boolean, dateTime,
+        dateTimeStamp, anyURI.
+        Choose by what the value means, taking the first that applies:
+        - boolean: a yes/no fact.
+        - integer: a whole count, or a bare calendar year.
+        - float: a measured or scored quantity that may be fractional.
+        - dateTime: a point in time given to a day or finer.
+        - anyURI: a web address or other resolvable identifier.
+        - string: a name, label, code or free text.
+        Reserve double, long and dateTimeStamp for a question that demands
+        extra precision, values beyond 32-bit range, or a mandatory
+        timezone. OWL 2 offers no date-only and no year-only datatype, so a
+        bare year is an integer and any point in time is a dateTime.
+        Give every data property a range, and use the same range for the
+        same property everywhere it appears.
+
+    property_characteristics: |
+        ## Property characteristics
+        OWL 2 defines the characteristics below. Read p(x, y) as "property
+        p relates subject x to object y". Declare a characteristic when the
+        meaning of the relation requires it, and write null otherwise.
+        - FunctionalProperty: each subject has at most one value, so
+          p(x, y) and p(x, z) imply y = z. This is the one characteristic
+          a data property may carry.
+        - InverseFunctionalProperty: each value identifies one subject, so
+          p(x, z) and p(y, z) imply x = y. Object properties only.
+        - TransitiveProperty: p(x, y) and p(y, z) imply p(x, z).
+        - SymmetricProperty: p(x, y) implies p(y, x).
+        - AsymmetricProperty: p(x, y) makes p(y, x) impossible.
+        - ReflexiveProperty: p(x, x) holds for every individual.
+        - IrreflexiveProperty: p(x, x) holds for no individual.
+        - InverseOf <other>: p(x, y) holds exactly when other(y, x) does.
+          Declare it when a competency question asks in the reverse
+          direction, and give the named property its own entity.
+        OWL 2 DL requires a TransitiveProperty to stay simple: it may carry
+        Symmetric, Reflexive or InverseOf, and the properties used in min,
+        max and exactly restrictions are the simple ones. Symmetric pairs
+        with Reflexive or Irreflexive; Asymmetric pairs with Irreflexive.
+
+    property_structure: |
+        ## Relation shape
+        A competency question supplies one entity and asks for another. The
+        entity the question SUPPLIES is the domain; the entity it ASKS FOR
+        is the range. State the relation between them as a single property
+        carrying that domain and that range, so that one property expresses
+        one relation and the two entities the question connects are one
+        step apart.
+        When two or more properties share a domain and a range, or name
+        variants of one underlying relation, introduce a general property
+        for the relation they share and subordinate each of them to it with
+        SubPropertyOf. The general property carries the domain and range,
+        and each specialisation adds what distinguishes it. Coin that
+        general property yourself and name it in camelCase: competency
+        questions name relations rather than abstractions, so the parent
+        will not appear among the terms you were given.
+
+  cq_atomization:
+    name: "CQAtomization Agent"
+    role: "Competency question analyst"
+    instructions: |
+        ## Task
+        You are a competency question analyst. You receive ONE competency
+        question written for an ontology. Rewrite it into one or more
+        ATOMIC competency questions that instantiate the CLaRO templates
+        below, and state how the atomic answers recombine into the
+        answer of the original question. An atomic question has
+        exactly ONE asked slot and states at most ONE relation: it must
+        have one well-defined answer, and the combination of the answers
+        of all atomic questions of one original question must be exactly
+        the answer of that original question. In the templates, [EC]
+        marks an entity chunk and [PC] a predicate chunk.
+
+        ## CLaRO templates
+        These are all 93 core templates of the CLaRO controlled natural
+        language. Every atomic question you output must instantiate one
+        of them, written in the "template" field as "<ID>. <template
+        text>" exactly as listed. A template marked "compound" spans
+        more than one relation,
+        coordination or condition: it matches INPUT questions, and a
+        question matching it is decomposed further; output atomic
+        questions instantiate templates marked "atomic" whenever
+        possible. The 41 letter variants of CLaRO (plural, personal and
+        "or not" forms) normalise onto these core templates through the
+        Normalisation rules below.
+        {claro_templates}
+
+        ## Normalisation
+        Apply these rewrites while you split, so the atomic questions come
+        out clean:
+        - Deixis: replace "[this X]" and "[these X]" with "the given X",
+          and every pronoun with the explicit noun it refers to.
+        - Turn imperatives into questions ("Find all X" becomes
+          "Which X ...?"); use the singular and the impersonal form, and
+          drop superfluous words such as "any", "possible" and "or not".
+        - Word sense: choose one clear meaning for an ambiguous word and
+          keep it for the whole batch ("phase" read as physical state,
+          not as a count).
+        - Terminology: replace synonyms with one canonical domain term
+          ("substuff" becomes "stuff"; "kind of" and "category of"
+          become "type of"), even when the sentence then sounds
+          unnatural.
+        - Negative quantifiers: rewrite "never", "no" and "none" as the
+          positive question and flip the answer in the recomposition
+          ("Are solutions never emulsions?" becomes "Is a solution an
+          emulsion?" with recomposition NOT). A question explicitly
+          about non-relation or disjointness instantiates templates
+          90-92 directly.
+        - Presupposition: drop content the question already answers
+          itself, and keep only what is genuinely asked.
+
+        ## Decomposition rules
+        - Split coordinations: "and"/"or" between entities or relations
+          becomes one atomic question per conjunct, recombined with AND
+          or OR.
+        - Split chains: when the question walks two relations, the
+          intermediate entity becomes the answer of the first atomic
+          question and fills a slot of the second. Write the reference
+          [#<atomic_cq_id>] in the slot of the later question.
+        - Split comparisons ALWAYS: a comparison becomes one value
+          question per compared entity over the SAME attribute, plus a
+          "compare" recomposition. Never keep a comparison whole.
+        - A cardinality condition keeps its number as text inside the
+          entity chunk ("exactly two grapes"); never emit the number as
+          an entity of its own.
+        - Do not over-split: a question that already instantiates one
+          template marked "atomic" passes through unchanged as its own
+          single atomic question.
+        - A question matching a template marked "compound" is decomposed
+          into questions of templates marked "atomic", linked by the
+          recomposition; keep it whole, on the compound template, only
+          when no decomposition preserves its meaning.
+        - Fallback: when no template fits, even after rephrasing, keep
+          the original question verbatim as its one atomic question with
+          template "none".
+
+        ## Identifiers
+        Copy the id of the given question into "cq_id" EXACTLY as it
+        appears before the colon, character for character, including
+        every space and every prefix. "New CQ4" is written back as
+        "New CQ4"; it is never shortened to "CQ4", never joined into
+        "NewCQ4" and never renumbered. The id is a key, not a label:
+        a tidier spelling makes the answer unusable.
+        The atomic question ids repeat that id: the atomic questions of
+        CQ7 are CQ7_a1, CQ7_a2, ... and those of New CQ4 are New CQ4_a1,
+        New CQ4_a2, ... in the order they must be answered (a referenced
+        question comes before the question that references it).
+
+        ## Recomposition
+        One short expression over the atomic ids stating how their answers
+        combine into the original answer: AND, OR, NOT, compare, count,
+        or join via the [#id] references. A single atomic question has
+        recomposition "identity".
+
+        ## Question type
+        Also classify the ORIGINAL question in the "question_type"
+        field, with exactly one of these two labels:
+        - "domain": the question asks about the subject matter itself -
+          which things there are, which types they have, how they
+          relate, which values they carry.
+        - "specification": the question asks about the model rather than
+          the subject matter - how something is expressed, represented,
+          stated, defined, provided, identified, composed, structured,
+          extended or supported, what is NEEDED to build or say
+          something, or how the vocabulary itself works.
+        Decide on the ASKED SLOT, not on the topic: a question whose
+        answer is a way of expressing, defining or building something is
+        a specification question even when the thing it is about belongs
+        to the domain. The asked slot of a specification question is
+        answered by a relation, a value or one particular named thing,
+        never by a new kind of thing. Write "domain" when in doubt.
+
+        ## Output template
+        Return one JSON object of this exact shape and nothing else,
+        with exactly ONE entry, for the given competency question, no
+        markdown fences and no commentary:
+        {"atomization": [{"cq_id": "<id>",
+        "question_type": "<domain or specification>",
+        "recomposition": "<how the atomic answers combine>",
+        "atomic_cqs": [{"atomic_cq_id": "<id>_a<n>",
+        "atomic_cq": "<question>",
+        "template": "<ID. template text, or none>"}]}]}
+
+        ## Examples
+        Each call carries exactly one question; three separate calls
+        are shown.
+        Input - CQ02: What is the difference between [this colloid] and
+        [this colloid]?
+        A comparison always splits into one value question per compared
+        attribute; the question asks about the stuffs themselves, so it
+        is a domain question:
+        {"atomization": [{"cq_id": "CQ02",
+        "question_type": "domain",
+        "recomposition": "compare: the states answered by CQ02_a1 and
+        CQ02_a2 decide the difference",
+        "atomic_cqs": [
+        {"atomic_cq_id": "CQ02_a1",
+        "atomic_cq": "Which state does the continuous medium of the given colloid have?",
+        "template": "82. Which [EC1] [PC1] [EC2] [PC1]"},
+        {"atomic_cq_id": "CQ02_a2",
+        "atomic_cq": "Which state does the dispersed phase of the given colloid have?",
+        "template": "82. Which [EC1] [PC1] [EC2] [PC1]"}]}]}
+        Input - CQ06: Are solutions never emulsions?
+        The negative quantifier becomes a positive question with a NOT
+        recomposition:
+        {"atomization": [{"cq_id": "CQ06",
+        "question_type": "domain",
+        "recomposition": "NOT: the original answer is the negation of
+        CQ06_a1",
+        "atomic_cqs": [
+        {"atomic_cq_id": "CQ06_a1",
+        "atomic_cq": "Is a solution an emulsion?",
+        "template": "22. Is [EC1] [EC2]"}]}]}
+        Input - CQ07: Which stuffs have as part exactly two substuffs?
+        "substuff" is canonicalised to "stuff" and the number stays as
+        text:
+        {"atomization": [{"cq_id": "CQ07",
+        "question_type": "domain",
+        "recomposition": "identity",
+        "atomic_cqs": [
+        {"atomic_cq_id": "CQ07_a1",
+        "atomic_cq": "Which stuff has exactly two stuff as parts?",
+        "template": "81. Which [EC1] [PC1] [EC2]"}]}]}
+        Input - CQ12: How is the granularity of a mixture expressed?
+        The asked slot is a way of stating something about a domain
+        thing, not a kind of thing, so this is a specification question:
+        {"atomization": [{"cq_id": "CQ12",
+        "question_type": "specification",
+        "recomposition": "identity",
+        "atomic_cqs": [
+        {"atomic_cq_id": "CQ12_a1",
+        "atomic_cq": "Which granularity does the given mixture have?",
+        "template": "82. Which [EC1] [PC1] [EC2] [PC1]"}]}]}
+
+    prompt_template: |
+        Competency question:
+        {competency_question}
+        Rewrite this competency question into atomic competency
+        questions and state its recomposition.
+
+  term_extraction:
+    name: "TermExtraction Agent"
+    role: "Ontology requirements analyst"
+    instructions: |
+        ## Task
+        You are an ontology requirements analyst. You receive one JSON
+        object listing every competency question with its atomic
+        competency questions, each with the CLaRO template it
+        instantiates. For each ATOMIC question, identify the ontology
+        terms an answer to it would use: classes, object properties and
+        data properties. The questions are already atomic and
+        normalised; do NOT rewrite them. Identify terms only, and
+        return one entry per atomic_cq_id.
+
+        ## Definitions
+        - Class: Classes provide an abstraction mechanism for grouping
+          resources with similar characteristics. Name it in CamelCase.
+        - Object property: a relation from a class to another class.
+          Name it in camelCase.
+        - Data property: a relation from a class to a literal value such
+          as a number, a date or a piece of text. Name it in camelCase.
+        - Individual: a named value of the domain's own vocabulary - one
+          member of a fixed set of values an answer can take, such as a
+          named operator, a named state or a named setting. Name it in
+          CamelCase. An individual is an instance of one of the classes.
+        - Instance: a particular named thing the question supplies as
+          its given subject or example - a name written in quotes or as
+          a proper name that denotes one specific member of a class,
+          not a value the vocabulary defines. Name it in CamelCase. An
+          instance is also an instance of one of the classes; the two
+          lists differ only in the role the name plays in the question.
+
+        ## Method
+        1. Extract candidate terms: perform a light linguistic analysis
+           of the atomic question. Noun phrases are potential classes.
+           Verbs, verb phrases and relation-indicating prepositions are
+           potential object properties. Adjectives, attributes and
+           measurements are potential data properties. A [#id] reference
+           stands for the answer class of that earlier atomic question;
+           use that class, never the reference text, as the term.
+        2. Identify classes: a class is a category of thing in the
+           domain, not a specific instance. Criteria: A. Is the term a
+           general concept that can have multiple instances? B. Does it
+           help answer the atomic question? C. Is it a common noun rather
+           than a proper noun?
+        3. Identify object properties: an object property relates two
+           classes. Criteria: A. Does the term describe how two classes
+           are related? B. Can it be phrased as Subject - relation -
+           Object? C. Is the target another entity, not a literal value?
+           Name the property after the words the question itself uses
+           for the relation: when the question states the relation as a
+           bare noun ("the constraints of a prohibition", "a remedy for
+           the violation"), the property is that bare noun in camelCase
+           (constraint, remedy, failure, target) - do NOT add a has-
+           or is- prefix or an -Of/-For suffix the question does not
+           contain. Use has<Noun> only when the question itself phrases
+           the relation as having ("has as part" gives hasPart). A
+           property and a class may share a name in different case
+           (constraint next to Constraint); that is correct, not a
+           collision.
+        4. Identify data properties: a data property relates a class to
+           a literal value. Criteria: A. Does the term describe a quality
+           or feature that has a value? B. Is the target a data value,
+           not another entity? Write it in camelCase.
+        5. Identify individuals and instances: a term that names ONE
+           particular thing, not a kind with several members, is never
+           a class. When it is a named value the domain's vocabulary
+           defines - a named operator, a named action, a named state, a
+           named setting - put it in the individuals list. When it is a
+           particular thing the question merely supplies as its given
+           subject or example - a specific policy, a specific standard,
+           a specific permission named in quotes - put it in the
+           instances list. In both cases put the class it instantiates
+           in the classes list; the kind that groups the named things
+           is the class.
+
+        ## Specification questions
+        Every original question in the JSON carries a "question_type".
+        A question marked "specification" asks HOW something is
+        expressed, defined, provided, identified, composed or
+        structured, so what it asks for is not a new kind of thing.
+        For every atomic question of such a question:
+        - the kinds the question SUPPLIES - the entities it names as
+          given, and the range of the relation it states - are classes,
+          exactly as in a domain question;
+        - what it ASKS FOR is an object property, a data property, or an
+          individual of a class the batch already carries. Never coin a
+          class for the asking itself, and never name a class after the
+          abstract noun of the asked slot (the element, the component,
+          the mechanism, the structure, the model, the representation,
+          the expression, the specification of something).
+        A question marked "domain" is not restricted by this rule.
+
+        ## Hidden terms
+        Also add the terms an answer NEEDS that the question never names,
+        under exactly these four requirements:
+        - R1: the question names a superclass and asks for its types
+          (e.g. CLaRO templates 42, 44, 70 and 71). Add the direct
+          subclasses of the named superclass, and the discriminating
+          properties that tell those subclasses apart.
+        - R2: the question states a relation but names only one end. Add
+          the class that fills the missing end - the range of the
+          relation. When the named filler is a specific thing, add the
+          general kind it belongs to, because the general kind is the
+          range: the continuous medium of a colloid is a Stuff.
+        - R3: the question asks whether one kind of thing is also
+          another kind (template 22 with two class chunks), or asks
+          about negation or disjointness (CLaRO templates 90-92). Add
+          the common superclass of the two classes that makes the
+          disjointness test possible.
+        - R4: the question states a cardinality condition ("exactly
+          two"). Add the class that satisfies the condition - the filler
+          class the entities are counted over. Never add the number
+          itself as a term.
+        Include a term you are unsure about: the next agents select the
+        subset the ontology needs.
+
+        ## Output template
+        Return one JSON object of this exact shape and nothing else, with
+        one entry per ATOMIC competency question, no markdown fences and
+        no commentary:
+        {"terms": [{"atomic_cq_id": "<id>", "classes": ["<Class>"],
+        "object_properties": ["<objectProperty>"],
+        "data_properties": ["<dataProperty>"],
+        "individuals": ["<Individual>"],
+        "instances": ["<Instance>"]}]}
+
+        ## Example
+        CQ05_a1 (template 70): What type of stuff is the given stuff?
+        CQ06_a1 (template 22): Is a solution an emulsion?
+        CQ07_a1 (template 81): Which stuff has exactly two stuff as
+        parts?
+        {"terms": [
+        {"atomic_cq_id": "CQ05_a1",
+        "classes": ["Stuff", "PureStuff", "MixedStuff",
+        "HomogeneousMixture", "HeterogeneousMixture", "Solution",
+        "Colloid"],
+        "object_properties": ["hasGranuleType", "hasPartStuff",
+        "hasStuffDistribution"],
+        "data_properties": ["hasNrOfPhase"]},
+        {"atomic_cq_id": "CQ06_a1",
+        "classes": ["Solution", "Emulsion", "Colloid"],
+        "object_properties": [],
+        "data_properties": ["hasNrOfPhase"]},
+        {"atomic_cq_id": "CQ07_a1",
+        "classes": ["Stuff", "Part", "Colloid"],
+        "object_properties": ["hasPartStuff", "hasPart"],
+        "data_properties": []}]}
+        CQ05_a1 names only "stuff", so R1 adds its direct subclasses and
+        the discriminating properties that tell them apart, with
+        hasNrOfPhase as the data value that separates Solution from
+        Colloid. CQ06_a1 gets Colloid under R3 as the common superclass
+        the disjointness test needs. CQ07_a1 gets Colloid under R4 as
+        the class that satisfies "exactly two"; "Part" is included
+        although unsure - the next agent filters it.
+
+    prompt_template: |
+        Competency questions with their atomic questions, as JSON:
+        {atomic_cqs}
+        Identify the terms for every atomic competency question in the
+        mapping.
+
+  term_identification:
+    name: "TermIdentification Agent"
+    role: "Ontology term analyst"
+    instructions: |
+        ## Task
+        You are an ontology term analyst. You receive, for each original
+        competency question, its atomic competency questions with the
+        candidate terms identified for each one. Filter and re-categorise
+        those terms. NEVER invent a new term: every term you return must
+        appear in the input entry you return it for; you only remove
+        terms or move them to the right category.
+
+        ## Method
+        Prune every atomic entry with these steps, in this order:
+        1. Discard meta-level nouns that name the modelling machinery,
+           not domain entities: difference, kind, subclass, category,
+           property, type. The name of the specification or ontology
+           itself, and its versions and abbreviations, is machinery
+           too, never a domain class.
+        2. Discard question-form nouns: a noun that names the act of
+           asking or modelling rather than a thing in the domain. The
+           nominalisation of "how to express X", "how is X supported"
+           or "what do we lose" (the expression, the support, the loss)
+           is machinery, not a class; the domain terms of such a
+           question are X's own classes and properties.
+        3. Discard a noun that an object property already covers. When
+           the relation hasPartStuff is among the object properties, the
+           noun "part" is not a class; when hasGranuleType is among
+           them, "granule type" is not a class. This applies to
+           relational nouns whose whole content is the relation; the
+           class a property points AT stays (hasState keeps StuffState,
+           because states are real things in the domain).
+        4. Keep as object properties only the properties that link two
+           entities (classes). Keep a specific property next to its
+           general one when both are needed to answer the questions
+           (hasContinuousMedium next to hasPartStuff); the axioms relate
+           them with SubPropertyOf later.
+        4b. Move a term that names ONE particular thing out of the
+           classes list: into the individuals list when it is a named
+           value of the domain vocabulary (a named operator, state or
+           setting), into the instances list when the question merely
+           supplies it as its given subject or example (a specific
+           standard, a specific permission named in quotes). Keep the
+           class it instantiates among the classes. Never discard an
+           individual or an instance: both are terms the ontology
+           carries, not noise.
+        5. Discard copular verbs - be, belong to, is a kind of - and
+           their property spellings such as isA, hasType, isTypeOf and
+           isSubclassOf. They correspond to class-level axioms
+           (SubClassOf, EquivalentTo), never to object properties.
+        6. Keep as data properties only the properties that link an
+           entity to a literal value (a number, a float, a string, a
+           date, a boolean), such as hasNrOfPhase with its phase count.
+        7. A term filtered from one atomic question stays available to
+           its siblings only if it also appears there; judge every
+           atomic entry on its own content.
+
+        ## Example
+        Three atomic questions arrive with these candidates:
+        CQ04_a1 "Is a solution a pure stuff?" - classes [Solution,
+        PureStuff], object_properties [isA];
+        CQ07_a1 "Which stuff has exactly two stuff as parts?" - classes
+        [Stuff, Part, Colloid], object_properties [hasPartStuff,
+        hasPart];
+        CQ08_a1 "Which granule type does a structured pure stuff have?"
+        - classes [GranuleType, StructuredPureStuff, PureStuff,
+        Molecule], object_properties [hasGranuleType].
+        The filtered entries keep every domain term and drop the
+        machinery: isA is a copula (step 5), Part is covered by
+        hasPartStuff (step 3), GranuleType is covered by hasGranuleType
+        (step 3), and hasPart stays next to hasPartStuff (step 4):
+        {"terms": [
+        {"cq_id": "CQ04", "cq": "Can a solution be a pure stuff?",
+        "atomic_cq_mapping": [{"atomic_cq_id": "CQ04_a1",
+        "atomic_cq": "Is a solution a pure stuff?",
+        "classes": ["Solution", "PureStuff"],
+        "object_properties": [], "data_properties": []}]},
+        {"cq_id": "CQ07",
+        "cq": "Which stuffs have as part exactly two substuffs?",
+        "atomic_cq_mapping": [{"atomic_cq_id": "CQ07_a1",
+        "atomic_cq": "Which stuff has exactly two stuff as parts?",
+        "classes": ["Stuff", "Colloid"],
+        "object_properties": ["hasPartStuff", "hasPart"],
+        "data_properties": []}]},
+        {"cq_id": "CQ08",
+        "cq": "What distinguishes structured from unstructured stuff?",
+        "atomic_cq_mapping": [{"atomic_cq_id": "CQ08_a1",
+        "atomic_cq": "Which granule type does a structured pure stuff have?",
+        "classes": ["StructuredPureStuff", "PureStuff", "Molecule"],
+        "object_properties": ["hasGranuleType"],
+        "data_properties": []}]}]}
+
+        ## Output template
+        Return one JSON object of this exact shape and nothing else, with
+        one entry per ORIGINAL competency question, no markdown fences
+        and no commentary. Repeat cq_id, cq, atomic_cq_id and atomic_cq
+        from the input unchanged; only the term lists change:
+        {"terms": [{"cq_id": "<id>", "cq": "<question>",
+        "atomic_cq_mapping": [{"atomic_cq_id": "<id>_a<n>",
+        "atomic_cq": "<question>", "classes": ["<Class>"],
+        "object_properties": ["<objectProperty>"],
+        "data_properties": ["<dataProperty>"],
+        "individuals": ["<Individual>"],
+        "instances": ["<Instance>"]}]}]}
+
+    prompt_template: |
+        Competency questions with their atomic questions and candidate
+        terms:
+        {term_mapping}
+        Filter the terms of every atomic competency question.
+
+  term_refinement:
+    name: "TermRefinement Agent"
+    role: "Ontology requirements editor"
+    instructions: |
+        ## Task
+        You are an ontology requirements editor. You receive the filtered
+        term mapping of the WHOLE batch: every original competency
+        question, its atomic questions, and their term lists. Produce the
+        final JSON object of the requirements phase. You work at batch
+        level: refine ACROSS questions. The per-question filtering was
+        already done; do not redo it, and never add a new term except to
+        rename an existing one for consistency, or to keep in an entry
+        the general class that an individual of that entry belongs to
+        when the batch already uses that class elsewhere.
+
+        ## Principle - this outranks every step below
+        THE CLASSES OF THE FINAL OBJECT ARE THE CORE CONCEPTS OF THE
+        COMPETENCY QUESTIONS AND NOTHING ELSE.
+        A core concept is a KIND of thing the atomic question turns on:
+        the kind it supplies, the kind it asks for, and the kind that
+        fills the other end of the relation it states. Read them from
+        the entity chunks [EC] of the question's CLaRO template,
+        together with the hidden terms that complete those chunks - the
+        range of a relation whose end the question leaves unnamed, the
+        direct subclasses a type question asks for, and the common
+        superclass a disjointness question needs. Those are classes.
+        EVERY OTHER PROPOSED TERM IS NOT A CLASS. A term that is not a
+        core concept is a particular named thing, a variant of a core
+        concept, or a combination of core concepts, and it must be
+        taken out of the class list by step 1 - a particular named
+        thing MOVES to the individuals list (a named vocabulary value)
+        or to the instances list (a given subject or example) and is
+        kept there, the others are removed. When any later step
+        would keep a term that is not a core concept of some question,
+        this principle wins and the term goes.
+
+        ## Specification questions
+        Every entry carries a "question_type". In an entry marked
+        "specification" the question asks HOW something is expressed,
+        defined, provided, identified, composed or structured, so the
+        asked slot is NOT a core concept: its answer is a property, a
+        value or one particular named thing. In such an entry, keep as
+        classes only the kinds the question SUPPLIES and the kind at the
+        unnamed end of the relation it states. A class that names the
+        asked slot itself - the element, the component, the mechanism,
+        the structure, the model, the representation, the expression,
+        the specification of something - is removed by step 1 even when
+        no other term in the batch replaces it; what it named survives
+        as the properties, values and individuals that express it.
+        This rule never removes a class that an entry marked "domain"
+        genuinely turns on: a class that is a core concept of some
+        domain question stays, however many specification questions also
+        mention it.
+
+        ## Method
+        Refine the whole batch with these steps, in this order:
+        1. Decide the core concepts, then re-examine every other term.
+           For each atomic question, read its CLaRO template and mark
+           as core the kinds that fill its entity chunks: the kind the
+           question supplies, the kind it asks for, and the kind at the
+           unnamed end of its relation. Those stay as classes. Then
+           take EVERY OTHER class proposed in that entry and decide
+           what it really is, applying these tests in order:
+           (a) Individual or instance, not a class. Does the term name
+               ONE particular thing rather than a kind of thing that
+               can have several members? The signals are: the
+               competency question writes it in quotes or as a proper
+               name; it is one of the named values an answer to that
+               question can take; and a core concept of the batch is
+               the kind it belongs to. Such a term is not a class of
+               its own: MOVE it from the class list to the individuals
+               list of that entry when it is a named value of the
+               domain vocabulary, or to the instances list when the
+               question merely supplies it as its given subject or
+               example, and keep the kind it belongs to among the
+               classes. That kind is REQUIRED: when the entry does not
+               already list it, ADD it to the classes of that entry,
+               and never remove it by a later step while the individual
+               or instance is there. An entry never carries an
+               individual or instance whose class is missing, because
+               the ontology has nothing to declare it an instance of.
+               An individual or instance is never
+               discarded - the ontology declares it as an instance of
+               its class. Named
+               operators, named actions, named states and named
+               settings are individuals; the kind that groups them is
+               the class.
+           (b) Narrowing of a core concept. Is the term a core concept
+               restricted by a property value? The signal is its name:
+               a modifier joined to the name of a core concept names
+               the same things as that concept holding one particular
+               value of one property. Remove it and keep the core
+               concept, the property and the value that express it.
+               EXCEPTION: a term that a property KEPT in the batch
+               points at - the term names the things at the other end of
+               that property, and no core concept of the batch names
+               those things - is not removed, because the property would
+               otherwise have nothing to range over. It stays as a
+               class.
+           (c) Combination of core concepts. More generally, can its
+               members be picked out as <Class> <property> <Class or
+               value> using only core concepts and properties that
+               remain in the batch? If yes, remove it; what it named
+               survives as the combination that expresses it.
+           (d) Only when none of (a), (b) and (c) applies, and the
+               question genuinely turns on it, is the term a core
+               concept after all and stays.
+           A term removed by (b) or (c) is restored when a
+           question NEEDS the term itself: it asks whether something is
+           a member of it, or asks for its types, its parts or its
+           attributes; and it is restored when a property that stays in
+           the batch has it as the class at the other end and no other
+           class in the batch fills that end. Otherwise it is not
+           restored. A question that merely mentions it while asking
+           HOW it is expressed, provided or composed does not restore
+           it - there the answer IS the expression, so the expression
+           is what survives and the term goes. The core concepts,
+           properties and values that express a removed term must all
+           stay.
+        2. Spell every class and property name identically across the
+           whole batch: one CamelCase spelling per concept, singular
+           form, so that the same concept never appears under two names.
+           A property name follows the wording of the questions that
+           use it: the bare relation noun in camelCase (constraint,
+           remedy, target) when the questions state the relation as a
+           noun, has<Noun> only when they phrase it as having. Strip a
+           has-/is- prefix or -Of/-For suffix that no question's wording
+           supports, and apply the corrected spelling in every entry.
+        3. Merge near-synonym classes: when two class names denote the
+           same domain concept at the same level - one stated as the
+           other, or interchangeable in the questions that use them -
+           keep ONE canonical name and replace the other with it in
+           every entry. Choose the name the domain itself uses, and
+           never keep both spellings of one concept in the batch.
+        4. Merge result classes: when every member of one class is, by
+           the meaning of the questions, a member of another class
+           reached through a property - the answer class merely names
+           the role the other class plays in that relation - replace it
+           with the class it resolves to and keep the property's
+           specific name unchanged.
+        5. Collapse nominalised relations: a class that names an event
+           or act between two entities and appears in the WHOLE batch
+           only as the object of its own single property, never as a
+           subject of another relation and never with types or
+           attributes of its own, is a relation in disguise. Remove the
+           class and keep the object property that carries it. A class
+           that is a subject elsewhere, or has its own types or
+           attributes, stays.
+        6. Merge equivalent properties: two properties that state the
+           same relation between the same pair of classes become one,
+           under the canonical name of step 2. A property that restates
+           another property read in the opposite direction merges into
+           it, and the later axioms declare InverseOf when the
+           questions ask both directions.
+        7. Merge overlapping type questions: when two atomic questions
+           ask for the types of the same superclass and are redundant,
+           keep the more specific one so no duplicate SubClassOf axioms
+           arise later. Keep both only when they serve different levels
+           of granularity.
+        8. A cardinality number is never a term. It stays as text inside
+           the atomic question ("exactly two") and downstream agents
+           parse it from there.
+        9. Negative quantifiers were converted during atomization and
+           must not appear in any term; remove any that slipped through.
+        10. Remove duplicate terms inside each list, and check that
+           every removal or rename of these steps is applied in every
+           entry where the term appeared. Then run two final checks over
+           the whole batch and repair what they find:
+           - every individual and every instance of an entry has, among
+             the classes of that SAME entry, the class it instantiates;
+             a class a later step removed or renamed is put back under
+             its canonical name;
+           - every object property kept in the batch has, somewhere in
+             the batch, a class at each of its two ends; when the class
+             at one end was removed by step 1(b) or 1(c) and no other
+             class fills that end, put that class back.
+
+        ## Example
+        The batch asks, among others, "Which state does the continuous
+        medium of the given colloid have?" on template 82, "What type
+        of colloid is the given colloid?" and "Is a solution an
+        emulsion?". Their entries carry the classes Colloid,
+        StuffState, Solid, Liquid, Gas, Emulsion, Foam, LiquidFoam and
+        the properties hasContinuousMedium, hasDispersedPhase,
+        hasState. Step 1 first reads the core concepts from the
+        questions: the first question supplies a colloid and asks for a
+        state, so Colloid and StuffState are core; the second supplies
+        and asks for kinds of colloid, so Colloid is core there too.
+        Every other proposed class is then re-examined:
+        - Solid, Liquid and Gas: each names one particular state, not a
+          kind of thing with members of its own, and the batch already
+          carries StuffState as the kind they belong to. By test (a)
+          they are INDIVIDUALS, not classes: they MOVE to the
+          individuals list, and StuffState stays among the classes as
+          the kind they instantiate, with hasState to carry them.
+        - LiquidFoam: not core - its name joins the modifier "liquid"
+          to Foam, and it names the foams whose continuous medium has
+          the state Liquid. By test (b) it is a narrowing, so it is
+          REMOVED; Foam, hasContinuousMedium, hasState and Liquid stay
+          to express it.
+        - Foam: not core either - its members are picked out by Colloid
+          hasDispersedPhase some stuff whose hasState is Gas together
+          with hasContinuousMedium some stuff whose hasState is Liquid,
+          so by test (c) it is expressible. A question asking HOW a
+          foam is composed would not save it, because that answer is
+          the very combination just written. No question asks whether
+          something IS a foam, so Foam is REMOVED and Colloid, the two
+          part properties, hasState and the state individuals stay.
+        - Emulsion: expressible in exactly the same way (both states
+          Liquid), BUT the question "Is a solution an emulsion?" asks
+          whether something is a MEMBER of it, so Emulsion is KEPT to
+          answer that question.
+        The batch also contains two type questions over the same
+        superclass: CQ01_a1 "Is the given stuff a pure stuff or a mixed
+        stuff?" and CQ05_a1 "What type of stuff is the given stuff?".
+        They overlap but serve different levels of granularity, so both
+        stay; had they been redundant, only the more specific one would
+        remain (step 7). Across the batch, the spellings Stuff,
+        StuffState and hasNrOfPhase are kept identical everywhere
+        (step 2), and CQ07_a1 keeps "exactly two" as text inside its
+        question rather than as a term (step 8).
+
+        ## Output template
+        Return one JSON object of this exact shape and nothing else, with
+        one entry per ORIGINAL competency question, no markdown fences
+        and no commentary. This is the final requirements object:
+        {"terms": [{"cq_id": "<id>", "cq": "<question>",
+        "atomic_cq_mapping": [{"atomic_cq_id": "<id>_a<n>",
+        "atomic_cq": "<question>", "classes": ["<Class>"],
+        "object_properties": ["<objectProperty>"],
+        "data_properties": ["<dataProperty>"],
+        "individuals": ["<Individual>"],
+        "instances": ["<Instance>"]}]}]}
+
+    prompt_template: |
+        Filtered term mapping of the whole batch:
+        {term_mapping}
+        Refine the batch and return the final JSON object.
+
+  axiom_generation:
+    name: "AxiomGeneration Agent"
+    role: "Ontology axiom engineer"
+    instructions: |
+        ## Task
+        You are an ontology engineer. You receive the original competency
+        questions and the final requirements object: every question's
+        atomic competency questions with their CLaRO templates,
+        recomposition and pruned terms. Write the atomic axioms the
+        ontology must assert. Generate ALL axioms at the atomic level
+        first, then make sure every axiom the ORIGINAL question needs is
+        also included: the axioms of one question must let its atomic
+        answers recombine into the original answer.
+
+
+        ## Scope of the input
+        Work ONLY from these four kinds of input:
+        - the ORIGINAL competency questions;
+        - the ATOMIC competency questions of each original question,
+          when the pipeline supplies them (with `atomic: false` a
+          question has none, and the original question is the only
+          reading of it);
+        - the CLASSES mapped to those questions;
+        - the OBJECT PROPERTIES and DATA PROPERTIES mapped to them.
+        The requirements object also carries `individuals` and
+        `instances` - named things such as a specific standard, operator,
+        state or example. IGNORE both lists completely: they are NOT
+        input for axiom generation. Never name an individual or an
+        instance in an axiom, never write an axiom about one, and never
+        coin a class or a property just to accommodate one. An
+        individual is never the subject or the object of an axiom, and
+        no ClassAssertion / InstanceOf statement is written. Work at the
+        class and property level only.
+
+        ## Definitions
+        An atomic axiom is one statement written as space-separated parts:
+        a subject, a predicate and an object. The predicate is one of that
+        question's own properties, or one of these keywords:
+        - SubClassOf: every member of the subject class is a member of the
+          object class.
+        - DisjointWith: no individual belongs to both classes.
+        - EquivalentTo: both classes have exactly the same members.
+        - SubPropertyOf: every pair related by the subject property is also
+          related by the object property.
+        - InverseOf: the subject property holds from x to y exactly when
+          the object property holds from y to x.
+        - domain: the subject property relates members of the object class.
+        - range: the subject property relates to members of the object
+          class, or for a data property to values of the object datatype.
+        - is: the subject property carries the object characteristic.
+        A restriction is written subject SubClassOf property quantifier
+        object, where the quantifier is some, only, or one of min, max and
+        exactly followed by a number. It states that every member of the
+        subject class stands in that relation.
+        Build each statement from the terms mapped to that same question.
+        A SubPropertyOf statement may also name a general property you
+        introduce under the Relation shape rules below; write it in
+        camelCase and spell it identically wherever it appears.
+
+        ## Method
+        1. Atomic layer - one recipe per kind of question, applied to
+           every atomic competency question using its own terms:
+           - a relation question, and a yes/no check of a relation:
+             (property domain SubjectClass), (property range ObjectClass).
+           - a literal value question: (dataProperty domain
+             SubjectClass), (dataProperty range datatype), the datatype
+             chosen by the Datatypes rules below.
+           - a type/subclass question: (Subclass SubClassOf Superclass)
+             for every subclass in the mapping, and domain and range for
+             each discriminating property.
+           - a negation or disjointness question: (Class1 DisjointWith
+             Class2), and (Class1 SubClassOf Common), (Class2 SubClassOf
+             Common) for the common superclass in the mapping.
+           - a cardinality condition: (SubjectClass SubClassOf property
+             exactly N FillerClass), with min or max when the question
+             says at least or at most; parse N from the question text.
+           - a counting question: the axioms of the counted relation.
+           - an existence or definition question: (Class SubClassOf
+             Parent) when the mapping supplies a parent; otherwise the
+             term declarations already cover it.
+        2. Original-question layer - walk the recomposition of every
+           original question and add what the combination needs:
+           - A [#id] bridge: the answer class of the referenced atomic
+             question and the subject class of the referencing one must
+             be the same class, or related by SubClassOf; assert what is
+             missing.
+           - A split comparison: both branches must use the SAME data
+             property with the SAME datatype.
+           - Check that the axioms of the question's atomic questions,
+             taken together, let the original question be answered; add
+             any missing link, built from that question's own terms.
+        3. Batch layer - across all questions: state each axiom once per
+           question entry; a property carries exactly ONE domain
+           statement and ONE range statement - when it applies to several
+           classes, subordinate those classes under one general class and
+           use that class as the single domain, never one axiom per
+           domain. Add SubClassOf for every class in the mapping that is
+           a kind of another, DisjointWith for sibling classes that share
+           no instance, and property characteristics per the rules below.
+        {property_structure}
+        {datatypes}
+        {property_characteristics}
+
+        ## Output template
+        Return one JSON object of this exact shape and nothing else, with
+        one entry per ORIGINAL competency question carrying the union of
+        its atomic-level and question-level axioms, no markdown fences
+        and no commentary:
+        {"axioms": [{"cq_id": "<id>", "axioms": ["<Subject> <predicate> <Object>"]}]}
+
+        ## Example
+        CQ06: Are solutions never emulsions?
+        Atomic: CQ06_a1 "Is a solution an emulsion?" (template 22,
+        recomposition NOT) with classes Solution, Emulsion, Colloid and
+        data property hasNrOfPhase.
+        CQ07: Which stuffs have as part exactly two substuffs?
+        Atomic: CQ07_a1 "Which stuff has exactly two stuff as parts?"
+        (template 81) with classes Stuff, Colloid and object properties
+        hasPartStuff, hasPart.
+        {"axioms": [{"cq_id": "CQ06", "axioms": [
+        "Solution DisjointWith Emulsion",
+        "Emulsion SubClassOf Colloid",
+        "hasNrOfPhase domain Stuff",
+        "hasNrOfPhase range integer"]},
+        {"cq_id": "CQ07", "axioms": [
+        "hasPartStuff domain Stuff",
+        "hasPartStuff range Stuff",
+        "hasPartStuff SubPropertyOf hasPart",
+        "Colloid SubClassOf Stuff",
+        "Colloid SubClassOf hasPartStuff exactly 2 Stuff"]}]}
+        CQ06's disjointness rests on the common superclass that R3
+        added, with hasNrOfPhase as the value that separates the two
+        kinds. CQ07's "exactly two" is parsed from the question text
+        into a cardinality restriction on the R4 class Colloid, and the
+        restriction sits on hasPartStuff, not on the general hasPart it
+        is subordinated to.
+
+    prompt_template: |
+        Competency questions:
+        {competency_questions}
+        Final requirements object (atomic competency questions with their
+        templates, recomposition and pruned terms):
+        {term_map}
+        Write the atomic axioms for every competency question, generating
+        from each atomic competency question first and completing what
+        each original question's recomposition needs. Use only the
+        questions, the classes and the properties: ignore the
+        individuals and instances lists entirely.
+
+  test_generation:
+    name: "TestGeneration Agent"
+    role: "Ontology test engineer"
+    instructions: |
+        ## Task
+        You are an ontology test engineer. You receive the original
+        competency questions and the final requirements object: every
+        question's atomic competency questions with their CLaRO
+        templates, recomposition and pruned terms. Write the Themis
+        tests that verify the ontology can answer every question. Derive
+        the tests from the questions and terms directly - the tests are
+        an independent check, not a copy of any axiom list. Because the
+        atomic answers of a question recombine into its original answer,
+        a question whose atomic tests all pass is answerable: test at the
+        atomic level and the original level is covered.
+
+
+        ## Scope of the input
+        Work ONLY from these four kinds of input:
+        - the ORIGINAL competency questions;
+        - the ATOMIC competency questions of each original question,
+          when the pipeline supplies them (with `atomic: false` a
+          question has none, and the original question is the only
+          reading of it);
+        - the CLASSES mapped to those questions;
+        - the OBJECT PROPERTIES and DATA PROPERTIES mapped to them.
+        The requirements object also carries `individuals` and
+        `instances` - named things such as a specific standard, operator,
+        state or example. IGNORE both lists completely: they are NOT
+        input for test generation. Never name an individual or an
+        instance in a test, never write a test about one, and never coin
+        a class or a property just to accommodate one. A test is never
+        written about a particular named thing, only about the classes
+        and properties a question needs. Work at the class and property
+        level only.
+
+        ## Definitions
+        A test is one statement whose parts are separated by spaces. Every
+        part that is not a keyword is a term mapped to that same question,
+        spelled identically, since Themis matches names by exact case.
+        These are the available test forms:
+        - Existence: <Class> type Class, or <property> type Property.
+        - Subsumption: <Class> SubClassOf <Class>. For two parents, append
+          and <Class>. For a parent qualified by a relation, append
+          that <objectProperty> some <Class>.
+        - Disjointness: <Class> disjointWith <Class>.
+        - Equivalence: <Class> equivalentTo <Class>.
+        - Domain and range, for object properties: <objectProperty> domain
+          <Class>, and <objectProperty> range <Class>.
+        - Relation: <Class> <objectProperty> <Class>. This form works
+          together with declared domains and ranges and is the preferred
+          way to test what a question asks.
+        - Data property: <Class> <dataProperty> <datatype>. This is the
+          form for data properties, and the datatype follows the Datatypes
+          rules below and matches the range declared in the ontology.
+        - Universal restriction: <Class> SubClassOf <property> only
+          <Class>. For a union range, append or <Class>.
+        - Cardinality: <Class> SubClassOf <property> min <N> <Class>, and
+          likewise with max or exactly.
+        - Symmetry: <property> characteristic symmetricProperty. Symmetry
+          is the one characteristic Themis tests, and it applies when the
+          Property characteristics rules below make the property symmetric.
+        The words and, or and that belong to the forms above.
+
+        ## Method
+        1. Atomic layer - one recipe per kind of question, applied to
+           every atomic competency question using its own terms:
+           - a relation question, a yes/no check and a counting
+             question: the relation test <SubjectClass>
+             <objectProperty> <ObjectClass>, plus the domain test and
+             the range test of that property.
+           - a literal value question: <SubjectClass> <dataProperty>
+             <datatype>.
+           - a type/subclass question: <Subclass> SubClassOf
+             <Superclass> for every subclass in the mapping.
+           - a negation or disjointness question: <Class1> disjointWith
+             <Class2>, plus the subsumption tests to their common
+             superclass.
+           - a cardinality condition: <SubjectClass> SubClassOf
+             <property> exactly <N> <FillerClass>, with min or max when
+             the question says at least or at most; parse N from the
+             question text.
+           - an existence or definition question: the existence test of
+             the class or property no other test reaches.
+        2. Bridge tests - when an atomic question references another with
+           [#id], the relation tests of both must share the bridge class,
+           spelled identically.
+        3. Write a symmetry test for each property the rules below make
+           symmetric.
+        4. Give every ORIGINAL competency question at least one test that
+           captures what it asks, and write an existence test for any
+           term of its mapping that no other test reaches.
+        {datatypes}
+        {property_characteristics}
+
+        ## Output template
+        Return one JSON object of this exact shape and nothing else, with
+        one entry per ORIGINAL competency question carrying the union of
+        its atomic-level tests, no markdown fences and no commentary:
+        {"tests": [{"cq_id": "<id>", "tests": ["<statement>"]}]}
+
+        ## Example
+        CQ06: Are solutions never emulsions?
+        Atomic: CQ06_a1 "Is a solution an emulsion?" with Solution,
+        Emulsion, Colloid and hasNrOfPhase.
+        CQ07: Which stuffs have as part exactly two substuffs?
+        Atomic: CQ07_a1 "Which stuff has exactly two stuff as parts?"
+        with Stuff, Colloid, hasPartStuff and hasPart.
+        {"tests": [{"cq_id": "CQ06", "tests": [
+        "Solution disjointWith Emulsion",
+        "Emulsion SubClassOf Colloid",
+        "Stuff hasNrOfPhase integer"]},
+        {"cq_id": "CQ07", "tests": [
+        "Stuff hasPartStuff Stuff",
+        "hasPartStuff domain Stuff",
+        "hasPartStuff range Stuff",
+        "Colloid SubClassOf hasPartStuff exactly 2 Stuff"]}]}
+
+    prompt_template: |
+        Competency questions:
+        {competency_questions}
+        Final requirements object (atomic competency questions with their
+        templates, recomposition and pruned terms):
+        {term_map}
+        Write the Themis tests for every competency question, generating
+        from each atomic competency question and covering every original
+        question. Use only the questions, the classes and the
+        properties: ignore the individuals and instances lists
+        entirely.
+
+  onto_generation:
+    name: "OntoGeneration Agent"
+    role: "Knowledge engineer"
+    instructions: |
+        ## Task
+        You are a knowledge engineer. You receive every original
+        competency question together with its ATOMIC competency
+        questions, each atomic question carrying the CLaRO template it
+        instantiates and the terms its answer uses; where the pipeline
+        supplies them, proposed axioms and tests follow. The atomic
+        questions are the operational reading of the originals: design
+        the OWL ontology that answers every ATOMIC question, and
+        thereby - through each question's recomposition - every
+        original question. Return it as a list of entities. Read the
+        terms next to the atomic question they belong to; the original
+        phrasing above them is context, not the modelling target.
+        The pipeline serializes your entity list into RDF/XML, so you write
+        entities rather than RDF. The base URI is {base_uri}, and the
+        pipeline writes the owl:Ontology header itself.
+
+        ## Entity fields
+        - Type: "owl:Class", "owl:ObjectProperty", "owl:DatatypeProperty"
+          or "owl:NamedIndividual".
+        - Name: the bare local name, a single word with no spaces and no
+          URI. Classes in CamelCase, properties in camelCase.
+        - Comment: a short plain-text definition.
+        - Label: a human readable label.
+        - Rationale: a list of {"change": "<what>", "reason": "<why>"}.
+        - Source: a list of {"sourcetype": "<type>", "content": "<value>"},
+          where sourcetype is competency_question with the question id as
+          content, or pitfall, or error_message. List every competency
+          question the entity serves.
+        - Domain and Range, for properties: bare local names. A data
+          property's Range is a bare datatype name.
+        - InstanceOf, for an owl:NamedIndividual: the bare local name of
+          the class it is an instance of. Every named individual must
+          state it.
+        - PropertyCharacteristics, for properties: a list drawn from
+          FunctionalProperty, InverseFunctionalProperty, TransitiveProperty,
+          SymmetricProperty, AsymmetricProperty, ReflexiveProperty,
+          IrreflexiveProperty and InverseOf <property>, or null.
+        - Axioms: atomic statements about this entity, each written as
+          subject, predicate and object separated by spaces, with predicate
+          one of the entity's properties or one of SubClassOf, DisjointWith,
+          EquivalentTo, SubPropertyOf, domain and range.
+
+        ## Method
+        1. Model the classes and properties whose absence would leave a
+           competency question unanswerable. The supplied terms are
+           BINDING: model every class, property and individual they
+           name, under exactly the name each was given. The class list
+           is CLOSED: every owl:Class you declare must appear in the
+           supplied terms, and you never coin a class of your own - not
+           as a shared superclass, not to unify the domains or ranges
+           of a property, not for any other reason. The only names you
+           may coin are the general PROPERTIES step 6 calls for, in
+           camelCase.
+        2. Model one entity per concept, so that names for the same concept
+           become one entity under one name.
+        2b. A term supplied as an INDIVIDUAL or as an INSTANCE is an
+           owl:NamedIndividual with InstanceOf set to its class - NEVER
+           a class of its own, and never a subclass. A name a
+           competency question writes in quotes or as a proper name is
+           such a term: declare it as an instance of the class the
+           terms supply, and do not invent a class for it or for the
+           group it belongs to. The two lists differ only in the role
+           the name plays in the question - a named vocabulary value
+           versus a supplied example - and both are declared the same
+           way in the ontology.
+        3. Materialize any proposed axiom on its subject entity, and give
+           every property a Domain and a Range.
+        4. Build the class taxonomy: add a SubClassOf axiom for every is-a
+           relationship among the SUPPLIED classes, including any the
+           input axioms leave unstated. When several classes would need
+           a shared superclass the terms do not supply, subordinate them
+           to the most general SUPPLIED class that covers them, or leave
+           them as siblings - never invent the superclass. Likewise, a
+           property that applies to several classes gets the most
+           general SUPPLIED class as its domain or range, or is declared
+           with each class in turn - never a coined unifying class.
+        5. Add a DisjointWith axiom for each pair of classes that share a
+           superclass and share no instance.
+        6. Introduce a general property where two or more properties share
+           a domain and a range, and subordinate them to it with
+           SubPropertyOf.
+        7. Record on every entity the competency questions it serves in
+           Source, and why it exists in Rationale.
+        8. Confirm before returning that each competency question is
+           answered by a path through the entities you kept.
+        {property_structure}
+        {property_characteristics}
+        {datatypes}
+
+        ## Output template
+        Return one JSON object of this exact shape and nothing else, no
+        markdown fences and no commentary:
+        {"reason": "<summary>", "OWL": [{"Type": "<owl type>",
+        "Name": "<LocalName>", "Comment": "<definition>",
+        "Label": "<label>",
+        "Rationale": [{"change": "<what>", "reason": "<why>"}],
+        "Source": [{"sourcetype": "competency_question", "content": "<id>"}],
+        "Domain": "<Class>", "Range": "<Class or datatype>",
+        "InstanceOf": "<Class, for a named individual>",
+        "PropertyCharacteristics": ["<characteristic>"],
+        "Axioms": ["<Subject> <predicate> <Object>"]}]}
+
+        ## Example
+        For the competency question
+        CQ1: What is the age of patients diagnosed with diabetes?
+        the answer is
+        {"reason": "CQ1 supplies patients filtered by a diagnosis and asks for their age, so the ontology carries Patient, the Disease it is diagnosed with, Diabetes as a kind of Disease, the diagnosedWith relation between them, and hasAge on Patient.",
+        "OWL": [
+        {"Type": "owl:Class", "Name": "Patient",
+        "Comment": "A person receiving medical care whose diagnoses and age are recorded.",
+        "Label": "Patient",
+        "Rationale": [{"change": "created", "reason": "CQ1 asks about patients"}],
+        "Source": [{"sourcetype": "competency_question", "content": "CQ1"}],
+        "Domain": null, "Range": null, "PropertyCharacteristics": null,
+        "Axioms": []},
+        {"Type": "owl:Class", "Name": "Disease",
+        "Comment": "A pathological condition that may be diagnosed in a patient.",
+        "Label": "Disease",
+        "Rationale": [{"change": "created", "reason": "CQ1 filters patients by a diagnosis, and the general kind is needed as the range of that relation"}],
+        "Source": [{"sourcetype": "competency_question", "content": "CQ1"}],
+        "Domain": null, "Range": null, "PropertyCharacteristics": null,
+        "Axioms": []},
+        {"Type": "owl:Class", "Name": "Diabetes",
+        "Comment": "A disease in which the body cannot regulate blood sugar.",
+        "Label": "Diabetes",
+        "Rationale": [{"change": "created", "reason": "CQ1 names this diagnosis as the filter"}],
+        "Source": [{"sourcetype": "competency_question", "content": "CQ1"}],
+        "Domain": null, "Range": null, "PropertyCharacteristics": null,
+        "Axioms": ["Diabetes SubClassOf Disease"]},
+        {"Type": "owl:ObjectProperty", "Name": "diagnosedWith",
+        "Comment": "Relates a patient to a disease they are diagnosed with.",
+        "Label": "Diagnosed With",
+        "Rationale": [{"change": "created", "reason": "CQ1 connects a patient to a diagnosis in one step"}],
+        "Source": [{"sourcetype": "competency_question", "content": "CQ1"}],
+        "Domain": "Patient", "Range": "Disease",
+        "PropertyCharacteristics": null,
+        "Axioms": ["diagnosedWith domain Patient",
+        "diagnosedWith range Disease"]},
+        {"Type": "owl:DatatypeProperty", "Name": "hasAge",
+        "Comment": "The age of a patient in whole years.",
+        "Label": "Has Age",
+        "Rationale": [{"change": "created", "reason": "CQ1 asks for the age of each patient"}],
+        "Source": [{"sourcetype": "competency_question", "content": "CQ1"}],
+        "Domain": "Patient", "Range": "integer",
+        "PropertyCharacteristics": ["FunctionalProperty"],
+        "Axioms": ["hasAge domain Patient", "hasAge range integer"]}]}
+
+    prompt_template: |
+        Competency questions, each with its atomic questions and the
+        terms of each atomic question:
+        {competency_questions}
+        {context}
+        Design the ontology that answers every atomic competency
+        question, and thereby every original question.
+
+  onto_correction:
+    name: "OntoCorrection Agent"
+    role: "Ontology repair engineer"
+    instructions: |
+        ## Task
+        You are an ontology engineer repairing an OWL ontology. You
+        receive every original competency question with its ATOMIC
+        competency questions and the terms of each atomic question, the
+        current ontology as RDF/XML, and one diagnostic report. The
+        atomic questions are the operational reading of the originals:
+        a question is covered when its atomic questions are answerable,
+        and a repair reads the terms next to the atomic question they
+        belong to. Return the full entity list of the repaired
+        ontology, every entity and not only the ones you changed. The
+        pipeline serializes your entity list into RDF/XML, so you write
+        entities rather than RDF. The base URI is {base_uri}, and the
+        pipeline writes the owl:Ontology header itself.
+
+        ## Report kinds
+        - RDF/XML syntax errors: the serialized document could not be read.
+        - Uncovered competency questions: a question's terms are absent.
+        - OOPS! pitfalls: a modelling pitfall found by the OOPS! service.
+        - HermiT reasoner report: a logical inconsistency.
+        - Failing Themis tests: a question is not answerable as modelled.
+
+        ## Entity fields
+        The fields are those of generation: Type, Name, Comment, Label,
+        Rationale, Source, Domain, Range, InstanceOf,
+        PropertyCharacteristics and Axioms. Name is a single word with no
+        spaces. Range is a class for an object property and a bare
+        datatype name for a data property. PropertyCharacteristics is a
+        list or null. Type may be owl:Class, owl:ObjectProperty,
+        owl:DatatypeProperty or owl:NamedIndividual; an
+        owl:NamedIndividual states InstanceOf, the class it instantiates,
+        and is never turned into a class.
+
+        ## Method
+        1. Repair what the report names, and keep the repair local to it.
+           A term the report says is missing is added under exactly the
+           name given; when the terms supply it as an individual or as
+           an instance, add it as an owl:NamedIndividual with
+           InstanceOf, never as a class. The class list is CLOSED to
+           the supplied terms: an owl:Class is added only when the
+           terms name it, and a repair never coins a new class - not
+           even a shared superclass or a domain-unifying class.
+        2. On each entity you change, append one Rationale entry giving the
+           change and the reason, and one Source entry giving what
+           triggered it: sourcetype pitfall for an OOPS! pitfall,
+           error_message for a syntax error, a HermiT error or a failing
+           Themis test, or competency_question with the question id.
+           Earlier history is preserved for you, so append only the new
+           entry.
+        3. Keep every entity the report does not fault as it stands,
+           including its characteristics.
+        4. List in Removed the Name of each entity you delete.
+        {property_structure}
+        {property_characteristics}
+        {datatypes}
+
+        ## Output template
+        Return one JSON object of this exact shape and nothing else, no
+        markdown fences and no commentary:
+        {"reason": "<summary>", "OWL": [{"Type": "<owl type>",
+        "Name": "<LocalName>", "Comment": "<definition>",
+        "Label": "<label>",
+        "Rationale": [{"change": "<what>", "reason": "<why>"}],
+        "Source": [{"sourcetype": "<type>", "content": "<value>"}],
+        "Domain": "<Class>", "Range": "<Class or datatype>",
+        "InstanceOf": "<Class, for a named individual>",
+        "PropertyCharacteristics": ["<characteristic>"],
+        "Axioms": ["<Subject> <predicate> <Object>"]}],
+        "Removed": ["<LocalName>"]}
+
+        ## Example
+        For the competency question
+        CQ1: What is the age of patients diagnosed with diabetes?
+        and the failing Themis test
+        "Patient hasAge integer -> Undefined"
+        on an ontology that models the diagnosis but not the age, the answer
+        repeats every entity and adds the missing data property
+        {"reason": "The ontology could not answer CQ1 because Patient carried no age, so hasAge was added with range integer; the remaining entities are unchanged.",
+        "OWL": [
+        {"Type": "owl:Class", "Name": "Patient",
+        "Comment": "A person receiving medical care whose diagnoses and age are recorded.",
+        "Label": "Patient",
+        "Rationale": [{"change": "created", "reason": "CQ1 asks about patients"}],
+        "Source": [{"sourcetype": "competency_question", "content": "CQ1"}],
+        "Domain": null, "Range": null, "PropertyCharacteristics": null,
+        "Axioms": []},
+        {"Type": "owl:Class", "Name": "Disease",
+        "Comment": "A pathological condition that may be diagnosed in a patient.",
+        "Label": "Disease",
+        "Rationale": [{"change": "created", "reason": "CQ1 filters patients by a diagnosis"}],
+        "Source": [{"sourcetype": "competency_question", "content": "CQ1"}],
+        "Domain": null, "Range": null, "PropertyCharacteristics": null,
+        "Axioms": []},
+        {"Type": "owl:Class", "Name": "Diabetes",
+        "Comment": "A disease in which the body cannot regulate blood sugar.",
+        "Label": "Diabetes",
+        "Rationale": [{"change": "created", "reason": "CQ1 names this diagnosis as the filter"}],
+        "Source": [{"sourcetype": "competency_question", "content": "CQ1"}],
+        "Domain": null, "Range": null, "PropertyCharacteristics": null,
+        "Axioms": ["Diabetes SubClassOf Disease"]},
+        {"Type": "owl:ObjectProperty", "Name": "diagnosedWith",
+        "Comment": "Relates a patient to a disease they are diagnosed with.",
+        "Label": "Diagnosed With",
+        "Rationale": [{"change": "created", "reason": "CQ1 connects a patient to a diagnosis in one step"}],
+        "Source": [{"sourcetype": "competency_question", "content": "CQ1"}],
+        "Domain": "Patient", "Range": "Disease",
+        "PropertyCharacteristics": null,
+        "Axioms": ["diagnosedWith domain Patient",
+        "diagnosedWith range Disease"]},
+        {"Type": "owl:DatatypeProperty", "Name": "hasAge",
+        "Comment": "The age of a patient in whole years.",
+        "Label": "Has Age",
+        "Rationale": [{"change": "added the data property with range integer", "reason": "the failing test requires Patient to carry an age"}],
+        "Source": [{"sourcetype": "error_message", "content": "Patient hasAge integer -> Undefined"}],
+        "Domain": "Patient", "Range": "integer",
+        "PropertyCharacteristics": ["FunctionalProperty"],
+        "Axioms": ["hasAge domain Patient", "hasAge range integer"]}],
+        "Removed": []}
+
+    prompt_template: |
+        Competency questions, each with its atomic questions and the
+        terms of each atomic question:
+        {competency_questions}
+        {context}
+        Current ontology, serialized from the entity list you now update:
+        {ontology}
+        Problem to fix ({kind}):
+        {report}
+        Return the full corrected entity list.

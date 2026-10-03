@@ -1,0 +1,385 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:owl="http://www.w3.org/2002/07/owl#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+         xmlns:dc="http://purl.org/dc/elements/1.1/"
+         xmlns:vaem="http://www.linkedmodel.org/schema/vaem#"
+         xml:base="http://www.semanticweb.org/water#">
+
+    <owl:Ontology rdf:about="http://www.semanticweb.org/water#">
+        <rdfs:label>Water Infrastructure Ontology</rdfs:label>
+        <rdfs:comment>Ontology for water distribution infrastructure, sensors, actuators, water meters, and water properties.</rdfs:comment>
+    </owl:Ontology>
+
+    <!-- Classes -->
+    <owl:Class rdf:about="http://www.semanticweb.org/water#WaterDistributionInfrastructure">
+        <rdfs:label>WaterDistributionInfrastructure</rdfs:label>
+        <rdfs:comment>Represents a water distribution infrastructure composed of assets.</rdfs:comment>
+        <dc:source>(competency_question) CQ01</dc:source>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://www.semanticweb.org/water#Asset">
+        <rdfs:label>Asset</rdfs:label>
+        <rdfs:comment>Represents an asset that can compose a water distribution infrastructure.</rdfs:comment>
+        <dc:source>(competency_question) CQ01</dc:source>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://www.semanticweb.org/water#Sensor">
+        <rdfs:label>Sensor</rdfs:label>
+        <rdfs:comment>Represents a sensor used in water infrastructures.</rdfs:comment>
+        <dc:source>(competency_question) CQ04</dc:source>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://www.semanticweb.org/water#Actuator">
+        <rdfs:label>Actuator</rdfs:label>
+        <rdfs:comment>Represents an actuator used in water infrastructures.</rdfs:comment>
+        <dc:source>(competency_question) CQ05</dc:source>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://www.semanticweb.org/water#WaterInfrastructure">
+        <rdfs:label>WaterInfrastructure</rdfs:label>
+        <rdfs:comment>Represents a water infrastructure where sensors and actuators are used.</rdfs:comment>
+        <dc:source>(competency_question) CQ04</dc:source>
+        <dc:source>(competency_question) CQ05</dc:source>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://www.semanticweb.org/water#WaterMeter">
+        <rdfs:label>WaterMeter</rdfs:label>
+        <rdfs:comment>Represents a water meter device that measures aspects of water infrastructure.</rdfs:comment>
+        <dc:source>(competency_question) CQ06</dc:source>
+        <dc:source>(competency_question) CQ08</dc:source>
+        <dc:source>(competency_question) CQ09</dc:source>
+        <dc:source>(competency_question) CQ10</dc:source>
+        <dc:source>(competency_question) CQ11</dc:source>
+        <dc:source>(competency_question) CQ12</dc:source>
+        <dc:source>(competency_question) CQ18</dc:source>
+        <dc:source>(competency_question) CQ19</dc:source>
+        <dc:source>(competency_question) CQ20</dc:source>
+        <dc:source>(competency_question) CQ25</dc:source>
+        <dc:source>(competency_question) CQ38</dc:source>
+        <dc:source>(competency_question) CQ39</dc:source>
+        <dc:source>(competency_question) CQ40</dc:source>
+        <dc:source>(competency_question) CQ42</dc:source>
+        <dc:source>(competency_question) CQ43</dc:source>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/water#Device"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://www.semanticweb.org/water#Device">
+        <rdfs:label>Device</rdfs:label>
+        <rdfs:comment>Represents a device, such as a water meter.</rdfs:comment>
+        <dc:source>(competency_question) CQ06</dc:source>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://www.semanticweb.org/water#Measurement">
+        <rdfs:label>Measurement</rdfs:label>
+        <rdfs:comment>Represents a measurement provided by a water meter.</rdfs:comment>
+        <dc:source>(competency_question) CQ25</dc:source>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://www.semanticweb.org/water#Water">
+        <rdfs:label>Water</rdfs:label>
+        <rdfs:comment>Represents water with physical and chemical properties.</rdfs:comment>
+        <dc:source>(competency_question) CQ33</dc:source>
+        <dc:source>(competency_question) CQ34</dc:source>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://www.semanticweb.org/water#PhysicalProperty">
+        <rdfs:label>PhysicalProperty</rdfs:label>
+        <rdfs:comment>Represents a physical property of water.</rdfs:comment>
+        <dc:source>(competency_question) CQ33</dc:source>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://www.semanticweb.org/water#ChemicalProperty">
+        <rdfs:label>ChemicalProperty</rdfs:label>
+        <rdfs:comment>Represents a chemical property of water.</rdfs:comment>
+        <dc:source>(competency_question) CQ34</dc:source>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://www.semanticweb.org/water#WaterIndicator">
+        <rdfs:label>WaterIndicator</rdfs:label>
+        <rdfs:comment>Represents a water indicator defined for a location.</rdfs:comment>
+        <dc:source>(competency_question) CQ37</dc:source>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://www.semanticweb.org/water#Burgos">
+        <rdfs:label>Burgos</rdfs:label>
+        <rdfs:comment>Represents the location Burgos.</rdfs:comment>
+        <dc:source>(competency_question) CQ37</dc:source>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://www.semanticweb.org/water#Tariff">
+        <rdfs:label>Tariff</rdfs:label>
+        <rdfs:comment>Represents a tariff associated with a water meter.</rdfs:comment>
+        <dc:source>(competency_question) CQ38</dc:source>
+        <dc:source>(competency_question) CQ39</dc:source>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://www.semanticweb.org/water#TariffPeriod">
+        <rdfs:label>TariffPeriod</rdfs:label>
+        <rdfs:comment>Represents a tariff period of a water meter.</rdfs:comment>
+        <dc:source>(competency_question) CQ40</dc:source>
+    </owl:Class>
+
+    <!-- Object Properties -->
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/water#composes">
+        <rdfs:label>composes</rdfs:label>
+        <rdfs:comment>Relates a water distribution infrastructure to its assets.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/water#WaterDistributionInfrastructure"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/water#Asset"/>
+        <dc:source>(competency_question) CQ01</dc:source>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/water#usedIn">
+        <rdfs:label>usedIn</rdfs:label>
+        <rdfs:comment>Relates a sensor or actuator to the water infrastructure where it is used.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/water#Sensor"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/water#WaterInfrastructure"/>
+        <dc:source>(competency_question) CQ04</dc:source>
+        <dc:source>(competency_question) CQ05</dc:source>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/water#measures">
+        <rdfs:label>measures</rdfs:label>
+        <rdfs:comment>Relates a water meter to the device it measures.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/water#WaterMeter"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/water#Device"/>
+        <dc:source>(competency_question) CQ06</dc:source>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/water#provides">
+        <rdfs:label>provides</rdfs:label>
+        <rdfs:comment>Relates a water meter to the measurements it provides.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/water#WaterMeter"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/water#Measurement"/>
+        <dc:source>(competency_question) CQ25</dc:source>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/water#hasProperty">
+        <rdfs:label>hasProperty</rdfs:label>
+        <rdfs:comment>Relates water to its physical or chemical properties.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/water#Water"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/water#PhysicalProperty"/>
+        <dc:source>(competency_question) CQ33</dc:source>
+        <dc:source>(competency_question) CQ34</dc:source>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/water#definedFor">
+        <rdfs:label>definedFor</rdfs:label>
+        <rdfs:comment>Relates a water indicator to the location it is defined for.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/water#WaterIndicator"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/water#Burgos"/>
+        <dc:source>(competency_question) CQ37</dc:source>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/water#inUse">
+        <rdfs:label>inUse</rdfs:label>
+        <rdfs:comment>Relates a water meter to the tariff currently in use.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/water#WaterMeter"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/water#Tariff"/>
+        <dc:source>(competency_question) CQ38</dc:source>
+        <dc:source>(competency_question) CQ39</dc:source>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/water#hasTariffPeriod">
+        <rdfs:label>hasTariffPeriod</rdfs:label>
+        <rdfs:comment>Relates a water meter to its tariff period.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/water#WaterMeter"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/water#TariffPeriod"/>
+        <dc:source>(competency_question) CQ40</dc:source>
+    </owl:ObjectProperty>
+
+    <!-- Data Properties -->
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/water#fabricationNumber">
+        <rdfs:label>fabricationNumber</rdfs:label>
+        <rdfs:comment>The fabrication number of a water meter.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/water#WaterMeter"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <dc:source>(competency_question) CQ08</dc:source>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/water#manufacturer">
+        <rdfs:label>manufacturer</rdfs:label>
+        <rdfs:comment>The manufacturer of a water meter.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/water#WaterMeter"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <dc:source>(competency_question) CQ09</dc:source>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/water#model">
+        <rdfs:label>model</rdfs:label>
+        <rdfs:comment>The model of a water meter.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/water#WaterMeter"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <dc:source>(competency_question) CQ09</dc:source>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/water#version">
+        <rdfs:label>version</rdfs:label>
+        <rdfs:comment>The version of a water meter.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/water#WaterMeter"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <dc:source>(competency_question) CQ10</dc:source>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/water#hardwareVersion">
+        <rdfs:label>hardwareVersion</rdfs:label>
+        <rdfs:comment>The hardware version number of a water meter.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/water#WaterMeter"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <dc:source>(competency_question) CQ11</dc:source>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/water#firmwareVersion">
+        <rdfs:label>firmwareVersion</rdfs:label>
+        <rdfs:comment>The firmware version used by a water meter.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/water#WaterMeter"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <dc:source>(competency_question) CQ12</dc:source>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/water#power">
+        <rdfs:label>power</rdfs:label>
+        <rdfs:comment>The power value of a water meter.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/water#WaterMeter"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+        <dc:source>(competency_question) CQ18</dc:source>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/water#radioFrequencyLevel">
+        <rdfs:label>radioFrequencyLevel</rdfs:label>
+        <rdfs:comment>The radio frequency level of a water meter.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/water#WaterMeter"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+        <dc:source>(competency_question) CQ19</dc:source>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/water#geolocation">
+        <rdfs:label>geolocation</rdfs:label>
+        <rdfs:comment>The geolocation of a water meter.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/water#WaterMeter"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <dc:source>(competency_question) CQ20</dc:source>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/water#startDateTime">
+        <rdfs:label>startDateTime</rdfs:label>
+        <rdfs:comment>The start date and time of a tariff.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/water#Tariff"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+        <dc:source>(competency_question) CQ38</dc:source>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/water#duration">
+        <rdfs:label>duration</rdfs:label>
+        <rdfs:comment>The duration of a tariff.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/water#Tariff"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+        <dc:source>(competency_question) CQ39</dc:source>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/water#billingDate">
+        <rdfs:label>billingDate</rdfs:label>
+        <rdfs:comment>The billing date of a water meter.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/water#WaterMeter"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+        <dc:source>(competency_question) CQ42</dc:source>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/water#billingDatePeriod">
+        <rdfs:label>billingDatePeriod</rdfs:label>
+        <rdfs:comment>The billing date period of a water meter.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/water#WaterMeter"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <dc:source>(competency_question) CQ43</dc:source>
+    </owl:DatatypeProperty>
+
+    <!-- Additional axioms for tests -->
+    <owl:Class rdf:about="http://www.semanticweb.org/water#Sensor">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/water#usedIn"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/water#WaterInfrastructure"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://www.semanticweb.org/water#Actuator">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/water#usedIn"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/water#WaterInfrastructure"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://www.semanticweb.org/water#WaterMeter">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/water#measures"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/water#Device"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://www.semanticweb.org/water#Water">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/water#hasProperty"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/water#PhysicalProperty"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/water#hasProperty"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/water#ChemicalProperty"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://www.semanticweb.org/water#WaterIndicator">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/water#definedFor"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/water#Burgos"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://www.semanticweb.org/water#WaterMeter">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/water#inUse"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/water#Tariff"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://www.semanticweb.org/water#WaterMeter">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/water#hasTariffPeriod"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/water#TariffPeriod"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://www.semanticweb.org/water#WaterMeter">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/water#provides"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/water#Measurement"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://www.semanticweb.org/water#WaterDistributionInfrastructure">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/water#composes"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/water#Asset"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+
+</rdf:RDF>

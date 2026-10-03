@@ -1,0 +1,851 @@
+<?xml version="1.0"?>
+<rdf:RDF xml:base="http://www.semanticweb.org/swo#"
+         xmlns:owl="http://www.w3.org/2002/07/owl#"
+         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+         xmlns:dc="http://purl.org/dc/elements/1.1/"
+         xmlns:vaem="http://www.linkedmodel.org/schema/vaem#">
+
+  <owl:Ontology rdf:about="http://www.semanticweb.org/swo#"/>
+
+  <!-- owl:Class declarations -->
+
+<owl:Class rdf:about="http://www.semanticweb.org/swo#Tool">
+  <rdfs:comment>A software tool that uses algorithms.</rdfs:comment>
+  <rdfs:label>Tool</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: CQ04 and CQ05 supply Tool as the subject of uses</vaem:rationale>
+  <dc:source>(competency_question) CQ04: Which of the named and published algorithms does this tool use?
+    (competency_question) CQ05: Are there any modifications to the algorithm the tool uses?</dc:source>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/swo#Algorithm">
+  <rdfs:comment>A computational procedure used by a tool.</rdfs:comment>
+  <rdfs:label>Algorithm</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: CQ04 and CQ05 supply Algorithm as the object of uses</vaem:rationale>
+  <dc:source>(competency_question) CQ04: Which of the named and published algorithms does this tool use?
+    (competency_question) CQ05: Are there any modifications to the algorithm the tool uses?</dc:source>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/swo#Modification">
+  <rdfs:comment>An alteration or adaptation to an algorithm.</rdfs:comment>
+  <rdfs:label>Modification</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: CQ05 asks about modifications to algorithms</vaem:rationale>
+  <dc:source>(competency_question) CQ05: Are there any modifications to the algorithm the tool uses?</dc:source>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/swo#Software">
+  <rdfs:comment>A program or application that performs tasks and processes data.</rdfs:comment>
+  <rdfs:label>Software</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: Multiple CQs supply Software as the primary domain entity</vaem:rationale>
+  <dc:source>(competency_question) CQ06: Does this software provide XML editing?
+    (competency_question) CQ07: What type of software (API, Desktop application etc) is it?
+    (competency_question) CQ08: What software can perform task x?
+    (competency_question) CQ11: Is this software available as a web service?
+    (competency_question) CQ14: Does it do what I want or need it to do e.g. render a gif?
+    (competency_question) CQ15: Which software tool created this data?
+    (competency_question) CQ16: What software can I use my data with to support my task?
+    (competency_question) CQ17: What are the input and output formats for this software?
+    (competency_question) CQ19: What software can read a .cel file?
+    (competency_question) CQ21: What is the valid input for this software?
+    (competency_question) CQ22: Can this software export from its proprietary data format to an open format such as csv, txt?
+    (competency_question) CQ23: Can software A work with data that are output from software B?
+    (competency_question) CQ26: What open source, maintained software can I use to process these in this format?
+    (competency_question) CQ30: Where can I get the software?
+    (competency_question) CQ32: How do I get help?
+    (competency_question) CQ36: Who developed it?
+    (competency_question) CQ37: What is the homepage of the software?
+    (competency_question) CQ38: Can we collaborate with developers of software x?
+    (competency_question) CQ40: Which URL can I get it from?
+    (competency_question) CQ45: How long has this software been around?
+    (competency_question) CQ46: How actively developed is it?
+    (competency_question) CQ54: What is the version of this software?
+    (competency_question) CQ58: Is the software open source development? Is there a community development?
+    (competency_question) CQ59: What license and what is permissiveness?
+    (competency_question) CQ60: Is it open source or not?
+    (competency_question) CQ65: Is it FOSS?
+    (competency_question) CQ68: Is it free or not?
+    (competency_question) CQ73: Where is the documentation?
+    (competency_question) CQ84: In what language was it implemented?
+    (competency_question) CQ85: What platform does the software run on?</dc:source>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/swo#Capability">
+  <rdfs:comment>A functional ability provided by software.</rdfs:comment>
+  <rdfs:label>Capability</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: CQ06 asks what capabilities software provides</vaem:rationale>
+  <dc:source>(competency_question) CQ06: Does this software provide XML editing?</dc:source>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/swo#Api">
+  <rdfs:comment>An application programming interface type of software.</rdfs:comment>
+  <rdfs:label>API</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: CQ07 lists Api as a software type</vaem:rationale>
+  <dc:source>(competency_question) CQ07: What type of software (API, Desktop application etc) is it?</dc:source>
+  <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/swo#Software"/>
+  <!-- Axiom: SubClassOf Software -->
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/swo#DesktopApplication">
+  <rdfs:comment>A desktop application type of software.</rdfs:comment>
+  <rdfs:label>Desktop Application</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: CQ07 lists DesktopApplication as a software type</vaem:rationale>
+  <dc:source>(competency_question) CQ07: What type of software (API, Desktop application etc) is it?</dc:source>
+  <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/swo#Software"/>
+  <!-- Axiom: SubClassOf Software -->
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/swo#WebApplication">
+  <rdfs:comment>A web application type of software.</rdfs:comment>
+  <rdfs:label>Web Application</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: CQ07 lists WebApplication as a software type</vaem:rationale>
+  <dc:source>(competency_question) CQ07: What type of software (API, Desktop application etc) is it?</dc:source>
+  <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/swo#Software"/>
+  <!-- Axiom: SubClassOf Software -->
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/swo#Task">
+  <rdfs:comment>An operation or job that software can perform.</rdfs:comment>
+  <rdfs:label>Task</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: CQ08 and CQ14 ask what tasks software performs</vaem:rationale>
+  <dc:source>(competency_question) CQ08: What software can perform task x?
+    (competency_question) CQ14: Does it do what I want or need it to do e.g. render a gif?
+    (competency_question) CQ16: What software can I use my data with to support my task?</dc:source>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/swo#DeploymentType">
+  <rdfs:comment>The manner in which software is deployed or accessed.</rdfs:comment>
+  <rdfs:label>Deployment Type</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: CQ11 asks about deployment availability</vaem:rationale>
+  <dc:source>(competency_question) CQ11: Is this software available as a web service?</dc:source>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/swo#Data">
+  <rdfs:comment>Information processed or created by software.</rdfs:comment>
+  <rdfs:label>Data</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: CQ15, CQ16, and CQ23 involve data creation, usage, and compatibility</vaem:rationale>
+  <dc:source>(competency_question) CQ15: Which software tool created this data?
+    (competency_question) CQ16: What software can I use my data with to support my task?
+    (competency_question) CQ23: Can software A work with data that are output from software B?</dc:source>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/swo#Format">
+  <rdfs:comment>A file or data format supported by software.</rdfs:comment>
+  <rdfs:label>Format</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: CQ17, CQ19, CQ22, and CQ26 ask about input/output/processing formats</vaem:rationale>
+  <dc:source>(competency_question) CQ17: What are the input and output formats for this software?
+    (competency_question) CQ19: What software can read a .cel file?
+    (competency_question) CQ22: Can this software export from its proprietary data format to an open format such as csv, txt?
+    (competency_question) CQ26: What open source, maintained software can I use to process these in this format?</dc:source>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/swo#DataFormat">
+  <rdfs:comment>A specific format for data exchange or export.</rdfs:comment>
+  <rdfs:label>Data Format</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: CQ21 and CQ29 distinguish DataFormat from general Format</vaem:rationale>
+  <dc:source>(competency_question) CQ21: What is the valid input for this software?
+    (competency_question) CQ29: Given input x, what are the data exports for this version?</dc:source>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/swo#SoftwareVersion">
+  <rdfs:comment>A specific release or iteration of software.</rdfs:comment>
+  <rdfs:label>Software Version</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: CQ29 asks about exports for a version</vaem:rationale>
+  <dc:source>(competency_question) CQ29: Given input x, what are the data exports for this version?</dc:source>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/swo#Feature">
+  <rdfs:comment>A capability or function introduced in a software version.</rdfs:comment>
+  <rdfs:label>Feature</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: CQ55 asks about features in a version</vaem:rationale>
+  <dc:source>(competency_question) CQ55: What new features are in this version?</dc:source>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/swo#Version">
+  <rdfs:comment>A numbered or named release of software.</rdfs:comment>
+  <rdfs:label>Version</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: CQ54 and CQ57 refer to software versions</vaem:rationale>
+  <dc:source>(competency_question) CQ54: What is the version of this software?
+    (competency_question) CQ57: When was the 1.0 version released?</dc:source>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/swo#DevelopmentModel">
+  <rdfs:comment>The methodology or community structure behind software development.</rdfs:comment>
+  <rdfs:label>Development Model</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: CQ58 asks about open source or community development</vaem:rationale>
+  <dc:source>(competency_question) CQ58: Is the software open source development? Is there a community development?</dc:source>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/swo#License">
+  <rdfs:comment>The legal terms governing software use and distribution.</rdfs:comment>
+  <rdfs:label>License</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: CQ59 asks about software license</vaem:rationale>
+  <dc:source>(competency_question) CQ59: What license and what is permissiveness?</dc:source>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/swo#Documentation">
+  <rdfs:comment>Guides or manuals explaining software usage.</rdfs:comment>
+  <rdfs:label>Documentation</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: CQ73 asks where documentation is located</vaem:rationale>
+  <dc:source>(competency_question) CQ73: Where is the documentation?</dc:source>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/swo#ProgrammingLanguage">
+  <rdfs:comment>The language used to implement the software.</rdfs:comment>
+  <rdfs:label>Programming Language</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: CQ84 asks about implementation language</vaem:rationale>
+  <dc:source>(competency_question) CQ84: In what language was it implemented?</dc:source>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/swo#Platform">
+  <rdfs:comment>The operating system or environment where software runs.</rdfs:comment>
+  <rdfs:label>Platform</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: CQ85 asks about supported platforms</vaem:rationale>
+  <dc:source>(competency_question) CQ85: What platform does the software run on?</dc:source>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/swo#Developer">
+  <rdfs:comment>The person or organization that created the software.</rdfs:comment>
+  <rdfs:label>Developer</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: CQ36 and CQ38 ask about developers and collaboration</vaem:rationale>
+  <dc:source>(competency_question) CQ36: Who developed it?
+    (competency_question) CQ38: Can we collaborate with developers of software x?</dc:source>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/swo#HelpResource">
+  <rdfs:comment>Support channels or resources for software users.</rdfs:comment>
+  <rdfs:label>Help Resource</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: CQ32 asks how to get help</vaem:rationale>
+  <dc:source>(competency_question) CQ32: How do I get help?</dc:source>
+</owl:Class>
+
+  <!-- owl:ObjectProperty declarations -->
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/swo#uses">
+  <rdfs:comment>Relates a tool or software to an algorithm or data it utilizes.</rdfs:comment>
+  <rdfs:label>Uses</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: CQ04 connects Tool to Algorithm; CQ16 connects Software to Data</vaem:rationale>
+  <dc:source>(competency_question) CQ04: Which of the named and published algorithms does this tool use?
+    (competency_question) CQ16: What software can I use my data with to support my task?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/swo#Tool"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/swo#Algorithm"/>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/swo#Software"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/swo#Data"/>
+  <!-- Axiom: domain Tool -->
+  <!-- Axiom: range Algorithm -->
+  <!-- Axiom: domain Software -->
+  <!-- Axiom: range Data -->
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/swo#modification">
+  <rdfs:comment>Relates an algorithm to a modification applied to it.</rdfs:comment>
+  <rdfs:label>Modification</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: CQ05 asks about modifications to algorithms</vaem:rationale>
+  <dc:source>(competency_question) CQ05: Are there any modifications to the algorithm the tool uses?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/swo#Algorithm"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/swo#Modification"/>
+  <!-- Axiom: domain Algorithm -->
+  <!-- Axiom: range Modification -->
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/swo#provides">
+  <rdfs:comment>Relates software to a capability it offers.</rdfs:comment>
+  <rdfs:label>Provides</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: CQ06 asks what capabilities software provides</vaem:rationale>
+  <dc:source>(competency_question) CQ06: Does this software provide XML editing?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/swo#Software"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/swo#Capability"/>
+  <!-- Axiom: domain Software -->
+  <!-- Axiom: range Capability -->
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/swo#hasSoftwareType">
+  <rdfs:comment>Relates software to its application type.</rdfs:comment>
+  <rdfs:label>Has Software Type</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: CQ07 asks for the type of software</vaem:rationale>
+  <dc:source>(competency_question) CQ07: What type of software (API, Desktop application etc) is it?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/swo#Software"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/swo#Software"/>
+  <!-- Axiom: domain Software -->
+  <!-- Axiom: range Software -->
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/swo#performs">
+  <rdfs:comment>Relates software to a task it executes.</rdfs:comment>
+  <rdfs:label>Performs</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: CQ08 and CQ14 ask what tasks software performs</vaem:rationale>
+  <dc:source>(competency_question) CQ08: What software can perform task x?
+    (competency_question) CQ14: Does it do what I want or need it to do e.g. render a gif?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/swo#Software"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/swo#Task"/>
+  <!-- Axiom: domain Software -->
+  <!-- Axiom: range Task -->
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/swo#isAvailableAs">
+  <rdfs:comment>Relates software to its deployment type.</rdfs:comment>
+  <rdfs:label>Is Available As</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: CQ11 asks about web service availability</vaem:rationale>
+  <dc:source>(competency_question) CQ11: Is this software available as a web service?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/swo#Software"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/swo#DeploymentType"/>
+  <!-- Axiom: domain Software -->
+  <!-- Axiom: range DeploymentType -->
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/swo#creates">
+  <rdfs:comment>Relates software to the data it generates.</rdfs:comment>
+  <rdfs:label>Creates</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: CQ15 asks which tool created data</vaem:rationale>
+  <dc:source>(competency_question) CQ15: Which software tool created this data?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/swo#Software"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/swo#Data"/>
+  <!-- Axiom: domain Software -->
+  <!-- Axiom: range Data -->
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/swo#supports">
+  <rdfs:comment>Relates software to a task it supports.</rdfs:comment>
+  <rdfs:label>Supports</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: CQ16 asks what software supports a task</vaem:rationale>
+  <dc:source>(competency_question) CQ16: What software can I use my data with to support my task?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/swo#Software"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/swo#Task"/>
+  <!-- Axiom: domain Software -->
+  <!-- Axiom: range Task -->
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/swo#inputFormat">
+  <rdfs:comment>Relates software to a format it accepts as input.</rdfs:comment>
+  <rdfs:label>Input Format</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: CQ17 asks for input formats</vaem:rationale>
+  <dc:source>(competency_question) CQ17: What are the input and output formats for this software?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/swo#Software"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/swo#Format"/>
+  <!-- Axiom: domain Software -->
+  <!-- Axiom: range Format -->
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/swo#outputFormat">
+  <rdfs:comment>Relates software to a format it produces as output.</rdfs:comment>
+  <rdfs:label>Output Format</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: CQ17 asks for output formats</vaem:rationale>
+  <dc:source>(competency_question) CQ17: What are the input and output formats for this software?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/swo#Software"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/swo#Format"/>
+  <!-- Axiom: domain Software -->
+  <!-- Axiom: range Format -->
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/swo#reads">
+  <rdfs:comment>Relates software to a format it can read.</rdfs:comment>
+  <rdfs:label>Reads</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: CQ19 asks what software reads a specific file</vaem:rationale>
+  <dc:source>(competency_question) CQ19: What software can read a .cel file?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/swo#Software"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/swo#Format"/>
+  <!-- Axiom: domain Software -->
+  <!-- Axiom: range Format -->
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/swo#validInput">
+  <rdfs:comment>Relates software to a valid input data format.</rdfs:comment>
+  <rdfs:label>Valid Input</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: CQ21 asks for valid inputs</vaem:rationale>
+  <dc:source>(competency_question) CQ21: What is the valid input for this software?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/swo#Software"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/swo#DataFormat"/>
+  <!-- Axiom: domain Software -->
+  <!-- Axiom: range DataFormat -->
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/swo#exportsTo">
+  <rdfs:comment>Relates software to a format it can export to.</rdfs:comment>
+  <rdfs:label>Exports To</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: CQ22 asks about exporting to open formats</vaem:rationale>
+  <dc:source>(competency_question) CQ22: Can this software export from its proprietary data format to an open format such as csv, txt?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/swo#Software"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/swo#Format"/>
+  <!-- Axiom: domain Software -->
+  <!-- Axiom: range Format -->
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/swo#worksWith">
+  <rdfs:comment>Relates software to data it can process or interact with.</rdfs:comment>
+  <rdfs:label>Works With</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: CQ23 asks about compatibility between software outputs and inputs</vaem:rationale>
+  <dc:source>(competency_question) CQ23: Can software A work with data that are output from software B?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/swo#Software"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/swo#Data"/>
+  <!-- Axiom: domain Software -->
+  <!-- Axiom: range Data -->
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/swo#outputs">
+  <rdfs:comment>Relates software to the data it produces.</rdfs:comment>
+  <rdfs:label>Outputs</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: CQ23 asks about data output from software</vaem:rationale>
+  <dc:source>(competency_question) CQ23: Can software A work with data that are output from software B?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/swo#Software"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/swo#Data"/>
+  <!-- Axiom: domain Software -->
+  <!-- Axiom: range Data -->
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/swo#processes">
+  <rdfs:comment>Relates software to a format it can process.</rdfs:comment>
+  <rdfs:label>Processes</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: CQ26 asks what software processes a format</vaem:rationale>
+  <dc:source>(competency_question) CQ26: What open source, maintained software can I use to process these in this format?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/swo#Software"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/swo#Format"/>
+  <!-- Axiom: domain Software -->
+  <!-- Axiom: range Format -->
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/swo#dataExport">
+  <rdfs:comment>Relates a software version to its export data format.</rdfs:comment>
+  <rdfs:label>Data Export</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: CQ29 asks about data exports for a version</vaem:rationale>
+  <dc:source>(competency_question) CQ29: Given input x, what are the data exports for this version?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/swo#SoftwareVersion"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/swo#DataFormat"/>
+  <!-- Axiom: domain SoftwareVersion -->
+  <!-- Axiom: range DataFormat -->
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/swo#helpResource">
+  <rdfs:comment>Relates software to a help or support resource.</rdfs:comment>
+  <rdfs:label>Help Resource</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: CQ32 asks how to get help</vaem:rationale>
+  <dc:source>(competency_question) CQ32: How do I get help?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/swo#Software"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/swo#HelpResource"/>
+  <!-- Axiom: domain Software -->
+  <!-- Axiom: range HelpResource -->
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/swo#developer">
+  <rdfs:comment>Relates software to its developer.</rdfs:comment>
+  <rdfs:label>Developer</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: CQ36 and CQ38 ask about developers</vaem:rationale>
+  <dc:source>(competency_question) CQ36: Who developed it?
+    (competency_question) CQ38: Can we collaborate with developers of software x?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/swo#Software"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/swo#Developer"/>
+  <!-- Axiom: domain Software -->
+  <!-- Axiom: range Developer -->
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/swo#acceptsCollaboration">
+  <rdfs:comment>Relates a developer to software they accept collaboration for.</rdfs:comment>
+  <rdfs:label>Accepts Collaboration</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: CQ38 asks about collaborating with developers</vaem:rationale>
+  <dc:source>(competency_question) CQ38: Can we collaborate with developers of software x?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/swo#Developer"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/swo#Software"/>
+  <!-- Axiom: domain Developer -->
+  <!-- Axiom: range Software -->
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/swo#version">
+  <rdfs:comment>Relates software to its version.</rdfs:comment>
+  <rdfs:label>Version</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: CQ54 asks for the version of software</vaem:rationale>
+  <dc:source>(competency_question) CQ54: What is the version of this software?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/swo#Software"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/swo#Version"/>
+  <!-- Axiom: domain Software -->
+  <!-- Axiom: range Version -->
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/swo#feature">
+  <rdfs:comment>Relates a version to a feature it introduces.</rdfs:comment>
+  <rdfs:label>Feature</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: CQ55 asks about new features in a version</vaem:rationale>
+  <dc:source>(competency_question) CQ55: What new features are in this version?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/swo#Version"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/swo#Feature"/>
+  <!-- Axiom: domain Version -->
+  <!-- Axiom: range Feature -->
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/swo#developmentModel">
+  <rdfs:comment>Relates software to its development model.</rdfs:comment>
+  <rdfs:label>Development Model</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: CQ58 asks about open source or community development</vaem:rationale>
+  <dc:source>(competency_question) CQ58: Is the software open source development? Is there a community development?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/swo#Software"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/swo#DevelopmentModel"/>
+  <!-- Axiom: domain Software -->
+  <!-- Axiom: range DevelopmentModel -->
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/swo#license">
+  <rdfs:comment>Relates software to its license.</rdfs:comment>
+  <rdfs:label>License</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: CQ59 asks about the software license</vaem:rationale>
+  <dc:source>(competency_question) CQ59: What license and what is permissiveness?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/swo#Software"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/swo#License"/>
+  <!-- Axiom: domain Software -->
+  <!-- Axiom: range License -->
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/swo#documentation">
+  <rdfs:comment>Relates software to its documentation.</rdfs:comment>
+  <rdfs:label>Documentation</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: CQ73 asks where documentation is</vaem:rationale>
+  <dc:source>(competency_question) CQ73: Where is the documentation?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/swo#Software"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/swo#Documentation"/>
+  <!-- Axiom: domain Software -->
+  <!-- Axiom: range Documentation -->
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/swo#implementationLanguage">
+  <rdfs:comment>Relates software to the programming language it is written in.</rdfs:comment>
+  <rdfs:label>Implementation Language</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: CQ84 asks about implementation language</vaem:rationale>
+  <dc:source>(competency_question) CQ84: In what language was it implemented?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/swo#Software"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/swo#ProgrammingLanguage"/>
+  <!-- Axiom: domain Software -->
+  <!-- Axiom: range ProgrammingLanguage -->
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/swo#runsOn">
+  <rdfs:comment>Relates software to the platform it runs on.</rdfs:comment>
+  <rdfs:label>Runs On</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: CQ85 asks about supported platforms</vaem:rationale>
+  <dc:source>(competency_question) CQ85: What platform does the software run on?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/swo#Software"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/swo#Platform"/>
+  <!-- Axiom: domain Software -->
+  <!-- Axiom: range Platform -->
+</owl:ObjectProperty>
+
+  <!-- owl:DatatypeProperty declarations -->
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/swo#downloadUrl">
+  <rdfs:comment>The web address to download the software.</rdfs:comment>
+  <rdfs:label>Download URL</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: CQ30 and CQ40 ask where to get the software</vaem:rationale>
+  <dc:source>(competency_question) CQ30: Where can I get the software?
+    (competency_question) CQ40: Which URL can I get it from?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/swo#Software"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#anyURI"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <!-- Axiom: domain Software -->
+  <!-- Axiom: range anyURI -->
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/swo#homepage">
+  <rdfs:comment>The official website of the software.</rdfs:comment>
+  <rdfs:label>Homepage</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: CQ37 asks for the homepage</vaem:rationale>
+  <dc:source>(competency_question) CQ37: What is the homepage of the software?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/swo#Software"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#anyURI"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <!-- Axiom: domain Software -->
+  <!-- Axiom: range anyURI -->
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/swo#firstReleaseDate">
+  <rdfs:comment>The date the software was first released.</rdfs:comment>
+  <rdfs:label>First Release Date</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: CQ45 asks how long the software has been around</vaem:rationale>
+  <dc:source>(competency_question) CQ45: How long has this software been around?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/swo#Software"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <!-- Axiom: domain Software -->
+  <!-- Axiom: range dateTime -->
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/swo#developmentActivity">
+  <rdfs:comment>A description of how actively the software is developed.</rdfs:comment>
+  <rdfs:label>Development Activity</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: CQ46 asks about development activity</vaem:rationale>
+  <dc:source>(competency_question) CQ46: How actively developed is it?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/swo#Software"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  <!-- Axiom: domain Software -->
+  <!-- Axiom: range string -->
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/swo#releaseDate">
+  <rdfs:comment>The date a specific version was released.</rdfs:comment>
+  <rdfs:label>Release Date</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: CQ57 asks when version 1.0 was released</vaem:rationale>
+  <dc:source>(competency_question) CQ57: When was the 1.0 version released?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/swo#Version"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <!-- Axiom: domain Version -->
+  <!-- Axiom: range dateTime -->
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/swo#permissiveness">
+  <rdfs:comment>The permissiveness level of the software license.</rdfs:comment>
+  <rdfs:label>Permissiveness</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: CQ59 asks about license permissiveness</vaem:rationale>
+  <dc:source>(competency_question) CQ59: What license and what is permissiveness?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/swo#Software"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  <!-- Axiom: domain Software -->
+  <!-- Axiom: range string -->
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/swo#isOpenSource">
+  <rdfs:comment>Whether the software is open source.</rdfs:comment>
+  <rdfs:label>Is Open Source</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: CQ26 and CQ60 ask about open source status</vaem:rationale>
+  <dc:source>(competency_question) CQ26: What open source, maintained software can I use to process these in this format?
+    (competency_question) CQ60: Is it open source or not?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/swo#Software"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <!-- Axiom: domain Software -->
+  <!-- Axiom: range boolean -->
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/swo#isMaintained">
+  <rdfs:comment>Whether the software is actively maintained.</rdfs:comment>
+  <rdfs:label>Is Maintained</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: CQ26 asks if software is maintained</vaem:rationale>
+  <dc:source>(competency_question) CQ26: What open source, maintained software can I use to process these in this format?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/swo#Software"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <!-- Axiom: domain Software -->
+  <!-- Axiom: range boolean -->
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/swo#isFoss">
+  <rdfs:comment>Whether the software is Free and Open Source Software.</rdfs:comment>
+  <rdfs:label>Is FOSS</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: CQ65 asks if it is FOSS</vaem:rationale>
+  <dc:source>(competency_question) CQ65: Is it FOSS?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/swo#Software"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <!-- Axiom: domain Software -->
+  <!-- Axiom: range boolean -->
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/swo#isFree">
+  <rdfs:comment>Whether the software is free of charge.</rdfs:comment>
+  <rdfs:label>Is Free</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: CQ68 asks if it is free</vaem:rationale>
+  <dc:source>(competency_question) CQ68: Is it free or not?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/swo#Software"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <!-- Axiom: domain Software -->
+  <!-- Axiom: range boolean -->
+</owl:DatatypeProperty>
+
+  <!-- owl:NamedIndividual declarations -->
+
+<owl:NamedIndividual rdf:about="http://www.semanticweb.org/swo#ThisTool">
+  <rdfs:comment>An instance of a tool used in competency questions.</rdfs:comment>
+  <rdfs:label>This Tool</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: CQ04 and CQ05 supply ThisTool as an example</vaem:rationale>
+  <dc:source>(competency_question) CQ04: Which of the named and published algorithms does this tool use?
+    (competency_question) CQ05: Are there any modifications to the algorithm the tool uses?</dc:source>
+  <rdf:type rdf:resource="http://www.semanticweb.org/swo#Tool"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="http://www.semanticweb.org/swo#XmlEditing">
+  <rdfs:comment>A capability for editing XML files.</rdfs:comment>
+  <rdfs:label>XML Editing</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: CQ06 supplies XmlEditing as a capability</vaem:rationale>
+  <dc:source>(competency_question) CQ06: Does this software provide XML editing?</dc:source>
+  <rdf:type rdf:resource="http://www.semanticweb.org/swo#Capability"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="http://www.semanticweb.org/swo#TaskX">
+  <rdfs:comment>A placeholder task used in competency questions.</rdfs:comment>
+  <rdfs:label>Task X</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: CQ08 supplies TaskX as an example</vaem:rationale>
+  <dc:source>(competency_question) CQ08: What software can perform task x?</dc:source>
+  <rdf:type rdf:resource="http://www.semanticweb.org/swo#Task"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="http://www.semanticweb.org/swo#WebService">
+  <rdfs:comment>A deployment type representing a web service.</rdfs:comment>
+  <rdfs:label>Web Service</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: CQ11 supplies WebService as a deployment type</vaem:rationale>
+  <dc:source>(competency_question) CQ11: Is this software available as a web service?</dc:source>
+  <rdf:type rdf:resource="http://www.semanticweb.org/swo#DeploymentType"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="http://www.semanticweb.org/swo#RenderGif">
+  <rdfs:comment>A task to render GIF images.</rdfs:comment>
+  <rdfs:label>Render GIF</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: CQ14 supplies RenderGif as a task</vaem:rationale>
+  <dc:source>(competency_question) CQ14: Does it do what I want or need it to do e.g. render a gif?</dc:source>
+  <rdf:type rdf:resource="http://www.semanticweb.org/swo#Task"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="http://www.semanticweb.org/swo#ThisData">
+  <rdfs:comment>An instance of data used in competency questions.</rdfs:comment>
+  <rdfs:label>This Data</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: CQ15 supplies ThisData as an example</vaem:rationale>
+  <dc:source>(competency_question) CQ15: Which software tool created this data?</dc:source>
+  <rdf:type rdf:resource="http://www.semanticweb.org/swo#Data"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="http://www.semanticweb.org/swo#MyData">
+  <rdfs:comment>User data referenced in competency questions.</rdfs:comment>
+  <rdfs:label>My Data</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: CQ16 supplies MyData as an example</vaem:rationale>
+  <dc:source>(competency_question) CQ16: What software can I use my data with to support my task?</dc:source>
+  <rdf:type rdf:resource="http://www.semanticweb.org/swo#Data"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="http://www.semanticweb.org/swo#MyTask">
+  <rdfs:comment>User task referenced in competency questions.</rdfs:comment>
+  <rdfs:label>My Task</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: CQ16 supplies MyTask as an example</vaem:rationale>
+  <dc:source>(competency_question) CQ16: What software can I use my data with to support my task?</dc:source>
+  <rdf:type rdf:resource="http://www.semanticweb.org/swo#Task"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="http://www.semanticweb.org/swo#CelFile">
+  <rdfs:comment>A .cel file format.</rdfs:comment>
+  <rdfs:label>CEL File</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: CQ19 supplies CelFile as a format</vaem:rationale>
+  <dc:source>(competency_question) CQ19: What software can read a .cel file?</dc:source>
+  <rdf:type rdf:resource="http://www.semanticweb.org/swo#Format"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="http://www.semanticweb.org/swo#Csv">
+  <rdfs:comment>Comma-separated values format.</rdfs:comment>
+  <rdfs:label>CSV</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: CQ22 supplies Csv as an open format</vaem:rationale>
+  <dc:source>(competency_question) CQ22: Can this software export from its proprietary data format to an open format such as csv, txt?</dc:source>
+  <rdf:type rdf:resource="http://www.semanticweb.org/swo#Format"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="http://www.semanticweb.org/swo#Txt">
+  <rdfs:comment>Plain text format.</rdfs:comment>
+  <rdfs:label>TXT</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: CQ22 supplies Txt as an open format</vaem:rationale>
+  <dc:source>(competency_question) CQ22: Can this software export from its proprietary data format to an open format such as csv, txt?</dc:source>
+  <rdf:type rdf:resource="http://www.semanticweb.org/swo#Format"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="http://www.semanticweb.org/swo#ProprietaryFormat">
+  <rdfs:comment>A proprietary data format.</rdfs:comment>
+  <rdfs:label>Proprietary Format</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: CQ22 supplies ProprietaryFormat as a source format</vaem:rationale>
+  <dc:source>(competency_question) CQ22: Can this software export from its proprietary data format to an open format such as csv, txt?</dc:source>
+  <rdf:type rdf:resource="http://www.semanticweb.org/swo#Format"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="http://www.semanticweb.org/swo#SoftwareA">
+  <rdfs:comment>A software instance used in compatibility questions.</rdfs:comment>
+  <rdfs:label>Software A</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: CQ23 supplies SoftwareA</vaem:rationale>
+  <dc:source>(competency_question) CQ23: Can software A work with data that are output from software B?</dc:source>
+  <rdf:type rdf:resource="http://www.semanticweb.org/swo#Software"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="http://www.semanticweb.org/swo#SoftwareB">
+  <rdfs:comment>A software instance used in compatibility questions.</rdfs:comment>
+  <rdfs:label>Software B</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: CQ23 supplies SoftwareB</vaem:rationale>
+  <dc:source>(competency_question) CQ23: Can software A work with data that are output from software B?</dc:source>
+  <rdf:type rdf:resource="http://www.semanticweb.org/swo#Software"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="http://www.semanticweb.org/swo#ThisFormat">
+  <rdfs:comment>A format instance used in competency questions.</rdfs:comment>
+  <rdfs:label>This Format</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: CQ26 supplies ThisFormat</vaem:rationale>
+  <dc:source>(competency_question) CQ26: What open source, maintained software can I use to process these in this format?</dc:source>
+  <rdf:type rdf:resource="http://www.semanticweb.org/swo#Format"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="http://www.semanticweb.org/swo#InputX">
+  <rdfs:comment>An input data format instance.</rdfs:comment>
+  <rdfs:label>Input X</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: CQ29 supplies InputX</vaem:rationale>
+  <dc:source>(competency_question) CQ29: Given input x, what are the data exports for this version?</dc:source>
+  <rdf:type rdf:resource="http://www.semanticweb.org/swo#DataFormat"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="http://www.semanticweb.org/swo#ThisVersion">
+  <rdfs:comment>A software version instance.</rdfs:comment>
+  <rdfs:label>This Version</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: CQ29 and CQ55 supply ThisVersion</vaem:rationale>
+  <dc:source>(competency_question) CQ29: Given input x, what are the data exports for this version?
+    (competency_question) CQ55: What new features are in this version?</dc:source>
+  <rdf:type rdf:resource="http://www.semanticweb.org/swo#SoftwareVersion"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="http://www.semanticweb.org/swo#ThisSoftware">
+  <rdfs:comment>A software instance used across multiple competency questions.</rdfs:comment>
+  <rdfs:label>This Software</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: Multiple CQs supply ThisSoftware as the subject</vaem:rationale>
+  <dc:source>(competency_question) CQ06: Does this software provide XML editing?
+    (competency_question) CQ11: Is this software available as a web service?
+    (competency_question) CQ14: Does it do what I want or need it to do e.g. render a gif?
+    (competency_question) CQ17: What are the input and output formats for this software?
+    (competency_question) CQ21: What is the valid input for this software?
+    (competency_question) CQ22: Can this software export from its proprietary data format to an open format such as csv, txt?
+    (competency_question) CQ30: Where can I get the software?
+    (competency_question) CQ32: How do I get help?
+    (competency_question) CQ36: Who developed it?
+    (competency_question) CQ37: What is the homepage of the software?
+    (competency_question) CQ40: Which URL can I get it from?
+    (competency_question) CQ45: How long has this software been around?
+    (competency_question) CQ46: How actively developed is it?
+    (competency_question) CQ54: What is the version of this software?
+    (competency_question) CQ58: Is the software open source development? Is there a community development?
+    (competency_question) CQ59: What license and what is permissiveness?
+    (competency_question) CQ60: Is it open source or not?
+    (competency_question) CQ65: Is it FOSS?
+    (competency_question) CQ68: Is it free or not?
+    (competency_question) CQ73: Where is the documentation?
+    (competency_question) CQ84: In what language was it implemented?
+    (competency_question) CQ85: What platform does the software run on?</dc:source>
+  <rdf:type rdf:resource="http://www.semanticweb.org/swo#Software"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="http://www.semanticweb.org/swo#SoftwareX">
+  <rdfs:comment>A software instance referenced in collaboration questions.</rdfs:comment>
+  <rdfs:label>Software X</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: CQ38 supplies SoftwareX</vaem:rationale>
+  <dc:source>(competency_question) CQ38: Can we collaborate with developers of software x?</dc:source>
+  <rdf:type rdf:resource="http://www.semanticweb.org/swo#Software"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="http://www.semanticweb.org/swo#Version1_0">
+  <rdfs:comment>The 1.0 release version of software.</rdfs:comment>
+  <rdfs:label>Version 1.0</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: CQ57 supplies Version1_0</vaem:rationale>
+  <dc:source>(competency_question) CQ57: When was the 1.0 version released?</dc:source>
+  <rdf:type rdf:resource="http://www.semanticweb.org/swo#Version"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="http://www.semanticweb.org/swo#OpenSourceDevelopment">
+  <rdfs:comment>A development model based on open source principles.</rdfs:comment>
+  <rdfs:label>Open Source Development</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: CQ58 supplies OpenSourceDevelopment</vaem:rationale>
+  <dc:source>(competency_question) CQ58: Is the software open source development? Is there a community development?</dc:source>
+  <rdf:type rdf:resource="http://www.semanticweb.org/swo#DevelopmentModel"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="http://www.semanticweb.org/swo#CommunityDrivenDevelopment">
+  <rdfs:comment>A development model driven by community contributions.</rdfs:comment>
+  <rdfs:label>Community Driven Development</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: CQ58 supplies CommunityDrivenDevelopment</vaem:rationale>
+  <dc:source>(competency_question) CQ58: Is the software open source development? Is there a community development?</dc:source>
+  <rdf:type rdf:resource="http://www.semanticweb.org/swo#DevelopmentModel"/>
+</owl:NamedIndividual>
+
+</rdf:RDF>

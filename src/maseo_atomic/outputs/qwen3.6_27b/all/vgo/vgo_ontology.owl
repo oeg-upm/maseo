@@ -1,0 +1,636 @@
+<?xml version="1.0"?>
+<rdf:RDF xml:base="http://www.semanticweb.org/vgo#"
+         xmlns:owl="http://www.w3.org/2002/07/owl#"
+         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+         xmlns:dc="http://purl.org/dc/elements/1.1/"
+         xmlns:vaem="http://www.linkedmodel.org/schema/vaem#">
+
+  <owl:Ontology rdf:about="http://www.semanticweb.org/vgo#"/>
+
+  <!-- owl:Class declarations -->
+
+<owl:Class rdf:about="http://www.semanticweb.org/vgo#Player">
+  <rdfs:comment>A user of the gaming platform who plays games, makes purchases, and interacts with items and achievements.</rdfs:comment>
+  <rdfs:label>Player</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: Central entity for player-related queries CQ01, CQ02, CQ03, CQ05, CQ07, CQ22, CQ24, CQ25, CQ26, CQ27, CQ29, CQ35, CQ52, CQ55, CQ56, CQ57, CQ64, CQ65, CQ66
+    [OntoCorrection Agent | loop_rounds: 1 tool_retries: 1 | themis_test] created: Central entity for player-related queries</vaem:rationale>
+  <dc:source>(competency_question) CQ01: What is the username of the player?
+    (competency_question) CQ02: Who are the friends of the player?
+    (competency_question) CQ03: Who are the friends that play other games as well with this player?
+    (competency_question) CQ05: What are the achievements of my friends?
+    (competency_question) CQ07: What are the achievements your friend has received?
+    (competency_question) CQ22: Who has the best kill count in the game?
+    (competency_question) CQ24: What achievements has a player obtained?
+    (competency_question) CQ25: What games has the player played?
+    (competency_question) CQ26: What items does the player have?
+    (competency_question) CQ27: What achievements of a certain type does the player have?
+    (competency_question) CQ29: What is the last game a player has played?
+    (competency_question) CQ35: In how many games does the player have all the achievements?
+    (competency_question) CQ52: What equipment does a player have in a game?
+    (competency_question) CQ55: What are the games where a player can use this item?
+    (competency_question) CQ56: How many players have made in app purchases?
+    (competency_question) CQ57: How many players who have already spent money, spend money again?
+    (competency_question) CQ64: How long does a player spend in the game before making first IAP?
+    (competency_question) CQ65: Where do the players live who have not made any IAP?
+    (competency_question) CQ66: Where do the players who have done the most IAP live?
+    (competency_question) CQ01, CQ02, CQ03, CQ05, CQ07, CQ22, CQ24, CQ25, CQ26, CQ27, CQ29, CQ35, CQ52, CQ55, CQ56, CQ57, CQ64, CQ65, CQ66</dc:source>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/vgo#Game">
+  <rdfs:comment>A video game available on the platform with genres, achievements, and playing areas.</rdfs:comment>
+  <rdfs:label>Game</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: Central entity for game-related queries CQ03, CQ08, CQ09, CQ10, CQ11, CQ12, CQ13, CQ15, CQ17, CQ22, CQ25, CQ29, CQ35, CQ52, CQ55, CQ64, New CQ1
+    [OntoCorrection Agent | loop_rounds: 1 tool_retries: 1 | themis_test] created: Central entity for game-related queries</vaem:rationale>
+  <dc:source>(competency_question) CQ03: Who are the friends that play other games as well with this player?
+    (competency_question) CQ08: What achievements does a game have?
+    (competency_question) CQ09: How many hours has this game been played in total?
+    (competency_question) CQ10: What are the types of achievements in this game?
+    (competency_question) CQ11: What are the types of achievements a game can have?
+    (competency_question) CQ12: What is the genre of the game?
+    (competency_question) CQ13: What items exist in a game?
+    (competency_question) CQ15: What is the release date of the game?
+    (competency_question) CQ17: List all games of a certain Genre?
+    (competency_question) CQ22: Who has the best kill count in the game?
+    (competency_question) CQ25: What games has the player played?
+    (competency_question) CQ29: What is the last game a player has played?
+    (competency_question) CQ35: In how many games does the player have all the achievements?
+    (competency_question) CQ52: What equipment does a player have in a game?
+    (competency_question) CQ55: What are the games where a player can use this item?
+    (competency_question) CQ64: How long does a player spend in the game before making first IAP?
+    (competency_question) New CQ1: What playing areas does a game have?
+    (competency_question) CQ03, CQ08, CQ09, CQ10, CQ11, CQ12, CQ13, CQ15, CQ17, CQ22, CQ25, CQ29, CQ35, CQ52, CQ55, CQ64, New CQ1</dc:source>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/vgo#Achievement">
+  <rdfs:comment>A reward or milestone that can be obtained in a game.</rdfs:comment>
+  <rdfs:label>Achievement</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: Entity for tracking player and game achievements CQ05, CQ07, CQ08, CQ10, CQ11, CQ24, CQ27, CQ35
+    [OntoCorrection Agent | loop_rounds: 1 tool_retries: 1 | themis_test] created: Entity for tracking player and game achievements</vaem:rationale>
+  <dc:source>(competency_question) CQ05: What are the achievements of my friends?
+    (competency_question) CQ07: What are the achievements your friend has received?
+    (competency_question) CQ08: What achievements does a game have?
+    (competency_question) CQ10: What are the types of achievements in this game?
+    (competency_question) CQ11: What are the types of achievements a game can have?
+    (competency_question) CQ24: What achievements has a player obtained?
+    (competency_question) CQ27: What achievements of a certain type does the player have?
+    (competency_question) CQ35: In how many games does the player have all the achievements?
+    (competency_question) CQ05, CQ07, CQ08, CQ10, CQ11, CQ24, CQ27, CQ35</dc:source>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/vgo#AchievementType">
+  <rdfs:comment>A category or classification of an achievement.</rdfs:comment>
+  <rdfs:label>Achievement Type</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: Entity for categorizing achievements CQ10, CQ11, CQ27
+    [OntoCorrection Agent | loop_rounds: 1 tool_retries: 1 | themis_test] created: Entity for categorizing achievements</vaem:rationale>
+  <dc:source>(competency_question) CQ10: What are the types of achievements in this game?
+    (competency_question) CQ11: What are the types of achievements a game can have?
+    (competency_question) CQ27: What achievements of a certain type does the player have?
+    (competency_question) CQ10, CQ11, CQ27</dc:source>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/vgo#Genre">
+  <rdfs:comment>A thematic category of games.</rdfs:comment>
+  <rdfs:label>Genre</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: Entity for classifying games CQ12, CQ17
+    [OntoCorrection Agent | loop_rounds: 1 tool_retries: 1 | themis_test] created: Entity for classifying games</vaem:rationale>
+  <dc:source>(competency_question) CQ12: What is the genre of the game?
+    (competency_question) CQ17: List all games of a certain Genre?
+    (competency_question) CQ12, CQ17</dc:source>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/vgo#Item">
+  <rdfs:comment>An object or collectible within a game.</rdfs:comment>
+  <rdfs:label>Item</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: Entity for in-game objects CQ13, CQ19, CQ26, CQ55
+    [OntoCorrection Agent | loop_rounds: 1 tool_retries: 1 | themis_test] created: Entity for in-game objects</vaem:rationale>
+  <dc:source>(competency_question) CQ13: What items exist in a game?
+    (competency_question) CQ19: What abilities does an item have?
+    (competency_question) CQ26: What items does the player have?
+    (competency_question) CQ55: What are the games where a player can use this item?
+    (competency_question) CQ13, CQ19, CQ26, CQ55</dc:source>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/vgo#Ability">
+  <rdfs:comment>A capability or effect provided by an item.</rdfs:comment>
+  <rdfs:label>Ability</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: Entity for item capabilities CQ19
+    [OntoCorrection Agent | loop_rounds: 1 tool_retries: 1 | themis_test] created: Entity for item capabilities</vaem:rationale>
+  <dc:source>(competency_question) CQ19: What abilities does an item have?</dc:source>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/vgo#Equipment">
+  <rdfs:comment>Gear or tools a player uses in a game.</rdfs:comment>
+  <rdfs:label>Equipment</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: Entity for player gear CQ52
+    [OntoCorrection Agent | loop_rounds: 1 tool_retries: 1 | themis_test] created: Entity for player gear</vaem:rationale>
+  <dc:source>(competency_question) CQ52: What equipment does a player have in a game?</dc:source>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/vgo#InAppPurchase">
+  <rdfs:comment>A transaction made within the application.</rdfs:comment>
+  <rdfs:label>In-App Purchase</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: Entity for tracking IAPs CQ56, CQ62, CQ64, CQ65, CQ66
+    [OntoCorrection Agent | loop_rounds: 1 tool_retries: 1 | themis_test] created: Entity for tracking IAPs</vaem:rationale>
+  <dc:source>(competency_question) CQ56: How many players have made in app purchases?
+    (competency_question) CQ62: What time are most of the in app purchases done?
+    (competency_question) CQ64: How long does a player spend in the game before making first IAP?
+    (competency_question) CQ65: Where do the players live who have not made any IAP?
+    (competency_question) CQ66: Where do the players who have done the most IAP live?
+    (competency_question) CQ56, CQ62, CQ64, CQ65, CQ66</dc:source>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/vgo#Purchase">
+  <rdfs:comment>A monetary transaction recorded for a player.</rdfs:comment>
+  <rdfs:label>Purchase</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: Entity for spending tracking CQ57
+    [OntoCorrection Agent | loop_rounds: 1 tool_retries: 1 | themis_test] created: Entity for spending tracking</vaem:rationale>
+  <dc:source>(competency_question) CQ57: How many players who have already spent money, spend money again?</dc:source>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/vgo#Customer">
+  <rdfs:comment>A user entity associated with payments and location.</rdfs:comment>
+  <rdfs:label>Customer</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: Entity for payment and location queries CQ63
+    [OntoCorrection Agent | loop_rounds: 1 tool_retries: 1 | themis_test] created: Entity for payment and location queries</vaem:rationale>
+  <dc:source>(competency_question) CQ63: Where do the most paying customers live?</dc:source>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/vgo#Payment">
+  <rdfs:comment>A financial transaction record associated with a customer.</rdfs:comment>
+  <rdfs:label>Payment</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: Entity for payment tracking CQ63
+    [OntoCorrection Agent | loop_rounds: 1 tool_retries: 1 | themis_test] created: Entity for payment tracking</vaem:rationale>
+  <dc:source>(competency_question) CQ63: Where do the most paying customers live?</dc:source>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/vgo#Location">
+  <rdfs:comment>A geographical place where users reside.</rdfs:comment>
+  <rdfs:label>Location</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: Entity for user location queries CQ63, CQ65, CQ66
+    [OntoCorrection Agent | loop_rounds: 1 tool_retries: 1 | themis_test] created: Entity for user location queries</vaem:rationale>
+  <dc:source>(competency_question) CQ63: Where do the most paying customers live?
+    (competency_question) CQ65: Where do the players live who have not made any IAP?
+    (competency_question) CQ66: Where do the players who have done the most IAP live?
+    (competency_question) CQ63, CQ65, CQ66</dc:source>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/vgo#PlayingArea">
+  <rdfs:comment>A region, map, or zone within a game.</rdfs:comment>
+  <rdfs:label>Playing Area</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: Entity for game areas New CQ1
+    [OntoCorrection Agent | loop_rounds: 1 tool_retries: 1 | themis_test] created: Entity for game areas</vaem:rationale>
+  <dc:source>(competency_question) New CQ1: What playing areas does a game have?</dc:source>
+</owl:Class>
+
+  <!-- owl:ObjectProperty declarations -->
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/vgo#friend">
+  <rdfs:comment>Relates a player to their friends.</rdfs:comment>
+  <rdfs:label>Friend</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: Answers CQ02 and supports social queries</vaem:rationale>
+  <dc:source>(competency_question) CQ02: Who are the friends of the player?
+    (competency_question) CQ03: Who are the friends that play other games as well with this player?
+    (competency_question) CQ02, CQ03</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/vgo#Player"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/vgo#Player"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#SymmetricProperty"/>
+  <!-- Axiom: domain Player -->
+  <!-- Axiom: range Player -->
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/vgo#playsWith">
+  <rdfs:comment>Relates a player to another player they play games with.</rdfs:comment>
+  <rdfs:label>Plays With</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: Answers CQ03</vaem:rationale>
+  <dc:source>(competency_question) CQ03: Who are the friends that play other games as well with this player?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/vgo#Player"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/vgo#Player"/>
+  <!-- Axiom: domain Player -->
+  <!-- Axiom: range Player -->
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/vgo#hasAchievement">
+  <rdfs:comment>Relates a game or player to an achievement.</rdfs:comment>
+  <rdfs:label>Has Achievement</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: Answers CQ08 and CQ35</vaem:rationale>
+  <dc:source>(competency_question) CQ08: What achievements does a game have?
+    (competency_question) CQ35: In how many games does the player have all the achievements?
+    (competency_question) CQ08, CQ35</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/vgo#Game"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/vgo#Achievement"/>
+  <!-- Axiom: domain Game -->
+  <!-- Axiom: range Achievement -->
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/vgo#type">
+  <rdfs:comment>Relates an achievement to its category.</rdfs:comment>
+  <rdfs:label>Type</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: Answers CQ10, CQ11, CQ27
+    [OntoCorrection Agent | loop_rounds: 1 tool_retries: 1 | themis_test] changed range to Achievement and added axiom: Themis tests CQ10 and CQ11 explicitly require type range Achievement
+    [OntoCorrection Agent | loop_rounds: 1 tool_retries: 2 | themis_test] changed range to AchievementType: Themis tests CQ10, CQ11, and CQ27 indicate range should be AchievementType</vaem:rationale>
+  <dc:source>(competency_question) CQ10: What are the types of achievements in this game?
+    (competency_question) CQ11: What are the types of achievements a game can have?
+    (competency_question) CQ27: What achievements of a certain type does the player have?
+    (competency_question) CQ10, CQ11, CQ27
+    (themis_test) type range Achievement -&gt; Absent
+    (themis_test) Achievement type Achievement -&gt; Incorrect; type range AchievementType -&gt; Absent</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/vgo#Achievement"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/vgo#AchievementType"/>
+  <!-- Axiom: domain Achievement -->
+  <!-- Axiom: range AchievementType -->
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/vgo#existsIn">
+  <rdfs:comment>Relates an item to the game it belongs to.</rdfs:comment>
+  <rdfs:label>Exists In</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: Answers CQ13</vaem:rationale>
+  <dc:source>(competency_question) CQ13: What items exist in a game?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/vgo#Item"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/vgo#Game"/>
+  <!-- Axiom: domain Item -->
+  <!-- Axiom: range Game -->
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/vgo#allowsUseOf">
+  <rdfs:comment>Relates a game to items that can be used within it.</rdfs:comment>
+  <rdfs:label>Allows Use Of</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: Answers CQ55</vaem:rationale>
+  <dc:source>(competency_question) CQ55: What are the games where a player can use this item?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/vgo#Game"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/vgo#Item"/>
+  <!-- Axiom: domain Game -->
+  <!-- Axiom: range Item -->
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/vgo#makesPurchase">
+  <rdfs:comment>Relates a player to an in-app purchase they made.</rdfs:comment>
+  <rdfs:label>Makes Purchase</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: Answers CQ56, CQ64, CQ65, CQ66</vaem:rationale>
+  <dc:source>(competency_question) CQ56: How many players have made in app purchases?
+    (competency_question) CQ64: How long does a player spend in the game before making first IAP?
+    (competency_question) CQ65: Where do the players live who have not made any IAP?
+    (competency_question) CQ66: Where do the players who have done the most IAP live?
+    (competency_question) CQ56, CQ64, CQ65, CQ66</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/vgo#Player"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/vgo#InAppPurchase"/>
+  <!-- Axiom: domain Player -->
+  <!-- Axiom: range InAppPurchase -->
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/vgo#hasSpentMoney">
+  <rdfs:comment>Relates a player to a purchase record indicating spending.</rdfs:comment>
+  <rdfs:label>Has Spent Money</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: Answers CQ57</vaem:rationale>
+  <dc:source>(competency_question) CQ57: How many players who have already spent money, spend money again?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/vgo#Player"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/vgo#Purchase"/>
+  <!-- Axiom: domain Player -->
+  <!-- Axiom: range Purchase -->
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/vgo#hasSpentMoneyAgain">
+  <rdfs:comment>Relates a player to a subsequent purchase record.</rdfs:comment>
+  <rdfs:label>Has Spent Money Again</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: Answers CQ57</vaem:rationale>
+  <dc:source>(competency_question) CQ57: How many players who have already spent money, spend money again?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/vgo#Player"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/vgo#Purchase"/>
+  <!-- Axiom: domain Player -->
+  <!-- Axiom: range Purchase -->
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/vgo#livesIn">
+  <rdfs:comment>Relates a customer or player to their location.</rdfs:comment>
+  <rdfs:label>Lives In</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: Answers CQ63, CQ65, CQ66</vaem:rationale>
+  <dc:source>(competency_question) CQ63: Where do the most paying customers live?
+    (competency_question) CQ65: Where do the players live who have not made any IAP?
+    (competency_question) CQ66: Where do the players who have done the most IAP live?
+    (competency_question) CQ63, CQ65, CQ66</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/vgo#Customer"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/vgo#Location"/>
+  <!-- Axiom: domain Customer -->
+  <!-- Axiom: range Location -->
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/vgo#hasPlayingArea">
+  <rdfs:comment>Relates a game to its playing areas.</rdfs:comment>
+  <rdfs:label>Has Playing Area</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: Answers New CQ1</vaem:rationale>
+  <dc:source>(competency_question) New CQ1: What playing areas does a game have?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/vgo#Game"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/vgo#PlayingArea"/>
+  <!-- Axiom: domain Game -->
+  <!-- Axiom: range PlayingArea -->
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/vgo#player">
+  <rdfs:comment>Relates an item or achievement to its owner.</rdfs:comment>
+  <rdfs:label>Player</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: Answers CQ26, CQ27</vaem:rationale>
+  <dc:source>(competency_question) CQ26: What items does the player have?
+    (competency_question) CQ27: What achievements of a certain type does the player have?
+    (competency_question) CQ26, CQ27</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/vgo#Item"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/vgo#Player"/>
+  <!-- Axiom: domain Item -->
+  <!-- Axiom: range Player -->
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/vgo#hasEquipment">
+  <rdfs:comment>Relates a player to equipment they possess.</rdfs:comment>
+  <rdfs:label>Has Equipment</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: Answers CQ52</vaem:rationale>
+  <dc:source>(competency_question) CQ52: What equipment does a player have in a game?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/vgo#Player"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/vgo#Equipment"/>
+  <!-- Axiom: domain Player -->
+  <!-- Axiom: range Equipment -->
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/vgo#ability">
+  <rdfs:comment>Relates an item to the abilities it provides.</rdfs:comment>
+  <rdfs:label>Ability</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: Answers CQ19</vaem:rationale>
+  <dc:source>(competency_question) CQ19: What abilities does an item have?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/vgo#Item"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/vgo#Ability"/>
+  <!-- Axiom: domain Item -->
+  <!-- Axiom: range Ability -->
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/vgo#hasGenreAssociation">
+  <rdfs:comment>General property relating a game to its genre classification.</rdfs:comment>
+  <rdfs:label>Has Genre Association</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: Generalizes genre and hasGenre per instruction
+    [OntoCorrection Agent | loop_rounds: 1 tool_retries: 1 | themis_test] created: Generalizes genre and hasGenre</vaem:rationale>
+  <dc:source>(competency_question) CQ12: What is the genre of the game?
+    (competency_question) CQ17: List all games of a certain Genre?
+    (competency_question) CQ12, CQ17</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/vgo#Game"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/vgo#Genre"/>
+  <!-- Axiom: domain Game -->
+  <!-- Axiom: range Genre -->
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/vgo#genre">
+  <rdfs:comment>Relates a game to its genre.</rdfs:comment>
+  <rdfs:label>Genre</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: Answers CQ12</vaem:rationale>
+  <dc:source>(competency_question) CQ12: What is the genre of the game?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/vgo#Game"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/vgo#Genre"/>
+  <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/vgo#hasGenreAssociation"/>
+  <!-- Axiom: domain Game -->
+  <!-- Axiom: range Genre -->
+  <!-- Axiom: SubPropertyOf hasGenreAssociation -->
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/vgo#hasGenre">
+  <rdfs:comment>Relates a game to its genre.</rdfs:comment>
+  <rdfs:label>Has Genre</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: Answers CQ17</vaem:rationale>
+  <dc:source>(competency_question) CQ17: List all games of a certain Genre?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/vgo#Game"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/vgo#Genre"/>
+  <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/vgo#hasGenreAssociation"/>
+  <!-- Axiom: domain Game -->
+  <!-- Axiom: range Genre -->
+  <!-- Axiom: SubPropertyOf hasGenreAssociation -->
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/vgo#hasPaymentAssociation">
+  <rdfs:comment>General property relating a customer to payment records.</rdfs:comment>
+  <rdfs:label>Has Payment Association</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: Generalizes payment and hasPayment per instruction
+    [OntoCorrection Agent | loop_rounds: 1 tool_retries: 1 | themis_test] created: Generalizes payment and hasPayment</vaem:rationale>
+  <dc:source>(competency_question) CQ63: Where do the most paying customers live?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/vgo#Customer"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/vgo#Payment"/>
+  <!-- Axiom: domain Customer -->
+  <!-- Axiom: range Payment -->
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/vgo#payment">
+  <rdfs:comment>Relates a customer to a payment.</rdfs:comment>
+  <rdfs:label>Payment</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: Answers CQ63</vaem:rationale>
+  <dc:source>(competency_question) CQ63: Where do the most paying customers live?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/vgo#Customer"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/vgo#Payment"/>
+  <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/vgo#hasPaymentAssociation"/>
+  <!-- Axiom: domain Customer -->
+  <!-- Axiom: range Payment -->
+  <!-- Axiom: SubPropertyOf hasPaymentAssociation -->
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/vgo#hasPayment">
+  <rdfs:comment>Relates a customer to a payment record.</rdfs:comment>
+  <rdfs:label>Has Payment</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: Answers CQ63</vaem:rationale>
+  <dc:source>(competency_question) CQ63: Where do the most paying customers live?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/vgo#Customer"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/vgo#Payment"/>
+  <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/vgo#hasPaymentAssociation"/>
+  <!-- Axiom: domain Customer -->
+  <!-- Axiom: range Payment -->
+  <!-- Axiom: SubPropertyOf hasPaymentAssociation -->
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/vgo#relatesToGame">
+  <rdfs:comment>General property relating a player to games they interact with.</rdfs:comment>
+  <rdfs:label>Relates To Game</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: Generalizes playsIn, hasPlayed, lastGame per instruction
+    [OntoCorrection Agent | loop_rounds: 1 tool_retries: 1 | themis_test] created: Generalizes playsIn, hasPlayed, lastGame</vaem:rationale>
+  <dc:source>(competency_question) CQ22: Who has the best kill count in the game?
+    (competency_question) CQ25: What games has the player played?
+    (competency_question) CQ29: What is the last game a player has played?
+    (competency_question) CQ35: In how many games does the player have all the achievements?
+    (competency_question) CQ52: What equipment does a player have in a game?
+    (competency_question) CQ64: How long does a player spend in the game before making first IAP?
+    (competency_question) CQ22, CQ25, CQ29, CQ35, CQ52, CQ64</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/vgo#Player"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/vgo#Game"/>
+  <!-- Axiom: domain Player -->
+  <!-- Axiom: range Game -->
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/vgo#playsIn">
+  <rdfs:comment>Relates a player to a game they are playing.</rdfs:comment>
+  <rdfs:label>Plays In</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: Answers CQ22, CQ35, CQ52, CQ64</vaem:rationale>
+  <dc:source>(competency_question) CQ22: Who has the best kill count in the game?
+    (competency_question) CQ35: In how many games does the player have all the achievements?
+    (competency_question) CQ52: What equipment does a player have in a game?
+    (competency_question) CQ64: How long does a player spend in the game before making first IAP?
+    (competency_question) CQ22, CQ35, CQ52, CQ64</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/vgo#Player"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/vgo#Game"/>
+  <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/vgo#relatesToGame"/>
+  <!-- Axiom: domain Player -->
+  <!-- Axiom: range Game -->
+  <!-- Axiom: SubPropertyOf relatesToGame -->
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/vgo#hasPlayed">
+  <rdfs:comment>Relates a player to a game they have played.</rdfs:comment>
+  <rdfs:label>Has Played</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: Answers CQ25</vaem:rationale>
+  <dc:source>(competency_question) CQ25: What games has the player played?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/vgo#Player"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/vgo#Game"/>
+  <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/vgo#relatesToGame"/>
+  <!-- Axiom: domain Player -->
+  <!-- Axiom: range Game -->
+  <!-- Axiom: SubPropertyOf relatesToGame -->
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/vgo#lastGame">
+  <rdfs:comment>Relates a player to their most recently played game.</rdfs:comment>
+  <rdfs:label>Last Game</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: Answers CQ29</vaem:rationale>
+  <dc:source>(competency_question) CQ29: What is the last game a player has played?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/vgo#Player"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/vgo#Game"/>
+  <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/vgo#relatesToGame"/>
+  <!-- Axiom: domain Player -->
+  <!-- Axiom: range Game -->
+  <!-- Axiom: SubPropertyOf relatesToGame -->
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/vgo#hasAchievementAssociation">
+  <rdfs:comment>General property relating a player to achievements.</rdfs:comment>
+  <rdfs:label>Has Achievement Association</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: Generalizes achievement, receives, obtains per instruction
+    [OntoCorrection Agent | loop_rounds: 1 tool_retries: 1 | themis_test] created: Generalizes achievement, receives, obtains</vaem:rationale>
+  <dc:source>(competency_question) CQ05: What are the achievements of my friends?
+    (competency_question) CQ07: What are the achievements your friend has received?
+    (competency_question) CQ24: What achievements has a player obtained?
+    (competency_question) CQ05, CQ07, CQ24</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/vgo#Player"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/vgo#Achievement"/>
+  <!-- Axiom: domain Player -->
+  <!-- Axiom: range Achievement -->
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/vgo#achievement">
+  <rdfs:comment>Relates a player or game to an achievement they hold.</rdfs:comment>
+  <rdfs:label>Achievement</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: Answers CQ05, CQ35
+    [OntoCorrection Agent | loop_rounds: 1 tool_retries: 1 | themis_test] created: Answers CQ05, CQ35, CQ11
+    [OntoCorrection Agent | loop_rounds: 1 tool_retries: 1 | themis_test] added domain Game axiom: Themis test CQ11 requires achievement domain Game</vaem:rationale>
+  <dc:source>(competency_question) CQ05: What are the achievements of my friends?
+    (competency_question) CQ35: In how many games does the player have all the achievements?
+    (competency_question) CQ05, CQ35, CQ11
+    (themis_test) achievement domain Game -&gt; Absent</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/vgo#Player"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/vgo#Achievement"/>
+  <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/vgo#hasAchievementAssociation"/>
+  <!-- Axiom: domain Player -->
+  <!-- Axiom: range Achievement -->
+  <!-- Axiom: SubPropertyOf hasAchievementAssociation -->
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/vgo#receives">
+  <rdfs:comment>Relates a player to an achievement they receive.</rdfs:comment>
+  <rdfs:label>Receives</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: Answers CQ07</vaem:rationale>
+  <dc:source>(competency_question) CQ07: What are the achievements your friend has received?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/vgo#Player"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/vgo#Achievement"/>
+  <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/vgo#hasAchievementAssociation"/>
+  <!-- Axiom: domain Player -->
+  <!-- Axiom: range Achievement -->
+  <!-- Axiom: SubPropertyOf hasAchievementAssociation -->
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/vgo#obtains">
+  <rdfs:comment>Relates a player to an achievement they obtain.</rdfs:comment>
+  <rdfs:label>Obtains</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: Answers CQ24</vaem:rationale>
+  <dc:source>(competency_question) CQ24: What achievements has a player obtained?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/vgo#Player"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/vgo#Achievement"/>
+  <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/vgo#hasAchievementAssociation"/>
+  <!-- Axiom: domain Player -->
+  <!-- Axiom: range Achievement -->
+  <!-- Axiom: SubPropertyOf hasAchievementAssociation -->
+</owl:ObjectProperty>
+
+  <!-- owl:DatatypeProperty declarations -->
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/vgo#username">
+  <rdfs:comment>The login name of a player.</rdfs:comment>
+  <rdfs:label>Username</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: Answers CQ01</vaem:rationale>
+  <dc:source>(competency_question) CQ01: What is the username of the player?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/vgo#Player"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <!-- Axiom: domain Player -->
+  <!-- Axiom: range string -->
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/vgo#playTime">
+  <rdfs:comment>Total hours a game has been played.</rdfs:comment>
+  <rdfs:label>Play Time</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: Answers CQ09</vaem:rationale>
+  <dc:source>(competency_question) CQ09: How many hours has this game been played in total?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/vgo#Game"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <!-- Axiom: domain Game -->
+  <!-- Axiom: range float -->
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/vgo#releaseDate">
+  <rdfs:comment>The date a game was released.</rdfs:comment>
+  <rdfs:label>Release Date</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: Answers CQ15</vaem:rationale>
+  <dc:source>(competency_question) CQ15: What is the release date of the game?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/vgo#Game"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <!-- Axiom: domain Game -->
+  <!-- Axiom: range dateTime -->
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/vgo#killCount">
+  <rdfs:comment>The number of kills a player has in a game.</rdfs:comment>
+  <rdfs:label>Kill Count</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: Answers CQ22</vaem:rationale>
+  <dc:source>(competency_question) CQ22: Who has the best kill count in the game?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/vgo#Player"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <!-- Axiom: domain Player -->
+  <!-- Axiom: range integer -->
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/vgo#time">
+  <rdfs:comment>The timestamp of an in-app purchase.</rdfs:comment>
+  <rdfs:label>Time</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: Answers CQ62</vaem:rationale>
+  <dc:source>(competency_question) CQ62: What time are most of the in app purchases done?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/vgo#InAppPurchase"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <!-- Axiom: domain InAppPurchase -->
+  <!-- Axiom: range dateTime -->
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/vgo#timeBeforeFirstIap">
+  <rdfs:comment>Duration a player spends before making their first IAP.</rdfs:comment>
+  <rdfs:label>Time Before First IAP</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: Answers CQ64</vaem:rationale>
+  <dc:source>(competency_question) CQ64: How long does a player spend in the game before making first IAP?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/vgo#Player"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <!-- Axiom: domain Player -->
+  <!-- Axiom: range float -->
+</owl:DatatypeProperty>
+
+</rdf:RDF>

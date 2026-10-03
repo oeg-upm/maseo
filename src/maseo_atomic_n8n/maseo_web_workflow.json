@@ -1,0 +1,681 @@
+{
+  "id": "MaseoAtomicWebApi",
+  "name": "MASEO web app + API",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "GET",
+        "path": "maseo-api/info",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "8813586d-25e0-5a80-8a20-20ff09df76b3",
+      "name": "API info",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        0,
+        0
+      ],
+      "webhookId": "6bf5d865-235b-5e05-8ef8-983d1d326085",
+      "notesInFlow": true,
+      "notes": "models, datasets, defaults for the form"
+    },
+    {
+      "parameters": {
+        "method": "GET",
+        "url": "http://maseo:8030/info",
+        "options": {
+          "timeout": 60000,
+          "response": {
+            "response": {
+              "neverError": true
+            }
+          }
+        }
+      },
+      "id": "7eef6843-373d-5f2a-b6c3-5ccc48408061",
+      "name": "Service: info",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        240,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "firstIncomingItem",
+        "options": {
+          "responseHeaders": {
+            "entries": [
+              {
+                "name": "Cache-Control",
+                "value": "no-store"
+              }
+            ]
+          }
+        }
+      },
+      "id": "669bcdd8-994d-5071-b559-47c8f72f4a45",
+      "name": "Reply: info",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.4,
+      "position": [
+        480,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "httpMethod": "GET",
+        "path": "maseo-api/jobs",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "37b7dc18-b904-5f51-a51c-d51a434cd107",
+      "name": "API jobs",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        0,
+        220
+      ],
+      "webhookId": "d6b610c4-ce13-5fb6-bf5e-4b923114d698",
+      "notesInFlow": true,
+      "notes": "the queue and every job's live progress"
+    },
+    {
+      "parameters": {
+        "method": "GET",
+        "url": "http://maseo:8030/jobs",
+        "options": {
+          "timeout": 60000,
+          "response": {
+            "response": {
+              "neverError": true
+            }
+          }
+        }
+      },
+      "id": "202dd1ed-8cc6-5f5d-a115-7eb02b5e68b8",
+      "name": "Service: jobs",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        240,
+        220
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "firstIncomingItem",
+        "options": {
+          "responseHeaders": {
+            "entries": [
+              {
+                "name": "Cache-Control",
+                "value": "no-store"
+              }
+            ]
+          }
+        }
+      },
+      "id": "8a98a76a-1109-5e30-86a2-2d2dad5fcce3",
+      "name": "Reply: jobs",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.4,
+      "position": [
+        480,
+        220
+      ]
+    },
+    {
+      "parameters": {
+        "httpMethod": "GET",
+        "path": "maseo-api/job",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "2c74b3eb-3da4-5b4f-85c9-850cc1c303b4",
+      "name": "API job",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        0,
+        440
+      ],
+      "webhookId": "5154921d-56d1-5695-b879-63f78b2938e4",
+      "notesInFlow": true,
+      "notes": "one job with its steps, log and files (?id=)"
+    },
+    {
+      "parameters": {
+        "method": "GET",
+        "url": "=http://maseo:8030/jobs/{{ encodeURIComponent($('API job').first().json.query.id) }}",
+        "options": {
+          "timeout": 60000,
+          "response": {
+            "response": {
+              "neverError": true
+            }
+          }
+        }
+      },
+      "id": "8ce4c67a-585f-5c1f-9e14-aa75987090e4",
+      "name": "Service: job",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        240,
+        440
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "firstIncomingItem",
+        "options": {
+          "responseHeaders": {
+            "entries": [
+              {
+                "name": "Cache-Control",
+                "value": "no-store"
+              }
+            ]
+          }
+        }
+      },
+      "id": "5ed39547-57ee-590f-a925-e6b0448815b1",
+      "name": "Reply: job",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.4,
+      "position": [
+        480,
+        440
+      ]
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "maseo-api/submit",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "542b69cd-efe8-545b-8154-983ac418b4bb",
+      "name": "API submit",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        0,
+        660
+      ],
+      "webhookId": "4d19c22e-d838-5593-9aae-90a71bad1eec",
+      "notesInFlow": true,
+      "notes": "queue a job (the service starts the worker)"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://maseo:8030/jobs",
+        "options": {
+          "timeout": 60000,
+          "response": {
+            "response": {
+              "neverError": true
+            }
+          }
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify($json.body) }}"
+      },
+      "id": "f0c263e6-aa30-5b5a-b840-3bbe5fbd438e",
+      "name": "Service: submit",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        240,
+        660
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "firstIncomingItem",
+        "options": {
+          "responseHeaders": {
+            "entries": [
+              {
+                "name": "Cache-Control",
+                "value": "no-store"
+              }
+            ]
+          }
+        }
+      },
+      "id": "d2c08750-dd14-5a62-83ac-0e2f9064ff8f",
+      "name": "Reply: submit",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.4,
+      "position": [
+        480,
+        660
+      ]
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "maseo-api/cancel",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "2f4dc5fb-57ae-5f6c-9a38-28e3924f2695",
+      "name": "API cancel",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        0,
+        880
+      ],
+      "webhookId": "9f7a971b-3b75-5ee0-b85e-06d51205b424",
+      "notesInFlow": true,
+      "notes": "cancel a queued job, or stop a running one (?id=)"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=http://maseo:8030/jobs/{{ encodeURIComponent($('API cancel').first().json.query.id) }}/cancel",
+        "options": {
+          "timeout": 60000,
+          "response": {
+            "response": {
+              "neverError": true
+            }
+          }
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={}"
+      },
+      "id": "f65ff778-7b1e-54bf-ba51-186d4dd0d113",
+      "name": "Service: cancel",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        240,
+        880
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "firstIncomingItem",
+        "options": {
+          "responseHeaders": {
+            "entries": [
+              {
+                "name": "Cache-Control",
+                "value": "no-store"
+              }
+            ]
+          }
+        }
+      },
+      "id": "bfe687e4-369a-5e2b-9301-7f8b0f54532e",
+      "name": "Reply: cancel",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.4,
+      "position": [
+        480,
+        880
+      ]
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "maseo-api/delete",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "5a13dcb7-4b8d-5385-ad6d-ea2a906068c9",
+      "name": "API delete",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        0,
+        1100
+      ],
+      "webhookId": "daf4d060-1176-5d83-a097-833cdca86b5f",
+      "notesInFlow": true,
+      "notes": "remove a finished job and its files (?id=)"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=http://maseo:8030/jobs/{{ encodeURIComponent($('API delete').first().json.query.id) }}/delete",
+        "options": {
+          "timeout": 60000,
+          "response": {
+            "response": {
+              "neverError": true
+            }
+          }
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={}"
+      },
+      "id": "e8eee2ba-3fcb-5ed7-8829-11d81082c97d",
+      "name": "Service: delete",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        240,
+        1100
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "firstIncomingItem",
+        "options": {
+          "responseHeaders": {
+            "entries": [
+              {
+                "name": "Cache-Control",
+                "value": "no-store"
+              }
+            ]
+          }
+        }
+      },
+      "id": "8f1e8817-c7b4-52eb-aec8-f3befbd5be94",
+      "name": "Reply: delete",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.4,
+      "position": [
+        480,
+        1100
+      ]
+    },
+    {
+      "parameters": {
+        "httpMethod": "GET",
+        "path": "maseo-api/download",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "0b66914b-1e6a-5ba7-bb10-ad2c21a5d2c4",
+      "name": "API download",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        0,
+        1320
+      ],
+      "webhookId": "1db1666a-8f1e-5d5f-bf01-b25dfe0e73dc",
+      "notesInFlow": true,
+      "notes": "the job's zip, or one file with &file= (?id=)"
+    },
+    {
+      "parameters": {
+        "method": "GET",
+        "url": "=http://maseo:8030/jobs/{{ encodeURIComponent($('API download').first().json.query.id) }}{{ $('API download').first().json.query.file ? '/file/' + encodeURIComponent($('API download').first().json.query.file) : '/zip' }}",
+        "options": {
+          "timeout": 60000,
+          "response": {
+            "response": {
+              "responseFormat": "file",
+              "outputPropertyName": "data"
+            }
+          }
+        }
+      },
+      "id": "488c7c20-2b23-5f24-a3b7-6285de4529ee",
+      "name": "Service: download",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        240,
+        1320
+      ],
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "respondWith": "binary",
+        "responseDataSource": "set",
+        "inputFieldName": "data",
+        "options": {
+          "responseHeaders": {
+            "entries": [
+              {
+                "name": "Content-Disposition",
+                "value": "=attachment; filename=\"{{ $('API download').first().json.query.file || ($('API download').first().json.query.id + '.zip') }}\""
+              },
+              {
+                "name": "Cache-Control",
+                "value": "no-store"
+              }
+            ]
+          }
+        }
+      },
+      "id": "511c0f06-b349-5ec9-85f1-84617df3ab92",
+      "name": "Reply: file",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.4,
+      "position": [
+        480,
+        1260
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "=No such file yet for this job.",
+        "options": {
+          "responseCode": 404
+        }
+      },
+      "id": "1c9c758f-9133-562a-9fe6-8987c5b5565d",
+      "name": "Reply: not found",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.4,
+      "position": [
+        480,
+        1400
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## MASEO web app + API\nThe backend of the MASEO web app (webapp/app.py, FastAPI, port 8080): it calls only the webhooks below, and each passes the call to the MASEO atomic service (`http://maseo:8030`), which keeps the job queue. Queued jobs are run one at a time by the workflow **MASEO worker (agent_graph)**.\n\nSuccessful executions of this workflow are not saved (a page showing a running job reloads every few seconds).",
+        "height": 260,
+        "width": 760,
+        "color": 5
+      },
+      "id": "66674f03-c6b6-5ad1-ad4b-c8b88e51514a",
+      "name": "Note: web app",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -60,
+        -300
+      ]
+    }
+  ],
+  "connections": {
+    "API info": {
+      "main": [
+        [
+          {
+            "node": "Service: info",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Service: info": {
+      "main": [
+        [
+          {
+            "node": "Reply: info",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "API jobs": {
+      "main": [
+        [
+          {
+            "node": "Service: jobs",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Service: jobs": {
+      "main": [
+        [
+          {
+            "node": "Reply: jobs",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "API job": {
+      "main": [
+        [
+          {
+            "node": "Service: job",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Service: job": {
+      "main": [
+        [
+          {
+            "node": "Reply: job",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "API submit": {
+      "main": [
+        [
+          {
+            "node": "Service: submit",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Service: submit": {
+      "main": [
+        [
+          {
+            "node": "Reply: submit",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "API cancel": {
+      "main": [
+        [
+          {
+            "node": "Service: cancel",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Service: cancel": {
+      "main": [
+        [
+          {
+            "node": "Reply: cancel",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "API delete": {
+      "main": [
+        [
+          {
+            "node": "Service: delete",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Service: delete": {
+      "main": [
+        [
+          {
+            "node": "Reply: delete",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "API download": {
+      "main": [
+        [
+          {
+            "node": "Service: download",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Service: download": {
+      "main": [
+        [
+          {
+            "node": "Reply: file",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Reply: not found",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "saveDataErrorExecution": "all",
+    "saveDataSuccessExecution": "none",
+    "saveManualExecutions": false,
+    "saveExecutionProgress": false,
+    "timezone": "Europe/Madrid"
+  },
+  "pinData": {},
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "tags": []
+}

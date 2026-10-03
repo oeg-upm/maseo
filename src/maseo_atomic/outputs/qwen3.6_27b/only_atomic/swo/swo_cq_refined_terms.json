@@ -1,0 +1,947 @@
+[
+  {
+    "cq_id": "CQ04",
+    "cq": "Which of the named and published algorithms does this tool use?",
+    "question_type": "domain",
+    "recomposition": "identity",
+    "atomic_cq_mapping": [
+      {
+        "atomic_cq_id": "CQ04_a1",
+        "atomic_cq": "Which named and published algorithm does the given tool use?",
+        "template": "81. Which [EC1] [PC1] [EC2]",
+        "classes": [
+          "Tool",
+          "Algorithm"
+        ],
+        "object_properties": [
+          "uses"
+        ],
+        "data_properties": [],
+        "individuals": [],
+        "instances": []
+      }
+    ]
+  },
+  {
+    "cq_id": "CQ05",
+    "cq": "Are there any modifications to the algorithm the tool uses?",
+    "question_type": "domain",
+    "recomposition": "identity",
+    "atomic_cq_mapping": [
+      {
+        "atomic_cq_id": "CQ05_a1",
+        "atomic_cq": "Is there modification for the algorithm of the tool?",
+        "template": "1. Is there [EC1] for [EC2]",
+        "classes": [
+          "Modification",
+          "Algorithm",
+          "Tool"
+        ],
+        "object_properties": [
+          "modification"
+        ],
+        "data_properties": [],
+        "individuals": [],
+        "instances": []
+      }
+    ]
+  },
+  {
+    "cq_id": "CQ06",
+    "cq": "Does this software provide XML editing?",
+    "question_type": "domain",
+    "recomposition": "identity",
+    "atomic_cq_mapping": [
+      {
+        "atomic_cq_id": "CQ06_a1",
+        "atomic_cq": "Does the given software have XML editing?",
+        "template": "8. Does [EC1] have [EC2]",
+        "classes": [
+          "Software",
+          "XmlEditing"
+        ],
+        "object_properties": [
+          "xmlEditing"
+        ],
+        "data_properties": [],
+        "individuals": [],
+        "instances": []
+      }
+    ]
+  },
+  {
+    "cq_id": "CQ07",
+    "cq": "What type of software (API, Desktop application etc) is it?",
+    "question_type": "domain",
+    "recomposition": "identity",
+    "atomic_cq_mapping": [
+      {
+        "atomic_cq_id": "CQ07_a1",
+        "atomic_cq": "What type of software is the given software?",
+        "template": "70. What type of [EC1] is [EC2]",
+        "classes": [
+          "Software",
+          "Api",
+          "DesktopApplication",
+          "WebService"
+        ],
+        "object_properties": [
+          "hasDeploymentModel"
+        ],
+        "data_properties": [],
+        "individuals": [],
+        "instances": []
+      }
+    ]
+  },
+  {
+    "cq_id": "CQ08",
+    "cq": "What software can perform task x?",
+    "question_type": "domain",
+    "recomposition": "identity",
+    "atomic_cq_mapping": [
+      {
+        "atomic_cq_id": "CQ08_a1",
+        "atomic_cq": "What software can perform task x?",
+        "template": "53. What [EC1] [PC1] [EC2]",
+        "classes": [
+          "Software",
+          "Task"
+        ],
+        "object_properties": [
+          "performs"
+        ],
+        "data_properties": [],
+        "individuals": [],
+        "instances": [
+          "TaskX"
+        ]
+      }
+    ]
+  },
+  {
+    "cq_id": "CQ11",
+    "cq": "Is this software available as a web service?",
+    "question_type": "domain",
+    "recomposition": "identity",
+    "atomic_cq_mapping": [
+      {
+        "atomic_cq_id": "CQ11_a1",
+        "atomic_cq": "Is the given software available as a web service?",
+        "template": "22. Is [EC1] [EC2]",
+        "classes": [
+          "Software",
+          "WebService",
+          "ComputationalArtifact"
+        ],
+        "object_properties": [],
+        "data_properties": [],
+        "individuals": [],
+        "instances": []
+      }
+    ]
+  },
+  {
+    "cq_id": "CQ14",
+    "cq": "Does it do what I want or need it to do e.g. render a gif?",
+    "question_type": "domain",
+    "recomposition": "identity",
+    "atomic_cq_mapping": [
+      {
+        "atomic_cq_id": "CQ14_a1",
+        "atomic_cq": "Does the given system have the capability to render a gif?",
+        "template": "8. Does [EC1] have [EC2]",
+        "classes": [
+          "System",
+          "Capability",
+          "Gif"
+        ],
+        "object_properties": [
+          "capability",
+          "renders"
+        ],
+        "data_properties": [],
+        "individuals": [],
+        "instances": []
+      }
+    ]
+  },
+  {
+    "cq_id": "CQ15",
+    "cq": "Which software tool created this data?",
+    "question_type": "domain",
+    "recomposition": "identity",
+    "atomic_cq_mapping": [
+      {
+        "atomic_cq_id": "CQ15_a1",
+        "atomic_cq": "Which software tool created the given data?",
+        "template": "81. Which [EC1] [PC1] [EC2]",
+        "classes": [
+          "SoftwareTool",
+          "Data"
+        ],
+        "object_properties": [
+          "creates"
+        ],
+        "data_properties": [],
+        "individuals": [],
+        "instances": []
+      }
+    ]
+  },
+  {
+    "cq_id": "CQ16",
+    "cq": "What software can I use my data with to support my task?",
+    "question_type": "domain",
+    "recomposition": "AND: the original answer is the intersection of CQ16_a1 and CQ16_a2",
+    "atomic_cq_mapping": [
+      {
+        "atomic_cq_id": "CQ16_a1",
+        "atomic_cq": "Which software can be used with the given data?",
+        "template": "81. Which [EC1] [PC1] [EC2]",
+        "classes": [
+          "Software",
+          "Data"
+        ],
+        "object_properties": [
+          "usedWith"
+        ],
+        "data_properties": [],
+        "individuals": [],
+        "instances": []
+      },
+      {
+        "atomic_cq_id": "CQ16_a2",
+        "atomic_cq": "Which software supports the given task?",
+        "template": "81. Which [EC1] [PC1] [EC2]",
+        "classes": [
+          "Software",
+          "Task"
+        ],
+        "object_properties": [
+          "supports"
+        ],
+        "data_properties": [],
+        "individuals": [],
+        "instances": []
+      }
+    ]
+  },
+  {
+    "cq_id": "CQ17",
+    "cq": "What are the input and output formats for this software?",
+    "question_type": "domain",
+    "recomposition": "AND",
+    "atomic_cq_mapping": [
+      {
+        "atomic_cq_id": "CQ17_a1",
+        "atomic_cq": "What is the input format for the given software?",
+        "template": "38. What is [EC1] for [EC2]",
+        "classes": [
+          "Software",
+          "InputFormat"
+        ],
+        "object_properties": [
+          "inputFormat"
+        ],
+        "data_properties": [],
+        "individuals": [],
+        "instances": []
+      },
+      {
+        "atomic_cq_id": "CQ17_a2",
+        "atomic_cq": "What is the output format for the given software?",
+        "template": "38. What is [EC1] for [EC2]",
+        "classes": [
+          "Software",
+          "OutputFormat"
+        ],
+        "object_properties": [
+          "outputFormat"
+        ],
+        "data_properties": [],
+        "individuals": [],
+        "instances": []
+      }
+    ]
+  },
+  {
+    "cq_id": "CQ19",
+    "cq": "What software can read a .cel file?",
+    "question_type": "domain",
+    "recomposition": "identity",
+    "atomic_cq_mapping": [
+      {
+        "atomic_cq_id": "CQ19_a1",
+        "atomic_cq": "What software can read a .cel file?",
+        "template": "53. What [EC1] [PC1] [EC2]",
+        "classes": [
+          "Software",
+          "CelFile"
+        ],
+        "object_properties": [
+          "reads"
+        ],
+        "data_properties": [],
+        "individuals": [],
+        "instances": []
+      }
+    ]
+  },
+  {
+    "cq_id": "CQ21",
+    "cq": "What is the valid input for this software?",
+    "question_type": "domain",
+    "recomposition": "identity",
+    "atomic_cq_mapping": [
+      {
+        "atomic_cq_id": "CQ21_a1",
+        "atomic_cq": "What is the valid input for the given software?",
+        "template": "38. What is [EC1] for [EC2]",
+        "classes": [
+          "Software",
+          "ValidInput"
+        ],
+        "object_properties": [
+          "validInput"
+        ],
+        "data_properties": [],
+        "individuals": [],
+        "instances": []
+      }
+    ]
+  },
+  {
+    "cq_id": "CQ22",
+    "cq": "Can this software export from its proprietary data format to an open format such as csv, txt?",
+    "question_type": "specification",
+    "recomposition": "OR: the original answer is true if either CQ22_a1 or CQ22_a2 is true",
+    "atomic_cq_mapping": [
+      {
+        "atomic_cq_id": "CQ22_a1",
+        "atomic_cq": "Does the given software have export capability from its proprietary data format to csv?",
+        "template": "8. Does [EC1] have [EC2]",
+        "classes": [
+          "Software",
+          "ProprietaryDataFormat",
+          "DataFormat"
+        ],
+        "object_properties": [
+          "exportCapability",
+          "exportsTo"
+        ],
+        "data_properties": [],
+        "individuals": [
+          "Csv"
+        ],
+        "instances": []
+      },
+      {
+        "atomic_cq_id": "CQ22_a2",
+        "atomic_cq": "Does the given software have export capability from its proprietary data format to txt?",
+        "template": "8. Does [EC1] have [EC2]",
+        "classes": [
+          "Software",
+          "ProprietaryDataFormat",
+          "DataFormat"
+        ],
+        "object_properties": [
+          "exportCapability",
+          "exportsTo"
+        ],
+        "data_properties": [],
+        "individuals": [
+          "Txt"
+        ],
+        "instances": []
+      }
+    ]
+  },
+  {
+    "cq_id": "CQ23",
+    "cq": "Can software A work with data that are output from software B?",
+    "question_type": "domain",
+    "recomposition": "AND: the original answer is yes if both atomic questions are positive",
+    "atomic_cq_mapping": [
+      {
+        "atomic_cq_id": "CQ23_a1",
+        "atomic_cq": "Which data is output from software B?",
+        "template": "81. Which [EC1] [PC1] [EC2]",
+        "classes": [
+          "Data",
+          "Software"
+        ],
+        "object_properties": [
+          "outputs"
+        ],
+        "data_properties": [],
+        "individuals": [],
+        "instances": [
+          "SoftwareB"
+        ]
+      },
+      {
+        "atomic_cq_id": "CQ23_a2",
+        "atomic_cq": "Does software A work with [#CQ23_a1]?",
+        "template": "8. Does [EC1] have [EC2]",
+        "classes": [
+          "Software",
+          "Data"
+        ],
+        "object_properties": [
+          "worksWith"
+        ],
+        "data_properties": [],
+        "individuals": [],
+        "instances": [
+          "SoftwareA"
+        ]
+      }
+    ]
+  },
+  {
+    "cq_id": "CQ26",
+    "cq": "What open source, maintained software can I use to process these in this format?",
+    "question_type": "domain",
+    "recomposition": "identity",
+    "atomic_cq_mapping": [
+      {
+        "atomic_cq_id": "CQ26_a1",
+        "atomic_cq": "Which open source and maintained software processes the given data in the given format?",
+        "template": "81. Which [EC1] [PC1] [EC2]",
+        "classes": [
+          "Software",
+          "Data",
+          "Format"
+        ],
+        "object_properties": [
+          "processes",
+          "format"
+        ],
+        "data_properties": [
+          "isOpenSource",
+          "isMaintained"
+        ],
+        "individuals": [],
+        "instances": []
+      }
+    ]
+  },
+  {
+    "cq_id": "CQ29",
+    "cq": "Given input x, what are the data exports for this version?",
+    "question_type": "domain",
+    "recomposition": "join via [#CQ29_a1]",
+    "atomic_cq_mapping": [
+      {
+        "atomic_cq_id": "CQ29_a1",
+        "atomic_cq": "What is the version for input x?",
+        "template": "38. What is [EC1] for [EC2]",
+        "classes": [
+          "Version",
+          "Input"
+        ],
+        "object_properties": [
+          "version"
+        ],
+        "data_properties": [],
+        "individuals": [],
+        "instances": [
+          "InputX"
+        ]
+      },
+      {
+        "atomic_cq_id": "CQ29_a2",
+        "atomic_cq": "What are the data exports for [#CQ29_a1]?",
+        "template": "38. What is [EC1] for [EC2]",
+        "classes": [
+          "DataExport",
+          "Version"
+        ],
+        "object_properties": [
+          "dataExport"
+        ],
+        "data_properties": [],
+        "individuals": [],
+        "instances": []
+      }
+    ]
+  },
+  {
+    "cq_id": "CQ30",
+    "cq": "Where can I get the software?",
+    "question_type": "specification",
+    "recomposition": "identity",
+    "atomic_cq_mapping": [
+      {
+        "atomic_cq_id": "CQ30_a1",
+        "atomic_cq": "Where is the software?",
+        "template": "75. Where [PC1] [EC1]",
+        "classes": [
+          "Software"
+        ],
+        "object_properties": [],
+        "data_properties": [
+          "hasLocation",
+          "hasUrl"
+        ],
+        "individuals": [],
+        "instances": []
+      }
+    ]
+  },
+  {
+    "cq_id": "CQ32",
+    "cq": "How do I get help?",
+    "question_type": "specification",
+    "recomposition": "identity",
+    "atomic_cq_mapping": [
+      {
+        "atomic_cq_id": "CQ32_a1",
+        "atomic_cq": "How does one get help?",
+        "template": "16. How [PC1] [EC1]",
+        "classes": [
+          "HelpResource"
+        ],
+        "object_properties": [
+          "helpMechanism"
+        ],
+        "data_properties": [],
+        "individuals": [],
+        "instances": []
+      }
+    ]
+  },
+  {
+    "cq_id": "CQ36",
+    "cq": "Who developed it?",
+    "question_type": "domain",
+    "recomposition": "identity",
+    "atomic_cq_mapping": [
+      {
+        "atomic_cq_id": "CQ36_a1",
+        "atomic_cq": "Who developed the given entity?",
+        "template": "88. Who [PC1] [EC1]",
+        "classes": [
+          "Entity",
+          "Developer"
+        ],
+        "object_properties": [
+          "develops"
+        ],
+        "data_properties": [],
+        "individuals": [],
+        "instances": []
+      }
+    ]
+  },
+  {
+    "cq_id": "CQ37",
+    "cq": "What is the homepage of the software?",
+    "question_type": "domain",
+    "recomposition": "identity",
+    "atomic_cq_mapping": [
+      {
+        "atomic_cq_id": "CQ37_a1",
+        "atomic_cq": "What is the homepage of the software?",
+        "template": "60. What is [EC1] of [EC2]",
+        "classes": [
+          "Software",
+          "Homepage"
+        ],
+        "object_properties": [
+          "homepage"
+        ],
+        "data_properties": [],
+        "individuals": [],
+        "instances": []
+      }
+    ]
+  },
+  {
+    "cq_id": "CQ38",
+    "cq": "Can we collaborate with developers of software x?",
+    "question_type": "domain",
+    "recomposition": "join: the answer is positive if the entities found in CQ38_a1 satisfy the condition in CQ38_a2",
+    "atomic_cq_mapping": [
+      {
+        "atomic_cq_id": "CQ38_a1",
+        "atomic_cq": "Who are the developers of software x?",
+        "template": "86. Who is [EC1] of [EC2]",
+        "classes": [
+          "Developer",
+          "Software"
+        ],
+        "object_properties": [
+          "developer"
+        ],
+        "data_properties": [],
+        "individuals": [],
+        "instances": [
+          "SoftwareX"
+        ]
+      },
+      {
+        "atomic_cq_id": "CQ38_a2",
+        "atomic_cq": "Is there collaboration with [#CQ38_a1]?",
+        "template": "27. Is there [EC1] with [EC2]",
+        "classes": [
+          "Collaboration",
+          "Developer"
+        ],
+        "object_properties": [
+          "collaboration"
+        ],
+        "data_properties": [],
+        "individuals": [],
+        "instances": []
+      }
+    ]
+  },
+  {
+    "cq_id": "CQ40",
+    "cq": "Which URL can I get it from?",
+    "question_type": "domain",
+    "recomposition": "identity",
+    "atomic_cq_mapping": [
+      {
+        "atomic_cq_id": "CQ40_a1",
+        "atomic_cq": "What URL is for the given entity?",
+        "template": "38. What is [EC1] for [EC2]",
+        "classes": [
+          "Entity",
+          "Url"
+        ],
+        "object_properties": [
+          "url"
+        ],
+        "data_properties": [],
+        "individuals": [],
+        "instances": []
+      }
+    ]
+  },
+  {
+    "cq_id": "CQ45",
+    "cq": "How long has this software been around?",
+    "question_type": "domain",
+    "recomposition": "identity",
+    "atomic_cq_mapping": [
+      {
+        "atomic_cq_id": "CQ45_a1",
+        "atomic_cq": "How long has the given software been around?",
+        "template": "14. How long [PC1] [EC1] [PC1]",
+        "classes": [
+          "Software"
+        ],
+        "object_properties": [],
+        "data_properties": [
+          "age",
+          "releaseDate"
+        ],
+        "individuals": [],
+        "instances": []
+      }
+    ]
+  },
+  {
+    "cq_id": "CQ46",
+    "cq": "How actively developed is it?",
+    "question_type": "domain",
+    "recomposition": "identity",
+    "atomic_cq_mapping": [
+      {
+        "atomic_cq_id": "CQ46_a1",
+        "atomic_cq": "How actively developed is the given entity?",
+        "template": "12. How [EC1] is [EC2]",
+        "classes": [
+          "Entity"
+        ],
+        "object_properties": [],
+        "data_properties": [
+          "developmentActivity"
+        ],
+        "individuals": [],
+        "instances": []
+      }
+    ]
+  },
+  {
+    "cq_id": "CQ54",
+    "cq": "What is the version of this software?",
+    "question_type": "domain",
+    "recomposition": "identity",
+    "atomic_cq_mapping": [
+      {
+        "atomic_cq_id": "CQ54_a1",
+        "atomic_cq": "What is the version of the given software?",
+        "template": "60. What is [EC1] of [EC2]",
+        "classes": [
+          "Software",
+          "Version"
+        ],
+        "object_properties": [
+          "version"
+        ],
+        "data_properties": [],
+        "individuals": [],
+        "instances": []
+      }
+    ]
+  },
+  {
+    "cq_id": "CQ55",
+    "cq": "What new features are in this version?",
+    "question_type": "domain",
+    "recomposition": "identity",
+    "atomic_cq_mapping": [
+      {
+        "atomic_cq_id": "CQ55_a1",
+        "atomic_cq": "Which new feature is in the given version?",
+        "template": "81. Which [EC1] [PC1] [EC2]",
+        "classes": [
+          "Feature",
+          "Version"
+        ],
+        "object_properties": [
+          "feature"
+        ],
+        "data_properties": [
+          "isNew"
+        ],
+        "individuals": [],
+        "instances": []
+      }
+    ]
+  },
+  {
+    "cq_id": "CQ57",
+    "cq": "When was the 1.0 version released?",
+    "question_type": "domain",
+    "recomposition": "identity",
+    "atomic_cq_mapping": [
+      {
+        "atomic_cq_id": "CQ57_a1",
+        "atomic_cq": "When occurs the release of the 1.0 version?",
+        "template": "72. When [PC1] [EC1] of [EC2] [PC1]",
+        "classes": [
+          "Release",
+          "Version"
+        ],
+        "object_properties": [
+          "release"
+        ],
+        "data_properties": [
+          "date"
+        ],
+        "individuals": [
+          "Version1_0"
+        ],
+        "instances": []
+      }
+    ]
+  },
+  {
+    "cq_id": "CQ58",
+    "cq": "Is the software open source development? Is there a community development?",
+    "question_type": "domain",
+    "recomposition": "OR: the original answer is true if either atomic answer is true",
+    "atomic_cq_mapping": [
+      {
+        "atomic_cq_id": "CQ58_a1",
+        "atomic_cq": "Is the software open source development?",
+        "template": "22. Is [EC1] [EC2]",
+        "classes": [
+          "Software",
+          "OpenSourceDevelopment"
+        ],
+        "object_properties": [],
+        "data_properties": [],
+        "individuals": [],
+        "instances": []
+      },
+      {
+        "atomic_cq_id": "CQ58_a2",
+        "atomic_cq": "Does the software have community development?",
+        "template": "8. Does [EC1] have [EC2]",
+        "classes": [
+          "Software",
+          "CommunityDevelopment"
+        ],
+        "object_properties": [
+          "communityDevelopment"
+        ],
+        "data_properties": [],
+        "individuals": [],
+        "instances": []
+      }
+    ]
+  },
+  {
+    "cq_id": "CQ59",
+    "cq": "What license and what is permissiveness?",
+    "question_type": "domain",
+    "recomposition": "AND",
+    "atomic_cq_mapping": [
+      {
+        "atomic_cq_id": "CQ59_a1",
+        "atomic_cq": "What is the license?",
+        "template": "93. What is [EC1]",
+        "classes": [
+          "License"
+        ],
+        "object_properties": [
+          "license"
+        ],
+        "data_properties": [],
+        "individuals": [],
+        "instances": []
+      },
+      {
+        "atomic_cq_id": "CQ59_a2",
+        "atomic_cq": "What is the permissiveness?",
+        "template": "93. What is [EC1]",
+        "classes": [
+          "Permissiveness"
+        ],
+        "object_properties": [],
+        "data_properties": [
+          "permissivenessLevel"
+        ],
+        "individuals": [],
+        "instances": []
+      }
+    ]
+  },
+  {
+    "cq_id": "CQ60",
+    "cq": "Is it open source or not?",
+    "question_type": "domain",
+    "recomposition": "identity",
+    "atomic_cq_mapping": [
+      {
+        "atomic_cq_id": "CQ60_a1",
+        "atomic_cq": "Is the given entity open source?",
+        "template": "22. Is [EC1] [EC2]",
+        "classes": [
+          "Entity",
+          "OpenSourceSoftware"
+        ],
+        "object_properties": [],
+        "data_properties": [],
+        "individuals": [],
+        "instances": []
+      }
+    ]
+  },
+  {
+    "cq_id": "CQ65",
+    "cq": "Is it FOSS?",
+    "question_type": "domain",
+    "recomposition": "identity",
+    "atomic_cq_mapping": [
+      {
+        "atomic_cq_id": "CQ65_a1",
+        "atomic_cq": "Is the given entity FOSS?",
+        "template": "22. Is [EC1] [EC2]",
+        "classes": [
+          "Entity",
+          "FossSoftware"
+        ],
+        "object_properties": [],
+        "data_properties": [],
+        "individuals": [],
+        "instances": []
+      }
+    ]
+  },
+  {
+    "cq_id": "CQ68",
+    "cq": "Is it free or not?",
+    "question_type": "domain",
+    "recomposition": "identity",
+    "atomic_cq_mapping": [
+      {
+        "atomic_cq_id": "CQ68_a1",
+        "atomic_cq": "Is the given entity free?",
+        "template": "22. Is [EC1] [EC2]",
+        "classes": [
+          "Entity",
+          "FreeSoftware"
+        ],
+        "object_properties": [],
+        "data_properties": [],
+        "individuals": [],
+        "instances": []
+      }
+    ]
+  },
+  {
+    "cq_id": "CQ73",
+    "cq": "Where is the documentation?",
+    "question_type": "domain",
+    "recomposition": "identity",
+    "atomic_cq_mapping": [
+      {
+        "atomic_cq_id": "CQ73_a1",
+        "atomic_cq": "Where is the documentation?",
+        "template": "75. Where [PC1] [EC1]",
+        "classes": [
+          "Documentation"
+        ],
+        "object_properties": [],
+        "data_properties": [
+          "hasLocation"
+        ],
+        "individuals": [],
+        "instances": []
+      }
+    ]
+  },
+  {
+    "cq_id": "CQ84",
+    "cq": "In what language was it implemented?",
+    "question_type": "specification",
+    "recomposition": "identity",
+    "atomic_cq_mapping": [
+      {
+        "atomic_cq_id": "CQ84_a1",
+        "atomic_cq": "In what language is the given system implemented?",
+        "template": "19. In what [EC1] [PC1] [EC2] [PC2]",
+        "classes": [
+          "System",
+          "ProgrammingLanguage"
+        ],
+        "object_properties": [
+          "implementationLanguage"
+        ],
+        "data_properties": [],
+        "individuals": [],
+        "instances": []
+      }
+    ]
+  },
+  {
+    "cq_id": "CQ85",
+    "cq": "What platform does the software run on?",
+    "question_type": "domain",
+    "recomposition": "identity",
+    "atomic_cq_mapping": [
+      {
+        "atomic_cq_id": "CQ85_a1",
+        "atomic_cq": "What platform does the software run on?",
+        "template": "53. What [EC1] [PC1] [EC2]",
+        "classes": [
+          "Software",
+          "Platform"
+        ],
+        "object_properties": [
+          "runsOn"
+        ],
+        "data_properties": [],
+        "individuals": [],
+        "instances": []
+      }
+    ]
+  }
+]

@@ -1,0 +1,11 @@
+# What the Reasoning switch of the web app offers for each Ollama model:
+#   low | medium | high   the model takes an effort level: the switch, and
+#                          when it is on, a low / medium / high choice
+#   true | false          thinking on/off only: just the switch
+#   [false]               not a thinking model: the switch is disabled
+#
+# A model that is not listed here gets what Ollama reports for it
+# (/api/show). Edits count from the next page load; no restart needed.
+models:
+  "qwen3.8:27b": [low, medium, high, false]
+  "qwen3.6:27b": [false, true]

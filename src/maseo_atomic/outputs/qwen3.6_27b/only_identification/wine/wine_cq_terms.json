@@ -1,0 +1,125 @@
+[
+  {
+    "cq_id": "CQ1",
+    "cq": "Which wine characteristics should I consider when choosing a wine?",
+    "question_type": "domain",
+    "atomic_cq_mapping": [
+      {
+        "atomic_cq_id": "CQ1_a1",
+        "atomic_cq": "Which wine characteristics should I consider when choosing a wine?",
+        "classes": [
+          "Wine",
+          "Characteristic"
+        ],
+        "object_properties": [
+          "hasCharacteristic"
+        ],
+        "data_properties": [],
+        "individuals": [],
+        "instances": []
+      }
+    ]
+  },
+  {
+    "cq_id": "CQ2",
+    "cq": "Is Bordeaux a red or white wine?",
+    "question_type": "domain",
+    "atomic_cq_mapping": [
+      {
+        "atomic_cq_id": "CQ2_a1",
+        "atomic_cq": "Is Bordeaux a red or white wine?",
+        "classes": [
+          "Wine",
+          "Color"
+        ],
+        "object_properties": [
+          "hasColor"
+        ],
+        "data_properties": [],
+        "individuals": [
+          "Red",
+          "White"
+        ],
+        "instances": [
+          "Bordeaux"
+        ]
+      }
+    ]
+  },
+  {
+    "cq_id": "CQ6",
+    "cq": "Does a bouquet or body of a specific wine change with vintage year?",
+    "question_type": "domain",
+    "atomic_cq_mapping": [
+      {
+        "atomic_cq_id": "CQ6_a1",
+        "atomic_cq": "Does a bouquet or body of a specific wine change with vintage year?",
+        "classes": [
+          "Wine",
+          "Bouquet",
+          "Body",
+          "VintageYear"
+        ],
+        "object_properties": [
+          "hasBouquet",
+          "hasBody",
+          "changesWith"
+        ],
+        "data_properties": [],
+        "individuals": [],
+        "instances": []
+      }
+    ]
+  },
+  {
+    "cq_id": "CQ7",
+    "cq": "What were good vintages for Napa Zinfandel?",
+    "question_type": "domain",
+    "atomic_cq_mapping": [
+      {
+        "atomic_cq_id": "CQ7_a1",
+        "atomic_cq": "What were good vintages for Napa Zinfandel?",
+        "classes": [
+          "Wine",
+          "VintageYear",
+          "Quality"
+        ],
+        "object_properties": [
+          "hasVintageYear"
+        ],
+        "data_properties": [
+          "hasQualityRating"
+        ],
+        "individuals": [
+          "Good"
+        ],
+        "instances": [
+          "NapaZinfandel"
+        ]
+      }
+    ]
+  },
+  {
+    "cq_id": "CQnew1",
+    "cq": "What grapes are used to make Bordeaux wine?",
+    "question_type": "domain",
+    "atomic_cq_mapping": [
+      {
+        "atomic_cq_id": "CQnew1_a1",
+        "atomic_cq": "What grapes are used to make Bordeaux wine?",
+        "classes": [
+          "Wine",
+          "Grape"
+        ],
+        "object_properties": [
+          "usedToMake"
+        ],
+        "data_properties": [],
+        "individuals": [],
+        "instances": [
+          "Bordeaux"
+        ]
+      }
+    ]
+  }
+]

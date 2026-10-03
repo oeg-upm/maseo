@@ -1,0 +1,275 @@
+<!doctype html>
+{#- The MASEO web app page. FastAPI (app.py) makes all of it, forms and
+    links do the actions. static/live.js only keeps it live: it asks FastAPI
+    for this page again every few seconds and swaps in the blocks marked
+    data-swap that changed, and it makes the running times (data-since)
+    tick. Without JavaScript the page reloads itself instead (<noscript>). -#}
+{%- macro rid(name, stamp) -%}
+<span class="rid">{{ name }}{% if stamp %}<small>_{{ stamp }}</small>{% endif %}</span>
+{%- endmacro -%}
+{%- set ico_dl -%}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg>{%- endset -%}
+{%- set ico_del -%}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M10 11v6M14 11v6M6 7l1 12a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2l1-12M9 7V4h6v3"/></svg>{%- endset -%}
+{%- set ico_chev -%}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>{%- endset -%}
+{%- set logo -%}<rect width="32" height="32" rx="9" fill="var(--accent)"/><circle cx="10" cy="11" r="3" fill="#fff"/><circle cx="22" cy="11" r="3" fill="#fff" opacity=".85"/><circle cx="16" cy="22" r="3.4" fill="#fff"/><path d="M10 11 16 22 22 11" stroke="#fff" stroke-width="1.8" fill="none" opacity=".8"/>{%- endset -%}
+<html lang="en" data-theme="{{ theme }}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+{%- if refresh %}
+<noscript><meta http-equiv="refresh" content="{{ refresh }}"></noscript>
+{%- endif %}
+<title>{% if d %}{{ d.name }} · {% endif %}MASEO · Ontology Studio</title>
+<link rel="stylesheet" href="{{ base }}static/style.css?v={{ css_version }}">
+<script src="{{ base }}static/live.js?v={{ js_version }}" defer></script>
+</head>
+<body data-now="{{ now }}"{% if refresh %} data-live="{{ poll }}"{% endif %}>
+<header class="top">
+  <a class="brand" href="{{ base }}">
+    <svg width="30" height="30" viewBox="0 0 32 32" aria-hidden="true">{{ logo }}</svg>
+    <div><b>MASEO</b> <span>Ontology generation from competency questions</span></div>
+  </a>
+  <div class="grow"></div>
+  <span class="chips" id="chips" data-swap="chips"><span class="chip"><span class="dot {{ chips.model[0] }}"></span>{{ chips.model[1] }}</span>
+  <span class="chip"><span class="dot {{ chips.queue[0] }}"></span>{{ chips.queue[1] }}</span></span>
+  <a class="themesw{% if theme == 'dark' %} on{% endif %}" href="{{ theme_url }}" role="switch" aria-checked="{{ 'true' if theme == 'dark' else 'false' }}" title="Dark mode">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg>
+    <span class="tlabel">Dark mode</span><span class="toggle"><i></i></span>
+  </a>
+</header>
+<div id="bannerbox" data-swap="banner">{% if banner %}<div class="banner">{{ banner }}</div>{% endif %}</div>
+<main>
+  <div class="col">
+    <section class="card side">
+      <nav class="tabs">
+        <a href="{{ queue_url }}"{% if tab == 'queue' %} class="on"{% endif %}>Queue <span class="cnt" id="qcnt" data-swap="qcnt">{{ q.active }}</span></a>
+        <a href="{{ base }}new"{% if tab == 'new' %} class="on"{% endif %}>＋ New job</a>
+      </nav>
+{%- if tab == 'queue' %}
+      <div class="card-b" id="queuebox" data-swap="queue">
+  {%- if q.sections %}
+        <div class="qhead">
+          <div class="qsum"><span>{{ q.counts.running }} running</span><span>{{ q.counts.queued }} waiting</span><span>{{ q.counts.done }} done</span>{% if q.counts.failed %}<span>{{ q.counts.failed }} failed</span>{% endif %}</div>
+          <span class="live">{% if refresh %}<i class="dot run"></i>live · <a href="{{ url(live=0) }}">pause</a>{% elif not live %}updates paused · <a href="{{ url(live=None) }}">resume</a>{% endif %}</span>
+        </div>
+        <div class="jobs">
+    {%- for title, cards in q.sections %}
+          <div class="qsec">{{ title }}</div>
+      {%- for c in cards %}
+          <div class="job {{ c.status }}{% if c.id == sel %} sel{% endif %}">
+            <a class="cover" href="{{ url(job=c.id, open=None, cqs=None, confirm=None) }}#detail" aria-label="Show {{ c.id }}"></a>
+            <div class="l1"><b>{{ rid(c.name, c.stamp) }}</b><span class="grow"></span>
+              {%- if c.zip %}<a class="btn sm" href="{{ dl(c.id) }}" download title="Download all files (zip)">{{ ico_dl }}zip</a>{% endif %}
+              {%- if c.active %}<a class="btn sm danger" href="{{ url(job=c.id, open=None, cqs=None, confirm='cancel') }}#confirm" title="Cancel">✕</a>
+              {%- else %}<a class="btn sm danger icon" href="{{ url(job=c.id, open=None, cqs=None, confirm='delete') }}#confirm" title="Delete this job and its files">{{ ico_del }}</a>{% endif %}
+            </div>
+            <div class="meta">{{ c.meta }}</div>
+            <div class="st"><span class="badge {{ c.line.badge[0] }}">{{ c.line.badge[1] }}</span>
+              {%- for t in c.line.texts %}<span{% if c.line.title %} title="{{ c.line.title }}"{% endif %}>{{ t }}</span>{% endfor %}
+              {%- if c.line.tick %}<span data-since="{{ c.line.tick.since }}">{{ c.line.tick.text }}</span>{% endif %}
+              {%- if c.line.extra %}<span class="badge {{ c.line.extra[0] }}">{{ c.line.extra[1] }}</span>{% endif %}</div>
+            {%- if c.progress is not none %}
+            <div class="bar"><i style="width:{{ c.progress }}%"></i></div>
+            {%- endif %}
+          </div>
+      {%- endfor %}
+    {%- endfor %}
+    {%- if q.hidden %}
+          <a class="more" href="{{ url(all=1) }}">Show all finished jobs ({{ q.hidden }} more)</a>
+    {%- elif q.all %}
+          <a class="more" href="{{ url(all=None) }}">Show only the newest</a>
+    {%- endif %}
+        </div>
+  {%- else %}
+        <div class="empty">No jobs yet.<br><br><a class="btn" href="{{ base }}new">＋ New job</a></div>
+  {%- endif %}
+      </div>
+{%- else %}
+      <form class="card-b" id="form" method="post" action="{{ base }}submit" enctype="multipart/form-data" autocomplete="off">
+  {%- if form.error %}
+        <div class="formerr">{{ form.error }}</div>
+  {%- endif %}
+        <label class="f" for="domain">Job Name</label>
+        <input class="inp" id="domain" name="domain" value="{{ form.domain }}" placeholder="e.g. Clark_Wine" required spellcheck="false" maxlength="80">
+        <div class="hint">You can put your name and the domain of the ontology here, e.g. <b>Clark_Wine</b>. The date and time are added when you queue it, so every run gets its own id: <b class="rid">{{ form.domain_clean or 'Clark_Wine' }}<small>_{{ stamp_now }}</small></b></div>
+
+        <label class="f">Competency questions</label>
+        <div class="seg">
+          <label><input type="radio" name="src" value="text" id="src-text"{% if form.src != 'file' %} checked{% endif %}>Type</label>
+          <label><input type="radio" name="src" value="file" id="src-file"{% if form.src == 'file' %} checked{% endif %}>Upload file</label>
+        </div>
+        <div class="src src-text">
+          <textarea class="inp" name="questions" placeholder="CQ1: Which grapes are used to make Bordeaux wine?&#10;CQ2: Is Bordeaux a red or white wine?">{{ form.questions }}</textarea>
+          <div class="hint">{% if form.text_count %}{{ form.text_count }} question{{ '' if form.text_count == 1 else 's' }} found in it. {% endif %}One question per line; ids like <code>CQ1:</code> are optional.</div>
+        </div>
+        <div class="src src-file">
+  {%- if form.kept_name %}
+          <div class="filecard">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v4h4"/></svg>
+            <div class="fc-t"><b>{{ form.kept_name }}</b><span>{{ form.kept_info }} · kept from your last try; choose a file below to replace it</span></div>
+            <input type="hidden" name="kept_name" value="{{ form.kept_name }}">
+            <textarea name="kept_text" hidden>{{ form.kept_text }}</textarea>
+          </div>
+  {%- endif %}
+          <label class="drop">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 15V4M7.5 8.5 12 4l4.5 4.5"/><path d="M4 14.5V18a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-3.5"/></svg>
+            <span class="drop-t"><b>Click to upload</b> or drag and drop</span>
+            <span class="drop-s">.json list of {"id","value"} · .txt one question per line · .csv with id,value (up to 5 MB)</span>
+            <input type="file" name="cq_file" accept=".json,.txt,.csv" aria-label="Competency question file">
+          </label>
+        </div>
+
+        <label class="f" for="model">Model</label>
+        <select class="inp" id="model" name="model">
+  {%- for m in models %}
+          <option value="{{ m.name }}" data-kind="{{ m.kind }}" data-levels="{{ m.levels }}"{% if m.name == form.model %} selected{% endif %}>{{ m.name }}</option>
+  {%- endfor %}
+        </select>
+
+        <div class="rrow">
+          <div class="rtext"><b>Reasoning</b><span class="rn rn-plain">the model thinks before it answers</span><span class="rn rn-onoff">on / off for this model</span><span class="rn rn-levels-off">this model supports effort levels</span><span class="rn rn-levels-on">choose how hard it thinks</span><span class="rn rn-no">this model is not a thinking model</span></div>
+          <label class="toggle" title="Reasoning"><input type="checkbox" id="reason" name="reason" value="on" role="switch"{% if form.reason %} checked{% endif %}><i></i></label>
+        </div>
+        <div class="effortbox">
+          <div class="hint" style="margin:0 0 6px">Effort</div>
+          <div class="seg">
+  {%- for lv in effort_levels %}
+            <label class="lv-{{ lv }}"><input type="radio" name="effort" value="{{ lv }}"{% if lv == form.effort %} checked{% endif %}>{{ lv }}</label>
+  {%- endfor %}
+          </div>
+        </div>
+        <div class="hint warn reasonhint">Thinking multiplies every agent's time on a CPU server.</div>
+
+        <label class="f">Agents</label>
+        <div class="agents">
+  {%- for name, text in agents %}
+          <label class="ag"><div class="t"><b>{{ name }}</b><span>{{ text }}</span></div><input type="checkbox" name="agents" value="{{ name }}" role="switch"{% if name in form.agents %} checked{% endif %}><span class="sw"></span></label>
+  {%- endfor %}
+        </div>
+        <div class="locked">Always run: <b>TermExtraction</b> · <b>OntoGeneration</b> · <b>OntoCorrection</b> with syntax_check, cq_coverage, oops_scan, hermit_consistency (+ themis_test with TestGeneration)</div>
+
+        <button class="btn primary" type="submit">Add to queue</button>
+      </form>
+{%- endif %}
+    </section>
+  </div>
+
+  <section class="card" id="detail">
+{%- if d %}
+  {%- if confirm %}
+    <div class="confirm" id="confirm">
+    {%- if confirm == 'cancel' %}
+      <b>Cancel {{ d.id }}?</b>
+      <p>{% if d.status == 'running' %}The running job stops after the step it is in.{% else %}It is taken out of the queue.{% endif %}</p>
+      <div class="acts">
+        <form class="inline" method="post" action="{{ base }}jobs/{{ d.id | urlencode }}/cancel"><button class="btn solid-danger" type="submit">Yes, cancel it</button></form>
+        <a class="btn" href="{{ url(confirm=None) }}">No, keep it running</a>
+      </div>
+    {%- else %}
+      <b>Delete {{ d.id }}?</b>
+      <p>It is removed from the list and its files on the server are deleted.</p>
+      <div class="acts">
+        <form class="inline" method="post" action="{{ base }}jobs/{{ d.id | urlencode }}/delete"><button class="btn solid-danger" type="submit">{{ ico_del }} Yes, delete it</button></form>
+        <a class="btn" href="{{ url(confirm=None) }}">No, keep it</a>
+      </div>
+    {%- endif %}
+    </div>
+  {%- endif %}
+    <div class="dh" data-swap="head">
+      <div class="ttl"><h1>{{ rid(d.name, d.stamp) }} <span class="badge {{ d.status }}">{{ d.status }}</span></h1>
+        <div class="sub">{{ d.sub }}</div></div>
+      <div class="acts">
+        {%- if d.zip %}<a class="btn" href="{{ dl(d.id) }}" download>{{ ico_dl }} Download all (zip)</a>{% endif %}
+        {%- if d.owl %}<a class="btn" href="{{ dl(d.id, d.owl) }}" download>{{ ico_dl }} Ontology (.owl)</a>{% endif %}
+        {%- if d.active %}<a class="btn danger" href="{{ url(job=d.id, confirm='cancel') }}#confirm">Cancel</a>
+        {%- else %}<a class="btn danger" href="{{ url(job=d.id, confirm='delete') }}#confirm">{{ ico_del }} Delete</a>{% endif %}
+      </div>
+    </div>
+    <div class="facts" data-swap="facts">
+    {%- for label, value, since in d.facts %}
+      <div class="fact"><span>{{ label }}</span><b{% if since %} data-since="{{ since }}"{% endif %}>{{ value }}</b></div>
+    {%- endfor %}
+    </div>
+    <div data-swap="verdict">
+  {%- if d.verdict %}
+    <div class="verdict {{ d.verdict[0] }}">{{ d.verdict[1] }} <small>{{ d.verdict[2] }}</small></div>
+  {%- endif %}
+  {%- if d.release %}
+    <div class="release {{ d.release[0] }}"><i></i>{{ d.release[1] }}</div>
+  {%- endif %}
+    </div>
+    <div class="graph-wrap" data-swap="graph">{{ d.graph }}</div>
+    <div class="legend"><span><i style="border-color:var(--accent);background:var(--accent-soft)"></i>done</span><span><i style="border-color:var(--run);background:var(--run-soft)"></i>running</span><span><i style="border-color:var(--ok);background:var(--ok-soft)"></i>check passed</span><span><i style="border-color:var(--bad);background:var(--bad-soft)"></i>check failed</span><span><i style="border-color:var(--warn);background:var(--warn-soft)"></i>tool error</span><span><i style="border-color:var(--line-2);border-style:dashed"></i>switched off</span></div>
+    <div class="two">
+      <div class="pane" data-swap="steps"><h3>Steps <span>{{ d.step_count }}</span></h3>
+        <ul class="tl">
+    {%- for r in d.steps %}
+      {%- if r.sep %}
+          <li class="sep">{{ r.sep }}</li>
+      {%- else %}
+        {%- set f = r.files %}
+        {%- set is_open = f and f.no in open_steps %}
+          <li{% if f %} id="s{{ f.no }}"{% endif %}><span class="ic {{ r.ic }}">{{ r.sym }}</span>
+            <div class="tx">{% if r.bold %}<b>{{ r.title }}</b>{% else %}{{ r.title }}{% endif %}{% if r.note %} <span class="note">{{ r.note }}</span>{% endif %}
+              {%- if r.small %}<small{% if r.small_title %} title="{{ r.small_title }}"{% endif %}>{{ r.small }}</small>{% endif %}
+              {%- if is_open %}
+              <div class="sfiles">
+                {%- for key, items, empty in (("Input", f.input, "none"), ("Output", f.output, f.out_empty)) %}
+                <div class="sfg"><span class="k">{{ key }}</span>
+                  {%- for it in items %}<a class="fbtn" href="{{ dl(d.id, it.file) }}" download title="{{ it.title }}">{{ ico_dl }}{{ it.label }}{% if it.from %}<small>← {{ it.from }}</small>{% endif %}</a>{% else %}<em>{{ empty }}</em>{% endfor %}
+                </div>
+                {%- endfor %}
+              </div>
+              {%- endif %}
+            </div>
+            <span class="du"{% if r.since %} data-since="{{ r.since }}"{% endif %}>{{ r.du }}</span>
+            {%- if f %}<a class="stog{% if is_open %} on{% endif %}" href="{{ step_url(f.no) }}" aria-expanded="{{ 'true' if is_open else 'false' }}" title="{{ 'Hide' if is_open else 'Show' }} this step's input and output files">{{ f.n }} file{{ '' if f.n == 1 else 's' }}{{ ico_chev }}</a>{% endif %}
+          </li>
+      {%- endif %}
+    {%- endfor %}
+        </ul>
+      </div>
+      <div class="pane" data-swap="log"><h3>Live log <span>{% if 'run.log' in d.files %}<a href="{{ dl(d.id, 'run.log') }}" download>run.log</a>{% else %}run.log{% endif %}</span></h3>
+        <div class="logbox"><pre class="log">{{ d.log }}</pre></div></div>
+    </div>
+    <div data-swap="cqs">
+  {%- if d.cqs %}
+    <div class="cqs{% if cqs_open %} open{% endif %}" id="cqs">
+      <a href="{{ url(job=d.id, cqs=None if cqs_open else 1) }}#cqs">{{ ico_chev }}Competency questions ({{ d.cqs | length }})</a>
+    {%- if cqs_open %}
+      <ol class="cqlist">{% for c in d.cqs %}<li><b>{{ c.id }}</b> {{ c.value }}</li>{% endfor %}</ol>
+    {%- endif %}
+    </div>
+  {%- endif %}
+    </div>
+    <div data-swap="files">
+  {%- if d.files %}
+    <div class="files">{% for f in d.files %}<a href="{{ dl(d.id, f) }}" download>{{ f }}</a>{% endfor %}</div>
+  {%- endif %}
+    </div>
+{%- elif tab == 'new' %}
+    <div class="welcome">
+      <svg width="64" height="64" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="9" fill="var(--accent-soft)"/><circle cx="10" cy="11" r="3" fill="var(--accent)"/><circle cx="22" cy="11" r="3" fill="var(--accent)" opacity=".7"/><circle cx="16" cy="22" r="3.4" fill="var(--accent)"/><path d="M10 11 16 22 22 11" stroke="var(--accent)" stroke-width="1.6" fill="none"/></svg>
+      <h1>A new job</h1>
+      <p>Fill in the form on the left and add it to the queue.</p>
+      <ol>
+        <li>The requirements agents turn your competency questions into terms (and axioms and tests, with those agents switched on).</li>
+        <li>OntoGeneration writes the ontology.</li>
+        <li>Every MCP validation tool checks it, and OntoCorrection fixes what a tool reports, round after round.</li>
+      </ol>
+      <p style="margin-top:14px">Jobs run one after another on the server; the queue shows yours live once it is added.</p>
+    </div>
+{%- else %}
+    <div class="welcome">
+      <svg width="64" height="64" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="9" fill="var(--accent-soft)"/><circle cx="10" cy="11" r="3" fill="var(--accent)"/><circle cx="22" cy="11" r="3" fill="var(--accent)" opacity=".7"/><circle cx="16" cy="22" r="3.4" fill="var(--accent)"/><path d="M10 11 16 22 22 11" stroke="var(--accent)" stroke-width="1.6" fill="none"/></svg>
+      <h1>Queue a job to start</h1>
+      <p>Jobs run one after another on the server. Pick any job on the left to watch its pipeline live: every agent and every validation tool lights up as the graph passes it.</p>
+      <p style="margin-top:14px"><a class="btn" href="{{ base }}new">＋ New job</a></p>
+    </div>
+{%- endif %}
+  </section>
+</main>
+{%- if flash %}
+<div class="toast"><div{% if flash[0] == 'err' %} class="err"{% endif %} role="status">{{ flash[1] }}</div></div>
+{%- endif %}
+</body>
+</html>

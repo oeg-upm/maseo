@@ -1,0 +1,706 @@
+[
+  {
+    "id": "CQ01",
+    "question": "What is the username of the player?",
+    "classes": [
+      "Player"
+    ],
+    "properties": [
+      "username"
+    ],
+    "data_properties": [
+      "username"
+    ],
+    "object_properties": [],
+    "axioms": [
+      "Each Player has exactly one username."
+    ],
+    "individuals": [],
+    "tests": [
+      "Player username string"
+    ]
+  },
+  {
+    "id": "CQ02",
+    "question": "Who are the friends of the player?",
+    "classes": [
+      "Player"
+    ],
+    "properties": [
+      "hasFriend"
+    ],
+    "data_properties": [],
+    "object_properties": [
+      "hasFriend"
+    ],
+    "axioms": [
+      "hasFriend relates a Player to another Player."
+    ],
+    "individuals": [],
+    "tests": [
+      "Player hasFriend Player"
+    ]
+  },
+  {
+    "id": "CQ03",
+    "question": "Who are the friends that play other games as well with this player?",
+    "classes": [
+      "Player",
+      "Game"
+    ],
+    "properties": [
+      "hasFriend",
+      "playsGame"
+    ],
+    "data_properties": [],
+    "object_properties": [
+      "hasFriend",
+      "playsGame"
+    ],
+    "axioms": [
+      "A Player can have friends who also play games."
+    ],
+    "individuals": [],
+    "tests": [
+      "Player hasFriend Player",
+      "Player playsGame Game"
+    ]
+  },
+  {
+    "id": "CQ05",
+    "question": "What are the achievements of my friends?",
+    "classes": [
+      "Player",
+      "Achievement"
+    ],
+    "properties": [
+      "hasFriend",
+      "hasAchievement"
+    ],
+    "data_properties": [],
+    "object_properties": [
+      "hasFriend",
+      "hasAchievement"
+    ],
+    "axioms": [
+      "A Player can have achievements and friends."
+    ],
+    "individuals": [],
+    "tests": [
+      "Player hasFriend Player",
+      "Player hasAchievement Achievement"
+    ]
+  },
+  {
+    "id": "CQ07",
+    "question": "What are the achievements your friend has received?",
+    "classes": [
+      "Player",
+      "Achievement"
+    ],
+    "properties": [
+      "hasAchievement"
+    ],
+    "data_properties": [],
+    "object_properties": [
+      "hasAchievement"
+    ],
+    "axioms": [
+      "A Player can have achievements."
+    ],
+    "individuals": [],
+    "tests": [
+      "Player hasAchievement Achievement"
+    ]
+  },
+  {
+    "id": "CQ08",
+    "question": "What achievements does a game have?",
+    "classes": [
+      "Game",
+      "Achievement"
+    ],
+    "properties": [
+      "hasAchievement"
+    ],
+    "data_properties": [],
+    "object_properties": [
+      "hasAchievement"
+    ],
+    "axioms": [
+      "A Game can have achievements."
+    ],
+    "individuals": [],
+    "tests": [
+      "Game hasAchievement Achievement"
+    ]
+  },
+  {
+    "id": "CQ09",
+    "question": "How many hours has this game been played in total?",
+    "classes": [
+      "Game"
+    ],
+    "properties": [
+      "totalPlayTime"
+    ],
+    "data_properties": [
+      "totalPlayTime"
+    ],
+    "object_properties": [],
+    "axioms": [
+      "Each Game has a total play time in hours."
+    ],
+    "individuals": [],
+    "tests": [
+      "Game totalPlayTime float"
+    ]
+  },
+  {
+    "id": "CQ10",
+    "question": "What are the types of achievements in this game?",
+    "classes": [
+      "Game",
+      "AchievementType"
+    ],
+    "properties": [
+      "hasAchievementType"
+    ],
+    "data_properties": [],
+    "object_properties": [
+      "hasAchievementType"
+    ],
+    "axioms": [
+      "A Game can have achievement types."
+    ],
+    "individuals": [],
+    "tests": [
+      "Game hasAchievementType AchievementType"
+    ]
+  },
+  {
+    "id": "CQ11",
+    "question": "What are the types of achievements a game can have?",
+    "classes": [
+      "Game",
+      "AchievementType"
+    ],
+    "properties": [
+      "hasAchievementType"
+    ],
+    "data_properties": [],
+    "object_properties": [
+      "hasAchievementType"
+    ],
+    "axioms": [
+      "A Game can have achievement types."
+    ],
+    "individuals": [],
+    "tests": [
+      "Game hasAchievementType AchievementType"
+    ]
+  },
+  {
+    "id": "CQ12",
+    "question": "What is the genre of the game?",
+    "classes": [
+      "Game",
+      "Genre"
+    ],
+    "properties": [
+      "hasGenre"
+    ],
+    "data_properties": [],
+    "object_properties": [
+      "hasGenre"
+    ],
+    "axioms": [
+      "Each Game has exactly one Genre."
+    ],
+    "individuals": [],
+    "tests": [
+      "Game hasGenre Genre"
+    ]
+  },
+  {
+    "id": "CQ13",
+    "question": "What items exist in a game?",
+    "classes": [
+      "Game",
+      "Item"
+    ],
+    "properties": [
+      "hasItem"
+    ],
+    "data_properties": [],
+    "object_properties": [
+      "hasItem"
+    ],
+    "axioms": [
+      "A Game can have items."
+    ],
+    "individuals": [],
+    "tests": [
+      "Game hasItem Item"
+    ]
+  },
+  {
+    "id": "CQ15",
+    "question": "What is the release date of the game?",
+    "classes": [
+      "Game"
+    ],
+    "properties": [
+      "releaseDate"
+    ],
+    "data_properties": [
+      "releaseDate"
+    ],
+    "object_properties": [],
+    "axioms": [
+      "Each Game has a release date."
+    ],
+    "individuals": [],
+    "tests": [
+      "Game releaseDate dateTime"
+    ]
+  },
+  {
+    "id": "CQ17",
+    "question": "List all games of a certain Genre?",
+    "classes": [
+      "Game",
+      "Genre"
+    ],
+    "properties": [
+      "hasGenre"
+    ],
+    "data_properties": [],
+    "object_properties": [
+      "hasGenre"
+    ],
+    "axioms": [
+      "A Game can have a Genre."
+    ],
+    "individuals": [],
+    "tests": [
+      "Game hasGenre Genre"
+    ]
+  },
+  {
+    "id": "CQ19",
+    "question": "What abilities does an item have?",
+    "classes": [
+      "Item",
+      "Ability"
+    ],
+    "properties": [
+      "hasAbility"
+    ],
+    "data_properties": [],
+    "object_properties": [
+      "hasAbility"
+    ],
+    "axioms": [
+      "An Item can have abilities."
+    ],
+    "individuals": [],
+    "tests": [
+      "Item hasAbility Ability"
+    ]
+  },
+  {
+    "id": "CQ22",
+    "question": "Who has the best kill count in the game?",
+    "classes": [
+      "Player",
+      "Game"
+    ],
+    "properties": [
+      "hasKillCount"
+    ],
+    "data_properties": [],
+    "object_properties": [
+      "hasKillCount"
+    ],
+    "axioms": [
+      "A Player has a kill count in a Game."
+    ],
+    "individuals": [],
+    "tests": [
+      "Player hasKillCount Game"
+    ]
+  },
+  {
+    "id": "CQ24",
+    "question": "What achievements has a player obtained?",
+    "classes": [
+      "Player",
+      "Achievement"
+    ],
+    "properties": [
+      "hasAchievement"
+    ],
+    "data_properties": [],
+    "object_properties": [
+      "hasAchievement"
+    ],
+    "axioms": [
+      "A Player can have achievements."
+    ],
+    "individuals": [],
+    "tests": [
+      "Player hasAchievement Achievement"
+    ]
+  },
+  {
+    "id": "CQ25",
+    "question": "What games has the player played?",
+    "classes": [
+      "Player",
+      "Game"
+    ],
+    "properties": [
+      "playsGame"
+    ],
+    "data_properties": [],
+    "object_properties": [
+      "playsGame"
+    ],
+    "axioms": [
+      "A Player can play games."
+    ],
+    "individuals": [],
+    "tests": [
+      "Player playsGame Game"
+    ]
+  },
+  {
+    "id": "CQ26",
+    "question": "What items does the player have?",
+    "classes": [
+      "Player",
+      "Item"
+    ],
+    "properties": [
+      "hasItem"
+    ],
+    "data_properties": [],
+    "object_properties": [
+      "hasItem"
+    ],
+    "axioms": [
+      "A Player can have items."
+    ],
+    "individuals": [],
+    "tests": [
+      "Player hasItem Item"
+    ]
+  },
+  {
+    "id": "CQ27",
+    "question": "What achievements of a certain type does the player have?",
+    "classes": [
+      "Player",
+      "Achievement",
+      "AchievementType"
+    ],
+    "properties": [
+      "hasAchievement",
+      "hasAchievementType"
+    ],
+    "data_properties": [],
+    "object_properties": [
+      "hasAchievement",
+      "hasAchievementType"
+    ],
+    "axioms": [
+      "An Achievement has a type."
+    ],
+    "individuals": [],
+    "tests": [
+      "Player hasAchievement Achievement",
+      "Achievement hasAchievementType AchievementType"
+    ]
+  },
+  {
+    "id": "CQ29",
+    "question": "What is the last game a player has played?",
+    "classes": [
+      "Player",
+      "Game"
+    ],
+    "properties": [
+      "lastPlayedGame"
+    ],
+    "data_properties": [],
+    "object_properties": [
+      "lastPlayedGame"
+    ],
+    "axioms": [
+      "A Player has a last played game."
+    ],
+    "individuals": [],
+    "tests": [
+      "Player lastPlayedGame Game"
+    ]
+  },
+  {
+    "id": "CQ35",
+    "question": "In how many games does the player have all the achievements?",
+    "classes": [
+      "Player",
+      "Game",
+      "Achievement"
+    ],
+    "properties": [
+      "playsGame",
+      "hasAchievement"
+    ],
+    "data_properties": [],
+    "object_properties": [
+      "playsGame",
+      "hasAchievement"
+    ],
+    "axioms": [
+      "A Player can have all achievements in a game."
+    ],
+    "individuals": [],
+    "tests": [
+      "Player playsGame Game",
+      "Game hasAchievement Achievement",
+      "Player hasAchievement Achievement"
+    ]
+  },
+  {
+    "id": "CQ52",
+    "question": "What equipment does a player have in a game?",
+    "classes": [
+      "Player",
+      "Game",
+      "Item"
+    ],
+    "properties": [
+      "hasItem",
+      "playsGame"
+    ],
+    "data_properties": [],
+    "object_properties": [
+      "hasItem",
+      "playsGame"
+    ],
+    "axioms": [
+      "A Player can have items in a game."
+    ],
+    "individuals": [],
+    "tests": [
+      "Player hasItem Item",
+      "Player playsGame Game"
+    ]
+  },
+  {
+    "id": "CQ55",
+    "question": "What are the games where a player can use this item?",
+    "classes": [
+      "Item",
+      "Game"
+    ],
+    "properties": [
+      "usableInGame"
+    ],
+    "data_properties": [],
+    "object_properties": [
+      "usableInGame"
+    ],
+    "axioms": [
+      "An Item can be usable in a Game."
+    ],
+    "individuals": [],
+    "tests": [
+      "Item usableInGame Game"
+    ]
+  },
+  {
+    "id": "CQ56",
+    "question": "How many players have made in app purchases?",
+    "classes": [
+      "Player",
+      "InAppPurchase"
+    ],
+    "properties": [
+      "hasInAppPurchase"
+    ],
+    "data_properties": [],
+    "object_properties": [
+      "hasInAppPurchase"
+    ],
+    "axioms": [
+      "A Player can make in-app purchases."
+    ],
+    "individuals": [],
+    "tests": [
+      "Player hasInAppPurchase InAppPurchase"
+    ]
+  },
+  {
+    "id": "CQ57",
+    "question": "How many players who have already spent money, spend money again?",
+    "classes": [
+      "Player",
+      "InAppPurchase"
+    ],
+    "properties": [
+      "hasInAppPurchase"
+    ],
+    "data_properties": [],
+    "object_properties": [
+      "hasInAppPurchase"
+    ],
+    "axioms": [
+      "A Player can make multiple in-app purchases."
+    ],
+    "individuals": [],
+    "tests": [
+      "Player hasInAppPurchase InAppPurchase"
+    ]
+  },
+  {
+    "id": "CQ62",
+    "question": "What time are most of the in app purchases done?",
+    "classes": [
+      "InAppPurchase"
+    ],
+    "properties": [
+      "purchaseTime"
+    ],
+    "data_properties": [
+      "purchaseTime"
+    ],
+    "object_properties": [],
+    "axioms": [
+      "Each InAppPurchase has a purchase time."
+    ],
+    "individuals": [],
+    "tests": [
+      "InAppPurchase purchaseTime dateTime"
+    ]
+  },
+  {
+    "id": "CQ63",
+    "question": "Where do the most paying customers live?",
+    "classes": [
+      "Player",
+      "Location"
+    ],
+    "properties": [
+      "livesIn"
+    ],
+    "data_properties": [],
+    "object_properties": [
+      "livesIn"
+    ],
+    "axioms": [
+      "A Player lives in a Location."
+    ],
+    "individuals": [],
+    "tests": [
+      "Player livesIn Location"
+    ]
+  },
+  {
+    "id": "CQ64",
+    "question": "How long does a player spend in the game before making first IAP?",
+    "classes": [
+      "Player",
+      "InAppPurchase"
+    ],
+    "properties": [
+      "hasInAppPurchase",
+      "timeSpentBeforeFirstIAP"
+    ],
+    "data_properties": [
+      "timeSpentBeforeFirstIAP"
+    ],
+    "object_properties": [
+      "hasInAppPurchase"
+    ],
+    "axioms": [
+      "A Player has a time spent before first IAP."
+    ],
+    "individuals": [],
+    "tests": [
+      "Player hasInAppPurchase InAppPurchase",
+      "Player timeSpentBeforeFirstIAP float"
+    ]
+  },
+  {
+    "id": "CQ65",
+    "question": "Where do the players live who have not made any IAP?",
+    "classes": [
+      "Player",
+      "Location"
+    ],
+    "properties": [
+      "livesIn"
+    ],
+    "data_properties": [],
+    "object_properties": [
+      "livesIn"
+    ],
+    "axioms": [
+      "A Player lives in a Location."
+    ],
+    "individuals": [],
+    "tests": [
+      "Player livesIn Location"
+    ]
+  },
+  {
+    "id": "CQ66",
+    "question": "Where do the players who have done the most IAP live?",
+    "classes": [
+      "Player",
+      "Location",
+      "InAppPurchase"
+    ],
+    "properties": [
+      "livesIn",
+      "hasInAppPurchase"
+    ],
+    "data_properties": [],
+    "object_properties": [
+      "livesIn",
+      "hasInAppPurchase"
+    ],
+    "axioms": [
+      "A Player can make in-app purchases and live in a Location."
+    ],
+    "individuals": [],
+    "tests": [
+      "Player livesIn Location",
+      "Player hasInAppPurchase InAppPurchase"
+    ]
+  },
+  {
+    "id": "New CQ1",
+    "question": "What playing areas does a game have?",
+    "classes": [
+      "Game",
+      "PlayingArea"
+    ],
+    "properties": [
+      "hasPlayingArea"
+    ],
+    "data_properties": [],
+    "object_properties": [
+      "hasPlayingArea"
+    ],
+    "axioms": [
+      "A Game can have playing areas."
+    ],
+    "individuals": [],
+    "tests": [
+      "Game hasPlayingArea PlayingArea"
+    ]
+  }
+]

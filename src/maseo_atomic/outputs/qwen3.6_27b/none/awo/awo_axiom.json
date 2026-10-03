@@ -1,0 +1,56 @@
+[
+  {
+    "cq_id": "CQ1",
+    "cq": "Which animal eats which other animal?",
+    "axioms": [
+      "Animal SubClassOf Eater",
+      "Animal SubClassOf FoodItem",
+      "eats domain Eater",
+      "eats range FoodItem"
+    ]
+  },
+  {
+    "cq_id": "CQ2",
+    "cq": "Is [this animal] a herbivore?",
+    "axioms": [
+      "Herbivore SubClassOf Animal"
+    ]
+  },
+  {
+    "cq_id": "CQ3",
+    "cq": "Which plant parts does [this omnivorous or herbivorourus animal] eat?",
+    "axioms": [
+      "Omnivore SubClassOf Animal",
+      "Herbivore SubClassOf Animal",
+      "PlantPart SubClassOf FoodItem"
+    ]
+  },
+  {
+    "cq_id": "CQ4",
+    "cq": "Does a lion eat plants or plant parts?",
+    "axioms": [
+      "Plant SubClassOf FoodItem"
+    ]
+  },
+  {
+    "cq_id": "CQ6",
+    "cq": "Which plants eat animals?",
+    "axioms": [
+      "Plant SubClassOf Eater",
+      "Animal SubClassOf FoodItem"
+    ]
+  },
+  {
+    "cq_id": "CQ7",
+    "cq": "Which animals eat [these animals]?",
+    "axioms": []
+  },
+  {
+    "cq_id": "CQ14",
+    "cq": "Are there animals that are carnivore but still eat some plants or parts of plants?",
+    "axioms": [
+      "Carnivore SubClassOf Animal",
+      "Plant SubClassOf FoodItem"
+    ]
+  }
+]

@@ -1,0 +1,536 @@
+[
+  {
+    "cq_id": "CQ01",
+    "cq": "Which assets compose a water distribution infrastructure?",
+    "question_type": "domain",
+    "recomposition": "identity",
+    "atomic_cq_mapping": [
+      {
+        "atomic_cq_id": "CQ01_a1",
+        "atomic_cq": "Which assets compose a water distribution infrastructure?",
+        "template": "81. Which [EC1] [PC1] [EC2]",
+        "classes": [
+          "Asset",
+          "WaterDistributionInfrastructure"
+        ],
+        "object_properties": [
+          "compose"
+        ],
+        "data_properties": [],
+        "individuals": [],
+        "instances": []
+      }
+    ]
+  },
+  {
+    "cq_id": "CQ04",
+    "cq": "Which types of sensors are used in water infrastructures?",
+    "question_type": "domain",
+    "recomposition": "identity",
+    "atomic_cq_mapping": [
+      {
+        "atomic_cq_id": "CQ04_a1",
+        "atomic_cq": "Which type of sensor is used in water infrastructure?",
+        "template": "81. Which [EC1] [PC1] [EC2]",
+        "classes": [
+          "Sensor",
+          "WaterInfrastructure"
+        ],
+        "object_properties": [
+          "usedIn"
+        ],
+        "data_properties": [],
+        "individuals": [],
+        "instances": []
+      }
+    ]
+  },
+  {
+    "cq_id": "CQ05",
+    "cq": "Which types of actuators are used in water infrastructures?",
+    "question_type": "domain",
+    "recomposition": "identity",
+    "atomic_cq_mapping": [
+      {
+        "atomic_cq_id": "CQ05_a1",
+        "atomic_cq": "Which types of actuators are used in water infrastructures?",
+        "template": "81. Which [EC1] [PC1] [EC2]",
+        "classes": [
+          "Actuator",
+          "WaterInfrastructure"
+        ],
+        "object_properties": [
+          "usedIn"
+        ],
+        "data_properties": [],
+        "individuals": [],
+        "instances": []
+      }
+    ]
+  },
+  {
+    "cq_id": "CQ06",
+    "cq": "A water meter is a device that measures different aspects of a water infrastructure.",
+    "question_type": "domain",
+    "recomposition": "AND",
+    "atomic_cq_mapping": [
+      {
+        "atomic_cq_id": "CQ06_a1",
+        "atomic_cq": "Is a water meter a device?",
+        "template": "22. Is [EC1] [EC2]",
+        "classes": [
+          "WaterMeter",
+          "Device",
+          "Equipment"
+        ],
+        "object_properties": [],
+        "data_properties": [],
+        "individuals": [],
+        "instances": []
+      },
+      {
+        "atomic_cq_id": "CQ06_a2",
+        "atomic_cq": "What aspects of a water infrastructure does a water meter measure?",
+        "template": "53. What [EC1] [PC1] [EC2]",
+        "classes": [
+          "Aspect",
+          "WaterInfrastructure",
+          "WaterMeter"
+        ],
+        "object_properties": [
+          "measure"
+        ],
+        "data_properties": [],
+        "individuals": [],
+        "instances": []
+      }
+    ]
+  },
+  {
+    "cq_id": "CQ08",
+    "cq": "What is the fabrication number of the water meter?",
+    "question_type": "domain",
+    "recomposition": "identity",
+    "atomic_cq_mapping": [
+      {
+        "atomic_cq_id": "CQ08_a1",
+        "atomic_cq": "What is the fabrication number of the water meter?",
+        "template": "60. What is [EC1] of [EC2]",
+        "classes": [
+          "WaterMeter"
+        ],
+        "object_properties": [],
+        "data_properties": [
+          "fabricationNumber"
+        ],
+        "individuals": [],
+        "instances": []
+      }
+    ]
+  },
+  {
+    "cq_id": "CQ09",
+    "cq": "What are the manufacturer and the model of the water meter?",
+    "question_type": "domain",
+    "recomposition": "AND",
+    "atomic_cq_mapping": [
+      {
+        "atomic_cq_id": "CQ09_a1",
+        "atomic_cq": "What is the manufacturer of the water meter?",
+        "template": "60. What is [EC1] of [EC2]",
+        "classes": [
+          "WaterMeter"
+        ],
+        "object_properties": [],
+        "data_properties": [
+          "manufacturer"
+        ],
+        "individuals": [],
+        "instances": []
+      },
+      {
+        "atomic_cq_id": "CQ09_a2",
+        "atomic_cq": "What is the model of the water meter?",
+        "template": "60. What is [EC1] of [EC2]",
+        "classes": [
+          "WaterMeter"
+        ],
+        "object_properties": [],
+        "data_properties": [
+          "model"
+        ],
+        "individuals": [],
+        "instances": []
+      }
+    ]
+  },
+  {
+    "cq_id": "CQ10",
+    "cq": "What is the version of the water meter?",
+    "question_type": "domain",
+    "recomposition": "identity",
+    "atomic_cq_mapping": [
+      {
+        "atomic_cq_id": "CQ10_a1",
+        "atomic_cq": "What is the version of the water meter?",
+        "template": "60. What is [EC1] of [EC2]",
+        "classes": [
+          "WaterMeter"
+        ],
+        "object_properties": [],
+        "data_properties": [
+          "version"
+        ],
+        "individuals": [],
+        "instances": []
+      }
+    ]
+  },
+  {
+    "cq_id": "CQ11",
+    "cq": "What is the hardware version number of the water meter?",
+    "question_type": "domain",
+    "recomposition": "identity",
+    "atomic_cq_mapping": [
+      {
+        "atomic_cq_id": "CQ11_a1",
+        "atomic_cq": "What is the hardware version number of the water meter?",
+        "template": "60. What is [EC1] of [EC2]",
+        "classes": [
+          "WaterMeter"
+        ],
+        "object_properties": [],
+        "data_properties": [
+          "hardwareVersionNumber"
+        ],
+        "individuals": [],
+        "instances": []
+      }
+    ]
+  },
+  {
+    "cq_id": "CQ12",
+    "cq": "What firmware version is the water meter using?",
+    "question_type": "domain",
+    "recomposition": "identity",
+    "atomic_cq_mapping": [
+      {
+        "atomic_cq_id": "CQ12_a1",
+        "atomic_cq": "What firmware version does the water meter use?",
+        "template": "53. What [EC1] [PC1] [EC2]",
+        "classes": [
+          "WaterMeter"
+        ],
+        "object_properties": [],
+        "data_properties": [
+          "firmwareVersion"
+        ],
+        "individuals": [],
+        "instances": []
+      }
+    ]
+  },
+  {
+    "cq_id": "CQ18",
+    "cq": "What is the power of the water meter?",
+    "question_type": "domain",
+    "recomposition": "identity",
+    "atomic_cq_mapping": [
+      {
+        "atomic_cq_id": "CQ18_a1",
+        "atomic_cq": "What is the power of the water meter?",
+        "template": "60. What is [EC1] of [EC2]",
+        "classes": [
+          "WaterMeter"
+        ],
+        "object_properties": [],
+        "data_properties": [
+          "power"
+        ],
+        "individuals": [],
+        "instances": []
+      }
+    ]
+  },
+  {
+    "cq_id": "CQ19",
+    "cq": "What is the radio frequency level of the water meter?",
+    "question_type": "domain",
+    "recomposition": "identity",
+    "atomic_cq_mapping": [
+      {
+        "atomic_cq_id": "CQ19_a1",
+        "atomic_cq": "What is the radio frequency level of the water meter?",
+        "template": "60. What is [EC1] of [EC2]",
+        "classes": [
+          "WaterMeter"
+        ],
+        "object_properties": [],
+        "data_properties": [
+          "radioFrequencyLevel"
+        ],
+        "individuals": [],
+        "instances": []
+      }
+    ]
+  },
+  {
+    "cq_id": "CQ20",
+    "cq": "What is the geolocation of the water meter?",
+    "question_type": "domain",
+    "recomposition": "identity",
+    "atomic_cq_mapping": [
+      {
+        "atomic_cq_id": "CQ20_a1",
+        "atomic_cq": "What is the geolocation of the water meter?",
+        "template": "60. What is [EC1] of [EC2]",
+        "classes": [
+          "WaterMeter"
+        ],
+        "object_properties": [],
+        "data_properties": [
+          "geolocation"
+        ],
+        "individuals": [],
+        "instances": []
+      }
+    ]
+  },
+  {
+    "cq_id": "CQ25",
+    "cq": "Water meters can provide measurements according to different temporal settings.",
+    "question_type": "domain",
+    "recomposition": "identity",
+    "atomic_cq_mapping": [
+      {
+        "atomic_cq_id": "CQ25_a1",
+        "atomic_cq": "What is the temporal setting for a water meter measurement?",
+        "template": "38. What is [EC1] for [EC2]",
+        "classes": [
+          "WaterMeter",
+          "Measurement"
+        ],
+        "object_properties": [],
+        "data_properties": [
+          "temporalSetting"
+        ],
+        "individuals": [],
+        "instances": []
+      }
+    ]
+  },
+  {
+    "cq_id": "CQ33",
+    "cq": "What are the physical properties of water?",
+    "question_type": "domain",
+    "recomposition": "identity",
+    "atomic_cq_mapping": [
+      {
+        "atomic_cq_id": "CQ33_a1",
+        "atomic_cq": "What is the physical property of water?",
+        "template": "60. What is [EC1] of [EC2]",
+        "classes": [
+          "Water"
+        ],
+        "object_properties": [],
+        "data_properties": [
+          "physicalProperty"
+        ],
+        "individuals": [],
+        "instances": []
+      }
+    ]
+  },
+  {
+    "cq_id": "CQ34",
+    "cq": "What are the chemical properties of water?",
+    "question_type": "domain",
+    "recomposition": "identity",
+    "atomic_cq_mapping": [
+      {
+        "atomic_cq_id": "CQ34_a1",
+        "atomic_cq": "What is the chemical property of water?",
+        "template": "60. What is [EC1] of [EC2]",
+        "classes": [
+          "Water"
+        ],
+        "object_properties": [],
+        "data_properties": [
+          "chemicalProperty"
+        ],
+        "individuals": [],
+        "instances": []
+      }
+    ]
+  },
+  {
+    "cq_id": "CQ37",
+    "cq": "Which water indicators are defined for Burgos?",
+    "question_type": "domain",
+    "recomposition": "identity",
+    "atomic_cq_mapping": [
+      {
+        "atomic_cq_id": "CQ37_a1",
+        "atomic_cq": "Which water indicators are defined for Burgos?",
+        "template": "81. Which [EC1] [PC1] [EC2]",
+        "classes": [
+          "WaterIndicator",
+          "Location"
+        ],
+        "object_properties": [
+          "definedFor"
+        ],
+        "data_properties": [],
+        "individuals": [],
+        "instances": [
+          "Burgos"
+        ]
+      }
+    ]
+  },
+  {
+    "cq_id": "CQ38",
+    "cq": "What is the start date and time of the tariff in use in the water meter?",
+    "question_type": "domain",
+    "recomposition": "AND: combine the start date and start time answers",
+    "atomic_cq_mapping": [
+      {
+        "atomic_cq_id": "CQ38_a1",
+        "atomic_cq": "What is the start date of the tariff in use in the water meter?",
+        "template": "60. What is [EC1] of [EC2]",
+        "classes": [
+          "Tariff",
+          "WaterMeter"
+        ],
+        "object_properties": [
+          "tariff"
+        ],
+        "data_properties": [
+          "startDate"
+        ],
+        "individuals": [],
+        "instances": []
+      },
+      {
+        "atomic_cq_id": "CQ38_a2",
+        "atomic_cq": "What is the start time of the tariff in use in the water meter?",
+        "template": "60. What is [EC1] of [EC2]",
+        "classes": [
+          "Tariff",
+          "WaterMeter"
+        ],
+        "object_properties": [
+          "tariff"
+        ],
+        "data_properties": [
+          "startTime"
+        ],
+        "individuals": [],
+        "instances": []
+      }
+    ]
+  },
+  {
+    "cq_id": "CQ39",
+    "cq": "What is the duration of the current tariff of the water meter?",
+    "question_type": "domain",
+    "recomposition": "join via [#CQ39_a1]",
+    "atomic_cq_mapping": [
+      {
+        "atomic_cq_id": "CQ39_a1",
+        "atomic_cq": "What is the current tariff of the water meter?",
+        "template": "60. What is [EC1] of [EC2]",
+        "classes": [
+          "Tariff",
+          "WaterMeter"
+        ],
+        "object_properties": [
+          "currentTariff"
+        ],
+        "data_properties": [],
+        "individuals": [],
+        "instances": []
+      },
+      {
+        "atomic_cq_id": "CQ39_a2",
+        "atomic_cq": "What is the duration of [#CQ39_a1]?",
+        "template": "60. What is [EC1] of [EC2]",
+        "classes": [
+          "Tariff"
+        ],
+        "object_properties": [],
+        "data_properties": [
+          "duration"
+        ],
+        "individuals": [],
+        "instances": []
+      }
+    ]
+  },
+  {
+    "cq_id": "CQ40",
+    "cq": "What is the tariff period of the water meter?",
+    "question_type": "domain",
+    "recomposition": "identity",
+    "atomic_cq_mapping": [
+      {
+        "atomic_cq_id": "CQ40_a1",
+        "atomic_cq": "What is the tariff period of the water meter?",
+        "template": "60. What is [EC1] of [EC2]",
+        "classes": [
+          "WaterMeter"
+        ],
+        "object_properties": [],
+        "data_properties": [
+          "tariffPeriod"
+        ],
+        "individuals": [],
+        "instances": []
+      }
+    ]
+  },
+  {
+    "cq_id": "CQ42",
+    "cq": "What is the billing date of the water meter?",
+    "question_type": "domain",
+    "recomposition": "identity",
+    "atomic_cq_mapping": [
+      {
+        "atomic_cq_id": "CQ42_a1",
+        "atomic_cq": "What is the billing date of the water meter?",
+        "template": "60. What is [EC1] of [EC2]",
+        "classes": [
+          "WaterMeter"
+        ],
+        "object_properties": [],
+        "data_properties": [
+          "billingDate"
+        ],
+        "individuals": [],
+        "instances": []
+      }
+    ]
+  },
+  {
+    "cq_id": "CQ43",
+    "cq": "What is the billing date period of the water meter?",
+    "question_type": "domain",
+    "recomposition": "identity",
+    "atomic_cq_mapping": [
+      {
+        "atomic_cq_id": "CQ43_a1",
+        "atomic_cq": "What is the billing date period of the water meter?",
+        "template": "60. What is [EC1] of [EC2]",
+        "classes": [
+          "WaterMeter"
+        ],
+        "object_properties": [],
+        "data_properties": [
+          "billingDatePeriod"
+        ],
+        "individuals": [],
+        "instances": []
+      }
+    ]
+  }
+]

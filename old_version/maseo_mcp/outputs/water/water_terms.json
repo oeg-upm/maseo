@@ -1,0 +1,522 @@
+[
+  {
+    "id": "CQ01",
+    "question": "Which assets compose a water distribution infrastructure?",
+    "classes": [
+      "WaterDistributionInfrastructure",
+      "Asset"
+    ],
+    "properties": [
+      "composes"
+    ],
+    "data_properties": [],
+    "object_properties": [
+      "composes"
+    ],
+    "axioms": [
+      "A WaterDistributionInfrastructure is composed of Assets."
+    ],
+    "individuals": [],
+    "tests": [
+      "WaterDistributionInfrastructure type Class",
+      "Asset type Class",
+      "composes type Property",
+      "WaterDistributionInfrastructure composes Asset"
+    ]
+  },
+  {
+    "id": "CQ04",
+    "question": "Which types of sensors are used in water infrastructures?",
+    "classes": [
+      "Sensor",
+      "WaterInfrastructure"
+    ],
+    "properties": [
+      "usedIn"
+    ],
+    "data_properties": [],
+    "object_properties": [
+      "usedIn"
+    ],
+    "axioms": [
+      "Sensors are used in water infrastructures."
+    ],
+    "individuals": [],
+    "tests": [
+      "Sensor type Class",
+      "WaterInfrastructure type Class",
+      "usedIn type Property",
+      "Sensor usedIn WaterInfrastructure"
+    ]
+  },
+  {
+    "id": "CQ05",
+    "question": "Which types of actuators are used in water infrastructures?",
+    "classes": [
+      "Actuator",
+      "WaterInfrastructure"
+    ],
+    "properties": [
+      "usedIn"
+    ],
+    "data_properties": [],
+    "object_properties": [
+      "usedIn"
+    ],
+    "axioms": [
+      "Actuators are used in water infrastructures."
+    ],
+    "individuals": [],
+    "tests": [
+      "Actuator type Class",
+      "WaterInfrastructure type Class",
+      "usedIn type Property",
+      "Actuator usedIn WaterInfrastructure"
+    ]
+  },
+  {
+    "id": "CQ06",
+    "question": "A water meter is a device that measures different aspects of a water infrastructure.",
+    "classes": [
+      "WaterMeter",
+      "Device"
+    ],
+    "properties": [
+      "measures"
+    ],
+    "data_properties": [],
+    "object_properties": [
+      "measures"
+    ],
+    "axioms": [
+      "A WaterMeter is a Device that measures aspects of a water infrastructure."
+    ],
+    "individuals": [],
+    "tests": [
+      "WaterMeter type Class",
+      "Device type Class",
+      "measures type Property",
+      "WaterMeter SubClassOf Device",
+      "WaterMeter measures Device"
+    ]
+  },
+  {
+    "id": "CQ08",
+    "question": "What is the fabrication number of the water meter?",
+    "classes": [
+      "WaterMeter"
+    ],
+    "properties": [
+      "fabricationNumber"
+    ],
+    "data_properties": [
+      "fabricationNumber"
+    ],
+    "object_properties": [],
+    "axioms": [
+      "A WaterMeter has a fabrication number."
+    ],
+    "individuals": [],
+    "tests": [
+      "WaterMeter type Class",
+      "fabricationNumber type Property",
+      "WaterMeter fabricationNumber string"
+    ]
+  },
+  {
+    "id": "CQ09",
+    "question": "What are the manufacturer and the model of the water meter?",
+    "classes": [
+      "WaterMeter"
+    ],
+    "properties": [
+      "manufacturer",
+      "model"
+    ],
+    "data_properties": [
+      "manufacturer",
+      "model"
+    ],
+    "object_properties": [],
+    "axioms": [
+      "A WaterMeter has a manufacturer and a model."
+    ],
+    "individuals": [],
+    "tests": [
+      "WaterMeter type Class",
+      "manufacturer type Property",
+      "model type Property",
+      "WaterMeter manufacturer string",
+      "WaterMeter model string"
+    ]
+  },
+  {
+    "id": "CQ10",
+    "question": "What is the version of the water meter?",
+    "classes": [
+      "WaterMeter"
+    ],
+    "properties": [
+      "version"
+    ],
+    "data_properties": [
+      "version"
+    ],
+    "object_properties": [],
+    "axioms": [
+      "A WaterMeter has a version."
+    ],
+    "individuals": [],
+    "tests": [
+      "WaterMeter type Class",
+      "version type Property",
+      "WaterMeter version string"
+    ]
+  },
+  {
+    "id": "CQ11",
+    "question": "What is the hardware version number of the water meter?",
+    "classes": [
+      "WaterMeter"
+    ],
+    "properties": [
+      "hardwareVersion"
+    ],
+    "data_properties": [
+      "hardwareVersion"
+    ],
+    "object_properties": [],
+    "axioms": [
+      "A WaterMeter has a hardware version number."
+    ],
+    "individuals": [],
+    "tests": [
+      "WaterMeter type Class",
+      "hardwareVersion type Property",
+      "WaterMeter hardwareVersion string"
+    ]
+  },
+  {
+    "id": "CQ12",
+    "question": "What firmware version is the water meter using?",
+    "classes": [
+      "WaterMeter"
+    ],
+    "properties": [
+      "firmwareVersion"
+    ],
+    "data_properties": [
+      "firmwareVersion"
+    ],
+    "object_properties": [],
+    "axioms": [
+      "A WaterMeter uses a firmware version."
+    ],
+    "individuals": [],
+    "tests": [
+      "WaterMeter type Class",
+      "firmwareVersion type Property",
+      "WaterMeter firmwareVersion string"
+    ]
+  },
+  {
+    "id": "CQ18",
+    "question": "What is the power of the water meter?",
+    "classes": [
+      "WaterMeter"
+    ],
+    "properties": [
+      "power"
+    ],
+    "data_properties": [
+      "power"
+    ],
+    "object_properties": [],
+    "axioms": [
+      "A WaterMeter has a power value."
+    ],
+    "individuals": [],
+    "tests": [
+      "WaterMeter type Class",
+      "power type Property",
+      "WaterMeter power float"
+    ]
+  },
+  {
+    "id": "CQ19",
+    "question": "What is the radio frequency level of the water meter?",
+    "classes": [
+      "WaterMeter"
+    ],
+    "properties": [
+      "radioFrequencyLevel"
+    ],
+    "data_properties": [
+      "radioFrequencyLevel"
+    ],
+    "object_properties": [],
+    "axioms": [
+      "A WaterMeter has a radio frequency level."
+    ],
+    "individuals": [],
+    "tests": [
+      "WaterMeter type Class",
+      "radioFrequencyLevel type Property",
+      "WaterMeter radioFrequencyLevel float"
+    ]
+  },
+  {
+    "id": "CQ20",
+    "question": "What is the geolocation of the water meter?",
+    "classes": [
+      "WaterMeter"
+    ],
+    "properties": [
+      "geolocation"
+    ],
+    "data_properties": [
+      "geolocation"
+    ],
+    "object_properties": [],
+    "axioms": [
+      "A WaterMeter has a geolocation."
+    ],
+    "individuals": [],
+    "tests": [
+      "WaterMeter type Class",
+      "geolocation type Property",
+      "WaterMeter geolocation string"
+    ]
+  },
+  {
+    "id": "CQ25",
+    "question": "Water meters can provide measurements according to different temporal settings.",
+    "classes": [
+      "WaterMeter",
+      "Measurement"
+    ],
+    "properties": [
+      "provides"
+    ],
+    "data_properties": [],
+    "object_properties": [
+      "provides"
+    ],
+    "axioms": [
+      "WaterMeters provide Measurements according to different temporal settings."
+    ],
+    "individuals": [],
+    "tests": [
+      "WaterMeter type Class",
+      "Measurement type Class",
+      "provides type Property",
+      "WaterMeter provides Measurement"
+    ]
+  },
+  {
+    "id": "CQ33",
+    "question": "What are the physical properties of water?",
+    "classes": [
+      "Water",
+      "PhysicalProperty"
+    ],
+    "properties": [
+      "hasProperty"
+    ],
+    "data_properties": [],
+    "object_properties": [
+      "hasProperty"
+    ],
+    "axioms": [
+      "Water has physical properties."
+    ],
+    "individuals": [],
+    "tests": [
+      "Water type Class",
+      "PhysicalProperty type Class",
+      "hasProperty type Property",
+      "Water hasProperty PhysicalProperty"
+    ]
+  },
+  {
+    "id": "CQ34",
+    "question": "What are the chemical properties of water?",
+    "classes": [
+      "Water",
+      "ChemicalProperty"
+    ],
+    "properties": [
+      "hasProperty"
+    ],
+    "data_properties": [],
+    "object_properties": [
+      "hasProperty"
+    ],
+    "axioms": [
+      "Water has chemical properties."
+    ],
+    "individuals": [],
+    "tests": [
+      "Water type Class",
+      "ChemicalProperty type Class",
+      "hasProperty type Property",
+      "Water hasProperty ChemicalProperty"
+    ]
+  },
+  {
+    "id": "CQ37",
+    "question": "Which water indicators are defined for Burgos?",
+    "classes": [
+      "WaterIndicator",
+      "Burgos"
+    ],
+    "properties": [
+      "definedFor"
+    ],
+    "data_properties": [],
+    "object_properties": [
+      "definedFor"
+    ],
+    "axioms": [
+      "Water indicators are defined for Burgos."
+    ],
+    "individuals": [],
+    "tests": [
+      "WaterIndicator type Class",
+      "Burgos type Class",
+      "definedFor type Property",
+      "WaterIndicator definedFor Burgos"
+    ]
+  },
+  {
+    "id": "CQ38",
+    "question": "What is the start date and time of the tariff in use in the water meter?",
+    "classes": [
+      "WaterMeter",
+      "Tariff"
+    ],
+    "properties": [
+      "inUse",
+      "startDateTime"
+    ],
+    "data_properties": [
+      "startDateTime"
+    ],
+    "object_properties": [
+      "inUse"
+    ],
+    "axioms": [
+      "The tariff in use in the water meter has a start date and time."
+    ],
+    "individuals": [],
+    "tests": [
+      "WaterMeter type Class",
+      "Tariff type Class",
+      "inUse type Property",
+      "startDateTime type Property",
+      "WaterMeter inUse Tariff",
+      "Tariff startDateTime dateTime"
+    ]
+  },
+  {
+    "id": "CQ39",
+    "question": "What is the duration of the current tariff of the water meter?",
+    "classes": [
+      "WaterMeter",
+      "Tariff"
+    ],
+    "properties": [
+      "inUse",
+      "duration"
+    ],
+    "data_properties": [
+      "duration"
+    ],
+    "object_properties": [
+      "inUse"
+    ],
+    "axioms": [
+      "The current tariff of the water meter has a duration."
+    ],
+    "individuals": [],
+    "tests": [
+      "WaterMeter type Class",
+      "Tariff type Class",
+      "inUse type Property",
+      "duration type Property",
+      "WaterMeter inUse Tariff",
+      "Tariff duration float"
+    ]
+  },
+  {
+    "id": "CQ40",
+    "question": "What is the tariff period of the water meter?",
+    "classes": [
+      "WaterMeter",
+      "TariffPeriod"
+    ],
+    "properties": [
+      "hasTariffPeriod"
+    ],
+    "data_properties": [],
+    "object_properties": [
+      "hasTariffPeriod"
+    ],
+    "axioms": [
+      "A WaterMeter has a tariff period."
+    ],
+    "individuals": [],
+    "tests": [
+      "WaterMeter type Class",
+      "TariffPeriod type Class",
+      "hasTariffPeriod type Property",
+      "WaterMeter hasTariffPeriod TariffPeriod"
+    ]
+  },
+  {
+    "id": "CQ42",
+    "question": "What is the billing date of the water meter?",
+    "classes": [
+      "WaterMeter"
+    ],
+    "properties": [
+      "billingDate"
+    ],
+    "data_properties": [
+      "billingDate"
+    ],
+    "object_properties": [],
+    "axioms": [
+      "A WaterMeter has a billing date."
+    ],
+    "individuals": [],
+    "tests": [
+      "WaterMeter type Class",
+      "billingDate type Property",
+      "WaterMeter billingDate dateTime"
+    ]
+  },
+  {
+    "id": "CQ43",
+    "question": "What is the billing date period of the water meter?",
+    "classes": [
+      "WaterMeter"
+    ],
+    "properties": [
+      "billingDatePeriod"
+    ],
+    "data_properties": [
+      "billingDatePeriod"
+    ],
+    "object_properties": [],
+    "axioms": [
+      "A WaterMeter has a billing date period."
+    ],
+    "individuals": [],
+    "tests": [
+      "WaterMeter type Class",
+      "billingDatePeriod type Property",
+      "WaterMeter billingDatePeriod string"
+    ]
+  }
+]

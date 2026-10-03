@@ -1,0 +1,839 @@
+[
+  {
+    "cq_id": "CQ01",
+    "cq": "What is the username of the player?",
+    "question_type": "domain",
+    "recomposition": "identity",
+    "atomic_cq_mapping": [
+      {
+        "atomic_cq_id": "CQ01_a1",
+        "atomic_cq": "What is username of player?",
+        "template": "60. What is [EC1] of [EC2]",
+        "classes": [
+          "Player"
+        ],
+        "object_properties": [],
+        "data_properties": [
+          "username"
+        ],
+        "individuals": [],
+        "instances": []
+      }
+    ]
+  },
+  {
+    "cq_id": "CQ02",
+    "cq": "Who are the friends of the player?",
+    "question_type": "domain",
+    "recomposition": "identity",
+    "atomic_cq_mapping": [
+      {
+        "atomic_cq_id": "CQ02_a1",
+        "atomic_cq": "Who is a friend of the player?",
+        "template": "86. Who is [EC1] of [EC2]",
+        "classes": [
+          "Player"
+        ],
+        "object_properties": [
+          "friend"
+        ],
+        "data_properties": [],
+        "individuals": [],
+        "instances": []
+      }
+    ]
+  },
+  {
+    "cq_id": "CQ03",
+    "cq": "Who are the friends that play other games as well with this player?",
+    "question_type": "domain",
+    "recomposition": "AND",
+    "atomic_cq_mapping": [
+      {
+        "atomic_cq_id": "CQ03_a1",
+        "atomic_cq": "Who is a friend of the given player?",
+        "template": "86. Who is [EC1] of [EC2]",
+        "classes": [
+          "Player"
+        ],
+        "object_properties": [
+          "friend"
+        ],
+        "data_properties": [],
+        "individuals": [],
+        "instances": []
+      },
+      {
+        "atomic_cq_id": "CQ03_a2",
+        "atomic_cq": "Who plays games with the given player?",
+        "template": "87. Who [PC1] [EC1] [EC2]",
+        "classes": [
+          "Player",
+          "Game"
+        ],
+        "object_properties": [
+          "playsWith"
+        ],
+        "data_properties": [],
+        "individuals": [],
+        "instances": []
+      }
+    ]
+  },
+  {
+    "cq_id": "CQ05",
+    "cq": "What are the achievements of my friends?",
+    "question_type": "domain",
+    "recomposition": "identity",
+    "atomic_cq_mapping": [
+      {
+        "atomic_cq_id": "CQ05_a1",
+        "atomic_cq": "What is an achievement of a friend?",
+        "template": "60. What is [EC1] of [EC2]",
+        "classes": [
+          "Player",
+          "Achievement"
+        ],
+        "object_properties": [
+          "achievement"
+        ],
+        "data_properties": [],
+        "individuals": [],
+        "instances": []
+      }
+    ]
+  },
+  {
+    "cq_id": "CQ07",
+    "cq": "What are the achievements your friend has received?",
+    "question_type": "domain",
+    "recomposition": "identity",
+    "atomic_cq_mapping": [
+      {
+        "atomic_cq_id": "CQ07_a1",
+        "atomic_cq": "What achievement does the given friend receive?",
+        "template": "53. What [EC1] [PC1] [EC2]",
+        "classes": [
+          "Player",
+          "Achievement"
+        ],
+        "object_properties": [
+          "receives"
+        ],
+        "data_properties": [],
+        "individuals": [],
+        "instances": []
+      }
+    ]
+  },
+  {
+    "cq_id": "CQ08",
+    "cq": "What achievements does a game have?",
+    "question_type": "domain",
+    "recomposition": "identity",
+    "atomic_cq_mapping": [
+      {
+        "atomic_cq_id": "CQ08_a1",
+        "atomic_cq": "Which achievements does a game have?",
+        "template": "81. Which [EC1] [PC1] [EC2]",
+        "classes": [
+          "Game",
+          "Achievement"
+        ],
+        "object_properties": [
+          "hasAchievement"
+        ],
+        "data_properties": [],
+        "individuals": [],
+        "instances": []
+      }
+    ]
+  },
+  {
+    "cq_id": "CQ09",
+    "cq": "How many hours has this game been played in total?",
+    "question_type": "domain",
+    "recomposition": "identity",
+    "atomic_cq_mapping": [
+      {
+        "atomic_cq_id": "CQ09_a1",
+        "atomic_cq": "How many hours has the given game been played?",
+        "template": "15. How many [EC1] [PC1] [EC2]",
+        "classes": [
+          "Game"
+        ],
+        "object_properties": [],
+        "data_properties": [
+          "playTime"
+        ],
+        "individuals": [],
+        "instances": []
+      }
+    ]
+  },
+  {
+    "cq_id": "CQ10",
+    "cq": "What are the types of achievements in this game?",
+    "question_type": "domain",
+    "recomposition": "identity",
+    "atomic_cq_mapping": [
+      {
+        "atomic_cq_id": "CQ10_a1",
+        "atomic_cq": "What are the types of achievements in the given game?",
+        "template": "44. What are the types of [EC1]",
+        "classes": [
+          "Achievement",
+          "Game"
+        ],
+        "object_properties": [
+          "type"
+        ],
+        "data_properties": [],
+        "individuals": [],
+        "instances": []
+      }
+    ]
+  },
+  {
+    "cq_id": "CQ11",
+    "cq": "What are the types of achievements a game can have?",
+    "question_type": "domain",
+    "recomposition": "identity",
+    "atomic_cq_mapping": [
+      {
+        "atomic_cq_id": "CQ11_a1",
+        "atomic_cq": "What is achievement of game?",
+        "template": "60. What is [EC1] of [EC2]",
+        "classes": [
+          "Game",
+          "Achievement"
+        ],
+        "object_properties": [
+          "achievement"
+        ],
+        "data_properties": [],
+        "individuals": [],
+        "instances": []
+      },
+      {
+        "atomic_cq_id": "CQ11_a2",
+        "atomic_cq": "What are the types of [#CQ11_a1]?",
+        "template": "44. What are the types of [EC1]",
+        "classes": [
+          "Achievement"
+        ],
+        "object_properties": [
+          "type"
+        ],
+        "data_properties": [],
+        "individuals": [],
+        "instances": []
+      }
+    ]
+  },
+  {
+    "cq_id": "CQ12",
+    "cq": "What is the genre of the game?",
+    "question_type": "domain",
+    "recomposition": "identity",
+    "atomic_cq_mapping": [
+      {
+        "atomic_cq_id": "CQ12_a1",
+        "atomic_cq": "What is the genre of the game?",
+        "template": "60. What is [EC1] of [EC2]",
+        "classes": [
+          "Game",
+          "Genre"
+        ],
+        "object_properties": [
+          "genre"
+        ],
+        "data_properties": [],
+        "individuals": [],
+        "instances": []
+      }
+    ]
+  },
+  {
+    "cq_id": "CQ13",
+    "cq": "What items exist in a game?",
+    "question_type": "domain",
+    "recomposition": "identity",
+    "atomic_cq_mapping": [
+      {
+        "atomic_cq_id": "CQ13_a1",
+        "atomic_cq": "What item exists in a game?",
+        "template": "53. What [EC1] [PC1] [EC2]",
+        "classes": [
+          "Item",
+          "Game"
+        ],
+        "object_properties": [
+          "existsIn"
+        ],
+        "data_properties": [],
+        "individuals": [],
+        "instances": []
+      }
+    ]
+  },
+  {
+    "cq_id": "CQ15",
+    "cq": "What is the release date of the game?",
+    "question_type": "domain",
+    "recomposition": "identity",
+    "atomic_cq_mapping": [
+      {
+        "atomic_cq_id": "CQ15_a1",
+        "atomic_cq": "What is the release date of the game?",
+        "template": "60. What is [EC1] of [EC2]",
+        "classes": [
+          "Game"
+        ],
+        "object_properties": [],
+        "data_properties": [
+          "releaseDate"
+        ],
+        "individuals": [],
+        "instances": []
+      }
+    ]
+  },
+  {
+    "cq_id": "CQ17",
+    "cq": "List all games of a certain Genre?",
+    "question_type": "domain",
+    "recomposition": "identity",
+    "atomic_cq_mapping": [
+      {
+        "atomic_cq_id": "CQ17_a1",
+        "atomic_cq": "Which game has the given genre?",
+        "template": "81. Which [EC1] [PC1] [EC2]",
+        "classes": [
+          "Game",
+          "Genre"
+        ],
+        "object_properties": [
+          "hasGenre"
+        ],
+        "data_properties": [],
+        "individuals": [],
+        "instances": []
+      }
+    ]
+  },
+  {
+    "cq_id": "CQ19",
+    "cq": "What abilities does an item have?",
+    "question_type": "domain",
+    "recomposition": "identity",
+    "atomic_cq_mapping": [
+      {
+        "atomic_cq_id": "CQ19_a1",
+        "atomic_cq": "What is ability of an item?",
+        "template": "60. What is [EC1] of [EC2]",
+        "classes": [
+          "Item",
+          "Ability"
+        ],
+        "object_properties": [
+          "ability"
+        ],
+        "data_properties": [],
+        "individuals": [],
+        "instances": []
+      }
+    ]
+  },
+  {
+    "cq_id": "CQ22",
+    "cq": "Who has the best kill count in the game?",
+    "question_type": "domain",
+    "recomposition": "identity",
+    "atomic_cq_mapping": [
+      {
+        "atomic_cq_id": "CQ22_a1",
+        "atomic_cq": "Who has the best kill count in the game?",
+        "template": "87. Who [PC1] [EC1] [EC2]",
+        "classes": [
+          "Player",
+          "Game"
+        ],
+        "object_properties": [
+          "playsIn"
+        ],
+        "data_properties": [
+          "killCount"
+        ],
+        "individuals": [],
+        "instances": []
+      }
+    ]
+  },
+  {
+    "cq_id": "CQ24",
+    "cq": "What achievements has a player obtained?",
+    "question_type": "domain",
+    "recomposition": "identity",
+    "atomic_cq_mapping": [
+      {
+        "atomic_cq_id": "CQ24_a1",
+        "atomic_cq": "Which achievements does a player obtain?",
+        "template": "81. Which [EC1] [PC1] [EC2]",
+        "classes": [
+          "Player",
+          "Achievement"
+        ],
+        "object_properties": [
+          "obtains"
+        ],
+        "data_properties": [],
+        "individuals": [],
+        "instances": []
+      }
+    ]
+  },
+  {
+    "cq_id": "CQ25",
+    "cq": "What games has the player played?",
+    "question_type": "domain",
+    "recomposition": "identity",
+    "atomic_cq_mapping": [
+      {
+        "atomic_cq_id": "CQ25_a1",
+        "atomic_cq": "What games has the player played?",
+        "template": "53. What [EC1] [PC1] [EC2]",
+        "classes": [
+          "Player",
+          "Game"
+        ],
+        "object_properties": [
+          "hasPlayed"
+        ],
+        "data_properties": [],
+        "individuals": [],
+        "instances": []
+      }
+    ]
+  },
+  {
+    "cq_id": "CQ26",
+    "cq": "What items does the player have?",
+    "question_type": "domain",
+    "recomposition": "identity",
+    "atomic_cq_mapping": [
+      {
+        "atomic_cq_id": "CQ26_a1",
+        "atomic_cq": "What item is of the player?",
+        "template": "60. What is [EC1] of [EC2]",
+        "classes": [
+          "Item",
+          "Player"
+        ],
+        "object_properties": [
+          "player"
+        ],
+        "data_properties": [],
+        "individuals": [],
+        "instances": []
+      }
+    ]
+  },
+  {
+    "cq_id": "CQ27",
+    "cq": "What achievements of a certain type does the player have?",
+    "question_type": "domain",
+    "recomposition": "AND: the answer is the intersection of the achievements of the player and the achievements of the given type",
+    "atomic_cq_mapping": [
+      {
+        "atomic_cq_id": "CQ27_a1",
+        "atomic_cq": "What achievement is of the player?",
+        "template": "60. What is [EC1] of [EC2]",
+        "classes": [
+          "Achievement",
+          "Player"
+        ],
+        "object_properties": [
+          "player"
+        ],
+        "data_properties": [],
+        "individuals": [],
+        "instances": []
+      },
+      {
+        "atomic_cq_id": "CQ27_a2",
+        "atomic_cq": "What achievement is of the given type?",
+        "template": "60. What is [EC1] of [EC2]",
+        "classes": [
+          "Achievement",
+          "AchievementType"
+        ],
+        "object_properties": [
+          "type"
+        ],
+        "data_properties": [],
+        "individuals": [],
+        "instances": []
+      }
+    ]
+  },
+  {
+    "cq_id": "CQ29",
+    "cq": "What is the last game a player has played?",
+    "question_type": "domain",
+    "recomposition": "identity",
+    "atomic_cq_mapping": [
+      {
+        "atomic_cq_id": "CQ29_a1",
+        "atomic_cq": "What is the last game of a player?",
+        "template": "60. What is [EC1] of [EC2]",
+        "classes": [
+          "Game",
+          "Player"
+        ],
+        "object_properties": [
+          "lastGame"
+        ],
+        "data_properties": [],
+        "individuals": [],
+        "instances": []
+      }
+    ]
+  },
+  {
+    "cq_id": "CQ35",
+    "cq": "In how many games does the player have all the achievements?",
+    "question_type": "domain",
+    "recomposition": "identity",
+    "atomic_cq_mapping": [
+      {
+        "atomic_cq_id": "CQ35_a1",
+        "atomic_cq": "How many games does a player have all achievements in?",
+        "template": "15. How many [EC1] [PC1] [EC2]",
+        "classes": [
+          "Player",
+          "Game",
+          "Achievement"
+        ],
+        "object_properties": [
+          "hasAchievement",
+          "playsIn"
+        ],
+        "data_properties": [],
+        "individuals": [],
+        "instances": []
+      }
+    ]
+  },
+  {
+    "cq_id": "CQ52",
+    "cq": "What equipment does a player have in a game?",
+    "question_type": "domain",
+    "recomposition": "identity",
+    "atomic_cq_mapping": [
+      {
+        "atomic_cq_id": "CQ52_a1",
+        "atomic_cq": "What equipment has a player in a game?",
+        "template": "56. What [EC1] [PC1] [EC2] in [EC3]",
+        "classes": [
+          "Equipment",
+          "Player",
+          "Game"
+        ],
+        "object_properties": [
+          "hasEquipment",
+          "playsIn"
+        ],
+        "data_properties": [],
+        "individuals": [],
+        "instances": []
+      }
+    ]
+  },
+  {
+    "cq_id": "CQ55",
+    "cq": "What are the games where a player can use this item?",
+    "question_type": "domain",
+    "recomposition": "identity",
+    "atomic_cq_mapping": [
+      {
+        "atomic_cq_id": "CQ55_a1",
+        "atomic_cq": "Which game allows a player to use the given item?",
+        "template": "81. Which [EC1] [PC1] [EC2]",
+        "classes": [
+          "Game",
+          "Player",
+          "Item"
+        ],
+        "object_properties": [
+          "allowsUseOf"
+        ],
+        "data_properties": [],
+        "individuals": [],
+        "instances": []
+      }
+    ]
+  },
+  {
+    "cq_id": "CQ56",
+    "cq": "How many players have made in app purchases?",
+    "question_type": "domain",
+    "recomposition": "identity",
+    "atomic_cq_mapping": [
+      {
+        "atomic_cq_id": "CQ56_a1",
+        "atomic_cq": "How many players have made in app purchases?",
+        "template": "15. How many [EC1] [PC1] [EC2]",
+        "classes": [
+          "Player",
+          "InAppPurchase"
+        ],
+        "object_properties": [
+          "makesPurchase"
+        ],
+        "data_properties": [],
+        "individuals": [],
+        "instances": []
+      }
+    ]
+  },
+  {
+    "cq_id": "CQ57",
+    "cq": "How many players who have already spent money, spend money again?",
+    "question_type": "domain",
+    "recomposition": "identity",
+    "atomic_cq_mapping": [
+      {
+        "atomic_cq_id": "CQ57_a1",
+        "atomic_cq": "Which players have spent money?",
+        "template": "81. Which [EC1] [PC1] [EC2]",
+        "classes": [
+          "Player",
+          "Purchase"
+        ],
+        "object_properties": [
+          "hasSpentMoney"
+        ],
+        "data_properties": [],
+        "individuals": [],
+        "instances": []
+      },
+      {
+        "atomic_cq_id": "CQ57_a2",
+        "atomic_cq": "How many [#CQ57_a1] spend money again?",
+        "template": "15. How many [EC1] [PC1] [EC2]",
+        "classes": [
+          "Player",
+          "Purchase"
+        ],
+        "object_properties": [
+          "hasSpentMoneyAgain"
+        ],
+        "data_properties": [],
+        "individuals": [],
+        "instances": []
+      }
+    ]
+  },
+  {
+    "cq_id": "CQ62",
+    "cq": "What time are most of the in app purchases done?",
+    "question_type": "domain",
+    "recomposition": "identity",
+    "atomic_cq_mapping": [
+      {
+        "atomic_cq_id": "CQ62_a1",
+        "atomic_cq": "What is the time of most of the in app purchases?",
+        "template": "60. What is [EC1] of [EC2]",
+        "classes": [
+          "InAppPurchase"
+        ],
+        "object_properties": [],
+        "data_properties": [
+          "time"
+        ],
+        "individuals": [],
+        "instances": []
+      }
+    ]
+  },
+  {
+    "cq_id": "CQ63",
+    "cq": "Where do the most paying customers live?",
+    "question_type": "domain",
+    "recomposition": "join: find the maximum payment, then the customers with that payment, then their location",
+    "atomic_cq_mapping": [
+      {
+        "atomic_cq_id": "CQ63_a1",
+        "atomic_cq": "What is maximum payment of customer?",
+        "template": "60. What is [EC1] of [EC2]",
+        "classes": [
+          "Customer",
+          "Payment"
+        ],
+        "object_properties": [
+          "payment"
+        ],
+        "data_properties": [],
+        "individuals": [],
+        "instances": []
+      },
+      {
+        "atomic_cq_id": "CQ63_a2",
+        "atomic_cq": "Which customers have [#CQ63_a1] as payment?",
+        "template": "81. Which [EC1] [PC1] [EC2]",
+        "classes": [
+          "Customer",
+          "Payment"
+        ],
+        "object_properties": [
+          "hasPayment"
+        ],
+        "data_properties": [],
+        "individuals": [],
+        "instances": []
+      },
+      {
+        "atomic_cq_id": "CQ63_a3",
+        "atomic_cq": "Where live [#CQ63_a2]?",
+        "template": "75. Where [PC1] [EC1]",
+        "classes": [
+          "Customer",
+          "Location"
+        ],
+        "object_properties": [
+          "livesIn"
+        ],
+        "data_properties": [],
+        "individuals": [],
+        "instances": []
+      }
+    ]
+  },
+  {
+    "cq_id": "CQ64",
+    "cq": "How long does a player spend in the game before making first IAP?",
+    "question_type": "domain",
+    "recomposition": "identity",
+    "atomic_cq_mapping": [
+      {
+        "atomic_cq_id": "CQ64_a1",
+        "atomic_cq": "How long does a player spend in the game before making first IAP?",
+        "template": "14. How long [PC1] [EC1] [PC1]",
+        "classes": [
+          "Player",
+          "Game",
+          "InAppPurchase"
+        ],
+        "object_properties": [
+          "playsIn",
+          "makesPurchase"
+        ],
+        "data_properties": [
+          "timeBeforeFirstIap"
+        ],
+        "individuals": [],
+        "instances": []
+      }
+    ]
+  },
+  {
+    "cq_id": "CQ65",
+    "cq": "Where do the players live who have not made any IAP?",
+    "question_type": "domain",
+    "recomposition": "join via [#CQ65_a1]",
+    "atomic_cq_mapping": [
+      {
+        "atomic_cq_id": "CQ65_a1",
+        "atomic_cq": "Which player does not make an IAP?",
+        "template": "90. Which [EC1] does not [PC1] [EC2]",
+        "classes": [
+          "Player",
+          "InAppPurchase"
+        ],
+        "object_properties": [
+          "makesPurchase"
+        ],
+        "data_properties": [],
+        "individuals": [],
+        "instances": []
+      },
+      {
+        "atomic_cq_id": "CQ65_a2",
+        "atomic_cq": "Where does [#CQ65_a1] live?",
+        "template": "75. Where [PC1] [EC1]",
+        "classes": [
+          "Player",
+          "Location"
+        ],
+        "object_properties": [
+          "livesIn"
+        ],
+        "data_properties": [],
+        "individuals": [],
+        "instances": []
+      }
+    ]
+  },
+  {
+    "cq_id": "CQ66",
+    "cq": "Where do the players who have done the most IAP live?",
+    "question_type": "domain",
+    "recomposition": "join via [#CQ66_a1]",
+    "atomic_cq_mapping": [
+      {
+        "atomic_cq_id": "CQ66_a1",
+        "atomic_cq": "Which players have done the most IAP?",
+        "template": "81. Which [EC1] [PC1] [EC2]",
+        "classes": [
+          "Player",
+          "InAppPurchase"
+        ],
+        "object_properties": [
+          "makesPurchase"
+        ],
+        "data_properties": [],
+        "individuals": [],
+        "instances": []
+      },
+      {
+        "atomic_cq_id": "CQ66_a2",
+        "atomic_cq": "Where live the given players?",
+        "template": "75. Where [PC1] [EC1]",
+        "classes": [
+          "Player",
+          "Location"
+        ],
+        "object_properties": [
+          "livesIn"
+        ],
+        "data_properties": [],
+        "individuals": [],
+        "instances": []
+      }
+    ]
+  },
+  {
+    "cq_id": "New CQ1",
+    "cq": "What playing areas does a game have?",
+    "question_type": "domain",
+    "recomposition": "identity",
+    "atomic_cq_mapping": [
+      {
+        "atomic_cq_id": "New CQ1_a1",
+        "atomic_cq": "Which playing area does a game have?",
+        "template": "81. Which [EC1] [PC1] [EC2]",
+        "classes": [
+          "Game",
+          "PlayingArea"
+        ],
+        "object_properties": [
+          "hasPlayingArea"
+        ],
+        "data_properties": [],
+        "individuals": [],
+        "instances": []
+      }
+    ]
+  }
+]

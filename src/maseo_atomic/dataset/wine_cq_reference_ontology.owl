@@ -1,0 +1,643 @@
+<?xml version="1.0"?>
+<rdf:RDF xml:base="http://www.semanticweb.org/wine#"
+         xmlns:owl="http://www.w3.org/2002/07/owl#"
+         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+         xmlns:dc="http://purl.org/dc/elements/1.1/"
+         xmlns:vaem="http://www.linkedmodel.org/schema/vaem#"
+         xmlns:wine="http://www.semanticweb.org/wine#">
+
+  <owl:Ontology rdf:about="http://www.semanticweb.org/wine#">
+    <rdfs:label>Wine ontology (CQ-driven, gold vocabulary)</rdfs:label>
+    <rdfs:comment>Built from CQ1, CQ2, CQ6, CQ7 and CQnew1 using the 17 gold-standard class names. Object properties, data properties, individuals and axioms are derived from the CQs, since only the class list was fixed in advance.</rdfs:comment>
+  </owl:Ontology>
+
+  <!-- ============================================================ -->
+  <!-- Classes                                                      -->
+  <!-- ============================================================ -->
+
+<owl:Class rdf:about="http://www.semanticweb.org/wine#Wine">
+  <rdfs:label xml:lang="en">wine</rdfs:label>
+  <rdfs:label xml:lang="fr">vin</rdfs:label>
+  <rdfs:comment>A fermented grape beverage, described by exactly one value of each wine descriptor and produced in one or more vintages.</rdfs:comment>
+  <vaem:rationale>Central class of every CQ. CQ1 asks for its characteristics, CQ2 and CQnew1 for subclasses of it, CQ6 and CQ7 for its vintages.</vaem:rationale>
+  <dc:source>(competency_question) CQ1: Which wine characteristics should I consider when choosing a wine?
+    (competency_question) CQ2: Is Bordeaux a red or white wine?
+    (competency_question) CQ6: Does a bouquet or body of a specific wine change with vintage year?
+    (competency_question) CQ7: What were good vintages for Napa Zinfandel?
+    (competency_question) CQnew1: What grapes are used to make Bordeaux wine?</dc:source>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://www.semanticweb.org/wine#hasColor"/>
+      <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:cardinality>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://www.semanticweb.org/wine#hasBody"/>
+      <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:cardinality>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://www.semanticweb.org/wine#hasFlavor"/>
+      <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:cardinality>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://www.semanticweb.org/wine#hasSugar"/>
+      <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:cardinality>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://www.semanticweb.org/wine#madeFromGrape"/>
+      <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minCardinality>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://www.semanticweb.org/wine#locatedIn"/>
+      <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/wine#Region"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/wine#WineDescriptor">
+  <rdfs:label>Wine Descriptor</rdfs:label>
+  <rdfs:comment>Any characteristic by which a wine is described: its color or one of its tastes. This is the class CQ1 asks to enumerate.</rdfs:comment>
+  <vaem:rationale>CQ1 asks which characteristics to consider. Defined as the union of WineColor and WineTaste so that "the characteristics of a wine" is a single answerable class.</vaem:rationale>
+  <dc:source>(competency_question) CQ1: Which wine characteristics should I consider when choosing a wine?</dc:source>
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:unionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="http://www.semanticweb.org/wine#WineColor"/>
+        <rdf:Description rdf:about="http://www.semanticweb.org/wine#WineTaste"/>
+      </owl:unionOf>
+    </owl:Class>
+  </owl:equivalentClass>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/wine#WineColor">
+  <rdfs:label>Wine Color</rdfs:label>
+  <rdfs:comment>The color of a wine: red, white or rose.</rdfs:comment>
+  <vaem:rationale>CQ2 asks whether a wine is red or white, so color must be a first-class descriptor with an enumerated value space.</vaem:rationale>
+  <dc:source>(competency_question) CQ1: Which wine characteristics should I consider when choosing a wine?
+    (competency_question) CQ2: Is Bordeaux a red or white wine?</dc:source>
+  <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/wine#WineDescriptor"/>
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:oneOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="http://www.semanticweb.org/wine#Red"/>
+        <rdf:Description rdf:about="http://www.semanticweb.org/wine#White"/>
+        <rdf:Description rdf:about="http://www.semanticweb.org/wine#Rose"/>
+      </owl:oneOf>
+    </owl:Class>
+  </owl:equivalentClass>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/wine#WineTaste">
+  <rdfs:label>Wine Taste</rdfs:label>
+  <rdfs:comment>A descriptor perceived on tasting: body, flavor or sugar level.</rdfs:comment>
+  <vaem:rationale>Groups the tasting descriptors under WineDescriptor so CQ1 returns them together with color.</vaem:rationale>
+  <dc:source>(competency_question) CQ1: Which wine characteristics should I consider when choosing a wine?</dc:source>
+  <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/wine#WineDescriptor"/>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/wine#WineBody">
+  <rdfs:label>Wine Body</rdfs:label>
+  <rdfs:comment>The weight and mouthfeel of a wine: light, medium or full.</rdfs:comment>
+  <vaem:rationale>CQ6 asks whether the body of a wine changes with vintage year, so body must be a comparable, enumerated value.</vaem:rationale>
+  <dc:source>(competency_question) CQ1: Which wine characteristics should I consider when choosing a wine?
+    (competency_question) CQ6: Does a bouquet or body of a specific wine change with vintage year?</dc:source>
+  <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/wine#WineTaste"/>
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:oneOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="http://www.semanticweb.org/wine#Light"/>
+        <rdf:Description rdf:about="http://www.semanticweb.org/wine#Medium"/>
+        <rdf:Description rdf:about="http://www.semanticweb.org/wine#Full"/>
+      </owl:oneOf>
+    </owl:Class>
+  </owl:equivalentClass>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/wine#WineFlavor">
+  <rdfs:label>Wine Flavor</rdfs:label>
+  <rdfs:comment>The aromatic intensity of a wine, also called its bouquet: delicate, moderate or strong.</rdfs:comment>
+  <vaem:rationale>CQ6 asks about bouquet. No separate Bouquet class exists in the fixed vocabulary, so bouquet is carried by WineFlavor and the term is recorded in this comment.</vaem:rationale>
+  <dc:source>(competency_question) CQ1: Which wine characteristics should I consider when choosing a wine?
+    (competency_question) CQ6: Does a bouquet or body of a specific wine change with vintage year?</dc:source>
+  <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/wine#WineTaste"/>
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:oneOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="http://www.semanticweb.org/wine#Delicate"/>
+        <rdf:Description rdf:about="http://www.semanticweb.org/wine#Moderate"/>
+        <rdf:Description rdf:about="http://www.semanticweb.org/wine#Strong"/>
+      </owl:oneOf>
+    </owl:Class>
+  </owl:equivalentClass>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/wine#WineSugar">
+  <rdfs:label>Wine Sugar</rdfs:label>
+  <rdfs:comment>The residual sugar level of a wine: dry, off-dry or sweet.</rdfs:comment>
+  <vaem:rationale>Part of the answer set for CQ1; a characteristic a buyer considers when choosing a wine.</vaem:rationale>
+  <dc:source>(competency_question) CQ1: Which wine characteristics should I consider when choosing a wine?</dc:source>
+  <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/wine#WineTaste"/>
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:oneOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="http://www.semanticweb.org/wine#Dry"/>
+        <rdf:Description rdf:about="http://www.semanticweb.org/wine#OffDry"/>
+        <rdf:Description rdf:about="http://www.semanticweb.org/wine#Sweet"/>
+      </owl:oneOf>
+    </owl:Class>
+  </owl:equivalentClass>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/wine#WineGrape">
+  <rdfs:label>Wine Grape</rdfs:label>
+  <rdfs:comment>A grape variety used in wine production.</rdfs:comment>
+  <vaem:rationale>CQnew1 asks what grapes are used to make Bordeaux wine; range of madeFromGrape.</vaem:rationale>
+  <dc:source>(competency_question) CQnew1: What grapes are used to make Bordeaux wine?</dc:source>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/wine#Region">
+  <rdfs:label>Region</rdfs:label>
+  <rdfs:comment>A geographic wine-producing area, possibly contained in a larger one.</rdfs:comment>
+  <vaem:rationale>CQ2 and CQnew1 identify Bordeaux by where the wine is from; CQ7 identifies Napa Zinfandel the same way. Region is what makes both definitions possible.</vaem:rationale>
+  <dc:source>(competency_question) CQ2: Is Bordeaux a red or white wine?
+    (competency_question) CQ7: What were good vintages for Napa Zinfandel?
+    (competency_question) CQnew1: What grapes are used to make Bordeaux wine?</dc:source>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/wine#Vintage">
+  <rdfs:label>Vintage</rdfs:label>
+  <rdfs:comment>The production of one wine in one year, carrying that year's own body and flavor and its quality rating.</rdfs:comment>
+  <vaem:rationale>CQ6 only makes sense if body and flavor can differ per year, so the descriptors must attach to the Vintage and not only to the Wine. CQ7 asks which vintages were good, so the rating attaches here too.</vaem:rationale>
+  <dc:source>(competency_question) CQ6: Does a bouquet or body of a specific wine change with vintage year?
+    (competency_question) CQ7: What were good vintages for Napa Zinfandel?</dc:source>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://www.semanticweb.org/wine#hasVintageYear"/>
+      <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:cardinality>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/wine#VintageYear">
+  <rdfs:label>Vintage Year</rdfs:label>
+  <rdfs:comment>The calendar year in which a vintage was produced.</rdfs:comment>
+  <vaem:rationale>CQ6 asks whether characteristics change WITH vintage year, so the year is a thing that vintages are compared by, not a bare literal on the wine.</vaem:rationale>
+  <dc:source>(competency_question) CQ6: Does a bouquet or body of a specific wine change with vintage year?
+    (competency_question) CQ7: What were good vintages for Napa Zinfandel?</dc:source>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://www.semanticweb.org/wine#yearValue"/>
+      <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:cardinality>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/wine#RedWine">
+  <rdfs:label>Red Wine</rdfs:label>
+  <rdfs:comment>A wine whose color is red.</rdfs:comment>
+  <vaem:rationale>CQ2 asks whether Bordeaux is red. Defined rather than merely asserted, so that a reasoner can classify any wine with hasColor Red without hand-typing it.</vaem:rationale>
+  <dc:source>(competency_question) CQ2: Is Bordeaux a red or white wine?</dc:source>
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="http://www.semanticweb.org/wine#Wine"/>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="http://www.semanticweb.org/wine#hasColor"/>
+          <owl:hasValue rdf:resource="http://www.semanticweb.org/wine#Red"/>
+        </owl:Restriction>
+      </owl:intersectionOf>
+    </owl:Class>
+  </owl:equivalentClass>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/wine#WhiteWine">
+  <rdfs:label>White Wine</rdfs:label>
+  <rdfs:comment>A wine whose color is white.</rdfs:comment>
+  <vaem:rationale>The other half of CQ2. Disjointness from RedWine follows from hasColor being functional and Red and White being distinct individuals, so no explicit disjointness axiom is needed.</vaem:rationale>
+  <dc:source>(competency_question) CQ2: Is Bordeaux a red or white wine?</dc:source>
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="http://www.semanticweb.org/wine#Wine"/>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="http://www.semanticweb.org/wine#hasColor"/>
+          <owl:hasValue rdf:resource="http://www.semanticweb.org/wine#White"/>
+        </owl:Restriction>
+      </owl:intersectionOf>
+    </owl:Class>
+  </owl:equivalentClass>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/wine#Bordeaux">
+  <rdfs:label>Bordeaux</rdfs:label>
+  <rdfs:comment>A wine produced in the Bordeaux region. Bordeaux is a kind of wine, not a single bottle, so it is a class rather than an individual.</rdfs:comment>
+  <vaem:rationale>CQ2 and CQnew1 both treat Bordeaux as a category of wine with a color and a grape composition. Defined by origin, which is what the name actually denotes.</vaem:rationale>
+  <dc:source>(competency_question) CQ2: Is Bordeaux a red or white wine?
+    (competency_question) CQnew1: What grapes are used to make Bordeaux wine?</dc:source>
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="http://www.semanticweb.org/wine#Wine"/>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="http://www.semanticweb.org/wine#locatedIn"/>
+          <owl:hasValue rdf:resource="http://www.semanticweb.org/wine#BordeauxRegion"/>
+        </owl:Restriction>
+      </owl:intersectionOf>
+    </owl:Class>
+  </owl:equivalentClass>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/wine#RedBordeaux">
+  <rdfs:label>Red Bordeaux</rdfs:label>
+  <rdfs:comment>A Bordeaux that is a red wine, made only from the red Bordeaux grape varieties.</rdfs:comment>
+  <vaem:rationale>Answers CQ2 affirmatively for the red case and carries the grape composition CQnew1 asks for. The allValuesFrom closes the grape list, which is what makes CQnew1 answerable rather than open-ended.</vaem:rationale>
+  <dc:source>(competency_question) CQ2: Is Bordeaux a red or white wine?
+    (competency_question) CQnew1: What grapes are used to make Bordeaux wine?</dc:source>
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="http://www.semanticweb.org/wine#Bordeaux"/>
+        <rdf:Description rdf:about="http://www.semanticweb.org/wine#RedWine"/>
+      </owl:intersectionOf>
+    </owl:Class>
+  </owl:equivalentClass>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://www.semanticweb.org/wine#madeFromGrape"/>
+      <owl:allValuesFrom>
+        <owl:Class>
+          <owl:oneOf rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/wine#CabernetSauvignonGrape"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/wine#CabernetFrancGrape"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/wine#MerlotGrape"/>
+          </owl:oneOf>
+        </owl:Class>
+      </owl:allValuesFrom>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/wine#WhiteBordeaux">
+  <rdfs:label>White Bordeaux</rdfs:label>
+  <rdfs:comment>A Bordeaux that is a white wine, made only from the white Bordeaux grape varieties.</rdfs:comment>
+  <vaem:rationale>The white counterpart for CQ2 and CQnew1.</vaem:rationale>
+  <dc:source>(competency_question) CQ2: Is Bordeaux a red or white wine?
+    (competency_question) CQnew1: What grapes are used to make Bordeaux wine?</dc:source>
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="http://www.semanticweb.org/wine#Bordeaux"/>
+        <rdf:Description rdf:about="http://www.semanticweb.org/wine#WhiteWine"/>
+      </owl:intersectionOf>
+    </owl:Class>
+  </owl:equivalentClass>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://www.semanticweb.org/wine#madeFromGrape"/>
+      <owl:allValuesFrom>
+        <owl:Class>
+          <owl:oneOf rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/wine#SauvignonBlancGrape"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/wine#SemillonGrape"/>
+          </owl:oneOf>
+        </owl:Class>
+      </owl:allValuesFrom>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/wine#Zinfandel">
+  <rdfs:label>Zinfandel</rdfs:label>
+  <rdfs:comment>A red wine made from the Zinfandel grape and no other.</rdfs:comment>
+  <vaem:rationale>CQ7 asks about Napa Zinfandel. Zinfandel is the varietal; "Napa" is the region, so the CQ target is Zinfandel located in NapaRegion rather than a class of its own.</vaem:rationale>
+  <dc:source>(competency_question) CQ7: What were good vintages for Napa Zinfandel?</dc:source>
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="http://www.semanticweb.org/wine#Wine"/>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="http://www.semanticweb.org/wine#madeFromGrape"/>
+          <owl:hasValue rdf:resource="http://www.semanticweb.org/wine#ZinfandelGrape"/>
+        </owl:Restriction>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="http://www.semanticweb.org/wine#madeFromGrape"/>
+          <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+        </owl:Restriction>
+      </owl:intersectionOf>
+    </owl:Class>
+  </owl:equivalentClass>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://www.semanticweb.org/wine#hasColor"/>
+      <owl:hasValue rdf:resource="http://www.semanticweb.org/wine#Red"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+</owl:Class>
+
+  <!-- Disjointness between the descriptor kinds -->
+  <owl:AllDisjointClasses>
+    <owl:members rdf:parseType="Collection">
+      <rdf:Description rdf:about="http://www.semanticweb.org/wine#WineColor"/>
+      <rdf:Description rdf:about="http://www.semanticweb.org/wine#WineBody"/>
+      <rdf:Description rdf:about="http://www.semanticweb.org/wine#WineFlavor"/>
+      <rdf:Description rdf:about="http://www.semanticweb.org/wine#WineSugar"/>
+    </owl:members>
+  </owl:AllDisjointClasses>
+
+  <!-- ============================================================ -->
+  <!-- Object properties                                            -->
+  <!-- ============================================================ -->
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/wine#hasWineDescriptor">
+  <rdfs:label>Has Wine Descriptor</rdfs:label>
+  <rdfs:comment>Relates a wine, or one of its vintages, to any of its descriptors.</rdfs:comment>
+  <vaem:rationale>The single property CQ1 walks to collect "the characteristics to consider". The four specific descriptor properties are subproperties of it, so one query returns all of them.</vaem:rationale>
+  <dc:source>(competency_question) CQ1: Which wine characteristics should I consider when choosing a wine?</dc:source>
+  <rdfs:domain>
+    <owl:Class>
+      <owl:unionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="http://www.semanticweb.org/wine#Wine"/>
+        <rdf:Description rdf:about="http://www.semanticweb.org/wine#Vintage"/>
+      </owl:unionOf>
+    </owl:Class>
+  </rdfs:domain>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/wine#WineDescriptor"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/wine#hasColor">
+  <rdfs:label>Has Color</rdfs:label>
+  <rdfs:comment>The color of a wine.</rdfs:comment>
+  <vaem:rationale>CQ2 turns on this property; RedWine and WhiteWine are defined by its value.</vaem:rationale>
+  <dc:source>(competency_question) CQ2: Is Bordeaux a red or white wine?</dc:source>
+  <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/wine#hasWineDescriptor"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/wine#WineColor"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/wine#hasBody">
+  <rdfs:label>Has Body</rdfs:label>
+  <rdfs:comment>The body of a wine or of one of its vintages.</rdfs:comment>
+  <vaem:rationale>CQ6 compares body across vintage years, which requires this property to be assertable on a Vintage as well as on a Wine.</vaem:rationale>
+  <dc:source>(competency_question) CQ6: Does a bouquet or body of a specific wine change with vintage year?</dc:source>
+  <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/wine#hasWineDescriptor"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/wine#WineBody"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/wine#hasFlavor">
+  <rdfs:label>Has Flavor</rdfs:label>
+  <rdfs:comment>The flavor, or bouquet, of a wine or of one of its vintages.</rdfs:comment>
+  <vaem:rationale>Carries "bouquet" from CQ6, for the same reason as hasBody.</vaem:rationale>
+  <dc:source>(competency_question) CQ6: Does a bouquet or body of a specific wine change with vintage year?</dc:source>
+  <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/wine#hasWineDescriptor"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/wine#WineFlavor"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/wine#hasSugar">
+  <rdfs:label>Has Sugar</rdfs:label>
+  <rdfs:comment>The residual sugar level of a wine.</rdfs:comment>
+  <vaem:rationale>One of the characteristics CQ1 asks for.</vaem:rationale>
+  <dc:source>(competency_question) CQ1: Which wine characteristics should I consider when choosing a wine?</dc:source>
+  <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/wine#hasWineDescriptor"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/wine#WineSugar"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/wine#hasVintage">
+  <rdfs:label>Has Vintage</rdfs:label>
+  <rdfs:comment>Relates a wine to one of its yearly productions.</rdfs:comment>
+  <vaem:rationale>CQ6 and CQ7 both need to get from a named wine to its vintages. Without this property a Vintage is unreachable from the wine it belongs to.</vaem:rationale>
+  <dc:source>(competency_question) CQ6: Does a bouquet or body of a specific wine change with vintage year?
+    (competency_question) CQ7: What were good vintages for Napa Zinfandel?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/wine#Wine"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/wine#Vintage"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/wine#hasVintageYear">
+  <rdfs:label>Has Vintage Year</rdfs:label>
+  <rdfs:comment>The year of a vintage.</rdfs:comment>
+  <vaem:rationale>CQ6 asks whether characteristics change WITH vintage year, so vintages must be orderable and comparable by year.</vaem:rationale>
+  <dc:source>(competency_question) CQ6: Does a bouquet or body of a specific wine change with vintage year?
+    (competency_question) CQ7: What were good vintages for Napa Zinfandel?</dc:source>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/wine#Vintage"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/wine#VintageYear"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/wine#madeFromGrape">
+  <rdfs:label>Made From Grape</rdfs:label>
+  <rdfs:comment>Relates a wine to a grape variety it is made from.</rdfs:comment>
+  <vaem:rationale>Directly answers CQnew1. Oriented wine to grape, matching the question "what grapes are used to make X".</vaem:rationale>
+  <dc:source>(competency_question) CQnew1: What grapes are used to make Bordeaux wine?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/wine#Wine"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/wine#WineGrape"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/wine#locatedIn">
+  <rdfs:label>Located In</rdfs:label>
+  <rdfs:comment>Relates a wine or a region to the region containing it. Transitive, so a wine from Napa is also from California and the US.</rdfs:comment>
+  <vaem:rationale>Transitivity is what lets CQ7 ask for Napa Zinfandel and CQ2 and CQnew1 ask for Bordeaux without restating every enclosing region.</vaem:rationale>
+  <dc:source>(competency_question) CQ2: Is Bordeaux a red or white wine?
+    (competency_question) CQ7: What were good vintages for Napa Zinfandel?
+    (competency_question) CQnew1: What grapes are used to make Bordeaux wine?</dc:source>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/wine#Region"/>
+</owl:ObjectProperty>
+
+  <!-- ============================================================ -->
+  <!-- Data properties                                              -->
+  <!-- ============================================================ -->
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/wine#yearValue">
+  <rdfs:label>Year Value</rdfs:label>
+  <rdfs:comment>The calendar year of a vintage year, as an integer.</rdfs:comment>
+  <vaem:rationale>Makes vintage years comparable and sortable, which CQ6 needs to talk about change across years.</vaem:rationale>
+  <dc:source>(competency_question) CQ6: Does a bouquet or body of a specific wine change with vintage year?</dc:source>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/wine#VintageYear"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#positiveInteger"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/wine#hasQualityRating">
+  <rdfs:label>Has Quality Rating</rdfs:label>
+  <rdfs:comment>A numeric quality score for a vintage, on a 0 to 100 scale. Higher is better.</rdfs:comment>
+  <vaem:rationale>CQ7 asks which vintages were GOOD. Nothing in the fixed class list expresses quality, so this property is added; without it CQ7 is unanswerable.</vaem:rationale>
+  <dc:source>(competency_question) CQ7: What were good vintages for Napa Zinfandel?</dc:source>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/wine#Vintage"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+</owl:DatatypeProperty>
+
+  <!-- ============================================================ -->
+  <!-- Individuals: descriptor value spaces                         -->
+  <!-- ============================================================ -->
+
+<owl:NamedIndividual rdf:about="http://www.semanticweb.org/wine#Red">
+  <rdf:type rdf:resource="http://www.semanticweb.org/wine#WineColor"/><rdfs:label>Red</rdfs:label></owl:NamedIndividual>
+<owl:NamedIndividual rdf:about="http://www.semanticweb.org/wine#White">
+  <rdf:type rdf:resource="http://www.semanticweb.org/wine#WineColor"/><rdfs:label>White</rdfs:label></owl:NamedIndividual>
+<owl:NamedIndividual rdf:about="http://www.semanticweb.org/wine#Rose">
+  <rdf:type rdf:resource="http://www.semanticweb.org/wine#WineColor"/><rdfs:label>Rose</rdfs:label></owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="http://www.semanticweb.org/wine#Light">
+  <rdf:type rdf:resource="http://www.semanticweb.org/wine#WineBody"/><rdfs:label>Light</rdfs:label></owl:NamedIndividual>
+<owl:NamedIndividual rdf:about="http://www.semanticweb.org/wine#Medium">
+  <rdf:type rdf:resource="http://www.semanticweb.org/wine#WineBody"/><rdfs:label>Medium</rdfs:label></owl:NamedIndividual>
+<owl:NamedIndividual rdf:about="http://www.semanticweb.org/wine#Full">
+  <rdf:type rdf:resource="http://www.semanticweb.org/wine#WineBody"/><rdfs:label>Full</rdfs:label></owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="http://www.semanticweb.org/wine#Delicate">
+  <rdf:type rdf:resource="http://www.semanticweb.org/wine#WineFlavor"/><rdfs:label>Delicate</rdfs:label></owl:NamedIndividual>
+<owl:NamedIndividual rdf:about="http://www.semanticweb.org/wine#Moderate">
+  <rdf:type rdf:resource="http://www.semanticweb.org/wine#WineFlavor"/><rdfs:label>Moderate</rdfs:label></owl:NamedIndividual>
+<owl:NamedIndividual rdf:about="http://www.semanticweb.org/wine#Strong">
+  <rdf:type rdf:resource="http://www.semanticweb.org/wine#WineFlavor"/><rdfs:label>Strong</rdfs:label></owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="http://www.semanticweb.org/wine#Dry">
+  <rdf:type rdf:resource="http://www.semanticweb.org/wine#WineSugar"/><rdfs:label>Dry</rdfs:label></owl:NamedIndividual>
+<owl:NamedIndividual rdf:about="http://www.semanticweb.org/wine#OffDry">
+  <rdf:type rdf:resource="http://www.semanticweb.org/wine#WineSugar"/><rdfs:label>Off Dry</rdfs:label></owl:NamedIndividual>
+<owl:NamedIndividual rdf:about="http://www.semanticweb.org/wine#Sweet">
+  <rdf:type rdf:resource="http://www.semanticweb.org/wine#WineSugar"/><rdfs:label>Sweet</rdfs:label></owl:NamedIndividual>
+
+  <!-- Grape varieties named by CQnew1 and CQ7 -->
+<owl:NamedIndividual rdf:about="http://www.semanticweb.org/wine#CabernetSauvignonGrape">
+  <rdf:type rdf:resource="http://www.semanticweb.org/wine#WineGrape"/><rdfs:label>Cabernet Sauvignon Grape</rdfs:label></owl:NamedIndividual>
+<owl:NamedIndividual rdf:about="http://www.semanticweb.org/wine#CabernetFrancGrape">
+  <rdf:type rdf:resource="http://www.semanticweb.org/wine#WineGrape"/><rdfs:label>Cabernet Franc Grape</rdfs:label></owl:NamedIndividual>
+<owl:NamedIndividual rdf:about="http://www.semanticweb.org/wine#MerlotGrape">
+  <rdf:type rdf:resource="http://www.semanticweb.org/wine#WineGrape"/><rdfs:label>Merlot Grape</rdfs:label></owl:NamedIndividual>
+<owl:NamedIndividual rdf:about="http://www.semanticweb.org/wine#SauvignonBlancGrape">
+  <rdf:type rdf:resource="http://www.semanticweb.org/wine#WineGrape"/><rdfs:label>Sauvignon Blanc Grape</rdfs:label></owl:NamedIndividual>
+<owl:NamedIndividual rdf:about="http://www.semanticweb.org/wine#SemillonGrape">
+  <rdf:type rdf:resource="http://www.semanticweb.org/wine#WineGrape"/><rdfs:label>Semillon Grape</rdfs:label></owl:NamedIndividual>
+<owl:NamedIndividual rdf:about="http://www.semanticweb.org/wine#ZinfandelGrape">
+  <rdf:type rdf:resource="http://www.semanticweb.org/wine#WineGrape"/><rdfs:label>Zinfandel Grape</rdfs:label></owl:NamedIndividual>
+
+  <!-- Regions named by CQ2, CQ7 and CQnew1 -->
+<owl:NamedIndividual rdf:about="http://www.semanticweb.org/wine#FrenchRegion">
+  <rdf:type rdf:resource="http://www.semanticweb.org/wine#Region"/><rdfs:label>French Region</rdfs:label></owl:NamedIndividual>
+<owl:NamedIndividual rdf:about="http://www.semanticweb.org/wine#BordeauxRegion">
+  <rdf:type rdf:resource="http://www.semanticweb.org/wine#Region"/><rdfs:label>Bordeaux Region</rdfs:label>
+  <wine:locatedIn rdf:resource="http://www.semanticweb.org/wine#FrenchRegion"/></owl:NamedIndividual>
+<owl:NamedIndividual rdf:about="http://www.semanticweb.org/wine#USRegion">
+  <rdf:type rdf:resource="http://www.semanticweb.org/wine#Region"/><rdfs:label>US Region</rdfs:label></owl:NamedIndividual>
+<owl:NamedIndividual rdf:about="http://www.semanticweb.org/wine#CaliforniaRegion">
+  <rdf:type rdf:resource="http://www.semanticweb.org/wine#Region"/><rdfs:label>California Region</rdfs:label>
+  <wine:locatedIn rdf:resource="http://www.semanticweb.org/wine#USRegion"/></owl:NamedIndividual>
+<owl:NamedIndividual rdf:about="http://www.semanticweb.org/wine#NapaRegion">
+  <rdf:type rdf:resource="http://www.semanticweb.org/wine#Region"/><rdfs:label>Napa Region</rdfs:label>
+  <wine:locatedIn rdf:resource="http://www.semanticweb.org/wine#CaliforniaRegion"/></owl:NamedIndividual>
+
+  <owl:AllDifferent>
+    <owl:distinctMembers rdf:parseType="Collection">
+      <rdf:Description rdf:about="http://www.semanticweb.org/wine#Red"/>
+      <rdf:Description rdf:about="http://www.semanticweb.org/wine#White"/>
+      <rdf:Description rdf:about="http://www.semanticweb.org/wine#Rose"/>
+    </owl:distinctMembers>
+  </owl:AllDifferent>
+  <owl:AllDifferent>
+    <owl:distinctMembers rdf:parseType="Collection">
+      <rdf:Description rdf:about="http://www.semanticweb.org/wine#Light"/>
+      <rdf:Description rdf:about="http://www.semanticweb.org/wine#Medium"/>
+      <rdf:Description rdf:about="http://www.semanticweb.org/wine#Full"/>
+    </owl:distinctMembers>
+  </owl:AllDifferent>
+  <owl:AllDifferent>
+    <owl:distinctMembers rdf:parseType="Collection">
+      <rdf:Description rdf:about="http://www.semanticweb.org/wine#Delicate"/>
+      <rdf:Description rdf:about="http://www.semanticweb.org/wine#Moderate"/>
+      <rdf:Description rdf:about="http://www.semanticweb.org/wine#Strong"/>
+    </owl:distinctMembers>
+  </owl:AllDifferent>
+  <owl:AllDifferent>
+    <owl:distinctMembers rdf:parseType="Collection">
+      <rdf:Description rdf:about="http://www.semanticweb.org/wine#Dry"/>
+      <rdf:Description rdf:about="http://www.semanticweb.org/wine#OffDry"/>
+      <rdf:Description rdf:about="http://www.semanticweb.org/wine#Sweet"/>
+    </owl:distinctMembers>
+  </owl:AllDifferent>
+  <owl:AllDifferent>
+    <owl:distinctMembers rdf:parseType="Collection">
+      <rdf:Description rdf:about="http://www.semanticweb.org/wine#CabernetSauvignonGrape"/>
+      <rdf:Description rdf:about="http://www.semanticweb.org/wine#CabernetFrancGrape"/>
+      <rdf:Description rdf:about="http://www.semanticweb.org/wine#MerlotGrape"/>
+      <rdf:Description rdf:about="http://www.semanticweb.org/wine#SauvignonBlancGrape"/>
+      <rdf:Description rdf:about="http://www.semanticweb.org/wine#SemillonGrape"/>
+      <rdf:Description rdf:about="http://www.semanticweb.org/wine#ZinfandelGrape"/>
+    </owl:distinctMembers>
+  </owl:AllDifferent>
+
+  <!-- ============================================================ -->
+  <!-- Illustrative ABox: enough instance data to answer CQ6 and CQ7 -->
+  <!-- Delete this block if you want the TBox only.                  -->
+  <!-- ============================================================ -->
+
+<owl:NamedIndividual rdf:about="http://www.semanticweb.org/wine#CotturiZinfandel">
+  <rdfs:label>Cotturi Zinfandel</rdfs:label>
+  <rdf:type rdf:resource="http://www.semanticweb.org/wine#Wine"/>
+  <wine:madeFromGrape rdf:resource="http://www.semanticweb.org/wine#ZinfandelGrape"/>
+  <wine:hasColor rdf:resource="http://www.semanticweb.org/wine#Red"/>
+  <wine:hasBody rdf:resource="http://www.semanticweb.org/wine#Full"/>
+  <wine:hasFlavor rdf:resource="http://www.semanticweb.org/wine#Strong"/>
+  <wine:hasSugar rdf:resource="http://www.semanticweb.org/wine#Dry"/>
+  <wine:locatedIn rdf:resource="http://www.semanticweb.org/wine#NapaRegion"/>
+  <wine:hasVintage rdf:resource="http://www.semanticweb.org/wine#CotturiZinfandel1997"/>
+  <wine:hasVintage rdf:resource="http://www.semanticweb.org/wine#CotturiZinfandel1998"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="http://www.semanticweb.org/wine#CotturiZinfandel1997">
+  <rdfs:label>Cotturi Zinfandel 1997</rdfs:label>
+  <rdf:type rdf:resource="http://www.semanticweb.org/wine#Vintage"/>
+  <wine:hasVintageYear rdf:resource="http://www.semanticweb.org/wine#Year1997"/>
+  <wine:hasBody rdf:resource="http://www.semanticweb.org/wine#Full"/>
+  <wine:hasFlavor rdf:resource="http://www.semanticweb.org/wine#Strong"/>
+  <wine:hasQualityRating rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">93</wine:hasQualityRating>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="http://www.semanticweb.org/wine#CotturiZinfandel1998">
+  <rdfs:label>Cotturi Zinfandel 1998</rdfs:label>
+  <rdf:type rdf:resource="http://www.semanticweb.org/wine#Vintage"/>
+  <wine:hasVintageYear rdf:resource="http://www.semanticweb.org/wine#Year1998"/>
+  <wine:hasBody rdf:resource="http://www.semanticweb.org/wine#Medium"/>
+  <wine:hasFlavor rdf:resource="http://www.semanticweb.org/wine#Moderate"/>
+  <wine:hasQualityRating rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">81</wine:hasQualityRating>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="http://www.semanticweb.org/wine#Year1997">
+  <rdfs:label>1997</rdfs:label>
+  <rdf:type rdf:resource="http://www.semanticweb.org/wine#VintageYear"/>
+  <wine:yearValue rdf:datatype="http://www.w3.org/2001/XMLSchema#positiveInteger">1997</wine:yearValue>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="http://www.semanticweb.org/wine#Year1998">
+  <rdfs:label>1998</rdfs:label>
+  <rdf:type rdf:resource="http://www.semanticweb.org/wine#VintageYear"/>
+  <wine:yearValue rdf:datatype="http://www.w3.org/2001/XMLSchema#positiveInteger">1998</wine:yearValue>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="http://www.semanticweb.org/wine#ChateauMargaux">
+  <rdfs:label>Chateau Margaux</rdfs:label>
+  <rdf:type rdf:resource="http://www.semanticweb.org/wine#Wine"/>
+  <wine:locatedIn rdf:resource="http://www.semanticweb.org/wine#BordeauxRegion"/>
+  <wine:hasColor rdf:resource="http://www.semanticweb.org/wine#Red"/>
+  <wine:hasBody rdf:resource="http://www.semanticweb.org/wine#Full"/>
+  <wine:hasFlavor rdf:resource="http://www.semanticweb.org/wine#Strong"/>
+  <wine:hasSugar rdf:resource="http://www.semanticweb.org/wine#Dry"/>
+  <wine:madeFromGrape rdf:resource="http://www.semanticweb.org/wine#CabernetSauvignonGrape"/>
+  <wine:madeFromGrape rdf:resource="http://www.semanticweb.org/wine#MerlotGrape"/>
+</owl:NamedIndividual>
+
+</rdf:RDF>

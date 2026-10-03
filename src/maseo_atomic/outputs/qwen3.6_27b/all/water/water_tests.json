@@ -1,0 +1,173 @@
+[
+  {
+    "cq_id": "CQ01",
+    "cq": "Which assets compose a water distribution infrastructure?",
+    "tests": [
+      "Asset compose WaterDistributionInfrastructure",
+      "compose domain Asset",
+      "compose range WaterDistributionInfrastructure"
+    ]
+  },
+  {
+    "cq_id": "CQ04",
+    "cq": "Which types of sensors are used in water infrastructures?",
+    "tests": [
+      "Sensor usedIn WaterInfrastructure",
+      "usedIn domain Sensor",
+      "usedIn range WaterInfrastructure"
+    ]
+  },
+  {
+    "cq_id": "CQ05",
+    "cq": "Which types of actuators are used in water infrastructures?",
+    "tests": [
+      "Actuator usedIn WaterInfrastructure",
+      "usedIn domain Actuator",
+      "usedIn range WaterInfrastructure"
+    ]
+  },
+  {
+    "cq_id": "CQ06",
+    "cq": "A water meter is a device that measures different aspects of a water infrastructure.",
+    "tests": [
+      "WaterMeter SubClassOf Device",
+      "WaterMeter hasFunction Function",
+      "hasFunction domain WaterMeter",
+      "hasFunction range Function",
+      "Function measures WaterInfrastructure",
+      "measures domain Function",
+      "measures range WaterInfrastructure"
+    ]
+  },
+  {
+    "cq_id": "CQ08",
+    "cq": "What is the fabrication number of the water meter?",
+    "tests": [
+      "WaterMeter fabricationNumber string"
+    ]
+  },
+  {
+    "cq_id": "CQ09",
+    "cq": "What are the manufacturer and the model of the water meter?",
+    "tests": [
+      "WaterMeter manufacturer string",
+      "WaterMeter model string"
+    ]
+  },
+  {
+    "cq_id": "CQ10",
+    "cq": "What is the version of the water meter?",
+    "tests": [
+      "WaterMeter version string"
+    ]
+  },
+  {
+    "cq_id": "CQ11",
+    "cq": "What is the hardware version number of the water meter?",
+    "tests": [
+      "WaterMeter hardwareVersionNumber string"
+    ]
+  },
+  {
+    "cq_id": "CQ12",
+    "cq": "What firmware version is the water meter using?",
+    "tests": [
+      "WaterMeter firmwareVersion string"
+    ]
+  },
+  {
+    "cq_id": "CQ18",
+    "cq": "What is the power of the water meter?",
+    "tests": [
+      "WaterMeter power float"
+    ]
+  },
+  {
+    "cq_id": "CQ19",
+    "cq": "What is the radio frequency level of the water meter?",
+    "tests": [
+      "WaterMeter radioFrequencyLevel float"
+    ]
+  },
+  {
+    "cq_id": "CQ20",
+    "cq": "What is the geolocation of the water meter?",
+    "tests": [
+      "WaterMeter geolocation string"
+    ]
+  },
+  {
+    "cq_id": "CQ25",
+    "cq": "Water meters can provide measurements according to different temporal settings.",
+    "tests": [
+      "WaterMeterMeasurement hasTemporalSetting TemporalSetting",
+      "hasTemporalSetting domain WaterMeterMeasurement",
+      "hasTemporalSetting range TemporalSetting"
+    ]
+  },
+  {
+    "cq_id": "CQ33",
+    "cq": "What are the physical properties of water?",
+    "tests": [
+      "Water physicalProperty string"
+    ]
+  },
+  {
+    "cq_id": "CQ34",
+    "cq": "What are the chemical properties of water?",
+    "tests": [
+      "Water chemicalProperty string"
+    ]
+  },
+  {
+    "cq_id": "CQ37",
+    "cq": "Which water indicators are defined for Burgos?",
+    "tests": [
+      "WaterIndicator definedFor City",
+      "definedFor domain WaterIndicator",
+      "definedFor range City"
+    ]
+  },
+  {
+    "cq_id": "CQ38",
+    "cq": "What is the start date and time of the tariff in use in the water meter?",
+    "tests": [
+      "Tariff inUseIn WaterMeter",
+      "inUseIn domain Tariff",
+      "inUseIn range WaterMeter",
+      "Tariff startDate dateTime",
+      "Tariff startTime dateTime"
+    ]
+  },
+  {
+    "cq_id": "CQ39",
+    "cq": "What is the duration of the current tariff of the water meter?",
+    "tests": [
+      "WaterMeter currentTariff Tariff",
+      "currentTariff domain WaterMeter",
+      "currentTariff range Tariff",
+      "Tariff duration integer"
+    ]
+  },
+  {
+    "cq_id": "CQ40",
+    "cq": "What is the tariff period of the water meter?",
+    "tests": [
+      "WaterMeter tariffPeriod string"
+    ]
+  },
+  {
+    "cq_id": "CQ42",
+    "cq": "What is the billing date of the water meter?",
+    "tests": [
+      "WaterMeter billingDate dateTime"
+    ]
+  },
+  {
+    "cq_id": "CQ43",
+    "cq": "What is the billing date period of the water meter?",
+    "tests": [
+      "WaterMeter billingDatePeriod string"
+    ]
+  }
+]

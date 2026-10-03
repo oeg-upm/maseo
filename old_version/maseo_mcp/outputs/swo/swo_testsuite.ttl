@@ -1,0 +1,513 @@
+@prefix vtc: <https://w3id.org/def/vtc#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix : <http://www.semanticweb.org/swo/tests#> .
+
+:suite rdf:type owl:NamedIndividual , vtc:TestSuite .
+
+:CQ04 rdf:type owl:NamedIndividual , vtc:Requirement ;
+    vtc:requirementId "CQ04"^^xsd:string ;
+    vtc:category "competency question"^^xsd:string ;
+    dcterms:description "Which of the named and published algorithms does this tool use?"^^xsd:string .
+
+:CQ04_test1 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ04 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/swo#CQ04"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Tool usesAlgorithm Algorithm"^^xsd:string .
+
+:CQ04_test2 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ04 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/swo#CQ04"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Algorithm hasPublication Publication"^^xsd:string .
+
+:CQ05 rdf:type owl:NamedIndividual , vtc:Requirement ;
+    vtc:requirementId "CQ05"^^xsd:string ;
+    vtc:category "competency question"^^xsd:string ;
+    dcterms:description "Are there any modifications to the algorithm the tool uses?"^^xsd:string .
+
+:CQ05_test1 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ05 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/swo#CQ05"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Tool usesAlgorithm Algorithm"^^xsd:string .
+
+:CQ05_test2 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ05 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/swo#CQ05"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Tool hasModification Modification"^^xsd:string .
+
+:CQ06 rdf:type owl:NamedIndividual , vtc:Requirement ;
+    vtc:requirementId "CQ06"^^xsd:string ;
+    vtc:category "competency question"^^xsd:string ;
+    dcterms:description "Does this software provide XML editing?"^^xsd:string .
+
+:CQ06_test1 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ06 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/swo#CQ06"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Software editsFormat XML"^^xsd:string .
+
+:CQ07 rdf:type owl:NamedIndividual , vtc:Requirement ;
+    vtc:requirementId "CQ07"^^xsd:string ;
+    vtc:category "competency question"^^xsd:string ;
+    dcterms:description "What type of software (API, Desktop application etc) is it?"^^xsd:string .
+
+:CQ07_test1 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ07 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/swo#CQ07"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Software hasType SoftwareType"^^xsd:string .
+
+:CQ07_test2 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ07 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/swo#CQ07"^^xsd:anyURI ;
+    vtc:desiredBehaviour "API type SoftwareType"^^xsd:string .
+
+:CQ07_test3 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ07 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/swo#CQ07"^^xsd:anyURI ;
+    vtc:desiredBehaviour "DesktopApplication type SoftwareType"^^xsd:string .
+
+:CQ08 rdf:type owl:NamedIndividual , vtc:Requirement ;
+    vtc:requirementId "CQ08"^^xsd:string ;
+    vtc:category "competency question"^^xsd:string ;
+    dcterms:description "What software can perform task x?"^^xsd:string .
+
+:CQ08_test1 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ08 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/swo#CQ08"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Software performsTask Task"^^xsd:string .
+
+:CQ11 rdf:type owl:NamedIndividual , vtc:Requirement ;
+    vtc:requirementId "CQ11"^^xsd:string ;
+    vtc:category "competency question"^^xsd:string ;
+    dcterms:description "Is this software available as a web service?"^^xsd:string .
+
+:CQ11_test1 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ11 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/swo#CQ11"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Software isAvailableAs WebService"^^xsd:string .
+
+:CQ14 rdf:type owl:NamedIndividual , vtc:Requirement ;
+    vtc:requirementId "CQ14"^^xsd:string ;
+    vtc:category "competency question"^^xsd:string ;
+    dcterms:description "Does it do what I want or need it to do e.g. render a gif?"^^xsd:string .
+
+:CQ14_test1 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ14 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/swo#CQ14"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Software hasFunctionality Functionality"^^xsd:string .
+
+:CQ14_test2 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ14 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/swo#CQ14"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Software performsTask Task"^^xsd:string .
+
+:CQ15 rdf:type owl:NamedIndividual , vtc:Requirement ;
+    vtc:requirementId "CQ15"^^xsd:string ;
+    vtc:category "competency question"^^xsd:string ;
+    dcterms:description "Which software tool created this data?"^^xsd:string .
+
+:CQ15_test1 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ15 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/swo#CQ15"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Software createdData Data"^^xsd:string .
+
+:CQ16 rdf:type owl:NamedIndividual , vtc:Requirement ;
+    vtc:requirementId "CQ16"^^xsd:string ;
+    vtc:category "competency question"^^xsd:string ;
+    dcterms:description "What software can I use my data with to support my task?"^^xsd:string .
+
+:CQ16_test1 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ16 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/swo#CQ16"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Software worksWithData Data"^^xsd:string .
+
+:CQ16_test2 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ16 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/swo#CQ16"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Software performsTask Task"^^xsd:string .
+
+:CQ17 rdf:type owl:NamedIndividual , vtc:Requirement ;
+    vtc:requirementId "CQ17"^^xsd:string ;
+    vtc:category "competency question"^^xsd:string ;
+    dcterms:description "What are the input and output formats for this software?"^^xsd:string .
+
+:CQ17_test1 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ17 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/swo#CQ17"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Software hasInputFormat Format"^^xsd:string .
+
+:CQ17_test2 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ17 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/swo#CQ17"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Software hasOutputFormat Format"^^xsd:string .
+
+:CQ19 rdf:type owl:NamedIndividual , vtc:Requirement ;
+    vtc:requirementId "CQ19"^^xsd:string ;
+    vtc:category "competency question"^^xsd:string ;
+    dcterms:description "What software can read a .cel file?"^^xsd:string .
+
+:CQ19_test1 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ19 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/swo#CQ19"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Software canRead FileFormat"^^xsd:string .
+
+:CQ19_test2 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ19 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/swo#CQ19"^^xsd:anyURI ;
+    vtc:desiredBehaviour "cel type FileFormat"^^xsd:string .
+
+:CQ21 rdf:type owl:NamedIndividual , vtc:Requirement ;
+    vtc:requirementId "CQ21"^^xsd:string ;
+    vtc:category "competency question"^^xsd:string ;
+    dcterms:description "What is the valid input for this software?"^^xsd:string .
+
+:CQ21_test1 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ21 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/swo#CQ21"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Software hasValidInput Input"^^xsd:string .
+
+:CQ22 rdf:type owl:NamedIndividual , vtc:Requirement ;
+    vtc:requirementId "CQ22"^^xsd:string ;
+    vtc:category "competency question"^^xsd:string ;
+    dcterms:description "Can this software export from its proprietary data format to an open format such as csv, txt?"^^xsd:string .
+
+:CQ22_test1 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ22 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/swo#CQ22"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Software exportsTo OpenFormat"^^xsd:string .
+
+:CQ22_test2 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ22 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/swo#CQ22"^^xsd:anyURI ;
+    vtc:desiredBehaviour "csv type OpenFormat"^^xsd:string .
+
+:CQ22_test3 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ22 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/swo#CQ22"^^xsd:anyURI ;
+    vtc:desiredBehaviour "txt type OpenFormat"^^xsd:string .
+
+:CQ23 rdf:type owl:NamedIndividual , vtc:Requirement ;
+    vtc:requirementId "CQ23"^^xsd:string ;
+    vtc:category "competency question"^^xsd:string ;
+    dcterms:description "Can software A work with data that are output from software B?"^^xsd:string .
+
+:CQ23_test1 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ23 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/swo#CQ23"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Software worksWithData Data"^^xsd:string .
+
+:CQ23_test2 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ23 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/swo#CQ23"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Software outputsData Data"^^xsd:string .
+
+:CQ26 rdf:type owl:NamedIndividual , vtc:Requirement ;
+    vtc:requirementId "CQ26"^^xsd:string ;
+    vtc:category "competency question"^^xsd:string ;
+    dcterms:description "What open source, maintained software can I use to process these in this format?"^^xsd:string .
+
+:CQ26_test1 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ26 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/swo#CQ26"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Software canProcess Format"^^xsd:string .
+
+:CQ26_test2 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ26 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/swo#CQ26"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Software hasLicense License"^^xsd:string .
+
+:CQ29 rdf:type owl:NamedIndividual , vtc:Requirement ;
+    vtc:requirementId "CQ29"^^xsd:string ;
+    vtc:category "competency question"^^xsd:string ;
+    dcterms:description "Given input x, what are the data exports for this version?"^^xsd:string .
+
+:CQ29_test1 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ29 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/swo#CQ29"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Software hasVersion Version"^^xsd:string .
+
+:CQ29_test2 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ29 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/swo#CQ29"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Software hasInput Input"^^xsd:string .
+
+:CQ29_test3 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ29 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/swo#CQ29"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Software hasExport Export"^^xsd:string .
+
+:CQ30 rdf:type owl:NamedIndividual , vtc:Requirement ;
+    vtc:requirementId "CQ30"^^xsd:string ;
+    vtc:category "competency question"^^xsd:string ;
+    dcterms:description "Where can I get the software?"^^xsd:string .
+
+:CQ30_test1 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ30 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/swo#CQ30"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Software hasDownloadLocation DownloadLocation"^^xsd:string .
+
+:CQ32 rdf:type owl:NamedIndividual , vtc:Requirement ;
+    vtc:requirementId "CQ32"^^xsd:string ;
+    vtc:category "competency question"^^xsd:string ;
+    dcterms:description "How do I get help?"^^xsd:string .
+
+:CQ32_test1 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ32 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/swo#CQ32"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Software hasHelpResource HelpResource"^^xsd:string .
+
+:CQ36 rdf:type owl:NamedIndividual , vtc:Requirement ;
+    vtc:requirementId "CQ36"^^xsd:string ;
+    vtc:category "competency question"^^xsd:string ;
+    dcterms:description "Who developed it?"^^xsd:string .
+
+:CQ36_test1 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ36 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/swo#CQ36"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Software developedBy Developer"^^xsd:string .
+
+:CQ37 rdf:type owl:NamedIndividual , vtc:Requirement ;
+    vtc:requirementId "CQ37"^^xsd:string ;
+    vtc:category "competency question"^^xsd:string ;
+    dcterms:description "What is the homepage of the software?"^^xsd:string .
+
+:CQ37_test1 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ37 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/swo#CQ37"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Software hasHomepage Homepage"^^xsd:string .
+
+:CQ38 rdf:type owl:NamedIndividual , vtc:Requirement ;
+    vtc:requirementId "CQ38"^^xsd:string ;
+    vtc:category "competency question"^^xsd:string ;
+    dcterms:description "Can we collaborate with developers of software x?"^^xsd:string .
+
+:CQ38_test1 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ38 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/swo#CQ38"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Software developedBy Developer"^^xsd:string .
+
+:CQ38_test2 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ38 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/swo#CQ38"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Developer offersCollaboration Collaboration"^^xsd:string .
+
+:CQ40 rdf:type owl:NamedIndividual , vtc:Requirement ;
+    vtc:requirementId "CQ40"^^xsd:string ;
+    vtc:category "competency question"^^xsd:string ;
+    dcterms:description "Which URL can I get it from?"^^xsd:string .
+
+:CQ40_test1 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ40 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/swo#CQ40"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Software hasURL URL"^^xsd:string .
+
+:CQ45 rdf:type owl:NamedIndividual , vtc:Requirement ;
+    vtc:requirementId "CQ45"^^xsd:string ;
+    vtc:category "competency question"^^xsd:string ;
+    dcterms:description "How long has this software been around?"^^xsd:string .
+
+:CQ45_test1 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ45 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/swo#CQ45"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Software releaseDate dateTime"^^xsd:string .
+
+:CQ46 rdf:type owl:NamedIndividual , vtc:Requirement ;
+    vtc:requirementId "CQ46"^^xsd:string ;
+    vtc:category "competency question"^^xsd:string ;
+    dcterms:description "How actively developed is it?"^^xsd:string .
+
+:CQ46_test1 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ46 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/swo#CQ46"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Software hasVersion Version"^^xsd:string .
+
+:CQ46_test2 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ46 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/swo#CQ46"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Version releaseDate dateTime"^^xsd:string .
+
+:CQ54 rdf:type owl:NamedIndividual , vtc:Requirement ;
+    vtc:requirementId "CQ54"^^xsd:string ;
+    vtc:category "competency question"^^xsd:string ;
+    dcterms:description "What is the version of this software?"^^xsd:string .
+
+:CQ54_test1 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ54 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/swo#CQ54"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Software hasVersion Version"^^xsd:string .
+
+:CQ55 rdf:type owl:NamedIndividual , vtc:Requirement ;
+    vtc:requirementId "CQ55"^^xsd:string ;
+    vtc:category "competency question"^^xsd:string ;
+    dcterms:description "What new features are in this version?"^^xsd:string .
+
+:CQ55_test1 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ55 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/swo#CQ55"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Software hasVersion Version"^^xsd:string .
+
+:CQ55_test2 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ55 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/swo#CQ55"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Version hasFeature Feature"^^xsd:string .
+
+:CQ57 rdf:type owl:NamedIndividual , vtc:Requirement ;
+    vtc:requirementId "CQ57"^^xsd:string ;
+    vtc:category "competency question"^^xsd:string ;
+    dcterms:description "When was the 1.0 version released?"^^xsd:string .
+
+:CQ57_test1 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ57 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/swo#CQ57"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Software hasVersion Version"^^xsd:string .
+
+:CQ57_test2 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ57 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/swo#CQ57"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Version releaseDate dateTime"^^xsd:string .
+
+:CQ58 rdf:type owl:NamedIndividual , vtc:Requirement ;
+    vtc:requirementId "CQ58"^^xsd:string ;
+    vtc:category "competency question"^^xsd:string ;
+    dcterms:description "Is the software open source development? Is there a community development?"^^xsd:string .
+
+:CQ58_test1 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ58 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/swo#CQ58"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Software hasLicense License"^^xsd:string .
+
+:CQ58_test2 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ58 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/swo#CQ58"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Software hasCommunityDevelopment Community"^^xsd:string .
+
+:CQ59 rdf:type owl:NamedIndividual , vtc:Requirement ;
+    vtc:requirementId "CQ59"^^xsd:string ;
+    vtc:category "competency question"^^xsd:string ;
+    dcterms:description "What license and what is permissiveness?"^^xsd:string .
+
+:CQ59_test1 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ59 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/swo#CQ59"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Software hasLicense License"^^xsd:string .
+
+:CQ59_test2 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ59 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/swo#CQ59"^^xsd:anyURI ;
+    vtc:desiredBehaviour "License permissiveness string"^^xsd:string .
+
+:CQ60 rdf:type owl:NamedIndividual , vtc:Requirement ;
+    vtc:requirementId "CQ60"^^xsd:string ;
+    vtc:category "competency question"^^xsd:string ;
+    dcterms:description "Is it open source or not?"^^xsd:string .
+
+:CQ60_test1 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ60 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/swo#CQ60"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Software hasLicense License"^^xsd:string .
+
+:CQ65 rdf:type owl:NamedIndividual , vtc:Requirement ;
+    vtc:requirementId "CQ65"^^xsd:string ;
+    vtc:category "competency question"^^xsd:string ;
+    dcterms:description "Is it FOSS?"^^xsd:string .
+
+:CQ65_test1 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ65 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/swo#CQ65"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Software hasLicense License"^^xsd:string .
+
+:CQ68 rdf:type owl:NamedIndividual , vtc:Requirement ;
+    vtc:requirementId "CQ68"^^xsd:string ;
+    vtc:category "competency question"^^xsd:string ;
+    dcterms:description "Is it free or not?"^^xsd:string .
+
+:CQ68_test1 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ68 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/swo#CQ68"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Software hasLicense License"^^xsd:string .
+
+:CQ73 rdf:type owl:NamedIndividual , vtc:Requirement ;
+    vtc:requirementId "CQ73"^^xsd:string ;
+    vtc:category "competency question"^^xsd:string ;
+    dcterms:description "Where is the documentation?"^^xsd:string .
+
+:CQ73_test1 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ73 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/swo#CQ73"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Software hasDocumentation Documentation"^^xsd:string .
+
+:CQ84 rdf:type owl:NamedIndividual , vtc:Requirement ;
+    vtc:requirementId "CQ84"^^xsd:string ;
+    vtc:category "competency question"^^xsd:string ;
+    dcterms:description "In what language was it implemented?"^^xsd:string .
+
+:CQ84_test1 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ84 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/swo#CQ84"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Software implementedIn ProgrammingLanguage"^^xsd:string .
+
+:CQ85 rdf:type owl:NamedIndividual , vtc:Requirement ;
+    vtc:requirementId "CQ85"^^xsd:string ;
+    vtc:category "competency question"^^xsd:string ;
+    dcterms:description "What platform does the software run on?"^^xsd:string .
+
+:CQ85_test1 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ85 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/swo#CQ85"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Software runsOn Platform"^^xsd:string .

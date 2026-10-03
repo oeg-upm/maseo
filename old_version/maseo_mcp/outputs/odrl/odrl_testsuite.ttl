@@ -1,0 +1,452 @@
+@prefix vtc: <https://w3id.org/def/vtc#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix : <http://www.semanticweb.org/odrl/tests#> .
+
+:suite rdf:type owl:NamedIndividual , vtc:TestSuite .
+
+:CQ03 rdf:type owl:NamedIndividual , vtc:Requirement ;
+    vtc:requirementId "CQ03"^^xsd:string ;
+    vtc:category "competency question"^^xsd:string ;
+    dcterms:description "Shall the permissions 'Aggregation' and 'Disaggregation' be of the type Transfer Rights?"^^xsd:string .
+
+:CQ03_test1 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ03 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/odrl#CQ03"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Permission type Class"^^xsd:string .
+
+:CQ03_test2 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ03 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/odrl#CQ03"^^xsd:anyURI ;
+    vtc:desiredBehaviour "TransferRights type Class"^^xsd:string .
+
+:CQ03_test3 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ03 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/odrl#CQ03"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Aggregation SubClassOf Permission"^^xsd:string .
+
+:CQ03_test4 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ03 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/odrl#CQ03"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Disaggregation SubClassOf Permission"^^xsd:string .
+
+:CQ03_test5 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ03 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/odrl#CQ03"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Aggregation isOfType TransferRights"^^xsd:string .
+
+:CQ06 rdf:type owl:NamedIndividual , vtc:Requirement ;
+    vtc:requirementId "CQ06"^^xsd:string ;
+    vtc:category "competency question"^^xsd:string ;
+    dcterms:description "Expressing the various roles of contract parties within the Permission/Duty element."^^xsd:string .
+
+:CQ06_test1 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ06 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/odrl#CQ06"^^xsd:anyURI ;
+    vtc:desiredBehaviour "ContractParty type Class"^^xsd:string .
+
+:CQ06_test2 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ06 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/odrl#CQ06"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Role type Class"^^xsd:string .
+
+:CQ06_test3 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ06 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/odrl#CQ06"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Permission type Class"^^xsd:string .
+
+:CQ06_test4 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ06 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/odrl#CQ06"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Duty type Class"^^xsd:string .
+
+:CQ06_test5 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ06 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/odrl#CQ06"^^xsd:anyURI ;
+    vtc:desiredBehaviour "ContractParty hasRole Role"^^xsd:string .
+
+:CQ08 rdf:type owl:NamedIndividual , vtc:Requirement ;
+    vtc:requirementId "CQ08"^^xsd:string ;
+    vtc:category "competency question"^^xsd:string ;
+    dcterms:description "How to provide a 'NOT' expression?"^^xsd:string .
+
+:CQ08_test1 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ08 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/odrl#CQ08"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Expression type Class"^^xsd:string .
+
+:CQ08_test2 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ08 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/odrl#CQ08"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Constraint type Class"^^xsd:string .
+
+:CQ08_test3 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ08 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/odrl#CQ08"^^xsd:anyURI ;
+    vtc:desiredBehaviour "NOT type Expression"^^xsd:string .
+
+:CQ08_test4 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ08 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/odrl#CQ08"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Expression hasOperator NOT"^^xsd:string .
+
+:CQ10 rdf:type owl:NamedIndividual , vtc:Requirement ;
+    vtc:requirementId "CQ10"^^xsd:string ;
+    vtc:category "competency question"^^xsd:string ;
+    dcterms:description "How are rights and duties supported for all contract parties?"^^xsd:string .
+
+:CQ10_test1 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ10 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/odrl#CQ10"^^xsd:anyURI ;
+    vtc:desiredBehaviour "ContractParty type Class"^^xsd:string .
+
+:CQ10_test2 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ10 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/odrl#CQ10"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Right type Class"^^xsd:string .
+
+:CQ10_test3 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ10 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/odrl#CQ10"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Duty type Class"^^xsd:string .
+
+:CQ10_test4 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ10 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/odrl#CQ10"^^xsd:anyURI ;
+    vtc:desiredBehaviour "ContractParty hasRight Right"^^xsd:string .
+
+:CQ10_test5 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ10 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/odrl#CQ10"^^xsd:anyURI ;
+    vtc:desiredBehaviour "ContractParty hasDuty Duty"^^xsd:string .
+
+:CQ13 rdf:type owl:NamedIndividual , vtc:Requirement ;
+    vtc:requirementId "CQ13"^^xsd:string ;
+    vtc:category "competency question"^^xsd:string ;
+    dcterms:description "Shall ODRLv2 allow for nested constraints?"^^xsd:string .
+
+:CQ13_test1 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ13 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/odrl#CQ13"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Constraint type Class"^^xsd:string .
+
+:CQ13_test2 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ13 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/odrl#CQ13"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Constraint hasConstraint Constraint"^^xsd:string .
+
+:CQ14 rdf:type owl:NamedIndividual , vtc:Requirement ;
+    vtc:requirementId "CQ14"^^xsd:string ;
+    vtc:category "competency question"^^xsd:string ;
+    dcterms:description "How do we express 'and', 'or', 'xor' constraints?"^^xsd:string .
+
+:CQ14_test1 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ14 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/odrl#CQ14"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Constraint type Class"^^xsd:string .
+
+:CQ14_test2 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ14 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/odrl#CQ14"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Operator type Class"^^xsd:string .
+
+:CQ14_test3 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ14 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/odrl#CQ14"^^xsd:anyURI ;
+    vtc:desiredBehaviour "AND type Operator"^^xsd:string .
+
+:CQ14_test4 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ14 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/odrl#CQ14"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Constraint hasOperator AND"^^xsd:string .
+
+:CQ14_test5 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ14 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/odrl#CQ14"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Constraint hasOperator OR"^^xsd:string .
+
+:CQ21 rdf:type owl:NamedIndividual , vtc:Requirement ;
+    vtc:requirementId "CQ21"^^xsd:string ;
+    vtc:category "competency question"^^xsd:string ;
+    dcterms:description "How to express constraints on requirements?"^^xsd:string .
+
+:CQ21_test1 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ21 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/odrl#CQ21"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Requirement type Class"^^xsd:string .
+
+:CQ21_test2 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ21 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/odrl#CQ21"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Constraint type Class"^^xsd:string .
+
+:CQ21_test3 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ21 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/odrl#CQ21"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Requirement hasConstraint Constraint"^^xsd:string .
+
+:CQ24 rdf:type owl:NamedIndividual , vtc:Requirement ;
+    vtc:requirementId "CQ24"^^xsd:string ;
+    vtc:category "competency question"^^xsd:string ;
+    dcterms:description "How to express exclusive permissions?"^^xsd:string .
+
+:CQ24_test1 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ24 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/odrl#CQ24"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Permission type Class"^^xsd:string .
+
+:CQ24_test2 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ24 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/odrl#CQ24"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Permission isExclusive boolean"^^xsd:string .
+
+:CQ26 rdf:type owl:NamedIndividual , vtc:Requirement ;
+    vtc:requirementId "CQ26"^^xsd:string ;
+    vtc:category "competency question"^^xsd:string ;
+    dcterms:description "How to express Condition via Constraints?"^^xsd:string .
+
+:CQ26_test1 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ26 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/odrl#CQ26"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Condition type Class"^^xsd:string .
+
+:CQ26_test2 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ26 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/odrl#CQ26"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Constraint type Class"^^xsd:string .
+
+:CQ26_test3 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ26 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/odrl#CQ26"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Condition expressedVia Constraint"^^xsd:string .
+
+:CQ30 rdf:type owl:NamedIndividual , vtc:Requirement ;
+    vtc:requirementId "CQ30"^^xsd:string ;
+    vtc:category "competency question"^^xsd:string ;
+    dcterms:description "What do we lose if containers are no longer part of ODRL?"^^xsd:string .
+
+:CQ30_test1 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ30 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/odrl#CQ30"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Container type Class"^^xsd:string .
+
+:CQ31 rdf:type owl:NamedIndividual , vtc:Requirement ;
+    vtc:requirementId "CQ31"^^xsd:string ;
+    vtc:category "competency question"^^xsd:string ;
+    dcterms:description "Do we need 'Sequencing' as part of the REL?"^^xsd:string .
+
+:CQ31_test1 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ31 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/odrl#CQ31"^^xsd:anyURI ;
+    vtc:desiredBehaviour "REL type Class"^^xsd:string .
+
+:CQ31_test2 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ31 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/odrl#CQ31"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Sequencing type Class"^^xsd:string .
+
+:CQ31_test3 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ31 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/odrl#CQ31"^^xsd:anyURI ;
+    vtc:desiredBehaviour "REL hasPart Sequencing"^^xsd:string .
+
+:CQ33 rdf:type owl:NamedIndividual , vtc:Requirement ;
+    vtc:requirementId "CQ33"^^xsd:string ;
+    vtc:category "competency question"^^xsd:string ;
+    dcterms:description "Can the new data model express inheritance?"^^xsd:string .
+
+:CQ33_test1 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ33 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/odrl#CQ33"^^xsd:anyURI ;
+    vtc:desiredBehaviour "DataModel type Class"^^xsd:string .
+
+:CQ33_test2 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ33 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/odrl#CQ33"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Inheritance type Class"^^xsd:string .
+
+:CQ33_test3 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ33 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/odrl#CQ33"^^xsd:anyURI ;
+    vtc:desiredBehaviour "DataModel canExpress Inheritance"^^xsd:string .
+
+:New_CQ1 rdf:type owl:NamedIndividual , vtc:Requirement ;
+    vtc:requirementId "New CQ1"^^xsd:string ;
+    vtc:category "competency question"^^xsd:string ;
+    dcterms:description "Which policy is directly linked to a given asset?"^^xsd:string .
+
+:New_CQ1_test1 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :New_CQ1 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/odrl#New CQ1"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Policy type Class"^^xsd:string .
+
+:New_CQ1_test2 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :New_CQ1 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/odrl#New CQ1"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Asset type Class"^^xsd:string .
+
+:New_CQ1_test3 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :New_CQ1 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/odrl#New CQ1"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Policy linkedTo Asset"^^xsd:string .
+
+:New_CQ2 rdf:type owl:NamedIndividual , vtc:Requirement ;
+    vtc:requirementId "New CQ2"^^xsd:string ;
+    vtc:category "competency question"^^xsd:string ;
+    dcterms:description "What conflict resolution strategy is specified by a policy?"^^xsd:string .
+
+:New_CQ2_test1 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :New_CQ2 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/odrl#New CQ2"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Policy type Class"^^xsd:string .
+
+:New_CQ2_test2 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :New_CQ2 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/odrl#New CQ2"^^xsd:anyURI ;
+    vtc:desiredBehaviour "ConflictResolutionStrategy type Class"^^xsd:string .
+
+:New_CQ2_test3 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :New_CQ2 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/odrl#New CQ2"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Policy specifies ConflictResolutionStrategy"^^xsd:string .
+
+:New_CQ3 rdf:type owl:NamedIndividual , vtc:Requirement ;
+    vtc:requirementId "New CQ3"^^xsd:string ;
+    vtc:category "competency question"^^xsd:string ;
+    dcterms:description "What duty is specified as a remedy for the violation of a prohibition?"^^xsd:string .
+
+:New_CQ3_test1 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :New_CQ3 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/odrl#New CQ3"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Prohibition type Class"^^xsd:string .
+
+:New_CQ3_test2 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :New_CQ3 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/odrl#New CQ3"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Duty type Class"^^xsd:string .
+
+:New_CQ3_test3 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :New_CQ3 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/odrl#New CQ3"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Prohibition hasRemedyForViolation Duty"^^xsd:string .
+
+:New_CQ4 rdf:type owl:NamedIndividual , vtc:Requirement ;
+    vtc:requirementId "New CQ4"^^xsd:string ;
+    vtc:category "competency question"^^xsd:string ;
+    dcterms:description "Which rule is activated upon the failure of another rule?"^^xsd:string .
+
+:New_CQ4_test1 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :New_CQ4 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/odrl#New CQ4"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Rule type Class"^^xsd:string .
+
+:New_CQ4_test2 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :New_CQ4 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/odrl#New CQ4"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Rule activatedUponFailureOf Rule"^^xsd:string .
+
+:New_CQ5 rdf:type owl:NamedIndividual , vtc:Requirement ;
+    vtc:requirementId "New CQ5"^^xsd:string ;
+    vtc:category "competency question"^^xsd:string ;
+    dcterms:description "What duty is specified as a consequence of another duty?"^^xsd:string .
+
+:New_CQ5_test1 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :New_CQ5 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/odrl#New CQ5"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Duty type Class"^^xsd:string .
+
+:New_CQ5_test2 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :New_CQ5 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/odrl#New CQ5"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Duty hasConsequence Duty"^^xsd:string .
+
+:New_CQ6 rdf:type owl:NamedIndividual , vtc:Requirement ;
+    vtc:requirementId "New CQ6"^^xsd:string ;
+    vtc:category "competency question"^^xsd:string ;
+    dcterms:description "What operator is used in the constraints of a prohibition?"^^xsd:string .
+
+:New_CQ6_test1 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :New_CQ6 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/odrl#New CQ6"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Prohibition type Class"^^xsd:string .
+
+:New_CQ6_test2 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :New_CQ6 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/odrl#New CQ6"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Constraint type Class"^^xsd:string .
+
+:New_CQ6_test3 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :New_CQ6 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/odrl#New CQ6"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Operator type Class"^^xsd:string .
+
+:New_CQ6_test4 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :New_CQ6 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/odrl#New CQ6"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Prohibition hasConstraint Constraint"^^xsd:string .
+
+:New_CQ6_test5 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :New_CQ6 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/odrl#New CQ6"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Constraint hasOperator Operator"^^xsd:string .

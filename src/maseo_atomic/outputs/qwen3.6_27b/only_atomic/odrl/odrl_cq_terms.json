@@ -1,0 +1,460 @@
+[
+  {
+    "cq_id": "CQ03",
+    "cq": "Shall the permissions 'Aggregation' and 'Disaggregation' be of the type Transfer Rights?",
+    "question_type": "specification",
+    "atomic_cq_mapping": [
+      {
+        "atomic_cq_id": "CQ03_a1",
+        "atomic_cq": "Is Aggregation of type Transfer Rights?",
+        "classes": [
+          "Aggregation",
+          "TransferRights",
+          "Right"
+        ],
+        "object_properties": [],
+        "data_properties": [],
+        "individuals": [],
+        "instances": []
+      },
+      {
+        "atomic_cq_id": "CQ03_a2",
+        "atomic_cq": "Is Disaggregation of type Transfer Rights?",
+        "classes": [
+          "Disaggregation",
+          "TransferRights",
+          "Right"
+        ],
+        "object_properties": [],
+        "data_properties": [],
+        "individuals": [],
+        "instances": []
+      }
+    ]
+  },
+  {
+    "cq_id": "CQ06",
+    "cq": "Expressing the various roles of contract parties within the Permission/Duty element.",
+    "question_type": "specification",
+    "atomic_cq_mapping": [
+      {
+        "atomic_cq_id": "CQ06_a1",
+        "atomic_cq": "How is the role of a contract party expressed within the Permission/Duty element?",
+        "classes": [
+          "ContractParty",
+          "Permission",
+          "Duty"
+        ],
+        "object_properties": [
+          "role"
+        ],
+        "data_properties": [],
+        "individuals": [],
+        "instances": []
+      }
+    ]
+  },
+  {
+    "cq_id": "CQ08",
+    "cq": "How to provide a 'NOT' expression?",
+    "question_type": "specification",
+    "atomic_cq_mapping": [
+      {
+        "atomic_cq_id": "CQ08_a1",
+        "atomic_cq": "How provided a 'NOT' expression?",
+        "classes": [
+          "Expression",
+          "Operator"
+        ],
+        "object_properties": [
+          "operator"
+        ],
+        "data_properties": [],
+        "individuals": [
+          "NotOperator"
+        ],
+        "instances": []
+      }
+    ]
+  },
+  {
+    "cq_id": "CQ10",
+    "cq": "How are rights and duties supported for all contract parties?",
+    "question_type": "specification",
+    "atomic_cq_mapping": [
+      {
+        "atomic_cq_id": "CQ10_a1",
+        "atomic_cq": "What is support for rights of contract parties?",
+        "classes": [
+          "Right",
+          "ContractParty"
+        ],
+        "object_properties": [
+          "support"
+        ],
+        "data_properties": [],
+        "individuals": [],
+        "instances": []
+      },
+      {
+        "atomic_cq_id": "CQ10_a2",
+        "atomic_cq": "What is support for duties of contract parties?",
+        "classes": [
+          "Duty",
+          "ContractParty"
+        ],
+        "object_properties": [
+          "support"
+        ],
+        "data_properties": [],
+        "individuals": [],
+        "instances": []
+      }
+    ]
+  },
+  {
+    "cq_id": "CQ13",
+    "cq": "Shall ODRLv2 allow for nested constraints?",
+    "question_type": "specification",
+    "atomic_cq_mapping": [
+      {
+        "atomic_cq_id": "CQ13_a1",
+        "atomic_cq": "Does ODRLv2 allow for nested constraints?",
+        "classes": [
+          "ODRLv2",
+          "Constraint"
+        ],
+        "object_properties": [
+          "constraint"
+        ],
+        "data_properties": [],
+        "individuals": [],
+        "instances": []
+      }
+    ]
+  },
+  {
+    "cq_id": "CQ14",
+    "cq": "How do we express 'and', 'or', 'xor' constraints?",
+    "question_type": "specification",
+    "atomic_cq_mapping": [
+      {
+        "atomic_cq_id": "CQ14_a1",
+        "atomic_cq": "What is the expression for the 'and' constraint?",
+        "classes": [
+          "Expression",
+          "Constraint",
+          "Operator"
+        ],
+        "object_properties": [
+          "operator"
+        ],
+        "data_properties": [],
+        "individuals": [
+          "AndOperator"
+        ],
+        "instances": []
+      },
+      {
+        "atomic_cq_id": "CQ14_a2",
+        "atomic_cq": "What is the expression for the 'or' constraint?",
+        "classes": [
+          "Expression",
+          "Constraint",
+          "Operator"
+        ],
+        "object_properties": [
+          "operator"
+        ],
+        "data_properties": [],
+        "individuals": [
+          "OrOperator"
+        ],
+        "instances": []
+      },
+      {
+        "atomic_cq_id": "CQ14_a3",
+        "atomic_cq": "What is the expression for the 'xor' constraint?",
+        "classes": [
+          "Expression",
+          "Constraint",
+          "Operator"
+        ],
+        "object_properties": [
+          "operator"
+        ],
+        "data_properties": [],
+        "individuals": [
+          "XorOperator"
+        ],
+        "instances": []
+      }
+    ]
+  },
+  {
+    "cq_id": "CQ21",
+    "cq": "How to express constraints on requirements?",
+    "question_type": "specification",
+    "atomic_cq_mapping": [
+      {
+        "atomic_cq_id": "CQ21_a1",
+        "atomic_cq": "What expresses constraints on requirements?",
+        "classes": [
+          "Constraint",
+          "Requirement"
+        ],
+        "object_properties": [
+          "constraint"
+        ],
+        "data_properties": [],
+        "individuals": [],
+        "instances": []
+      }
+    ]
+  },
+  {
+    "cq_id": "CQ24",
+    "cq": "How to express exclusive permissions?",
+    "question_type": "specification",
+    "atomic_cq_mapping": [
+      {
+        "atomic_cq_id": "CQ24_a1",
+        "atomic_cq": "Which relation expresses exclusive permissions?",
+        "classes": [
+          "Permission"
+        ],
+        "object_properties": [
+          "exclusivePermission"
+        ],
+        "data_properties": [],
+        "individuals": [],
+        "instances": []
+      }
+    ]
+  },
+  {
+    "cq_id": "CQ26",
+    "cq": "How to express Condition via Constraints?",
+    "question_type": "specification",
+    "atomic_cq_mapping": [
+      {
+        "atomic_cq_id": "CQ26_a1",
+        "atomic_cq": "How is a Condition expressed via Constraints?",
+        "classes": [
+          "Condition",
+          "Constraint"
+        ],
+        "object_properties": [
+          "constraint"
+        ],
+        "data_properties": [],
+        "individuals": [],
+        "instances": []
+      }
+    ]
+  },
+  {
+    "cq_id": "CQ30",
+    "cq": "What do we lose if containers are no longer part of ODRL?",
+    "question_type": "domain",
+    "atomic_cq_mapping": [
+      {
+        "atomic_cq_id": "CQ30_a1",
+        "atomic_cq": "What is content of container?",
+        "classes": [
+          "Container",
+          "Content"
+        ],
+        "object_properties": [
+          "content"
+        ],
+        "data_properties": [],
+        "individuals": [],
+        "instances": []
+      }
+    ]
+  },
+  {
+    "cq_id": "CQ31",
+    "cq": "Do we need 'Sequencing' as part of the REL?",
+    "question_type": "specification",
+    "atomic_cq_mapping": [
+      {
+        "atomic_cq_id": "CQ31_a1",
+        "atomic_cq": "Does the REL have 'Sequencing'?",
+        "classes": [
+          "REL",
+          "Sequencing"
+        ],
+        "object_properties": [
+          "sequencing"
+        ],
+        "data_properties": [],
+        "individuals": [],
+        "instances": []
+      }
+    ]
+  },
+  {
+    "cq_id": "CQ33",
+    "cq": "Can the new data model express inheritance?",
+    "question_type": "specification",
+    "atomic_cq_mapping": [
+      {
+        "atomic_cq_id": "CQ33_a1",
+        "atomic_cq": "Does the new data model have inheritance?",
+        "classes": [
+          "DataModel",
+          "Inheritance"
+        ],
+        "object_properties": [
+          "inheritance"
+        ],
+        "data_properties": [],
+        "individuals": [],
+        "instances": []
+      }
+    ]
+  },
+  {
+    "cq_id": "New CQ1",
+    "cq": "Which policy is directly linked to a given asset?",
+    "question_type": "domain",
+    "atomic_cq_mapping": [
+      {
+        "atomic_cq_id": "New CQ1_a1",
+        "atomic_cq": "Which policy is directly linked to the given asset?",
+        "classes": [
+          "Policy",
+          "Asset"
+        ],
+        "object_properties": [
+          "linkedTo"
+        ],
+        "data_properties": [],
+        "individuals": [],
+        "instances": []
+      }
+    ]
+  },
+  {
+    "cq_id": "New CQ2",
+    "cq": "What conflict resolution strategy is specified by a policy?",
+    "question_type": "domain",
+    "atomic_cq_mapping": [
+      {
+        "atomic_cq_id": "New CQ2_a1",
+        "atomic_cq": "Which conflict resolution strategy is specified by a policy?",
+        "classes": [
+          "ConflictResolutionStrategy",
+          "Policy"
+        ],
+        "object_properties": [
+          "strategy"
+        ],
+        "data_properties": [],
+        "individuals": [],
+        "instances": []
+      }
+    ]
+  },
+  {
+    "cq_id": "New CQ3",
+    "cq": "What duty is specified as a remedy for the violation of a prohibition?",
+    "question_type": "domain",
+    "atomic_cq_mapping": [
+      {
+        "atomic_cq_id": "New CQ3_a1",
+        "atomic_cq": "Which duty serves as a remedy for the violation of a prohibition?",
+        "classes": [
+          "Duty",
+          "Prohibition",
+          "Violation"
+        ],
+        "object_properties": [
+          "remedy",
+          "violation"
+        ],
+        "data_properties": [],
+        "individuals": [],
+        "instances": []
+      }
+    ]
+  },
+  {
+    "cq_id": "New CQ4",
+    "cq": "Which rule is activated upon the failure of another rule?",
+    "question_type": "domain",
+    "atomic_cq_mapping": [
+      {
+        "atomic_cq_id": "New CQ4_a1",
+        "atomic_cq": "Which rule is activated upon the failure of another rule?",
+        "classes": [
+          "Rule"
+        ],
+        "object_properties": [
+          "failure",
+          "activatedUpon"
+        ],
+        "data_properties": [],
+        "individuals": [],
+        "instances": []
+      }
+    ]
+  },
+  {
+    "cq_id": "New CQ5",
+    "cq": "What duty is specified as a consequence of another duty?",
+    "question_type": "domain",
+    "atomic_cq_mapping": [
+      {
+        "atomic_cq_id": "New CQ5_a1",
+        "atomic_cq": "What duty is specified as a consequence of another duty?",
+        "classes": [
+          "Duty"
+        ],
+        "object_properties": [
+          "consequence"
+        ],
+        "data_properties": [],
+        "individuals": [],
+        "instances": []
+      }
+    ]
+  },
+  {
+    "cq_id": "New CQ6",
+    "cq": "What operator is used in the constraints of a prohibition?",
+    "question_type": "specification",
+    "atomic_cq_mapping": [
+      {
+        "atomic_cq_id": "New CQ6_a1",
+        "atomic_cq": "What constraint is of a prohibition?",
+        "classes": [
+          "Constraint",
+          "Prohibition"
+        ],
+        "object_properties": [
+          "constraint"
+        ],
+        "data_properties": [],
+        "individuals": [],
+        "instances": []
+      },
+      {
+        "atomic_cq_id": "New CQ6_a2",
+        "atomic_cq": "What operator is of the given constraint?",
+        "classes": [
+          "Operator",
+          "Constraint"
+        ],
+        "object_properties": [
+          "operator"
+        ],
+        "data_properties": [],
+        "individuals": [],
+        "instances": []
+      }
+    ]
+  }
+]

@@ -1,0 +1,397 @@
+@prefix vtc: <https://w3id.org/def/vtc#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix : <http://www.semanticweb.org/vgo/tests#> .
+
+:suite rdf:type owl:NamedIndividual , vtc:TestSuite .
+
+:CQ01 rdf:type owl:NamedIndividual , vtc:Requirement ;
+    vtc:requirementId "CQ01"^^xsd:string ;
+    vtc:category "competency question"^^xsd:string ;
+    dcterms:description "What is the username of the player?"^^xsd:string .
+
+:CQ01_test1 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ01 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/vgo#CQ01"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Player username string"^^xsd:string .
+
+:CQ02 rdf:type owl:NamedIndividual , vtc:Requirement ;
+    vtc:requirementId "CQ02"^^xsd:string ;
+    vtc:category "competency question"^^xsd:string ;
+    dcterms:description "Who are the friends of the player?"^^xsd:string .
+
+:CQ02_test1 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ02 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/vgo#CQ02"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Player hasFriend Player"^^xsd:string .
+
+:CQ03 rdf:type owl:NamedIndividual , vtc:Requirement ;
+    vtc:requirementId "CQ03"^^xsd:string ;
+    vtc:category "competency question"^^xsd:string ;
+    dcterms:description "Who are the friends that play other games as well with this player?"^^xsd:string .
+
+:CQ03_test1 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ03 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/vgo#CQ03"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Player hasFriend Player"^^xsd:string .
+
+:CQ03_test2 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ03 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/vgo#CQ03"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Player playsGame Game"^^xsd:string .
+
+:CQ05 rdf:type owl:NamedIndividual , vtc:Requirement ;
+    vtc:requirementId "CQ05"^^xsd:string ;
+    vtc:category "competency question"^^xsd:string ;
+    dcterms:description "What are the achievements of my friends?"^^xsd:string .
+
+:CQ05_test1 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ05 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/vgo#CQ05"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Player hasFriend Player"^^xsd:string .
+
+:CQ05_test2 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ05 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/vgo#CQ05"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Player hasAchievement Achievement"^^xsd:string .
+
+:CQ07 rdf:type owl:NamedIndividual , vtc:Requirement ;
+    vtc:requirementId "CQ07"^^xsd:string ;
+    vtc:category "competency question"^^xsd:string ;
+    dcterms:description "What are the achievements your friend has received?"^^xsd:string .
+
+:CQ07_test1 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ07 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/vgo#CQ07"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Player hasAchievement Achievement"^^xsd:string .
+
+:CQ08 rdf:type owl:NamedIndividual , vtc:Requirement ;
+    vtc:requirementId "CQ08"^^xsd:string ;
+    vtc:category "competency question"^^xsd:string ;
+    dcterms:description "What achievements does a game have?"^^xsd:string .
+
+:CQ08_test1 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ08 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/vgo#CQ08"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Game hasAchievement Achievement"^^xsd:string .
+
+:CQ09 rdf:type owl:NamedIndividual , vtc:Requirement ;
+    vtc:requirementId "CQ09"^^xsd:string ;
+    vtc:category "competency question"^^xsd:string ;
+    dcterms:description "How many hours has this game been played in total?"^^xsd:string .
+
+:CQ09_test1 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ09 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/vgo#CQ09"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Game totalPlayTime float"^^xsd:string .
+
+:CQ10 rdf:type owl:NamedIndividual , vtc:Requirement ;
+    vtc:requirementId "CQ10"^^xsd:string ;
+    vtc:category "competency question"^^xsd:string ;
+    dcterms:description "What are the types of achievements in this game?"^^xsd:string .
+
+:CQ10_test1 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ10 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/vgo#CQ10"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Game hasAchievementType AchievementType"^^xsd:string .
+
+:CQ11 rdf:type owl:NamedIndividual , vtc:Requirement ;
+    vtc:requirementId "CQ11"^^xsd:string ;
+    vtc:category "competency question"^^xsd:string ;
+    dcterms:description "What are the types of achievements a game can have?"^^xsd:string .
+
+:CQ11_test1 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ11 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/vgo#CQ11"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Game hasAchievementType AchievementType"^^xsd:string .
+
+:CQ12 rdf:type owl:NamedIndividual , vtc:Requirement ;
+    vtc:requirementId "CQ12"^^xsd:string ;
+    vtc:category "competency question"^^xsd:string ;
+    dcterms:description "What is the genre of the game?"^^xsd:string .
+
+:CQ12_test1 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ12 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/vgo#CQ12"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Game hasGenre Genre"^^xsd:string .
+
+:CQ13 rdf:type owl:NamedIndividual , vtc:Requirement ;
+    vtc:requirementId "CQ13"^^xsd:string ;
+    vtc:category "competency question"^^xsd:string ;
+    dcterms:description "What items exist in a game?"^^xsd:string .
+
+:CQ13_test1 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ13 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/vgo#CQ13"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Game hasItem Item"^^xsd:string .
+
+:CQ15 rdf:type owl:NamedIndividual , vtc:Requirement ;
+    vtc:requirementId "CQ15"^^xsd:string ;
+    vtc:category "competency question"^^xsd:string ;
+    dcterms:description "What is the release date of the game?"^^xsd:string .
+
+:CQ15_test1 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ15 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/vgo#CQ15"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Game releaseDate dateTime"^^xsd:string .
+
+:CQ17 rdf:type owl:NamedIndividual , vtc:Requirement ;
+    vtc:requirementId "CQ17"^^xsd:string ;
+    vtc:category "competency question"^^xsd:string ;
+    dcterms:description "List all games of a certain Genre?"^^xsd:string .
+
+:CQ17_test1 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ17 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/vgo#CQ17"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Game hasGenre Genre"^^xsd:string .
+
+:CQ19 rdf:type owl:NamedIndividual , vtc:Requirement ;
+    vtc:requirementId "CQ19"^^xsd:string ;
+    vtc:category "competency question"^^xsd:string ;
+    dcterms:description "What abilities does an item have?"^^xsd:string .
+
+:CQ19_test1 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ19 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/vgo#CQ19"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Item hasAbility Ability"^^xsd:string .
+
+:CQ22 rdf:type owl:NamedIndividual , vtc:Requirement ;
+    vtc:requirementId "CQ22"^^xsd:string ;
+    vtc:category "competency question"^^xsd:string ;
+    dcterms:description "Who has the best kill count in the game?"^^xsd:string .
+
+:CQ22_test1 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ22 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/vgo#CQ22"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Player hasKillCount Game"^^xsd:string .
+
+:CQ24 rdf:type owl:NamedIndividual , vtc:Requirement ;
+    vtc:requirementId "CQ24"^^xsd:string ;
+    vtc:category "competency question"^^xsd:string ;
+    dcterms:description "What achievements has a player obtained?"^^xsd:string .
+
+:CQ24_test1 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ24 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/vgo#CQ24"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Player hasAchievement Achievement"^^xsd:string .
+
+:CQ25 rdf:type owl:NamedIndividual , vtc:Requirement ;
+    vtc:requirementId "CQ25"^^xsd:string ;
+    vtc:category "competency question"^^xsd:string ;
+    dcterms:description "What games has the player played?"^^xsd:string .
+
+:CQ25_test1 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ25 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/vgo#CQ25"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Player playsGame Game"^^xsd:string .
+
+:CQ26 rdf:type owl:NamedIndividual , vtc:Requirement ;
+    vtc:requirementId "CQ26"^^xsd:string ;
+    vtc:category "competency question"^^xsd:string ;
+    dcterms:description "What items does the player have?"^^xsd:string .
+
+:CQ26_test1 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ26 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/vgo#CQ26"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Player hasItem Item"^^xsd:string .
+
+:CQ27 rdf:type owl:NamedIndividual , vtc:Requirement ;
+    vtc:requirementId "CQ27"^^xsd:string ;
+    vtc:category "competency question"^^xsd:string ;
+    dcterms:description "What achievements of a certain type does the player have?"^^xsd:string .
+
+:CQ27_test1 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ27 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/vgo#CQ27"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Player hasAchievement Achievement"^^xsd:string .
+
+:CQ27_test2 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ27 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/vgo#CQ27"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Achievement hasAchievementType AchievementType"^^xsd:string .
+
+:CQ29 rdf:type owl:NamedIndividual , vtc:Requirement ;
+    vtc:requirementId "CQ29"^^xsd:string ;
+    vtc:category "competency question"^^xsd:string ;
+    dcterms:description "What is the last game a player has played?"^^xsd:string .
+
+:CQ29_test1 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ29 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/vgo#CQ29"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Player lastPlayedGame Game"^^xsd:string .
+
+:CQ35 rdf:type owl:NamedIndividual , vtc:Requirement ;
+    vtc:requirementId "CQ35"^^xsd:string ;
+    vtc:category "competency question"^^xsd:string ;
+    dcterms:description "In how many games does the player have all the achievements?"^^xsd:string .
+
+:CQ35_test1 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ35 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/vgo#CQ35"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Player playsGame Game"^^xsd:string .
+
+:CQ35_test2 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ35 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/vgo#CQ35"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Game hasAchievement Achievement"^^xsd:string .
+
+:CQ35_test3 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ35 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/vgo#CQ35"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Player hasAchievement Achievement"^^xsd:string .
+
+:CQ52 rdf:type owl:NamedIndividual , vtc:Requirement ;
+    vtc:requirementId "CQ52"^^xsd:string ;
+    vtc:category "competency question"^^xsd:string ;
+    dcterms:description "What equipment does a player have in a game?"^^xsd:string .
+
+:CQ52_test1 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ52 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/vgo#CQ52"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Player hasItem Item"^^xsd:string .
+
+:CQ52_test2 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ52 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/vgo#CQ52"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Player playsGame Game"^^xsd:string .
+
+:CQ55 rdf:type owl:NamedIndividual , vtc:Requirement ;
+    vtc:requirementId "CQ55"^^xsd:string ;
+    vtc:category "competency question"^^xsd:string ;
+    dcterms:description "What are the games where a player can use this item?"^^xsd:string .
+
+:CQ55_test1 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ55 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/vgo#CQ55"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Item usableInGame Game"^^xsd:string .
+
+:CQ56 rdf:type owl:NamedIndividual , vtc:Requirement ;
+    vtc:requirementId "CQ56"^^xsd:string ;
+    vtc:category "competency question"^^xsd:string ;
+    dcterms:description "How many players have made in app purchases?"^^xsd:string .
+
+:CQ56_test1 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ56 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/vgo#CQ56"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Player hasInAppPurchase InAppPurchase"^^xsd:string .
+
+:CQ57 rdf:type owl:NamedIndividual , vtc:Requirement ;
+    vtc:requirementId "CQ57"^^xsd:string ;
+    vtc:category "competency question"^^xsd:string ;
+    dcterms:description "How many players who have already spent money, spend money again?"^^xsd:string .
+
+:CQ57_test1 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ57 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/vgo#CQ57"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Player hasInAppPurchase InAppPurchase"^^xsd:string .
+
+:CQ62 rdf:type owl:NamedIndividual , vtc:Requirement ;
+    vtc:requirementId "CQ62"^^xsd:string ;
+    vtc:category "competency question"^^xsd:string ;
+    dcterms:description "What time are most of the in app purchases done?"^^xsd:string .
+
+:CQ62_test1 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ62 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/vgo#CQ62"^^xsd:anyURI ;
+    vtc:desiredBehaviour "InAppPurchase purchaseTime dateTime"^^xsd:string .
+
+:CQ63 rdf:type owl:NamedIndividual , vtc:Requirement ;
+    vtc:requirementId "CQ63"^^xsd:string ;
+    vtc:category "competency question"^^xsd:string ;
+    dcterms:description "Where do the most paying customers live?"^^xsd:string .
+
+:CQ63_test1 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ63 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/vgo#CQ63"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Player livesIn Location"^^xsd:string .
+
+:CQ64 rdf:type owl:NamedIndividual , vtc:Requirement ;
+    vtc:requirementId "CQ64"^^xsd:string ;
+    vtc:category "competency question"^^xsd:string ;
+    dcterms:description "How long does a player spend in the game before making first IAP?"^^xsd:string .
+
+:CQ64_test1 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ64 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/vgo#CQ64"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Player hasInAppPurchase InAppPurchase"^^xsd:string .
+
+:CQ64_test2 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ64 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/vgo#CQ64"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Player timeSpentBeforeFirstIAP float"^^xsd:string .
+
+:CQ65 rdf:type owl:NamedIndividual , vtc:Requirement ;
+    vtc:requirementId "CQ65"^^xsd:string ;
+    vtc:category "competency question"^^xsd:string ;
+    dcterms:description "Where do the players live who have not made any IAP?"^^xsd:string .
+
+:CQ65_test1 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ65 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/vgo#CQ65"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Player livesIn Location"^^xsd:string .
+
+:CQ66 rdf:type owl:NamedIndividual , vtc:Requirement ;
+    vtc:requirementId "CQ66"^^xsd:string ;
+    vtc:category "competency question"^^xsd:string ;
+    dcterms:description "Where do the players who have done the most IAP live?"^^xsd:string .
+
+:CQ66_test1 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ66 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/vgo#CQ66"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Player livesIn Location"^^xsd:string .
+
+:CQ66_test2 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :CQ66 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/vgo#CQ66"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Player hasInAppPurchase InAppPurchase"^^xsd:string .
+
+:New_CQ1 rdf:type owl:NamedIndividual , vtc:Requirement ;
+    vtc:requirementId "New CQ1"^^xsd:string ;
+    vtc:category "competency question"^^xsd:string ;
+    dcterms:description "What playing areas does a game have?"^^xsd:string .
+
+:New_CQ1_test1 rdf:type owl:NamedIndividual , vtc:TestCaseDesign ;
+    vtc:belongsTo :suite ;
+    vtc:comesFromRequirement :New_CQ1 ;
+    vtc:isRelatedToRequirement "http://www.semanticweb.org/vgo#New CQ1"^^xsd:anyURI ;
+    vtc:desiredBehaviour "Game hasPlayingArea PlayingArea"^^xsd:string .

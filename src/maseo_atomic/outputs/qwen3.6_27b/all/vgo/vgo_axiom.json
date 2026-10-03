@@ -1,0 +1,276 @@
+[
+  {
+    "cq_id": "CQ01",
+    "cq": "What is the username of the player?",
+    "axioms": [
+      "username domain Player",
+      "username range string"
+    ]
+  },
+  {
+    "cq_id": "CQ02",
+    "cq": "Who are the friends of the player?",
+    "axioms": [
+      "friend domain Player",
+      "friend range Player"
+    ]
+  },
+  {
+    "cq_id": "CQ03",
+    "cq": "Who are the friends that play other games as well with this player?",
+    "axioms": [
+      "friend domain Player",
+      "friend range Player",
+      "playsWith domain Player",
+      "playsWith range Player"
+    ]
+  },
+  {
+    "cq_id": "CQ05",
+    "cq": "What are the achievements of my friends?",
+    "axioms": [
+      "achievement domain Player",
+      "achievement range Achievement"
+    ]
+  },
+  {
+    "cq_id": "CQ07",
+    "cq": "What are the achievements your friend has received?",
+    "axioms": [
+      "receives domain Player",
+      "receives range Achievement"
+    ]
+  },
+  {
+    "cq_id": "CQ08",
+    "cq": "What achievements does a game have?",
+    "axioms": [
+      "hasAchievement domain Game",
+      "hasAchievement range Achievement"
+    ]
+  },
+  {
+    "cq_id": "CQ09",
+    "cq": "How many hours has this game been played in total?",
+    "axioms": [
+      "playTime domain Game",
+      "playTime range float"
+    ]
+  },
+  {
+    "cq_id": "CQ10",
+    "cq": "What are the types of achievements in this game?",
+    "axioms": [
+      "type domain Achievement",
+      "type range AchievementType"
+    ]
+  },
+  {
+    "cq_id": "CQ11",
+    "cq": "What are the types of achievements a game can have?",
+    "axioms": [
+      "achievement domain Game",
+      "achievement range Achievement",
+      "type domain Achievement",
+      "type range AchievementType"
+    ]
+  },
+  {
+    "cq_id": "CQ12",
+    "cq": "What is the genre of the game?",
+    "axioms": [
+      "genre domain Game",
+      "genre range Genre"
+    ]
+  },
+  {
+    "cq_id": "CQ13",
+    "cq": "What items exist in a game?",
+    "axioms": [
+      "existsIn domain Item",
+      "existsIn range Game"
+    ]
+  },
+  {
+    "cq_id": "CQ15",
+    "cq": "What is the release date of the game?",
+    "axioms": [
+      "releaseDate domain Game",
+      "releaseDate range dateTime"
+    ]
+  },
+  {
+    "cq_id": "CQ17",
+    "cq": "List all games of a certain Genre?",
+    "axioms": [
+      "hasGenre domain Game",
+      "hasGenre range Genre"
+    ]
+  },
+  {
+    "cq_id": "CQ19",
+    "cq": "What abilities does an item have?",
+    "axioms": [
+      "ability domain Item",
+      "ability range Ability"
+    ]
+  },
+  {
+    "cq_id": "CQ22",
+    "cq": "Who has the best kill count in the game?",
+    "axioms": [
+      "playsIn domain Player",
+      "playsIn range Game",
+      "killCount domain Player",
+      "killCount range integer"
+    ]
+  },
+  {
+    "cq_id": "CQ24",
+    "cq": "What achievements has a player obtained?",
+    "axioms": [
+      "obtains domain Player",
+      "obtains range Achievement"
+    ]
+  },
+  {
+    "cq_id": "CQ25",
+    "cq": "What games has the player played?",
+    "axioms": [
+      "hasPlayed domain Player",
+      "hasPlayed range Game"
+    ]
+  },
+  {
+    "cq_id": "CQ26",
+    "cq": "What items does the player have?",
+    "axioms": [
+      "player domain Item",
+      "player range Player"
+    ]
+  },
+  {
+    "cq_id": "CQ27",
+    "cq": "What achievements of a certain type does the player have?",
+    "axioms": [
+      "player domain Achievement",
+      "player range Player",
+      "type domain Achievement",
+      "type range AchievementType"
+    ]
+  },
+  {
+    "cq_id": "CQ29",
+    "cq": "What is the last game a player has played?",
+    "axioms": [
+      "lastGame domain Player",
+      "lastGame range Game"
+    ]
+  },
+  {
+    "cq_id": "CQ35",
+    "cq": "In how many games does the player have all the achievements?",
+    "axioms": [
+      "hasAchievement domain Player",
+      "hasAchievement range Achievement",
+      "playsIn domain Player",
+      "playsIn range Game"
+    ]
+  },
+  {
+    "cq_id": "CQ52",
+    "cq": "What equipment does a player have in a game?",
+    "axioms": [
+      "hasEquipment domain Player",
+      "hasEquipment range Equipment",
+      "playsIn domain Player",
+      "playsIn range Game"
+    ]
+  },
+  {
+    "cq_id": "CQ55",
+    "cq": "What are the games where a player can use this item?",
+    "axioms": [
+      "allowsUseOf domain Game",
+      "allowsUseOf range Item"
+    ]
+  },
+  {
+    "cq_id": "CQ56",
+    "cq": "How many players have made in app purchases?",
+    "axioms": [
+      "makesPurchase domain Player",
+      "makesPurchase range InAppPurchase"
+    ]
+  },
+  {
+    "cq_id": "CQ57",
+    "cq": "How many players who have already spent money, spend money again?",
+    "axioms": [
+      "hasSpentMoney domain Player",
+      "hasSpentMoney range Purchase",
+      "hasSpentMoneyAgain domain Player",
+      "hasSpentMoneyAgain range Purchase"
+    ]
+  },
+  {
+    "cq_id": "CQ62",
+    "cq": "What time are most of the in app purchases done?",
+    "axioms": [
+      "time domain InAppPurchase",
+      "time range dateTime"
+    ]
+  },
+  {
+    "cq_id": "CQ63",
+    "cq": "Where do the most paying customers live?",
+    "axioms": [
+      "payment domain Customer",
+      "payment range Payment",
+      "hasPayment domain Customer",
+      "hasPayment range Payment",
+      "livesIn domain Customer",
+      "livesIn range Location"
+    ]
+  },
+  {
+    "cq_id": "CQ64",
+    "cq": "How long does a player spend in the game before making first IAP?",
+    "axioms": [
+      "playsIn domain Player",
+      "playsIn range Game",
+      "makesPurchase domain Player",
+      "makesPurchase range InAppPurchase",
+      "timeBeforeFirstIap domain Player",
+      "timeBeforeFirstIap range float"
+    ]
+  },
+  {
+    "cq_id": "CQ65",
+    "cq": "Where do the players live who have not made any IAP?",
+    "axioms": [
+      "makesPurchase domain Player",
+      "makesPurchase range InAppPurchase",
+      "livesIn domain Player",
+      "livesIn range Location"
+    ]
+  },
+  {
+    "cq_id": "CQ66",
+    "cq": "Where do the players who have done the most IAP live?",
+    "axioms": [
+      "makesPurchase domain Player",
+      "makesPurchase range InAppPurchase",
+      "livesIn domain Player",
+      "livesIn range Location"
+    ]
+  },
+  {
+    "cq_id": "New CQ1",
+    "cq": "What playing areas does a game have?",
+    "axioms": [
+      "hasPlayingArea domain Game",
+      "hasPlayingArea range PlayingArea"
+    ]
+  }
+]

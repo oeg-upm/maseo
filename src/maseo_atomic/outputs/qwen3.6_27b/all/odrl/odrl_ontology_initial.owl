@@ -1,0 +1,321 @@
+<?xml version="1.0"?>
+<rdf:RDF xml:base="http://www.semanticweb.org/odrl#"
+         xmlns:owl="http://www.w3.org/2002/07/owl#"
+         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+         xmlns:dc="http://purl.org/dc/elements/1.1/"
+         xmlns:vaem="http://www.linkedmodel.org/schema/vaem#">
+
+  <owl:Ontology rdf:about="http://www.semanticweb.org/odrl#"/>
+
+  <!-- owl:Class declarations -->
+
+<owl:Class rdf:about="http://www.semanticweb.org/odrl#TransferRight">
+  <rdfs:comment>A right that can be transferred, aggregated, or disaggregated.</rdfs:comment>
+  <rdfs:label>Transfer Right</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: CQ03 asks whether Aggregation and Disaggregation are of this type</vaem:rationale>
+  <dc:source>(competency_question) CQ03: Shall the permissions 'Aggregation' and 'Disaggregation' be of the type Transfer Rights?</dc:source>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/odrl#Expression">
+  <rdfs:comment>A logical expression that may contain an operator.</rdfs:comment>
+  <rdfs:label>Expression</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: CQ08 asks how a NOT expression is provided</vaem:rationale>
+  <dc:source>(competency_question) CQ08: How to provide a 'NOT' expression?</dc:source>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/odrl#Operator">
+  <rdfs:comment>A logical operator used in expressions or constraints.</rdfs:comment>
+  <rdfs:label>Operator</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: CQ08 and CQ14 ask about operators in expressions and constraints</vaem:rationale>
+  <dc:source>(competency_question) CQ08: How to provide a 'NOT' expression?
+    (competency_question) CQ14: How do we express 'and', 'or', 'xor' constraints?</dc:source>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/odrl#Duty">
+  <rdfs:comment>An obligation imposed on a contract party.</rdfs:comment>
+  <rdfs:label>Duty</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: CQ10 asks about duty support; New CQ3 and New CQ5 involve duties</vaem:rationale>
+  <dc:source>(competency_question) CQ10: How are rights and duties supported for all contract parties?
+    (competency_question) New CQ3: What duty is specified as a remedy for the violation of a prohibition?
+    (competency_question) New CQ5: What duty is specified as a consequence of another duty?</dc:source>
+  <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/odrl#Rule"/>
+  <owl:disjointWith rdf:resource="http://www.semanticweb.org/odrl#Prohibition"/>
+  <!-- Axiom: Disjoint with Prohibition -->
+  <!-- Axiom: SubClassOf Rule -->
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/odrl#Constraint">
+  <rdfs:comment>A condition that restricts a rule, requirement, or permission.</rdfs:comment>
+  <rdfs:label>Constraint</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: CQ13, CQ14, CQ21, CQ26, and New CQ6 ask about constraints</vaem:rationale>
+  <dc:source>(competency_question) CQ13: Shall ODRLv2 allow for nested constraints?
+    (competency_question) CQ14: How do we express 'and', 'or', 'xor' constraints?
+    (competency_question) CQ21: How to express constraints on requirements?
+    (competency_question) CQ26: How to express Condition via Constraints?
+    (competency_question) New CQ6: What operator is used in the constraints of a prohibition?</dc:source>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/odrl#Container">
+  <rdfs:comment>A wrapper entity that holds content or assets.</rdfs:comment>
+  <rdfs:label>Container</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: CQ30 asks about container content</vaem:rationale>
+  <dc:source>(competency_question) CQ30: What do we lose if containers are no longer part of ODRL?</dc:source>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/odrl#Policy">
+  <rdfs:comment>A set of rules governing the use of an asset.</rdfs:comment>
+  <rdfs:label>Policy</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: New CQ1 and New CQ2 ask about policies</vaem:rationale>
+  <dc:source>(competency_question) New CQ1: Which policy is directly linked to a given asset?
+    (competency_question) New CQ2: What conflict resolution strategy is specified by a policy?</dc:source>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/odrl#Asset">
+  <rdfs:comment>A digital or physical resource governed by a policy.</rdfs:comment>
+  <rdfs:label>Asset</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: New CQ1 asks which policy is linked to an asset</vaem:rationale>
+  <dc:source>(competency_question) New CQ1: Which policy is directly linked to a given asset?</dc:source>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/odrl#ConflictResolutionStrategy">
+  <rdfs:comment>A method specified by a policy to resolve rule conflicts.</rdfs:comment>
+  <rdfs:label>Conflict Resolution Strategy</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: New CQ2 asks about conflict resolution strategies</vaem:rationale>
+  <dc:source>(competency_question) New CQ2: What conflict resolution strategy is specified by a policy?</dc:source>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/odrl#Prohibition">
+  <rdfs:comment>A rule that forbids a specific action.</rdfs:comment>
+  <rdfs:label>Prohibition</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: New CQ3 and New CQ6 ask about prohibitions</vaem:rationale>
+  <dc:source>(competency_question) New CQ3: What duty is specified as a remedy for the violation of a prohibition?
+    (competency_question) New CQ6: What operator is used in the constraints of a prohibition?</dc:source>
+  <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/odrl#Rule"/>
+  <!-- Axiom: SubClassOf Rule -->
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/odrl#Rule">
+  <rdfs:comment>A general directive in a policy, including duties and prohibitions.</rdfs:comment>
+  <rdfs:label>Rule</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: New CQ4 asks about rule activation and failure; serves as superclass for Duty and Prohibition</vaem:rationale>
+  <dc:source>(competency_question) New CQ4: Which rule is activated upon the failure of another rule?</dc:source>
+</owl:Class>
+
+  <!-- owl:ObjectProperty declarations -->
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/odrl#role">
+  <rdfs:comment>Relates a contract party to their role within a permission or duty element.</rdfs:comment>
+  <rdfs:label>Role</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: CQ06 asks how party roles are expressed</vaem:rationale>
+  <dc:source>(competency_question) CQ06: Expressing the various roles of contract parties within the Permission/Duty element.</dc:source>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/odrl#operator">
+  <rdfs:comment>Relates an expression or constraint to its logical operator.</rdfs:comment>
+  <rdfs:label>Operator</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: CQ08, CQ14, and New CQ6 ask about operators in expressions and constraints</vaem:rationale>
+  <dc:source>(competency_question) CQ08: How to provide a 'NOT' expression?
+    (competency_question) CQ14: How do we express 'and', 'or', 'xor' constraints?
+    (competency_question) New CQ6: What operator is used in the constraints of a prohibition?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/odrl#Constraint"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/odrl#Operator"/>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/odrl#Expression"/>
+  <!-- Axiom: domain Constraint -->
+  <!-- Axiom: domain Expression -->
+  <!-- Axiom: range Operator -->
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/odrl#constraint">
+  <rdfs:comment>Relates a rule or requirement to its constraints.</rdfs:comment>
+  <rdfs:label>Constraint</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: CQ13, CQ21, CQ26, and New CQ6 ask about constraints</vaem:rationale>
+  <dc:source>(competency_question) CQ13: Shall ODRLv2 allow for nested constraints?
+    (competency_question) CQ21: How to express constraints on requirements?
+    (competency_question) CQ26: How to express Condition via Constraints?
+    (competency_question) New CQ6: What operator is used in the constraints of a prohibition?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/odrl#Prohibition"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/odrl#Constraint"/>
+  <!-- Axiom: domain Prohibition -->
+  <!-- Axiom: range Constraint -->
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/odrl#exclusivePermission">
+  <rdfs:comment>Relates permissions that are mutually exclusive.</rdfs:comment>
+  <rdfs:label>Exclusive Permission</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: CQ24 asks how exclusive permissions are expressed</vaem:rationale>
+  <dc:source>(competency_question) CQ24: How to express exclusive permissions?</dc:source>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/odrl#sequencing">
+  <rdfs:comment>Relates rules to their execution order within a rule set.</rdfs:comment>
+  <rdfs:label>Sequencing</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: CQ31 asks about sequencing in the REL</vaem:rationale>
+  <dc:source>(competency_question) CQ31: Do we need 'Sequencing' as part of the REL?</dc:source>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/odrl#linkedTo">
+  <rdfs:comment>Relates an asset to the policy that directly governs it.</rdfs:comment>
+  <rdfs:label>Linked To</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: New CQ1 asks which policy is linked to a given asset</vaem:rationale>
+  <dc:source>(competency_question) New CQ1: Which policy is directly linked to a given asset?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/odrl#Asset"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/odrl#Policy"/>
+  <!-- Axiom: domain Asset -->
+  <!-- Axiom: range Policy -->
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/odrl#strategy">
+  <rdfs:comment>Relates a policy to its specified conflict resolution strategy.</rdfs:comment>
+  <rdfs:label>Strategy</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: New CQ2 asks about conflict resolution strategies</vaem:rationale>
+  <dc:source>(competency_question) New CQ2: What conflict resolution strategy is specified by a policy?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/odrl#Policy"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/odrl#ConflictResolutionStrategy"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <!-- Axiom: domain Policy -->
+  <!-- Axiom: range ConflictResolutionStrategy -->
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/odrl#remedy">
+  <rdfs:comment>Relates a prohibition to the duty that serves as a remedy.</rdfs:comment>
+  <rdfs:label>Remedy</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: New CQ3 asks about duties as remedies</vaem:rationale>
+  <dc:source>(competency_question) New CQ3: What duty is specified as a remedy for the violation of a prohibition?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/odrl#Prohibition"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/odrl#Duty"/>
+  <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/odrl#prohibitionDutyLink"/>
+  <!-- Axiom: domain Prohibition -->
+  <!-- Axiom: range Duty -->
+  <!-- Axiom: SubPropertyOf prohibitionDutyLink -->
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/odrl#violation">
+  <rdfs:comment>Relates a prohibition to the duty associated with its violation.</rdfs:comment>
+  <rdfs:label>Violation</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: New CQ3 asks about duties for violations</vaem:rationale>
+  <dc:source>(competency_question) New CQ3: What duty is specified as a remedy for the violation of a prohibition?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/odrl#Prohibition"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/odrl#Duty"/>
+  <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/odrl#prohibitionDutyLink"/>
+  <!-- Axiom: domain Prohibition -->
+  <!-- Axiom: range Duty -->
+  <!-- Axiom: SubPropertyOf prohibitionDutyLink -->
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/odrl#failure">
+  <rdfs:comment>Relates a rule to another rule that fails.</rdfs:comment>
+  <rdfs:label>Failure</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: New CQ4 asks about rule failure</vaem:rationale>
+  <dc:source>(competency_question) New CQ4: Which rule is activated upon the failure of another rule?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/odrl#Rule"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/odrl#Rule"/>
+  <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/odrl#ruleRelation"/>
+  <!-- Axiom: domain Rule -->
+  <!-- Axiom: range Rule -->
+  <!-- Axiom: SubPropertyOf ruleRelation -->
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/odrl#activatedUpon">
+  <rdfs:comment>Relates a rule to another rule that activates it upon failure.</rdfs:comment>
+  <rdfs:label>Activated Upon</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: New CQ4 asks about rule activation</vaem:rationale>
+  <dc:source>(competency_question) New CQ4: Which rule is activated upon the failure of another rule?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/odrl#Rule"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/odrl#Rule"/>
+  <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/odrl#ruleRelation"/>
+  <!-- Axiom: domain Rule -->
+  <!-- Axiom: range Rule -->
+  <!-- Axiom: SubPropertyOf ruleRelation -->
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/odrl#consequence">
+  <rdfs:comment>Relates a duty to another duty that follows as a consequence.</rdfs:comment>
+  <rdfs:label>Consequence</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: New CQ5 asks about duty consequences</vaem:rationale>
+  <dc:source>(competency_question) New CQ5: What duty is specified as a consequence of another duty?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/odrl#Duty"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/odrl#Duty"/>
+  <!-- Axiom: domain Duty -->
+  <!-- Axiom: range Duty -->
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/odrl#ruleRelation">
+  <rdfs:comment>General relation between rules, shared by failure and activatedUpon.</rdfs:comment>
+  <rdfs:label>Rule Relation</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] coined: Step 6: general property for failure and activatedUpon which share domain Rule and range Rule</vaem:rationale>
+  <dc:source>(competency_question) New CQ4: Which rule is activated upon the failure of another rule?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/odrl#Rule"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/odrl#Rule"/>
+  <!-- Axiom: domain Rule -->
+  <!-- Axiom: range Rule -->
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/odrl#prohibitionDutyLink">
+  <rdfs:comment>General relation between a prohibition and a duty, shared by remedy and violation.</rdfs:comment>
+  <rdfs:label>Prohibition Duty Link</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] coined: Step 6: general property for remedy and violation which share domain Prohibition and range Duty</vaem:rationale>
+  <dc:source>(competency_question) New CQ3: What duty is specified as a remedy for the violation of a prohibition?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/odrl#Prohibition"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/odrl#Duty"/>
+  <!-- Axiom: domain Prohibition -->
+  <!-- Axiom: range Duty -->
+</owl:ObjectProperty>
+
+  <!-- owl:NamedIndividual declarations -->
+
+<owl:NamedIndividual rdf:about="http://www.semanticweb.org/odrl#Aggregation">
+  <rdfs:comment>An individual representing the aggregation right.</rdfs:comment>
+  <rdfs:label>Aggregation</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: CQ03_a1 supplies it as an instance of TransferRight</vaem:rationale>
+  <dc:source>(competency_question) CQ03_a1: Is Aggregation of type Transfer Rights?
+    (competency_question) CQ03: Shall the permissions 'Aggregation' and 'Disaggregation' be of the type Transfer Rights?</dc:source>
+  <rdf:type rdf:resource="http://www.semanticweb.org/odrl#TransferRight"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="http://www.semanticweb.org/odrl#Disaggregation">
+  <rdfs:comment>An individual representing the disaggregation right.</rdfs:comment>
+  <rdfs:label>Disaggregation</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: CQ03_a2 supplies it as an instance of TransferRight</vaem:rationale>
+  <dc:source>(competency_question) CQ03_a2: Is Disaggregation of type Transfer Rights?
+    (competency_question) CQ03: Shall the permissions 'Aggregation' and 'Disaggregation' be of the type Transfer Rights?</dc:source>
+  <rdf:type rdf:resource="http://www.semanticweb.org/odrl#TransferRight"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="http://www.semanticweb.org/odrl#NotOperator">
+  <rdfs:comment>An individual representing the logical NOT operator.</rdfs:comment>
+  <rdfs:label>Not Operator</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: CQ08 supplies it as an instance of Operator</vaem:rationale>
+  <dc:source>(competency_question) CQ08: How to provide a 'NOT' expression?</dc:source>
+  <rdf:type rdf:resource="http://www.semanticweb.org/odrl#Operator"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="http://www.semanticweb.org/odrl#AndOperator">
+  <rdfs:comment>An individual representing the logical AND operator.</rdfs:comment>
+  <rdfs:label>And Operator</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: CQ14_a1 supplies it as an instance of Operator</vaem:rationale>
+  <dc:source>(competency_question) CQ14_a1: What is the expression for the 'and' constraint?
+    (competency_question) CQ14: How do we express 'and', 'or', 'xor' constraints?</dc:source>
+  <rdf:type rdf:resource="http://www.semanticweb.org/odrl#Operator"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="http://www.semanticweb.org/odrl#OrOperator">
+  <rdfs:comment>An individual representing the logical OR operator.</rdfs:comment>
+  <rdfs:label>Or Operator</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: CQ14_a2 supplies it as an instance of Operator</vaem:rationale>
+  <dc:source>(competency_question) CQ14_a2: What is the expression for the 'or' constraint?
+    (competency_question) CQ14: How do we express 'and', 'or', 'xor' constraints?</dc:source>
+  <rdf:type rdf:resource="http://www.semanticweb.org/odrl#Operator"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="http://www.semanticweb.org/odrl#XorOperator">
+  <rdfs:comment>An individual representing the logical XOR operator.</rdfs:comment>
+  <rdfs:label>Xor Operator</rdfs:label>
+  <vaem:rationale>[OntoGeneration Agent] created: CQ14_a3 supplies it as an instance of Operator</vaem:rationale>
+  <dc:source>(competency_question) CQ14_a3: What is the expression for the 'xor' constraint?
+    (competency_question) CQ14: How do we express 'and', 'or', 'xor' constraints?</dc:source>
+  <rdf:type rdf:resource="http://www.semanticweb.org/odrl#Operator"/>
+</owl:NamedIndividual>
+
+</rdf:RDF>
